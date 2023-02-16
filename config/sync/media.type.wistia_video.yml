@@ -1,0 +1,19 @@
+uuid: c9609e66-0dda-4b89-b4cd-585d896adf1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - video_embed_media
+_core:
+  default_config_hash: 2eYra-IaTta7ABjE9WVeHhNwWOc71Ua8L4XKDpCEtWo
+id: wistia_video
+label: 'Wistia video'
+description: 'A single Wistia video.'
+source: video_embed_field
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+field_map:
+  id: field_media_video_embed_field
+  source_name: name

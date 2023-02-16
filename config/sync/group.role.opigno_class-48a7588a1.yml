@@ -1,0 +1,17 @@
+uuid: 2f9ea172-4705-4b3c-add2-a0f69f6166b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_class
+  enforced:
+    config:
+      - user.role.administrator_assistant
+id: opigno_class-48a7588a1
+label: 'Administrator Assistant'
+weight: 8
+internal: true
+audience: outsider
+group_type: opigno_class
+permissions_ui: false
+permissions: {  }

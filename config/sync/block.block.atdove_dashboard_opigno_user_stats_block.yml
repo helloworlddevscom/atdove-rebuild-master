@@ -1,0 +1,26 @@
+uuid: dc47456f-ca71-460d-a87d-02f170110564
+langcode: en
+status: false
+dependencies:
+  module:
+    - opigno_dashboard
+    - system
+  theme:
+    - atdove
+id: atdove_dashboard_opigno_user_stats_block
+theme: atdove
+region: content
+weight: -1
+provider: null
+plugin: opigno_user_stats_block
+settings:
+  id: opigno_user_stats_block
+  label: 'Dashboard: User statistics'
+  label_display: ''
+  provider: opigno_dashboard
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'

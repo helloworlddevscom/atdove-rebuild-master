@@ -1,0 +1,486 @@
+<?php
+
+/**
+ * @file
+ * Preprocess functions for AtDove theme.
+ */
+
+use Drupal\atdove_opigno\Plugin\Block\SiteHeaderBlock;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Block\BlockManagerInterface;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Url;
+use Drupal\group\Entity\Group;
+use Drupal\node\Entity\Node;
+use Drupal\opigno_module\Entity\OpignoActivity;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\user\Entity\User;
+use Drupal\group\GroupMembership;
+
+/**
+ * Implements hook_theme().
+ */
+function atdove_theme($existing, $type, $theme, $path) {
+  return array(
+    'atdove_certificate' => [
+      'variables' => [
+        'user_full_name' => 'user_full_name',
+        'h5p_id' => 'h5p_id',
+        'act_name' => 'act_name',
+        'contributors' => 'contributors',
+        'completed_date' => 'completed_date',
+        'route_name' => 'route_name',
+        'credit_hours' => 'credit_hours',
+        'ce_matter_category' => 'ce_matter_category',
+        'race_program_no' => 'race_program_no',
+        'vhma_program_no' => 'vhma_program_no',
+        'is_acc' => 'is_acc',
+      ]
+    ]
+  );
+}
+  /**
+ * Map AtDove theme block machine names to the corresponding block machine
+ * name in the Aristotle base theme (they cannot have the same machine name).
+ */
+function _atdove_block_map() {
+  return [
+    'atdove_sitebranding' => 'sitebranding',
+    'atdove_mainnavigation' => 'mainnavigation',
+    'atdove_opigno_admin' => 'opigno_admin',
+    'atdove_messages' => 'messages',
+    'atdove_backlinkblock' => 'backlinkblock',
+    'atdove_pagetitle' => 'pagetitle',
+    'atdove_opigno_training_catalog_filter' => 'opigno_training_catalog_filter',
+    'atdove_lp_steps_block' => 'lp_steps_block',
+    'atdove_views_block__private_message_block_all' => 'views_block__private_message_block_all',
+    'atdove_tabs' => 'tabs',
+    'atdove_primaryadminactions' => 'primaryadminactions',
+    'atdove_dashboard_views_block_content_recent_block_1' => 'dashboard_views_block_content_recent_block_1',
+    'atdove_dashboard_views_block_who_s_new_block_1' => 'dashboard_views_block_who_s_new_block_1',
+    'atdove_dashboard_views_block_who_s_online_who_s_online_block' => 'dashboard_views_block_who_s_online_who_s_online_block',
+    'atdove_dashboard_calendar_legend_block' => 'dashboard_calendar_legend_block',
+    'atdove_dashboard_views_block_opigno_notifications_block_unread' => 'dashboard_views_block_opigno_notifications_block_unread_dashboard',
+    'atdove_opignogroupoperationsblock' => 'opignogroupoperationsblock',
+    'atdove_dashboard_views_block_opigno_score_modules_notavaluated' => 'dashboard_views_block_opigno_score_modules_dashboard_notavaluated_modules',
+    'atdove_dashboard_views_block_private_message_block_dashboard' => 'dashboard_views_block_private_message_block_dashboard',
+    'atdove_opignouserstatisticsblock' => 'opignouserstatisticsblock',
+    'atdove_opignosocialwallblock' => 'opignosocialwallblock',
+    'atdove_dashboard_views_block_comments_recent_block_1' => 'dashboard_views_block_comments_recent_block_1',
+    'atdove_views_block__opigno_calendar_month_block' => 'views_block__opigno_calendar_month_block',
+    'atdove_dashboard_views_block_opigno_calendar_month_block' => 'dashboard_views_block_opigno_calendar_month_block',
+    'atdove_dashboard_opigno_social_wall_block' => 'dashboard_opigno_social_wall_block',
+    'atdove_dashboard_opigno_user_connections_block' => 'dashboard_opigno_user_connections_block',
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_hook_alter().
+ *
+ * Alter template suggestions for block theme hook.
+ */
+function atdove_theme_suggestions_block_alter(&$suggestions, $variables) {
+  // The AtDove subtheme cannot have any blocks with the same machine name as
+  // the base theme Artistotle, despite the fact that they are actually the same blocks.
+  // To make sure our blocks from AtDove get the same theming as they do in Aristotle,
+  // we must replace the theme suggestion for each block with the theme suggestion
+  // for the same block in Aristotle.
+  $machine_name_map = _atdove_block_map();
+  foreach ($suggestions as &$suggestion) {
+    foreach ($machine_name_map as $atdove_name => $aristotle_name) {
+      if ($suggestion == $atdove_name) {
+        $suggestion = $aristotle_name;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function atdove_preprocess_block(&$variables) {
+  // Ensure CSS ID is the same as it would be if the block were displayed in Aristotle theme.
+  // Some theming for blocks in Aristotle is based on the ID attribute and this ensures
+  // that the blocks when displayed in our sub theme pick up the styling.
+  if (isset($variables['elements']['#id']) && isset($variables['attributes']['id'])) {
+    $machine_name_map = _atdove_block_map();
+    if (isset($machine_name_map[$variables['elements']['#id']])) {
+      $variables['attributes']['id'] = 'block-' . str_replace('_', '-', $machine_name_map[$variables['elements']['#id']]);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_hook_alter().
+ *
+ * Alter template suggestions for page theme hook.
+ */
+function atdove_theme_suggestions_page_alter(array &$suggestions, array $vars) {
+  // Add group type based template suggestion.
+  $group_id = \Drupal::routeMatch()->getRawParameter('group');
+  if (!empty($group_id)) {
+    $group = Group::load($group_id);
+    if (!empty($group)) {
+      $group_type = $group->getGroupType()->id();
+      $suggestions[] = 'page__group_type__' . $group_type;
+    }
+  }
+
+  // Unset theme suggestion from Aristotle for page template with
+  // user login, user register and user password reset forms combined
+  // into one page. We need these to be separate so that the user register form
+  // is access checked by \Drupal\atdove_organizations_invite\Access\UserRegisterAccessCheck.
+  // Ideally this code would be in atdove_organizations_invite, but because Drupal
+  // runs hook implementations from themes after modules, we can't override the Aristotle theme in a module.
+  foreach ($suggestions as $key => $suggestion) {
+    if ($suggestion == 'page__anonymous__with_slider') {
+      unset($suggestions[$key]);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function atdove_theme_registry_alter(&$theme_registry) {
+  // Remove overly general theme hook added by opigno_learning_path module.
+  // This was being applied to all group types. In atdove_theme_suggestions_page_alter()
+  // we instead add a template suggestion so we can apply this page template only to learning_path group type.
+  // See: https://www.drupal.org/project/opigno_lms/issues/3227430
+  // @TODO: Is this still necessary in Opigno 3.0?
+  if (isset($theme_registry['page__group'])) {
+    unset($theme_registry['page__group']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * Preprocesses html.html.twig.
+ */
+function atdove_preprocess_html(&$variables) {
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    // If the database is not yet available, set default values for these
+    // variables.
+    $variables['is_front'] = FALSE;
+  }
+
+  // If we're on the front page.
+  if (!$variables['is_front']) {
+    // Add unique classes for each page and website section.
+    $path = \Drupal::service('path.current')->getPath();
+    $alias = \Drupal::service('path_alias.manager')->getAliasByPath($path);
+    $alias = trim($alias, '/');
+    if (!empty($alias)) {
+      $name = str_replace('/', '-', $alias);
+      $variables['attributes']['class'][] = 'page-' . $name;
+      list($section,) = explode('/', $alias, 2);
+      if (!empty($section)) {
+        $variables['attributes']['class'][] = 'section-' . $section;
+      }
+    }
+    // If certificates page, add atdove-certificate class
+    if (\Drupal::routeMatch()->getRouteName() == 'atdove_opigno.view'){
+      $variables['attributes']['class'][] = 'page-atdove-certificate';
+    }
+  }
+
+  // Redirect anonymous user from home page to login.
+  // // @todo Eventually we need to redirect to WordPress marketing site.
+  // if ($variables['is_front'] && \Drupal::currentUser()->isAnonymous()) {
+  //   $Url = Url::fromRoute('user.login');
+  //   $response = new RedirectResponse($Url->toString());
+  //   $response->send();
+  // }
+
+  // Add cachability metadata.
+  $theme_name = \Drupal::theme()->getActiveTheme()->getName();
+  $theme_settings = \Drupal::config($theme_name . '.settings');
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($theme_settings)
+    ->applyTo($variables);
+  // Union all theme setting variables to the html.html.twig template.
+  $variables += $theme_settings->getOriginal();
+
+  // Look up user's group
+  $user = \Drupal::currentUser();
+
+  $grp_membership_service = \Drupal::service('group.membership_loader');
+  $grps = $grp_membership_service->loadByUser($user);
+  if ($grps != NULL) {
+    foreach ($grps as $grp) {
+      $group = $grp->getGroup();
+      if ($group->type->entity->id() == 'organization') {
+        if ($member = $group->getMember($user)) {
+          $roles[] = $member->getRoles();
+          foreach ($roles[0] as $role_key => $role) {
+            if ($role_key == 'organization-admin') {
+              $main_group_id = $group->id();
+              $variables['main_group_id'] = $main_group_id;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Prepares variables for the field.html.twig template.
+ */
+function atdove_preprocess_field(&$variables, $hook) {
+  // Make additional variables available to the template.
+  $variables['bundle'] = $variables['element']['#bundle'];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Preprocesses page.html.twig.
+ */
+function atdove_preprocess_page(&$variables) {
+
+  // Override the default site header block using our block class defined
+  // in atdove_opigno module. Ideally this code would be in atdove_opigno, but because Drupal
+  // runs hook implementations from themes after modules, we can't override the Aristotle theme in a module.
+  $block_manager = \Drupal::service('plugin.manager.block');
+  if ($block_manager instanceof BlockManagerInterface) {
+    $header = $block_manager->createInstance('atdove_opigno_site_header_block');
+    $variables['header'] = $header instanceof SiteHeaderBlock ? $header->build() : NULL;
+  }
+
+  if(isset($_ENV['PANTHEON_ENVIRONMENT']) && ($_ENV['PANTHEON_ENVIRONMENT'] == 'live')) {
+    $stripe_pub_key = \Drupal::config('stripe.settings')->get('apikey.live.public');
+  } else {
+    $stripe_pub_key = \Drupal::config('stripe.settings')->get('apikey.test.public');
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_page().
+ * @todo Move this to  atdove_billing module.
+ */
+function atdove_preprocess_form(&$variables) {
+  if(isset($_ENV['PANTHEON_ENVIRONMENT']) && ($_ENV['PANTHEON_ENVIRONMENT'] == 'live')) {
+    $stripe_pub_key = \Drupal::config('stripe.settings')->get('apikey.live.public');
+  } else {
+    $stripe_pub_key = \Drupal::config('stripe.settings')->get('apikey.test.public');
+  }
+  $variables['stripe_pub_key'] = $stripe_pub_key;
+}
+
+// @todo Move this to atdove_activities module.
+function atdove_preprocess_opigno_activity(&$variables) {
+
+  // This is how to get the custom entity ID in a preprocess function for the twig file.
+  $opigno_id = $variables['elements']['#opigno_activity']->id->__get('value');
+  $activity_url = $variables['elements']['#opigno_activity']->toUrl()->toString();
+  $variables['activity_url'] = $activity_url;
+  $variables['opigno_id'] = $opigno_id;
+  $activity_type = $variables['elements']['#opigno_activity']->type->target_id;
+  switch ($activity_type) {
+    case 'atdove_video':
+    $activity_type = 'Video';
+    break;
+
+    case 'atdove_article':
+    $activity_type = 'Article';
+    break;
+
+    case 'opigno_h5p':
+
+    break;
+
+    default:
+    $activity_type = '';
+    break;
+  }
+  $variables['activity_type'] = $activity_type;
+  $user = $variables['user'];
+  $flag_link = [
+    '#lazy_builder' => [
+    'flag.link_builder:build',
+      [
+      'opigno_activity',
+        $opigno_id,
+      'activity_bookmark',
+      ],
+    ],
+    '#create_placeholder' => TRUE,
+  ];
+  $variables['flag_link'] = $flag_link;
+
+  // Look up user's group
+  $user = \Drupal::currentUser();
+
+  $grp_membership_service = \Drupal::service('group.membership_loader');
+  $grps = $grp_membership_service->loadByUser($user);
+  $variables['is_org_admin'] = FALSE;
+  if ($grps != NULL) {
+    foreach ($grps as $grp) {
+      $group = $grp->getGroup();
+      if ($group->type->entity->id() == 'organization') {
+        if ($member = $group->getMember($user)) {
+          $roles[] = $member->getRoles();
+          foreach ($roles[0] as $role_key => $role) {
+            if ($role_key == 'organization-admin') {
+              $variables['is_org_admin'] = TRUE;
+              $main_group_id = $group->id();
+              $variables['main_group_id'] = $main_group_id;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+function atdove_preprocess_opigno_certificate(&$variables) {
+
+  if($variables['referencing_entity'] instanceof Drupal\group\Entity\Group) {
+  }
+
+  if ($variables['referencing_entity'] instanceof \Drupal\node\Entity\Node) {
+    if ($variables['referencing_entity']->getType() === 'assignment') {
+
+    $comp_date = $variables['referencing_entity']->field_completed->getValue()[0]['value'];
+    $variables['completed_on'] = date("F j, Y", strtotime($comp_date));
+    $variables['logo_src'] = '/themes/custom/atdove/images/atdovelogo.png';
+    $assignment_content_entity = $variables['referencing_entity']->field_assigned_content->getValue()[0]['target_id'];
+
+    $assignee = $variables['referencing_entity']->field_assignee->getValue()[0]['target_id'];
+    $variables['assignee'] = User::load($assignee);
+    $variables['activity'] = OpignoActivity::load($assignment_content_entity);
+
+      // Contributors
+      if ($variables['activity']->field_contributors != NULL) {
+        $contributors = $variables['activity']->field_contributors->getValue();
+        foreach ($contributors as $key => $value) {
+          $uid = $contributors[$key]['target_id'];
+          $user = User::load($uid);
+          if ($user != NULL) {
+            $variables['contributors'][] = $user->field_first_name->value . " "  . $user->field_last_name->value;
+          }
+        }
+      }
+
+      // Additional Contributors
+      if ($variables['activity']->field_external_contributors != NULL) {
+        $add_contributors = $variables['activity']->field_external_contributors->getValue();
+        foreach ($add_contributors as $key => $value) {
+          $variables['contributors'][] = $add_contributors[$key]['value'];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function atdove_preprocess_views_view_fields(&$variables) {
+
+  if ($variables['view']->id() === 'opigno_activity_search') {
+    // Activity id
+    $activity_id = $variables['row']->id;
+
+    $activity = OpignoActivity::load($activity_id);
+    $activity_type = $activity->type->target_id;
+    $variables['activity_type'] = $activity_type;
+    // Load current user
+    $user = \Drupal::currentUser();
+
+  // Look up assignment of current user that has this activity id as the content
+    $node = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'type' => 'assignment',
+        'field_assignee' => $user->id(),
+        'field_assigned_content' => $activity_id,
+    ]);
+
+    if (!empty($node)) {
+      $assignment = reset($node);
+      if (isset($assignment->field_assignment_status->getValue()[0])) {
+       $variables['assignment_status'] = $assignment->field_assignment_status->getValue()[0]['value'];
+      }
+    }
+
+    // Look up user's group
+    $user = \Drupal::currentUser();
+    $variables['is_org_admin'] = FALSE;
+    $grp_membership_service = \Drupal::service('group.membership_loader');
+    $grps = $grp_membership_service->loadByUser($user);
+    if ($grps != NULL) {
+      foreach ($grps as $grp) {
+        $group = $grp->getGroup();
+        if ($group->type->entity->id() == 'organization') {
+          if ($member = $group->getMember($user)) {
+            $roles[] = $member->getRoles();
+            foreach ($roles[0] as $role_key => $role) {
+              if ($role_key == 'organization-admin') {
+                $variables['is_org_admin'] = TRUE;
+                $main_group_id = $group->id();
+                $variables['main_group_id'] = $main_group_id;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function atdove_preprocess_node(&$variables) {
+  switch ($variables['node']->getType()) {
+    case "blog":
+      $flag_link = [
+    '#lazy_builder' => [
+    'flag.link_builder:build',
+      [
+      'node',
+        $variables['node']->id(),
+      'bookmark',
+      ],
+    ],
+    '#create_placeholder' => TRUE,
+  ];
+  $variables['flag_link'] = $flag_link;
+    break;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ * Adding field display mode theme suggestion.
+ */
+function atdove_theme_suggestions_field_alter(&$suggestions, $variables) {
+  $suggestions[] = 'field__' . $variables['element']['#entity_type'] . '__' . $variables['element']['#field_name'] . '__' . $variables['element']['#bundle'];
+  $suggestions[] = 'field__' . $variables['element']['#entity_type'] . '__' . $variables['element']['#field_name'] . '__' . $variables['element']['#bundle'] . '__' . $variables['element']['#view_mode'];
+}
+
+/**
+ * Implements template_preprocess_views_view_table()
+ * @param $variables
+ */
+function atdove_preprocess_views_view_table(&$variables){
+  $view = $variables['view'];
+  if ($view->id() !== 'h5p_content') return;
+  $rows = $variables['rows'];
+  // Remove any rows from certificates which are not related to an opigno activity.
+  foreach ($rows as $key => $row) {
+     $related_content= preg_replace("~<!--(.*?)-->~s", "", $row['columns']['h5p_related_content_views_field']['content'][0]['field_output']);
+     $related_content = preg_replace('/\s+/', '', $related_content);
+    if (empty($related_content['#markup'])) {
+      unset($variables['rows'][$key]);
+    }
+  }
+}

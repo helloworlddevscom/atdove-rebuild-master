@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for AtDove Admin module.
+ */
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function atdove_admin_page_attachments(&$page) {
+  // Load custom CSS overrides of backend admin theme.
+  $theme = \Drupal::service('theme.manager')->getActiveTheme()->getName();
+
+  if ($theme !== 'atdove') {
+    $page['#attached']['library'][] = 'atdove_admin/admin-theme';
+  }
+}

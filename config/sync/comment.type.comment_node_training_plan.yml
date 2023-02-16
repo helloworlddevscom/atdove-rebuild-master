@@ -1,0 +1,8 @@
+uuid: 9dd23e76-76cd-44be-aa09-2a22b9cf6bd7
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_training_plan
+label: 'Training Plan comment'
+target_entity_type_id: node
+description: null

@@ -1,0 +1,28 @@
+uuid: c9ec335d-1661-4186-80d5-bd9832cceec2
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+    - opigno_moxtra
+_core:
+  default_config_hash: Ni0QQX_IIJXR6xNIf43KY-t6-QuqG6-msq1-oGIIdGc
+id: collaborative_features
+label: 'Live meeting manager'
+weight: -2
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'add workspace entities'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'score meeting'
+  - 'start meeting'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view meeting entities'
+  - 'view own flag lists'
+  - 'view workspace entities'

@@ -1,0 +1,30 @@
+uuid: e2e07af1-1c13-494d-8bda-60fc82dd96e2
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.my_assignments_block
+  module:
+    - system
+    - views
+  theme:
+    - atdove
+id: dashboard_views_block_my_assignments_block_block_1
+theme: atdove
+region: content
+weight: -2
+provider: null
+plugin: 'views_block:my_assignments_block-block_1'
+settings:
+  id: 'views_block:my_assignments_block-block_1'
+  label: 'Dashboard: My Assignments'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'

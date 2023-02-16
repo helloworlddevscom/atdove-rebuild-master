@@ -1,0 +1,20 @@
+uuid: b5969d0d-bc1d-4ace-aef1-311b11d16a6e
+langcode: en
+status: true
+dependencies: {  }
+id: local
+label: Local
+description: 'Settings for just local (develp, devel PHP, etc)'
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/local
+module:
+  devel: 0
+  devel_kint_extras: 0
+  devel_php: 0
+  views_ui: 0
+theme: {  }
+complete_list: {  }
+partial_list:
+  - mailsystem.settings

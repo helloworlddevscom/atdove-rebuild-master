@@ -1,0 +1,24 @@
+global:
+  version: VERSION
+  css:
+    theme:
+      https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900&subset=latin,latin-ext: { type: external }
+      dist/css/main.css: {}
+      src/scss/quick_fixes_2.css: {}
+  js:
+    dist/js/global.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupal.dialog.ajax
+    - core/jquery.form
+    - core/drupalSettings
+
+# AtDove SSO Login form block.
+# @todo Move this to atdove_sso module.
+# To use, add in template: {{ attach_library('atdove/sso-login') }}.
+sso-login:
+  js:
+    dist/js/atdove-sso-login-block.js: {}
+  dependencies:
+    - core/jquery

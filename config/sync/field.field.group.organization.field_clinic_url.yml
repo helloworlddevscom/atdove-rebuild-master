@@ -1,0 +1,19 @@
+uuid: 47d87064-1fe6-48c6-af17-0767a40aaf27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_clinic_url
+    - group.type.organization
+id: group.organization.field_clinic_url
+field_name: field_clinic_url
+entity_type: group
+bundle: organization
+label: 'Clinic URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

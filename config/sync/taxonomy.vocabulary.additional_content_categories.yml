@@ -1,0 +1,8 @@
+uuid: 97dd2beb-56f0-42a1-931b-a4f2f7094bb6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Additional Content Categories'
+vid: additional_content_categories
+description: ''
+weight: 0

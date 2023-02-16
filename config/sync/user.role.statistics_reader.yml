@@ -1,0 +1,30 @@
+uuid: 4b6d31c4-3158-4beb-a533-e1c0e0a656af
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+    - opigno_dashboard
+    - opigno_module
+    - opigno_statistics
+_core:
+  default_config_hash: eK9nGeLabTfm6KOJPu0z0Nzdh3ub7vuNORltKWnXpO0
+id: statistics_reader
+label: 'Statistics manager'
+weight: -1
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'opigno dashboard layout access'
+  - 'view any assignment content'
+  - 'view any group statistics'
+  - 'view any user statistics'
+  - 'view flag lists'
+  - 'view global statistics'
+  - 'view module results'
+  - 'view own flag lists'

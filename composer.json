@@ -1,0 +1,338 @@
+{
+    "name": "opigno/opigno-composer",
+    "description": "AtDove/Opigno LMS",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "wikimedia/composer-merge-plugin": true,
+            "drupal/core-project-message": true,
+            "drupal/console-extend-plugin": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "upstream-configuration"
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/h5p-3150110.git"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "v5.5.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/enyo/dropzone.git",
+                    "type": "git",
+                    "reference": "v5.5.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mozilla/pdf.js",
+                "version": "v2.4.456",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/mozilla/pdf.js/releases/download/v2.4.456/pdfjs-2.4.456-dist.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/v1.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "furf/jquery-ui-touch-punch",
+                "version": "master",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/furf/jquery-ui-touch-punch/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "v1.12.0",
+        "cweagans/composer-patches": "1.7.1",
+        "dmore/behat-chrome-extension": "^1.3",
+        "drupal/admin_toolbar": "3.0 as 2.4",
+        "drupal/bulk_user_registration": "^1.1@beta",
+        "drupal/comment_notify": "^1.2",
+        "drupal/config_filter": "^2.2",
+        "drupal/config_split": "^2.0@beta",
+        "drupal/contentimport": "^9.3",
+        "drupal/core-composer-scaffold": "9.3.9",
+        "drupal/core-project-message": "9.3.9",
+        "drupal/core-recommended": "9.3.9",
+        "drupal/date_popup": "^1.2",
+        "drupal/direct_checkout_by_url": "^1.1",
+        "drupal/entity": "1.2 as 1.1",
+        "drupal/entity_stats": "1.0.x-dev@dev",
+        "drupal/entityreference_filter": "^1.4",
+        "drupal/feeds": "^3.0@alpha",
+        "drupal/feeds_tamper": "2.x-dev@dev",
+        "drupal/file_delete": "^1.0",
+        "drupal/flag": "^4.0@beta",
+        "drupal/flag_lists": "^4.0@RC",
+        "drupal/flood_control": "^2.2",
+        "drupal/ggroup": "^1.0@alpha",
+        "drupal/ginvite": "^2.0",
+        "drupal/group": "1.4 as 1.2",
+        "drupal/h5p": "^2.0@alpha",
+        "drupal/heading": "^1.6",
+        "drupal/honeypot": "^2.0",
+        "drupal/hook_event_dispatcher": "^2.5",
+        "drupal/hubspot": "^3.0@alpha",
+        "drupal/masquerade": "^2.0@beta",
+        "drupal/migrate_file": "^2.0",
+        "drupal/migrate_file_to_media": "^2.0",
+        "drupal/migrate_plus": "^5.1",
+        "drupal/migrate_tools": "^5.0",
+        "drupal/migrate_upgrade": "^3.2",
+        "drupal/multiselect": "^2.0@alpha",
+        "drupal/node_view_permissions": "^1.5",
+        "drupal/openid_connect": "^1.2",
+        "drupal/paragraphs": "^1.12",
+        "drupal/pathauto": "^1.8",
+        "drupal/permissions_filter": "^1.2",
+        "drupal/private_message": "^2.0",
+        "drupal/redirect": "^1.7",
+        "drupal/require_login": "^2.4",
+        "drupal/route_condition": "^2.0",
+        "drupal/search_api_exclude_entity": "^1.3",
+        "drupal/smtp": "^1.1",
+        "drupal/toolbar_menu": "^2.2",
+        "drupal/twig_tweak": "^3.1",
+        "drupal/views_aggregator": "^2.0",
+        "drupal/views_bulk_edit": "^2.6",
+        "drupal/views_bulk_operations": "^4.0",
+        "drupal/views_data_export": "^1.1",
+        "drupal/views_role_based_global_text": "^2.0",
+        "drupal/webform": "^6.1@beta",
+        "drupal/webform_migrate": "^1.2",
+        "drupal/wistia": "1.x-dev@dev",
+        "drush-ops/behat-drush-endpoint": "^9.4",
+        "drush/drush": "^10",
+        "mpdf/mpdf": "^8.1",
+        "nesbot/carbon": "^2.55",
+        "opigno/opigno_lms": "^3.0.2",
+        "pantheon-systems/drupal-integrations": "^9",
+        "stripe/stripe-php": "^7.107",
+        "tightenco/collect": "^8.68",
+        "wikimedia/composer-merge-plugin": "2.0"
+    },
+    "require-dev": {
+        "behat/behat": "^3.10",
+        "behat/mink": "^1.7",
+        "behat/mink-extension": "^2.2",
+        "behat/mink-goutte-driver": "^1.3",
+        "behat/mink-selenium2-driver": "^1.3",
+        "bex/behat-screenshot": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+        "dmore/behat-chrome-extension": "^1.3",
+        "drevops/behat-screenshot": "^1.1",
+        "drupal/coder": "^8.3.1",
+        "drupal/core-dev": "^9.2.0",
+        "drupal/devel": "^4.1",
+        "drupal/devel_kint_extras": "^1.0",
+        "drupal/devel_php": "^1.3",
+        "drupal/drupal-driver": "^2.1",
+        "drupal/drupal-extension": "^4.1",
+        "genesis/behat-fail-aid": "^2.1",
+        "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
+        "kint-php/kint": "^3.3",
+        "mikey179/vfsstream": "^1.2",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/css-selector": "^4.4"
+    },
+    "replace": {
+        "h5p/h5p-core": "*",
+        "h5p/h5p-editor": "*"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "suggest": {},
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\Behat\\": "tests/behat/features/bootstrap"
+        }
+    },
+    "scripts": {
+        "lint": "find ./web/modules/custom ./web/themes/custom ./tests/behat/features -name '*.php' -exec php -l {} \\;",
+        "code-sniff": [
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor --runtime-set ignore_warnings_on_exit 1 ./web/modules/custom ./web/themes/custom ./tests/behat/features",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor --runtime-set ignore_warnings_on_exit 1 ./web/modules/custom ./web/themes/custom ./tests/behat/features"
+        ],
+        "code-sniff-fix": [
+            "./vendor/bin/phpcbf --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom ./web/themes/custom ./tests/behat/features",
+            "./vendor/bin/phpcbf --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom ./web/themes/custom ./tests/behat/features"
+        ],
+        "unit-test": "echo 'No unit test step defined.'",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "cd ./web/themes/custom/atdove && ./rewrite-aristotle-scss.sh"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core":                     ["type:drupal-core"],
+            "web/libraries/{$name}":        ["type:drupal-library"],
+            "web/modules/contrib/{$name}":  ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}":   ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}":       ["type:drupal-drush"],
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+        },
+        "patches": {
+            "drupal/opigno_certificate" : {
+                "Fix permission check on certificate controller": "https://www.drupal.org/files/issues/2022-02-23/3266187-2-fix-certificate-view-permission-issue.patch"
+            },
+            "drupal/address": {
+                "Fix address plugin - https://www.drupal.org/project/address/issues/2974631": "https://www.drupal.org/files/issues/2020-10-02/location-migration-2974631-24.patch"
+            },
+            "drupal/aristotle": {
+                "Remove user register form alter hook - Project specific": "patches/aristotle/aristotle_remove_user_register_form_alter.patch"
+            },
+            "drupal/core": {
+                "Selected yet disabled individual options from checkboxes - https://www.drupal.org/files/issues/2021-07-21/2911473": "https://www.drupal.org/files/issues/2021-07-21/2911473-71.patch",
+                "Fix views error": "https://www.drupal.org/files/issues/2020-11-02/3180227-2.patch",
+                "Allow negating block based on user role": "https://www.drupal.org/files/issues/2021-09-07/enable-block-visibility-user-role-negation-2986958-27.patch",
+                "Remove forum installing of terms" : "patches/drupal/remove-installing-forum-term.patch",
+                "Fix date module type warnings/notices" : "https://www.drupal.org/files/issues/2022-08-19/3189302-24.patch"
+            },
+            "drupal/comment_notify": {
+                "Tokens for custom entity types - https://www.drupal.org/project/comment_notify/issues/3206063": "https://www.drupal.org/files/issues/2021-03-27/comment_notify-tokens-for-entities.patch"
+            },
+            "drupal/contentimport": {
+                "Add ability for this module to import opigno entity reference fields": "patches/contentimport/content-import-for-opigno.patch"
+            },
+            "drupal/flag": {
+                "Fix flag error - https://www.drupal.org/files/issues/2020-09-06/show-count-for-visitors--3168014-2.patch": "https://www.drupal.org/files/issues/2020-09-06/show-count-for-visitors--3168014-2.patch"
+            },
+            "drupal/group": {
+                "Drupal Group's GroupContentCreateAccessCheck.php::access() uses XOR which is incorrect, switch to || (OR)": "patches/group/fix-access-xor.patch"
+            },
+            "drupal/opigno_class": {
+                "Fix route alter prevents access to members view page for non-opigno groups - https://www.drupal.org/project/opigno_lms/issues/3252147": "https://www.drupal.org/files/issues/2022-03-04/opigno_class-route-alter-group-members-access-14319274-5.patch"
+            },
+            "drupal/opigno_module": {
+                "Allow creating activites and modules with longer names ": "https://www.drupal.org/files/issues/2021-09-20/303561-14.patch"
+            },
+            "drupal/opigno_dashboard": {
+                "Add Main Group ID for Team Menu": "patches/opigno_dashboard/opigno_dashboard_atdove.patch",
+                "Allow customizing dropdown menu links - https://www.drupal.org/project/opigno_dashboard/issues/3239928": "https://www.drupal.org/files/issues/2021-09-29/3239928-customize-dropdown-links-2.patch",
+                "Fix fatal error on load -- https://www.drupal.org/project/opigno_dashboard/issues/3251764": "https://www.drupal.org/files/issues/2022-03-08/opigno_dashboard-fix-error-produced-by-missing-homepage-during-login-2.patch"
+            },
+            "drupal/opigno_learning_path": {
+                "Error on pages of group without field - https://www.drupal.org/project/opigno_learning_path/issues/3020064": "https://www.drupal.org/files/issues/2021-08-06/LearningPath.patch",
+                "Make Opigno work with Atdove Org Admins": "patches/opigno_learning_path/make_opigno_work_with_learning_paths.patch"
+            },
+            "drupal/private_message": {
+                "Fix access forbidden when a thread has no messages, prevents starting new threads" : "patches/private_message/fix-access-private-message-patch.diff"
+            },
+            "drupal/opigno_messaging": {
+                "Fix return null causing fatal error on private message redirector" : "patches/opigno_messaging/fix-return-null-on-private-message-redirector.diff"
+            },
+            "h5p/h5p-core": {
+                "PHP 7.3, 7.4 deprecated syntax warnings - https://www.drupal.org/project/h5p/issues/3126374": "https://www.drupal.org/files/issues/2020-12-02/2020_12_02_h5p_syntax_update.patch"
+            },
+            "drupal/opigno_statistics": {
+                "Add assignments certificates to total count on user dashboard": "patches/opigno_statistics/add-assignment-certificates-to-total-count.patch",
+                "Fix that a forbidden access value returns no reason": "https://www.drupal.org/files/issues/2022-10-18/fix-forbidden-not-having-reason-3316161-2.patch"
+            },
+            "drupal/require_login": {
+                "Fix Error: Call to undefined method Drupal\\Component\\Plugin\\Exception\\PluginNotFoundException::getStatusCode - https://www.drupal.org/project/require_login/issues/3218141": "https://www.drupal.org/files/issues/2021-12-18/3218141-7.patch"
+            },
+            "drupal/wistia": {
+                "Add resumable option: - https://www.drupal.org/project/wistia/issues/3257297": "patches/wistia/add-resumable-option-3257297.patch"
+            },
+            "drupal/field_group": {
+                "Fix unsupported operand issue": "https://www.drupal.org/files/issues/2021-11-08/3032426-13.patch"
+            },
+            "dompdf/dompdf": {
+                "Reconstructs css file paths on Pantheon for the dompdf PDF generator": "patches/dompdf/AR-442-css-path-construction.patch",
+                "Reconstructs image file paths on Pantheon for the dompdf PDF generator": "patches/dompdf/AR-442-image-path-construction.patch"
+            },
+            "drupal/ginvite": {
+                "Allow html for ginvite emails" : "patches/ginvite/allowHtmlEmails.patch"
+            }
+        },
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": false,
+        "build-env": {
+            "export-configuration": "drush config-export --yes"
+        },
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
+            ],
+            "locations": {
+                "web-root": "./web"
+            },
+             "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]\/pantheon.upstream.yml": false,
+                "[project-root]\/.gitattributes": false,
+                "[web-root]/sites/development.services.yml": false,
+                "[web-root]/sites/default/settings.php": false,
+                "[web-root]/sites/default/settings.pantheon.php": false
+            }
+        }
+    }
+}

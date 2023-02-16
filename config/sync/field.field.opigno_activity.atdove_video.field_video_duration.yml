@@ -1,0 +1,23 @@
+uuid: f54dd6b5-ff9a-4606-b61d-43cdb07278a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_video_duration
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_video_duration
+field_name: field_video_duration
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Video Duration'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,8 @@
+uuid: 024dadf5-1750-4b89-9476-40ba8548f7f1
+langcode: en
+status: true
+dependencies: {  }
+name: 'Available Additional Seats'
+vid: available_additional_seats
+description: ''
+weight: 0

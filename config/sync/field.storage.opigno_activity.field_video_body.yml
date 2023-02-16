@@ -1,0 +1,19 @@
+uuid: 0c4665ff-a6ef-4310-aca2-3b1c6a16bdde
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - text
+id: opigno_activity.field_video_body
+field_name: field_video_body
+entity_type: opigno_activity
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

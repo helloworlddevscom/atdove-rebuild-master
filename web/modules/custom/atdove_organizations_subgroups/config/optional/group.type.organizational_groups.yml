@@ -1,0 +1,12 @@
+uuid: 8e244bc8-aed1-4bb9-be4c-6caa033156a6
+langcode: en
+status: true
+dependencies: {  }
+id: organizational_groups
+label: 'Organizational Group'
+description: ''
+new_revision: false
+creator_membership: false
+creator_wizard: false
+creator_roles:
+  - organizational_groups-admin

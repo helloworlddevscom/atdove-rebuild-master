@@ -1,0 +1,23 @@
+uuid: 5b854293-51b3-4053-a880-43a0e4ef7097
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_license_status
+    - group.type.organization
+  module:
+    - options
+id: group.organization.field_license_status
+field_name: field_license_status
+entity_type: group
+bundle: organization
+label: 'License Status'
+description: 'Used to determine whether an organization has an active license. <br>TODO: This field needs to be updated programmatically when a license expires or when an org admin purchases a license. This field should not be accessible to org admins.'
+required: false
+translatable: false
+default_value:
+  -
+    value: active
+default_value_callback: ''
+settings: {  }
+field_type: list_string

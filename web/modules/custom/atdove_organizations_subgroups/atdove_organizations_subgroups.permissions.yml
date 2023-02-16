@@ -1,0 +1,4 @@
+#administer atdove_organizations_subgroups configuration:
+#  title: 'Administer atdove_organizations_subgroups configuration'
+#  description: 'Optional description.'
+#  restrict access: true

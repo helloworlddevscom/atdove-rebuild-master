@@ -1,0 +1,30 @@
+uuid: 888739fd-02d3-4599-851c-ce291be37246
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_org_group_member
+    - group.type.organizational_groups
+  module:
+    - user
+id: user.user.field_user_org_group_member
+field_name: field_user_org_group_member
+entity_type: user
+bundle: user
+label: 'Organizational Group Membership'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      organizational_groups: organizational_groups
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

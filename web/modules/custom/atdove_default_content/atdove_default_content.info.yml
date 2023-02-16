@@ -1,0 +1,6 @@
+name: AtDove Default Content
+type: module
+description: Used to install default content on a database fresh standup.
+core_version_requirement: ^8.8 || ^9
+package: AtDove
+

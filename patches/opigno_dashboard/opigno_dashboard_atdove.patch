@@ -1,0 +1,80 @@
+diff --git a/opigno_dashboard.module b/opigno_dashboard.module
+index 177c865..eafe2bb 100644
+--- a/opigno_dashboard.module
++++ b/opigno_dashboard.module
+@@ -88,6 +88,7 @@ function opigno_dashboard_theme() {
+         'notifications' => NULL,
+         'messages_count' => NULL,
+         'dropdown_menu' => NULL,
++        'main_group_id' => NULL,
+       ],
+     ],
+     'opigno_about_block' => [
+@@ -233,7 +234,7 @@ function opigno_dashboard_page_attachments(array &$page) {
+     return;
+   }
+ 
+-  $blocks = $block_service->getDashboardBlocksContents();
++  $blocks = $block_service->getDashboardBlocksContents(FALSE);
+   $block_attachments = $blocks['attachments'] ?? [];
+   if ($block_attachments) {
+     $page['#attached'] = array_merge_recursive($page['#attached'], $block_attachments);
+@@ -454,7 +455,7 @@ function opigno_dashboard_form_alter(&$form, FormStateInterface $form_state, $fo
+     ];
+     unset($form['name']['#description'], $form['pass']['pass']['#description']);
+   }
+-  if (in_array($form_id, ['user_form', 'user_register_form'])) {
++  if (in_array($form_id, ['user_form'])) {
+     $form['#theme'] = 'opigno_user_form';
+     $form["language"]["#type"] = 'container';
+     $form["contact"]["#type"] = 'container';
+diff --git a/src/Plugin/Block/SiteHeaderBlock.php b/src/Plugin/Block/SiteHeaderBlock.php
+index e6afa98..a8eb0a7 100644
+--- a/src/Plugin/Block/SiteHeaderBlock.php
++++ b/src/Plugin/Block/SiteHeaderBlock.php
+@@ -19,6 +19,8 @@ use Drupal\opigno_statistics\Services\UserStatisticsManager;
+ use Drupal\private_message\Service\PrivateMessageServiceInterface;
+ use Drupal\user\UserInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
++use Drupal\user\Entity\User;
++use Drupal\group\GroupMembership;
+ 
+ /**
+  * The site header block.
+@@ -150,6 +152,28 @@ class SiteHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
+       watchdog_exception('opigno_dashboard_exception', $e);
+       $notifications = [];
+     }
++    // Look up user's group
++    $user = \Drupal::currentUser();
++    $main_group_id = 0;
++    $grp_membership_service = \Drupal::service('group.membership_loader');
++    $grps = $grp_membership_service->loadByUser($user);
++    if ($grps != NULL) {
++      foreach ($grps as $grp) {
++        $g_group = $grp->getGroup();
++        if ($g_group->type->entity->id() == 'organization') {
++       
++          if ($member = $g_group->getMember($user)) {
++            $g_roles[] = $member->getRoles();
++
++            foreach ($g_roles[0] as $g_role_key => $g_role) {
++              if ($g_role_key == 'organization-admin') {
++                $main_group_id = $g_group->id();
++              }
++            }
++          }
++        }
++      }
++    }
+ 
+     return [
+       '#theme' => 'opigno_site_header',
+@@ -164,6 +188,7 @@ class SiteHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
+       '#notifications' => $this->notificationsManager->renderUserHeaderNotifications($notifications),
+       '#messages_count' => $this->pmService->getUnreadThreadCount(),
+       '#dropdown_menu' => $this->buildUserDropdownMenu($role),
++      '#main_group_id' => $main_group_id,
+       '#cache' => [
+         'contexts' => $this->getCacheContexts(),
+         'tags' => $this->getCacheTags(),

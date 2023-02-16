@@ -1,0 +1,18 @@
+diff --git a/core/modules/color/color.module b/core/modules/color/color.module
+index 712d65e784..511a7403c2 100644
+--- a/core/modules/color/color.module
++++ b/core/modules/color/color.module
+@@ -160,7 +160,12 @@ function color_get_info($theme) {
+ function color_get_palette($theme, $default = FALSE) {
+   // Fetch and expand default palette.
+   $info = color_get_info($theme);
+-  $palette = $info['schemes']['default']['colors'];
++  if (isset($info['schemes']['default']['colors'])) {
++    $palette = $info['schemes']['default']['colors'];
++  }
++  else {
++    $palette = [];
++  }
+ 
+   if ($default) {
+     return $palette;

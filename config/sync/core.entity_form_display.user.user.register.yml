@@ -1,0 +1,219 @@
+uuid: 3a00267b-f050-48e7-8f3d-7e58f8779c94
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_created_by
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_license_id_number
+    - field.field.user.user.field_license_state
+    - field.field.user.user.field_license_type
+    - field.field.user.user.field_personal_training_plan
+    - field.field.user.user.field_private_profile
+    - field.field.user.user.field_user_address
+    - field.field.user.user.field_user_age_range
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_user_blog_description
+    - field.field.user.user.field_user_blog_title
+    - field.field.user.user.field_user_consultant
+    - field.field.user.user.field_user_consultant_expert_in
+    - field.field.user.user.field_user_consultant_ext_bio
+    - field.field.user.user.field_user_current_school
+    - field.field.user.user.field_user_designations
+    - field.field.user.user.field_user_gender
+    - field.field.user.user.field_user_linkedin_url
+    - field.field.user.user.field_user_opt_out_of_emails
+    - field.field.user.user.field_user_org_employee_ids
+    - field.field.user.user.field_user_org_group_member
+    - field.field.user.user.field_user_organization
+    - field.field.user.user.field_user_phone
+    - field.field.user.user.field_user_practice_type
+    - field.field.user.user.field_user_prefix
+    - field.field.user.user.field_user_prof_interests
+    - field.field.user.user.field_user_prof_memberships
+    - field.field.user.user.field_user_school
+    - field.field.user.user.field_user_specialty_designation
+    - field.field.user.user.field_user_suffix
+    - field.field.user.user.field_user_title
+    - field.field.user.user.field_user_twitter_url
+    - field.field.user.user.field_user_website
+    - field.field.user.user.field_vet_id_number
+    - field.field.user.user.user_picture
+  module:
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_user_primary_information:
+      children: {  }
+      label: 'Primary Information'
+      region: hidden
+      parent_name: ''
+      weight: 34
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+    group_user_blogger_information:
+      children:
+        - field_user_blog_description
+        - field_user_blog_title
+      label: 'Blogger Information'
+      region: hidden
+      parent_name: ''
+      weight: 35
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+    group_user_org_information:
+      children:
+        - field_user_organization
+        - field_user_org_employee_ids
+        - field_user_org_group_member
+      label: 'Organization Information'
+      region: hidden
+      parent_name: ''
+      weight: 37
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+    group_user_consultant_info:
+      children:
+        - field_user_consultant
+        - field_user_consultant_expert_in
+        - field_user_consultant_ext_bio
+      label: 'Consultant Information'
+      region: hidden
+      parent_name: ''
+      weight: 36
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+    group_user_private_messages:
+      children:
+        - contact
+        - private_messages
+        - comment_notify_settings
+      label: 'Private Messages'
+      region: hidden
+      parent_name: ''
+      weight: 38
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: E42MMylEGIUkKXDvfdNmBqh440DonjMGhsHe7b5vCO8
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  account:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_first_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_last_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  stripe_registration_payment:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  stripe_registration_plans:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  comment_notify_settings: true
+  contact: true
+  customer_profiles: true
+  field_created_by: true
+  field_license_id_number: true
+  field_license_state: true
+  field_license_type: true
+  field_personal_training_plan: true
+  field_private_profile: true
+  field_user_address: true
+  field_user_age_range: true
+  field_user_bio: true
+  field_user_blog_description: true
+  field_user_blog_title: true
+  field_user_consultant: true
+  field_user_consultant_expert_in: true
+  field_user_consultant_ext_bio: true
+  field_user_current_school: true
+  field_user_designations: true
+  field_user_gender: true
+  field_user_group: true
+  field_user_linkedin_url: true
+  field_user_opt_out_of_emails: true
+  field_user_org_employee_ids: true
+  field_user_org_group_member: true
+  field_user_organization: true
+  field_user_phone: true
+  field_user_practice_type: true
+  field_user_prefix: true
+  field_user_prof_interests: true
+  field_user_prof_memberships: true
+  field_user_public_profile: true
+  field_user_school: true
+  field_user_specialty_designation: true
+  field_user_suffix: true
+  field_user_title: true
+  field_user_twitter_url: true
+  field_user_website: true
+  field_vet_id_number: true
+  langcode: true
+  language: true
+  path: true
+  private_messages: true
+  timezone: true
+  user_picture: true

@@ -1,0 +1,6 @@
+join:
+  version: VERSION
+  js:
+    src/Scripts/join.js: {}
+  dependencies:
+    - core/jquery

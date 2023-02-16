@@ -1,0 +1,107 @@
+uuid: 50eeb815-0d51-473d-b89d-d167e25d9953
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.private_message_author
+    - field.field.user.user.field_created_by
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_license_id_number
+    - field.field.user.user.field_license_state
+    - field.field.user.user.field_license_type
+    - field.field.user.user.field_personal_training_plan
+    - field.field.user.user.field_private_profile
+    - field.field.user.user.field_user_address
+    - field.field.user.user.field_user_age_range
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_user_blog_description
+    - field.field.user.user.field_user_blog_title
+    - field.field.user.user.field_user_consultant
+    - field.field.user.user.field_user_consultant_expert_in
+    - field.field.user.user.field_user_consultant_ext_bio
+    - field.field.user.user.field_user_current_school
+    - field.field.user.user.field_user_designations
+    - field.field.user.user.field_user_gender
+    - field.field.user.user.field_user_linkedin_url
+    - field.field.user.user.field_user_opt_out_of_emails
+    - field.field.user.user.field_user_org_employee_ids
+    - field.field.user.user.field_user_org_group_member
+    - field.field.user.user.field_user_organization
+    - field.field.user.user.field_user_phone
+    - field.field.user.user.field_user_practice_type
+    - field.field.user.user.field_user_prefix
+    - field.field.user.user.field_user_prof_interests
+    - field.field.user.user.field_user_prof_memberships
+    - field.field.user.user.field_user_school
+    - field.field.user.user.field_user_specialty_designation
+    - field.field.user.user.field_user_suffix
+    - field.field.user.user.field_user_title
+    - field.field.user.user.field_user_twitter_url
+    - field.field.user.user.field_user_website
+    - field.field.user.user.field_vet_id_number
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: 5VkjdDDe_kM-giLC61z36ACn6Z2eMjaH63Rh6adWWpw
+id: user.user.private_message_author
+targetEntityType: user
+bundle: user
+mode: private_message_author
+content:
+  linked_username:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_created_by: true
+  field_first_name: true
+  field_last_name: true
+  field_license_id_number: true
+  field_license_state: true
+  field_license_type: true
+  field_personal_training_plan: true
+  field_private_profile: true
+  field_user_address: true
+  field_user_age_range: true
+  field_user_bio: true
+  field_user_blog_description: true
+  field_user_blog_title: true
+  field_user_consultant: true
+  field_user_consultant_expert_in: true
+  field_user_consultant_ext_bio: true
+  field_user_current_school: true
+  field_user_designations: true
+  field_user_gender: true
+  field_user_linkedin_url: true
+  field_user_opt_out_of_emails: true
+  field_user_org_employee_ids: true
+  field_user_org_group_member: true
+  field_user_organization: true
+  field_user_phone: true
+  field_user_practice_type: true
+  field_user_prefix: true
+  field_user_prof_interests: true
+  field_user_prof_memberships: true
+  field_user_school: true
+  field_user_specialty_designation: true
+  field_user_suffix: true
+  field_user_title: true
+  field_user_twitter_url: true
+  field_user_website: true
+  field_vet_id_number: true
+  langcode: true
+  member_for: true
+  private_message_link: true
+  search_api_excerpt: true
+  user_picture: true

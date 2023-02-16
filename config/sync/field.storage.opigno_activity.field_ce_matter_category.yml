@@ -1,0 +1,30 @@
+uuid: ca958879-f7e7-422b-a983-97049f0c1566
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - options
+id: opigno_activity.field_ce_matter_category
+field_name: field_ce_matter_category
+entity_type: opigno_activity
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Non-Scientific Clinical'
+      label: 'Non-Scientific Clinical'
+    -
+      value: 'Scientific Program'
+      label: 'Scientific Program'
+    -
+      value: 'Non-Scientific Pract. Mgmt, Prof. Dev.'
+      label: 'Non-Scientific Pract. Mgmt, Prof. Dev.'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

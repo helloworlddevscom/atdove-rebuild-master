@@ -1,0 +1,17 @@
+uuid: 34f57f55-92c9-45a2-bece-bbadf14c4fe3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+  enforced:
+    config:
+      - user.role.administrator_assistant
+id: learning_path-48a7588a1
+label: 'Administrator Assistant'
+weight: 8
+internal: true
+audience: outsider
+group_type: learning_path
+permissions_ui: false
+permissions: {  }

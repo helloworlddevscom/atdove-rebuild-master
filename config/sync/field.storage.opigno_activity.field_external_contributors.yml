@@ -1,0 +1,21 @@
+uuid: 9008bcb0-e2f4-4572-ae3c-16e1b13322d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+id: opigno_activity.field_external_contributors
+field_name: field_external_contributors
+entity_type: opigno_activity
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

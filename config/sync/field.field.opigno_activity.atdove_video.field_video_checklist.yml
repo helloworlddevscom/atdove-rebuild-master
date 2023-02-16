@@ -1,0 +1,21 @@
+uuid: 16ffdefe-fe68-425e-a950-84a2562a69c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_video_checklist
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - text
+id: opigno_activity.atdove_video.field_video_checklist
+field_name: field_video_checklist
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Video Checklist'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

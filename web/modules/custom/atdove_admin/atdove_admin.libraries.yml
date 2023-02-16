@@ -1,0 +1,7 @@
+# Styling overrides for admin theme.
+# Loaded when using admin theme by atdove_admin module.
+admin-theme:
+  version: 1.x
+  css:
+    theme:
+      css/admin-theme.css: { weight: 2000 }

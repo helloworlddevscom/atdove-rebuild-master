@@ -1,0 +1,72 @@
+uuid: 2eeb52b3-9abb-4c3f-94d2-af3e2dfec01f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.administrator
+id: organization-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'access subgroup overview'
+  - 'administer group'
+  - 'administer members'
+  - 'administer tft'
+  - 'create subgroup:learning_path content'
+  - 'create subgroup:organization content'
+  - 'create subgroup:organizational_groups content'
+  - 'delete all results'
+  - 'delete any invitation'
+  - 'delete any subgroup:learning_path content'
+  - 'delete any subgroup:organization content'
+  - 'delete any subgroup:organizational_groups content'
+  - 'delete group'
+  - 'delete group revisions'
+  - 'delete own invitations'
+  - 'delete own results'
+  - 'delete own subgroup:learning_path content'
+  - 'delete own subgroup:organization content'
+  - 'delete own subgroup:organizational_groups content'
+  - 'edit all results'
+  - 'edit group'
+  - 'edit own results'
+  - 'invite users to group'
+  - 'join group'
+  - 'revert group revisions'
+  - 'score ilt entities'
+  - 'tft access file tree'
+  - 'tft add a file to any term'
+  - 'tft add child terms'
+  - 'tft archive child terms'
+  - 'tft delete child terms'
+  - 'tft reorder terms'
+  - 'update any subgroup:learning_path content'
+  - 'update any subgroup:organization content'
+  - 'update any subgroup:organizational_groups content'
+  - 'update own subgroup:learning_path content'
+  - 'update own subgroup:organization content'
+  - 'update own subgroup:organizational_groups content'
+  - 'view all results'
+  - 'view any private profile in class'
+  - 'view any private profile in training'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group invitations'
+  - 'view group revisions'
+  - 'view group statistics'
+  - 'view group_membership content'
+  - 'view latest group version'
+  - 'view own results'
+  - 'view own unpublished group'
+  - 'view subgroup:learning_path content'
+  - 'view subgroup:organization content'
+  - 'view subgroup:organizational_groups content'

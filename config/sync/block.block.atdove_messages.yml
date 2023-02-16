@@ -1,0 +1,22 @@
+uuid: 2ea024c3-70b5-492c-a677-8b595c20b7cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: Q-Q-n5XRtF4UHMFpo-WR6WPmn6GgKAaGVIp0I4jPCJk
+id: atdove_messages
+theme: atdove
+region: status_messages
+weight: -18
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

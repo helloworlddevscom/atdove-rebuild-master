@@ -1,0 +1,28 @@
+diff --git a/src/Services/UserStatisticsManager.php b/src/Services/UserStatisticsManager.php
+index e0d8fba..7e35813 100644
+--- a/src/Services/UserStatisticsManager.php
++++ b/src/Services/UserStatisticsManager.php
+@@ -276,7 +276,22 @@ class UserStatisticsManager {
+     if ($count) {
+       $result = $query->countQuery()->execute()->fetchField();
+ 
+-      return (int) $result;
++      // Count the number of assignment certificates and add to total.
++
++      $a_nodes = \Drupal::entityTypeManager()
++        ->getStorage('node')
++        ->loadByProperties([
++          'type' => 'assignment',
++          'field_assignee' => $uid,
++          'field_assignment_status' => 'passed',
++          'status' => 1,
++      ]);
++
++      if (!empty($a_nodes)) {
++        $n_assignments = count($a_nodes);
++        $result = $result + $n_assignments;
++      }
++        return (int) $result;
+     }
+ 
+     return $query->orderBy('a.name')->execute()->fetchAll();

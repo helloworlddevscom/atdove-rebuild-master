@@ -1,0 +1,29 @@
+uuid: d34d3f5a-0102-4a44-8edc-60844ff09d9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_related_blog
+    - node.type.blog
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_related_blog
+field_name: field_related_blog
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Related Blog Entries'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

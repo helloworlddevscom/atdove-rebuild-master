@@ -1,0 +1,33 @@
+uuid: 3579c702-a005-4469-98d9-a1a2bae01c11
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_subscription
+    - field.field.comment.comment_node_subscription.comment_body
+  module:
+    - text
+id: comment.comment_node_subscription.default
+targetEntityType: comment
+bundle: comment_node_subscription
+mode: default
+content:
+  comment_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: 6a5065f5-e899-4a58-aea2-05b123f5a9b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_openid_client_id
+    - group.type.organization
+id: group.organization.field_openid_client_id
+field_name: field_openid_client_id
+entity_type: group
+bundle: organization
+label: 'OpenID Client ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

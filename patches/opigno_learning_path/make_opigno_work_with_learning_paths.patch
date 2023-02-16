@@ -1,0 +1,360 @@
+diff --git a/opigno_learning_path.module b/opigno_learning_path.module
+index 9d94efe..70953e5 100644
+--- a/opigno_learning_path.module
++++ b/opigno_learning_path.module
+@@ -44,6 +44,7 @@ use Drupal\opigno_module\Entity\UserModuleStatus;
+ use Drupal\opigno_moxtra\MeetingInterface;
+ use Drupal\user\Entity\User;
+ use Drupal\Core\Breadcrumb\Breadcrumb;
++use Drupal\atdove_organizations\OrganizationsManager;
+ 
+ /**
+  * Implements hook_theme().
+@@ -410,6 +411,13 @@ function opigno_learning_path_preprocess_region(&$variables) {
+     $variables['step_list_top'] = opigno_learning_path_get_step_list_top();
+     $variables['step_list_aside'] = opigno_learning_path_get_step_list_aside();
+     $group = \Drupal::routeMatch()->getParameter('group');
++
++    // When the members view is set to Role instead of Group Permission, it
++    // returns a string in the url, not a Group object.
++    if (!is_null($group) && !$group instanceof GroupInterface) {
++      $group = Group::load($group);
++    }
++
+     if ($group instanceof GroupInterface
+       && \Drupal::routeMatch()
+         ->getRouteName() != 'opigno_group_manager.manager.index'
+@@ -452,10 +460,21 @@ function opigno_learning_path_preprocess_region(&$variables) {
+     }
+   }
+ 
++  $parameters = \Drupal::routeMatch()->getParameters();
++  $group = \Drupal::routeMatch()->getParameter('group');
++
++  if (!is_null($group) && !$group instanceof GroupInterface) {
++    $group = Group::load($group); 
++    $type = $group->get('type')->getString();
++  }
++  elseif (!is_null($group)) {
++    $type =$group->get('type')->getString();
++  }
++
+   if (\Drupal::routeMatch()
+-    ->getRouteName() == 'opigno_learning_path.membership.overview'
++    ->getRouteName() == 'view.group_members.page_1'
+     && $variables['region'] == 'content'
+-    && $group = \Drupal::routeMatch()->getParameter('group')
++    && $type == 'learning_path'
+   ) {
+     $bundle = $group->bundle();
+ 
+@@ -595,6 +614,11 @@ function opigno_learning_path_get_step_list_top() {
+   if ($group_type == 'learning_path') {
+     // Check if training has 'automatic skills module'.
+     $group = \Drupal::routeMatch()->getParameter('group');
++
++    if (!is_null($group) && !$group instanceof GroupInterface) {
++      $group = Group::load($group); 
++    }
++
+     $moduleHandler = \Drupal::service('module_handler');
+ 
+     if ($moduleHandler->moduleExists('opigno_skills_system') && $current_step == 5) {
+@@ -709,6 +733,10 @@ function opigno_learning_path_get_step_list_aside() {
+   $route = \Drupal::routeMatch();
+ 
+   if (($entity = $route->getParameter('group')) !== NULL) {
++    if (!$route->getParameter('group') instanceof GroupInterface) {
++      $group = Group::load($route->getParameter('group')); 
++      $entity = $group;
++    }
+     /** @var \Drupal\group\Entity\GroupInterface $entity */
+     $args = [
+       'group' => $entity->id(),
+@@ -760,7 +788,7 @@ function opigno_learning_path_get_step_list_aside() {
+ 
+     $members_link = Link::createFromRoute(
+       t('Members'),
+-      'opigno_learning_path.membership.overview',
++      'view.group_members.page_1',
+       $args
+     )->toRenderable();
+   }
+@@ -845,6 +873,11 @@ function opigno_learning_path_get_step_list_aside() {
+     $user = \Drupal::currentUser();
+     /** @var \Drupal\group\Entity\Group $group */
+     $group = $route->getParameter('group');
++
++    if (!is_null($group) && !$group instanceof GroupInterface) {
++      $group = Group::load($group); 
++    }
++
+     if (isset($group) && !$group->access('update', $user)) {
+       unset($steps[1]);
+       unset($steps[2]);
+@@ -922,7 +955,7 @@ function opigno_learning_path_get_routes_steps() {
+       'opigno_group_manager.manager.index' => 2,
+       'opigno_learning_path.learning_path_courses' => 3,
+       'opigno_learning_path.learning_path_modules' => 4,
+-      'opigno_learning_path.membership.overview' => 5,
++      'view.group_members.page_1' => 5,
+       'entity.group_content.add_form' => 5,
+     ];
+   }
+@@ -946,7 +979,7 @@ function opigno_learning_path_get_routes_steps() {
+     $steps = [
+       'entity.group.add_form' => 1,
+       'entity.group.edit_form' => 1,
+-      'opigno_learning_path.membership.overview' => 2,
++      'view.group_members.page_1' => 2,
+       'entity.group_content.add_form' => 2,
+     ];
+   }
+@@ -967,10 +1000,14 @@ function opigno_learning_path_get_group_type() {
+     $type = $route->getParameter('group_type')->id();
+   }
+   elseif ($parameters->has('group')) {
+-    $type = $route
+-      ->getParameter('group')
+-      ->get('type')
+-      ->getString();
++    $group = $route->getParameter('group');
++    if (!is_null($group) && !$group instanceof GroupInterface) {
++      $group = Group::load($group); 
++      $type = $group->get('type')->getString();
++    }
++    else {
++      $type = $group->get('type')->getString();
++    }
+   }
+   elseif ($parameters->has('opigno_module')
+     || $route_name === 'opigno_module.add') {
+@@ -995,12 +1032,22 @@ function opigno_learning_path_get_current_step() {
+  */
+ function opigno_learning_path_is_lp_route() {
+   $route = \Drupal::routeMatch()->getRouteName();
++  $parameters = \Drupal::routeMatch()->getParameters();
++  $group = \Drupal::routeMatch()->getParameter('group');
++
++  if (!is_null($group) && !$group instanceof GroupInterface) {
++    $group = Group::load($group); 
++    $type = $group->get('type')->getString();
++  }
++  elseif (!is_null($group)) {
++    $type = $group->get('type')->getString();
++  }
++
+   $is_learning_path = FALSE;
+   $routes = [
+     'opigno_group_manager.manager.index',
+     'opigno_learning_path.learning_path_modules',
+     'opigno_learning_path.learning_path_courses',
+-    'opigno_learning_path.membership.overview',
+     'entity.group_content.add_form',
+     'opigno_module.add',
+     'opigno_module.edit',
+@@ -1023,18 +1070,23 @@ function opigno_learning_path_is_lp_route() {
+   }
+ 
+   if (($route == 'entity.group.edit_form')
++    && ($type == 'opigno_course'
++      || $type == 'learning_path'
++      || $type == 'opigno_class')
++  ) {
++    $is_learning_path = TRUE;
++  }
++
++  if (($route == 'opigno_learning_path.membership.overview') && ($type == 'learning_path')
++  ) {
++    $is_learning_path = TRUE;
++  }
++
++  if (($route == 'view.group_members.page_1')
+     && (\Drupal::routeMatch()
+-      ->getParameter('group')
+-      ->get('type')
+-      ->getString() == 'opigno_course'
+-      || \Drupal::routeMatch()
+-        ->getParameter('group')
+-        ->get('type')
+-        ->getString() == 'learning_path'
+-      || \Drupal::routeMatch()
+         ->getParameter('group')
+         ->get('type')
+-        ->getString() == 'opigno_class')
++        ->getString() == 'learning_path')
+   ) {
+     $is_learning_path = TRUE;
+   }
+@@ -1606,7 +1658,7 @@ function opigno_learning_path_group_membership_add_form_submit(array $form, Form
+     }
+   }
+ 
+-  $form_state->setRedirect('opigno_learning_path.membership.overview', [
++  $form_state->setRedirect('view.group_members.page_1', [
+     'group' => $group->id(),
+   ]);
+ }
+@@ -1635,6 +1687,8 @@ function opigno_learning_path_group_access(Group $group, $operation, AccountInte
+     return AccessResult::neutral();
+   }
+ 
++  // Make this work with AtDove's Org Admin Group Role
++  $is_org_admin = OrganizationsManager::currentUserIsOrgAdminInCurrentGroup(FALSE);
+   $is_platform_cm = $account->hasPermission('manage group content in any group');
+   $is_platform_um = $account->hasPermission('manage group members in any group');
+ 
+@@ -1690,7 +1744,7 @@ function opigno_learning_path_group_access(Group $group, $operation, AccountInte
+               }
+             }
+           }
+-          if (!$training_role_allowed) {
++          if (!$is_org_admin) {
+             // Deny if group unpublished and user has no admin or manager roles.
+             return AccessResult::forbidden();
+           }
+@@ -1764,15 +1818,16 @@ function opigno_learning_path_group_access(Group $group, $operation, AccountInte
+ 
+     case 'update':
+       $is_group_cm = $group->hasPermission('edit group', $account);
++      // Check if org admin
+       switch ($group_type) {
+         case 'opigno_class':
+           // Allow user managers to edit class.
+-          return $is_platform_um || $is_group_cm
++          return $is_org_admin || $is_platform_um || $is_group_cm
+             ? AccessResult::allowed()
+             : AccessResult::forbidden();
+       }
+       // Allow content managers to edit group.
+-      return $is_platform_cm || $is_group_cm
++      return $is_org_admin || $is_platform_cm || $is_group_cm
+         ? AccessResult::allowed()
+         : AccessResult::forbidden();
+ 
+@@ -1781,19 +1836,19 @@ function opigno_learning_path_group_access(Group $group, $operation, AccountInte
+       switch ($group_type) {
+         case 'opigno_class':
+           // Allow user managers to delete class.
+-          return $is_platform_um || $is_group_cm
++          return $is_org_admin || $is_platform_um || $is_group_cm
+             ? AccessResult::allowed()
+             : AccessResult::forbidden();
+       }
+       // Allow content managers to delete group.
+-      return $is_platform_cm || $is_group_cm
++      return $is_org_admin || $is_platform_cm || $is_group_cm
+         ? AccessResult::allowed()
+         : AccessResult::forbidden();
+ 
+     case 'administer members':
+       $is_group_um = $group->hasPermission('administer members', $account);
+       // Allow user managers to manage members.
+-      return $is_platform_um || $is_group_um
++      return $is_org_admin || $is_platform_um || $is_group_um
+         ? AccessResult::allowed()
+         : AccessResult::forbidden();
+ 
+diff --git a/opigno_learning_path.routing.yml b/opigno_learning_path.routing.yml
+index 9a6b0e4..dd1e567 100644
+--- a/opigno_learning_path.routing.yml
++++ b/opigno_learning_path.routing.yml
+@@ -665,20 +665,6 @@ opigno_learning_path.membership.validate:
+       account:
+        type: entity:user
+ 
+-opigno_learning_path.membership.overview:
+-  path: '/group/{group}/members'
+-  defaults:
+-    _form: '\Drupal\opigno_learning_path\Form\LearningPathMembersForm'
+-    _title: 'Group overview'
+-  requirements:
+-    _entity_access: 'group.administer members'
+-  options:
+-    parameters:
+-      group:
+-       type: entity:group
+-      account:
+-       type: entity:user
+-
+ opigno_learning_path.training:
+   path: '/group/{group}/training-statistic'
+   defaults:
+diff --git a/src/Controller/LearningPathMembershipController.php b/src/Controller/LearningPathMembershipController.php
+index 5ce5e75..51b0da4 100644
+--- a/src/Controller/LearningPathMembershipController.php
++++ b/src/Controller/LearningPathMembershipController.php
+@@ -278,6 +278,10 @@ class LearningPathMembershipController extends ControllerBase {
+       $curr_group = \Drupal::routeMatch()
+         ->getParameter('group');
+ 
++      if (!is_null($curr_group) && !$curr_group instanceof Group) {
++        $curr_group = Group::load($curr_group); 
++      }
++
+       // Find users by email or name.
+       $query = \Drupal::entityQuery('user')
+         ->condition('uid', 0, '<>');
+@@ -622,4 +626,27 @@ Your membership to the training @training has been approved. You can now access
+     return new JsonResponse();
+   }
+ 
++  /**
++   * Callback from RouteSubscriber::alterRoutes() to alter group module members view page.
++   * If group type is learning_path, loads form, otherwise loads the default group module members view.
++   */
++  public function alterGroupMembersRoute() {
++    $group_id = \Drupal::routeMatch()->getRawParameter('group');
++    if (!empty($group_id)) {
++      $group = Group::load($group_id);
++      if (!empty($group)) {
++        if ($group->getGroupType()->id() == 'learning_path') {
++          return \Drupal::formBuilder()->getForm('\Drupal\opigno_learning_path\Form\LearningPathMembersForm');
++        }
++      }
++    }
++
++    $view = Views::getView('group_members');
++    if ($view) {
++      $view->setDisplay('page_1');
++      $view->initHandlers();
++      return $view->buildRenderable('page_1', [$group_id]);
++    }
++  }
++
+ }
+diff --git a/src/Form/LearningPathMembersForm.php b/src/Form/LearningPathMembersForm.php
+index f33abdb..2310c5a 100644
+--- a/src/Form/LearningPathMembersForm.php
++++ b/src/Form/LearningPathMembersForm.php
+@@ -10,6 +10,7 @@ use Drupal\opigno_learning_path\LearningPathAccess;
+ use Drupal\opigno_learning_path\LearningPathValidator;
+ use Drupal\views\Views;
+ use Symfony\Component\HttpFoundation\RedirectResponse;
++use Drupal\group\Entity\Group;
+ 
+ /**
+  * Group overview form.
+@@ -33,6 +34,9 @@ class LearningPathMembersForm extends FormBase {
+ 
+     /** @var \Drupal\group\Entity\Group $group */
+     $group = \Drupal::routeMatch()->getParameter('group');
++    if (!$group instanceof Group) {
++      $group = Group::load($group);  
++    }
+     $group_bundle = $group->bundle();
+ 
+     // Check if user has uncompleted steps.
+diff --git a/src/Routing/RouteSubscriber.php b/src/Routing/RouteSubscriber.php
+index d75d633..68ef6b6 100644
+--- a/src/Routing/RouteSubscriber.php
++++ b/src/Routing/RouteSubscriber.php
+@@ -17,7 +17,7 @@ class RouteSubscriber extends RouteSubscriberBase {
+     // Alters '/group/{group}/members' route path from Group module
+     // to use this path in custom controller.
+     if ($route = $collection->get('view.group_members.page_1')) {
+-      $route->setPath('/group/{group}/members/default');
++      $route->setDefault('_controller', '\Drupal\opigno_learning_path\Controller\LearningPathMembershipController::alterGroupMembersRoute');
+     }
+ 
+     if ($route = $collection->get('entity.group.join')) {

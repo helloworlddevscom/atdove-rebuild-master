@@ -1,0 +1,18 @@
+uuid: 6c02bdf9-b78d-42b9-b584-36e87c79d2be
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Homepage
+type: homepage
+description: 'Unique Content Type used only for the AtDove Homepage.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

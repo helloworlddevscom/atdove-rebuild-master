@@ -1,0 +1,187 @@
+uuid: 1d6ba202-11cb-43f4-ab7d-049b8fb9c2f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_blog.default
+    - field.field.node.blog.body
+    - field.field.node.blog.field_additional_content_categor
+    - field.field.node.blog.field_blog_category
+    - field.field.node.blog.field_blog_comments
+    - field.field.node.blog.field_blog_image
+    - field.field.node.blog.field_content_category
+    - field.field.node.blog.field_contributors
+    - field.field.node.blog.field_exclude_from_search_result
+    - field.field.node.blog.field_job_category
+    - field.field.node.blog.field_marketing_title
+    - field.field.node.blog.field_media_image
+    - field.field.node.blog.field_opigno_articles
+    - field.field.node.blog.field_opigno_videos
+    - field.field.node.blog.field_related_ads
+    - field.field.node.blog.field_related_blog
+    - field.field.node.blog.field_related_surveys
+    - field.field.node.blog.field_search_keywords
+    - node.type.blog
+  module:
+    - comment
+    - text
+    - user
+id: node.blog.default
+targetEntityType: node
+bundle: blog
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_additional_content_categor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_blog_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_blog_comments:
+    type: comment_default
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_blog_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_content_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_contributors:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: contributor
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_job_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_marketing_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_media_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_opigno_articles:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: related_activities
+      link: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_opigno_videos:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: related_activities
+      link: false
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_related_ads:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_related_blog:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: related_blogs
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_related_surveys:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  flag_bookmark:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  flag_bookmarks:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  flag_flag_list_template_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_exclude_from_search_result: true
+  field_search_keywords: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

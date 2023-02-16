@@ -1,0 +1,19 @@
+uuid: 9d83b885-77db-4c1e-8078-ba612d22e0c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.invitee_mail
+    - group.content_type.organization-group_invitation
+id: group_content.organization-group_invitation.invitee_mail
+field_name: invitee_mail
+entity_type: group_content
+bundle: organization-group_invitation
+label: 'Invitee mail'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

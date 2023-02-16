@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_groups
+class: Drupal\migrate\Plugin\Migration
+migration_group: groups
+label: 'AtDove Organizations'
+source:
+  plugin: atdove_migrate_group
+  node_type: organization
+process:
+  type:
+    plugin: default_value
+    default_value: organization
+  id: nid
+  label: title
+  uid: uid
+  status: status
+  created: created
+  changed: changed
+  field_allow_employeeid : field_allow_employeeid
+  field_allow_import_team_manageme: field_allow_import_team_manageme
+  field_body:
+    -
+      plugin: sub_process
+      source: body
+      process:
+        value: value
+        format:
+          plugin: default_value
+          default_value: basic_html
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_clinic_url: field_clinic_url
+  field_notes: field_notes
+  field_openid_client_id: field_openid_client_id
+  field_phone: field_phone
+  field_sponsor_name: field_sponsor_name
+  field_website:
+    plugin: field_link
+    uri_scheme: 'https://'
+    source: field_website
+  field_clinic_address:
+    plugin: addressfieldsmigration
+    source: nid
+destination:
+  plugin: entity:group
+migration_dependencies: null

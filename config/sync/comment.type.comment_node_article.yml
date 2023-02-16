@@ -1,0 +1,8 @@
+uuid: 9eb929f3-ef2e-4d01-b97f-4d7acc49daf6
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_article
+label: 'Article Comments'
+target_entity_type_id: opigno_activity
+description: ''

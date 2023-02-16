@@ -1,0 +1,8 @@
+uuid: f56314c1-a029-4c1f-a81f-a4d9b4c8ee7b
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_news_room
+label: 'News Room comment'
+target_entity_type_id: node
+description: null

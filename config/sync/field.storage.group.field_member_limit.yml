@@ -1,0 +1,20 @@
+uuid: 8d299abd-429b-47d0-8016-d05470de1230
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_member_limit
+field_name: field_member_limit
+entity_type: group
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

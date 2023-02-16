@@ -1,0 +1,11 @@
+uuid: 62ef3a0a-63e8-4925-8bc4-fb846c380310
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: is37xp2En_K1r0KAxyELb0cyrB6aQH5Ygr7o6tICk24
+id: flag_list_template_1
+label: 'Flag list template 1'
+base_flag: flag_list_template_1
+owner: 'Drupal Master'
+weight: null

@@ -1,0 +1,7 @@
+name: AtDove Migrate
+description: A custom module to migrate groups and things
+core_version_requirement: ^8.8 || ^9
+type: module
+package: AtDove Migrate
+dependencies:
+  - drupal:migrate

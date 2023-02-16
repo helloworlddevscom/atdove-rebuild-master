@@ -1,0 +1,9 @@
+uuid: 411869c8-1101-4895-a183-534b37cacf7d
+langcode: en
+status: true
+dependencies: {  }
+id: bookmarks
+label: Bookmarks
+base_flag: bookmarks
+owner: admin
+weight: null

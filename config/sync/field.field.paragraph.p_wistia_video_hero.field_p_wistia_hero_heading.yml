@@ -1,0 +1,29 @@
+uuid: a25dc598-f6ce-46a3-82c0-77f4eab6d5f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_wistia_hero_heading
+    - paragraphs.paragraphs_type.p_wistia_video_hero
+  module:
+    - heading
+id: paragraph.p_wistia_video_hero.field_p_wistia_hero_heading
+field_name: field_p_wistia_hero_heading
+entity_type: paragraph
+bundle: p_wistia_video_hero
+label: 'Wistia Hero Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  label: Heading
+  allowed_sizes:
+    h1: h1
+    h2: h2
+    h3: h3
+    h4: h4
+    h5: h5
+    h6: h6
+field_type: heading

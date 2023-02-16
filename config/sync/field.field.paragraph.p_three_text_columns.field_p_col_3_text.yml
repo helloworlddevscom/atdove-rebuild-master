@@ -1,0 +1,19 @@
+uuid: 826283b6-31ca-40b2-9891-e7b185cdf985
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_col_3_text
+    - paragraphs.paragraphs_type.p_three_text_columns
+id: paragraph.p_three_text_columns.field_p_col_3_text
+field_name: field_p_col_3_text
+entity_type: paragraph
+bundle: p_three_text_columns
+label: 'Col 3 Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,82 @@
+uuid: a633084b-77b2-46d8-b170-984e4d8bed56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.survey.body
+    - field.field.node.survey.field_instructions
+    - field.field.node.survey.field_opigno_articles
+    - field.field.node.survey.field_opigno_videos
+    - field.field.node.survey.field_related_blog
+    - field.field.node.survey.field_thank_you_message
+    - node.type.survey
+  module:
+    - text
+    - user
+id: node.survey.default
+targetEntityType: node
+bundle: survey
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_instructions:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_opigno_articles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_opigno_videos:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_related_blog:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_thank_you_message:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  flag_flag_list_template_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

@@ -1,0 +1,56 @@
+uuid: 66fab427-81b3-4c63-97fd-0c0d893b0a4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.image
+  module:
+    - atdove_opigno
+    - contextual
+    - entity_browser
+    - flag
+    - flag_lists
+    - group
+    - media
+    - node_view_permissions
+    - opigno_calendar_event
+    - opigno_dashboard
+    - opigno_ilt
+    - opigno_learning_path
+    - opigno_messaging
+    - opigno_moxtra
+    - role_delegation
+_core:
+  default_config_hash: mgKpET9skRLP0xWy61iTgIXNNH0-dckpRlCg1j7f0cQ
+id: user_manager
+label: 'User manager'
+weight: 0
+is_admin: null
+permissions:
+  - 'access contextual links'
+  - 'access media_entity_browser_groups entity browser pages'
+  - 'access paid content'
+  - 'add any members to calendar event'
+  - 'administer ilt entities'
+  - 'administer meeting entities'
+  - 'administer users'
+  - 'assign collaborative_features role'
+  - 'create opigno_class group'
+  - 'delete any image media'
+  - 'delete opigno_calendar_event'
+  - 'delete own image media'
+  - 'edit any image media'
+  - 'edit own image media'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'manage group members in any group'
+  - 'message all groups'
+  - 'message anyone regardless of groups'
+  - 'opigno dashboard layout access'
+  - 'score ilt entities'
+  - 'score meeting'
+  - 'update opigno_calendar_event'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view opigno_calendar_event'
+  - 'view own flag lists'

@@ -1,0 +1,26 @@
+api_version: 1
+web_docroot: true
+# See https://pantheon.io/docs/pantheon-yml/#enforce-https--hsts for valid values.
+enforce_https: transitional
+php_version: 7.4
+database:
+  version: 10.4
+drush_version: 10
+build_step: false
+protected_web_paths:
+  - /private/
+  - /sites/default/files/private/
+  - /sites/default/files/config/
+# Workflow hooks to ensure drush commands are run after code is synced, deployed or database is cloned.
+# See: https://pantheon.io/docs/quicksilver
+# If you want to add a hook, $terminus workflow:watch atdove will be helpful.
+workflows:
+  deploy:
+    after:
+      - type: webphp
+        description:
+          Run database updates, import config and clear caches. deploy workflow occurs only on test, live envs. If you deploy
+          using lando env-deploy (recommended), these commands will be run by that script. However, we also need this hook to ensure
+          these commands are run when someone deploys using the Pantheon dashboard instead. This means that when the deploy script
+          is used, drush commands are actually run twice, but that should hopefully not be an issue.
+        script: private/scripts/quicksilver/drush_update_import/drush_update_import.php

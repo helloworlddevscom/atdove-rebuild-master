@@ -1,0 +1,29 @@
+uuid: 6c54336b-afbb-4e24-8421-0d46366c1de5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignee
+    - node.type.assignment
+id: node.assignment.field_assignee
+field_name: field_assignee
+entity_type: node
+bundle: assignment
+label: Assignee
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

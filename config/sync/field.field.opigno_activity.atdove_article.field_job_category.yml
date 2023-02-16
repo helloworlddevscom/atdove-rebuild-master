@@ -1,0 +1,29 @@
+uuid: 0e32b9d9-868e-4f86-91cc-b7f9370fd50c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_job_category
+    - opigno_module.opigno_activity_type.atdove_article
+    - taxonomy.vocabulary.job_categories
+id: opigno_activity.atdove_article.field_job_category
+field_name: field_job_category
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Job Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      job_categories: job_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

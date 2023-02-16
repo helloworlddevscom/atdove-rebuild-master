@@ -1,0 +1,19 @@
+uuid: 62e958be-9b58-46e6-995b-62144d9f198f
+langcode: en
+status: true
+dependencies:
+  module:
+    - video_embed_media
+_core:
+  default_config_hash: rI2A03hj3O6zetIQhApbD_O3wVgUP9cpk0ICLqBP7Zg
+id: wistia_playlist
+label: 'Wistia playlist'
+description: 'Collection of Wistia videos, usually a project.'
+source: video_embed_field
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+field_map:
+  id: field_media_video_embed_field
+  source_name: name

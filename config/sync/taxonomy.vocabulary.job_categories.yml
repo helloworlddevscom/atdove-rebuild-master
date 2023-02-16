@@ -1,0 +1,8 @@
+uuid: f55b6389-da32-45fe-92cc-8d97c95a6215
+langcode: en
+status: true
+dependencies: {  }
+name: 'Job Categories'
+vid: job_categories
+description: ''
+weight: 0

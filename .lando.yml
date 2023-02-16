@@ -1,0 +1,238 @@
+# Lando config file.
+# Uses Pantheon recipe: https://docs.lando.dev/config/pantheon.html#getting-started
+name: atdove-rebuild
+recipe: pantheon
+config:
+  framework: drupal9
+  site: atdove
+  id: 4f02c1a3-b6fa-4ddb-bc28-36df3902c207
+  api_version: 1
+  web_docroot: true
+  database: pantheon
+  username: pantheon
+  password: pantheon
+  host: database
+  port: 3306
+  # Set xdebug to off by default. Enable it with lando xdebug.
+  xdebug: false
+  index: false
+  composer_version: "2.1.2"
+  config:
+    php: lando/php-conf/php.ini
+proxy:
+  appserver_nginx:
+    # Add reliable domain. Requires adding to /etc/hosts on local machine to work.
+    - atdove-rebuild.lando
+services:
+  appserver:
+    build_as_root:
+      # Configure PHP.
+      # For some reason php.ini keeps being copied as a directory.
+      # To fix this on rebuild where it's already happened, we need to remove the directory.
+      - rm -rf /app/lando/php-conf/php.ini
+      - rm -f /app/lando/php-conf/php.ini
+      - cp /app/lando/php-conf/default.php.ini /app/lando/php-conf/php.ini
+      # Create error logs.
+      - mkdir -p /app/lando/logs
+      - rm -f /app/lando/logs/php_errors.log
+      - touch /app/lando/logs/php_errors.log
+      - rm -f /app/lando/logs/xdebug.log
+      - touch /app/lando/logs/xdebug.log
+      - rm -f /app/lando/logs/drupal.log
+      - touch /app/lando/logs/drupal.log
+      # Install and configure rsyslog. This will allow us to use the Drupal core syslog
+      # module to tail logs in CLI. (Drush 10 removed the ability to tail the dblog).
+      # See logs-drupal Lando tooling command.
+      - apt-get update && apt-get -y install rsyslog
+      - cat /app/lando/rsyslog-conf/rsyslog.conf >> /etc/rsyslog.conf
+      # See: https://stackoverflow.com/a/58950678/1401823
+      - sed -i 's/module(load="imklog")/#module(load="imklog")/' /etc/rsyslog.conf
+      - chown root:adm lando/logs/drupal.log
+      - chmod 755 lando/logs/drupal.log
+      - service rsyslog start
+      # Install Nano for debugging purposes.
+      - mkdir -p /var/lib/apt/lists/partial
+      - apt-get update && apt install nano
+      # Start developer off with reasonable local Drupal settings.
+      - cp /app/web/sites/default/default.settings.local.php /app/web/sites/default/settings.local.php
+      - cp /app/web/sites/default.development.services.yml /app/web/sites/development.services.yml
+    build:
+      # Custom configuration for Terminus.
+      # (Terminus is installed as part of Lando Pantheon recipe).
+      - mkdir -p /var/www/.terminus
+      - cp /app/lando/terminus-conf/config.yml /var/www/.terminus/config.yml
+    overrides:
+      environment:
+        BEHAT_PARAMS: '{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "https://atdove-rebuild.lando/"}, "Drupal\\DrupalExtension" : {"drush" : { "root": "/app/web" }}}}'
+        # Support debugging Drush with Xdebug.
+        PHP_IDE_CONFIG: "serverName=appserver"
+        DRUSH_OPTIONS_URI: "https://atdove-rebuild.lando"
+        # This is apparently necessary to overwrite the default Xdebug 3.0
+        # config so that our config in /lando/php-conf/php.ini is used.
+        XDEBUG_MODE:
+  selenium-chrome:
+    type: compose
+    app_mount: false
+    services:
+      # Chrome 74
+      # Feed free to use a newer image
+      image: selenium/standalone-chrome-debug:3.141.59-neon
+      environment:
+        TZ: America/Los_Angeles
+        START_XVBF: "false"
+      volumes:
+        - /dev/shm:/dev/shm
+      command: /opt/bin/entry_point.sh
+  database:
+    portforward: 32814
+    run_as_root:
+      # Create extra databases.
+      - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS migrationdb; GRANT ALL PRIVILEGES ON migrationdb.* TO 'pantheon'@'%' IDENTIFIED by 'pantheon';"
+  node:
+    type: node:17
+    build:
+      - cd /app/web/themes/custom/atdove && npm ci
+#      - cd /app/web/themes/custom/atdove && npm rebuild node-sass
+#      - cd /app/web/themes/custom/atdove && gulp build
+    globals:
+      gulp-cli: latest
+  mailhog:
+    type: mailhog:v1.0.0
+    portforward: false
+    hogfrom:
+      - appserver
+events:
+  pre-start:
+    - appserver: composer install
+    - appserver: cd /app/web/themes/custom/atdove && ./rewrite-aristotle-scss.sh
+  post-start:
+    - node: cd /app/web/themes/custom/atdove && npm rebuild node-sass
+    - node: cd /app/web/themes/custom/atdove && gulp build
+  post-pull:
+    - appserver: /app/lando/scripts/config-dev-disable-auto.sh
+    - appserver: drush cr
+tooling:
+  # Disable pulling code via lando pull. Use git pull instead.
+  # This also prevents devs from pulling code from the Pantheon repo
+  # which is different than the GitHub repo because of CircleCI
+  # (Composer dependencies are committed to Pantheon).
+  pull:
+    options:
+      code:
+        default: none
+  push:
+    options:
+      code:
+        default: none
+  # See: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
+  code-sniff:
+    service: appserver
+    description: Runs PHP_CodeSniffer on custom modules and themes. The same command is run by CircleCI as part of Pantheon Build Tools. This will help you avoid opening PRs that will fail tests.
+    cmd:
+      # Run composer scripts defined in composer.json and run by CircleCI during builds.
+      # See: .ci/test/static/run
+      - composer -n lint
+      - composer -n code-sniff
+      - echo; echo 'Errors will cause CircleCI to fail. Warnings will not.'
+  # See: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Fixing-Errors-Automatically
+  code-sniff-fix:
+    service: appserver
+    description: Runs PHP_CodeSniffer auto-fix on custom modules and themes. Not all errors can be fixed automatically.
+    cmd:
+      - composer -n code-sniff-fix
+  behat:
+    service: appserver
+    description: Runs Behat tests locally
+    cmd:
+      - /app/vendor/bin/behat --config /app/tests/behat/behat.yml --suite default
+  xdebug:
+    description: Loads Xdebug in the selected mode (default mode is debug)
+    cmd:
+      - appserver: /app/lando/scripts/xdebug.sh
+    user: root
+  logs-php:
+    service: appserver
+    description: Displays and tails PHP error logs
+    cmd: tail -f /app/lando/logs/php_errors.log
+  logs-xdebug:
+    service: appserver
+    description: Displays and tails Xdebug logs
+    cmd: tail -f /app/lando/logs/xdebug.log
+  logs-drupal:
+    service: appserver
+    description: Displays and tails Drupal logs using syslog module (because drush wd-show no longer supports tail)
+    cmd:
+      - /app/lando/scripts/logs-drupal.sh
+    user: root
+  drupal-config-import:
+    service: appserver
+    description: Updates database, imports config and clears caches on your local Lando env
+    cmd:
+      - /app/lando/scripts/config-import.sh
+  fresh-start:
+    service: appserver
+    description: Dumps just database, gets latest from composer, does a fresh site install. Faster.
+    cmd:
+      - /app/lando/scripts/fresh-start.sh
+  fresh-start-and-test:
+     service: appserver
+     description: Fresh-start and then run tests immediately after. Useful for testing branches.
+     cmd:
+       - /app/lando/scripts/fresh-start.sh
+       - /app/vendor/bin/behat --config /app/tests/behat/behat-lando.yml --suite default
+  drupal-config-dev:
+    service: appserver
+    description: Enables development modules on your local Lando env using config_split module
+    cmd:
+      - /app/lando/scripts/config-dev.sh
+  drupal-config-dev-disable:
+    service: appserver
+    description: Disables development modules on your local Lando env using config_split module
+    cmd:
+      - /app/lando/scripts/config-dev-disable.sh
+  assets-build:
+    service: node
+    description: Compiles SCSS to CSS and minifies JS in atdove theme
+    cmd:
+      - cd /app/web/themes/custom/atdove && gulp build
+  assets-watch:
+    service: node
+    description: Compiles and watches SCSS to CSS and minifies JS in atdove theme
+    cmd:
+      - cd /app/web/themes/custom/atdove && gulp watch
+  env-deploy:
+    service: appserver
+    description: Deploys to test or live Pantheon env (deploys code, updates database, imports config and clears caches)
+    cmd:
+      - /app/lando/scripts/env-deploy.sh
+  env-config-import:
+    service: appserver
+    description: Updates database, imports config and clears caches on a remote Pantheon environment
+    cmd:
+      - /app/lando/scripts/env-config-import.sh
+  npm:
+    service: node
+  node:
+    service: node
+  gulp:
+    service: node
+  user-admin-reset:
+    service: appserver
+    description: Resets password of Drupal user with Administrator role
+    cmd:
+      - /app/lando/scripts/user-admin-reset.sh
+  user-admin-create:
+    service: appserver
+    description: Creates Drupal user with Administrator role for dev/QA purposes
+    cmd:
+      - /app/lando/scripts/user-admin-create.sh
+  user-org-admin-create:
+    service: appserver
+    description: Creates Drupal user that is the Admin of an Organization for dev/QA purposes
+    cmd:
+      - /app/lando/scripts/user-org-admin-create.sh
+  user-org-admin-delete:
+    service: appserver
+    description: Deletes user created by lando user-org-admin-create
+    cmd:
+      - drush user:cancel --delete-content 'test-org-admin@helloworlddevs.com' -y

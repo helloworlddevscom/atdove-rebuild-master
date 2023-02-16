@@ -1,0 +1,31 @@
+uuid: 210e8bea-5af0-481b-b899-52932ef9d42b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_featured_image
+    - media.type.image
+    - media.type.image_png
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_featured_image
+field_name: field_featured_image
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Featured Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      image_png: image_png
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

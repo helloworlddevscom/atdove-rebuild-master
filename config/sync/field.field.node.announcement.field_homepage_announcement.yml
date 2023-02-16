@@ -1,0 +1,23 @@
+uuid: f896798f-6121-45a6-a44b-1409d047442e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_homepage_announcement
+    - node.type.announcement
+id: node.announcement.field_homepage_announcement
+field_name: field_homepage_announcement
+entity_type: node
+bundle: announcement
+label: 'Homepage Announcement'
+description: 'Check this if you want the announcement to appear on the homepage. '
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

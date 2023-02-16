@@ -1,0 +1,21 @@
+uuid: 0f459bfe-9803-41f9-a3a7-4f992137ad91
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+id: opigno_activity.field_search_keywords
+field_name: field_search_keywords
+entity_type: opigno_activity
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

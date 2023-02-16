@@ -1,0 +1,19 @@
+.layout-contributor-bio {margin-bottom: 75px}
+.section-user-profile {
+  .contributor-profile {display: flex}
+  .contributor-profile > * {flex-basis: fit-content}
+  .contributor-details li {list-style: none}
+  .contributor-details li p:first-of-type {
+    font-weight: bold;
+    border-bottom: 1px solid lightgray;
+  }
+  .contributor-content {
+    margin-top: 30px;
+    .content-box__title {text-align: left}
+    .views-field-title {
+      padding: 5px 0 10px;
+      border-bottom: 1px solid lightgray;
+    }
+    .field-content a {text-decoration: none}
+  }
+}

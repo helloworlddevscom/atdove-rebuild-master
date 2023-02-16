@@ -1,0 +1,122 @@
+/**
+ * Main import file.
+ */
+
+// Variables
+// ----------
+@import "1.vars/variables";
+
+// Bootstrap
+//
+// Import our own installation of Bootstrap
+// instead of using compiled version from Aristotle
+// base theme. This allows us to alter variables before
+// compilation.
+// -----------
+@import "1.vars/bootstrap-vars";
+@import "bootstrap";
+
+// Aristotle base theme SCSS
+//
+// Import everything from web/themes/contrib/aristotle/src/scss/style.scss
+// except Bootstrap. We compile it ourselves
+// because we are not loading main.css from Aristotle.
+// See libraries-override in atdove.info.yml.
+// ------------
+// Load copy of _variables.scss from Aristotle, allowing us more control.
+// @import '../../../../contrib/aristotle/src/scss/variables';
+@import "1.vars/aristotle-overrides/variables";
+
+@import '../../../../contrib/aristotle/src/scss/functions';
+
+// Load each file in mixins separately to avoid loading _buttons.scss.
+// Aristotle did some strange overrides of Bootstrap that are hard to
+// override. Instead we'll copy _buttons.scss to our theme and modify it.
+//@import '../../../../contrib/aristotle/src/scss/mixins/includes';
+@import '../../../../contrib/aristotle/src/scss/mixins/alert';
+@import '../../../../contrib/aristotle/src/scss/mixins/breakpoints';
+@import '../../../../contrib/aristotle/src/scss/mixins/grid';
+@import '../../../../contrib/aristotle/src/scss/mixins/grid-framework';
+@import '../../../../contrib/aristotle/src/scss/mixins/mixins';
+@import '../../../../contrib/aristotle/src/scss/mixins/screen-reader';
+
+@import '../../../../contrib/aristotle/src/scss/utilities/includes';
+
+// Load each file in components/base separately to avoid loading _buttons.scss.
+// Aristotle did some strange overrides of Bootstrap that are hard to
+// override. Instead we'll copy _buttons.scss to our theme and modify it.
+//@import '../../../../contrib/aristotle/src/scss/components/base/includes';
+@import '../../../../contrib/aristotle/src/scss/components/base/alert';
+@import '../../../../contrib/aristotle/src/scss/components/base/base';
+@import '3.base/aristotle-overrides/buttons';
+@import '../../../../contrib/aristotle/src/scss/components/base/content-box';
+@import '../../../../contrib/aristotle/src/scss/components/base/dropdown';
+@import '../../../../contrib/aristotle/src/scss/components/base/fonts';
+@import '../../../../contrib/aristotle/src/scss/components/base/grid';
+@import '../../../../contrib/aristotle/src/scss/components/base/icons';
+@import '../../../../contrib/aristotle/src/scss/components/base/link-box';
+@import '../../../../contrib/aristotle/src/scss/components/base/media';
+@import '../../../../contrib/aristotle/src/scss/components/base/nav';
+@import '../../../../contrib/aristotle/src/scss/components/base/preloader';
+@import '../../../../contrib/aristotle/src/scss/components/base/svg';
+@import '../../../../contrib/aristotle/src/scss/components/base/table';
+@import '../../../../contrib/aristotle/src/scss/components/base/tabs';
+
+@import '../../../../contrib/aristotle/src/scss/components/layout/includes';
+@import '../../../../contrib/aristotle/src/scss/components/navigation/includes';
+@import '../../../../contrib/aristotle/src/scss/components/block/includes';
+@import '../../../../contrib/aristotle/src/scss/components/user/includes';
+@import '../../../../contrib/aristotle/src/scss/components/form/includes';
+@import '../../../../contrib/aristotle/src/scss/components/views/includes';
+@import '../../../../contrib/aristotle/src/scss/components/page/includes';
+@import '../../../../contrib/aristotle/src/scss/components/private-message/includes';
+
+// Helpers/mixins
+// ----------
+@import "2.helpers/mixins";
+
+// Base
+// ----------
+@import "3.base/buttons";
+@import "3.base/links";
+@import "3.base/typography";
+@import "3.base/base";
+@import "3.base/forms";
+
+// Global
+// ----------
+@import "4.global/header";
+@import "4.global/footer";
+
+// Components
+// ----------
+
+// Opigno
+@import "5.components/opigno/opigno_certificates";
+@import "5.components/opigno/opigno_user_profile";
+
+// Paragraphs
+@import "5.components/paragraphs/paragraphs";
+
+// Functionality
+@import "5.components/billing/manage";
+@import "5.components/organizations/create/join";
+@import "5.components/billing/registration";
+@import "5.components/activities/atdove_activities";
+@import "5.components/activities/atdove_activity_search";
+@import "5.components/activities/related_content";
+
+// Blocks
+@import "5.components/blocks/block--atdove-sso-login";
+// @import "5.components/menus/menu--main"; @todo Do we want this? It wasn't being loaded before.
+
+// Forms
+@import "5.components/forms/form--user-edit";
+
+// Pages
+// ----------
+@import "6.pages/homepage";
+@import "6.pages/contributor_bio";
+
+// Misc.
+// ----------

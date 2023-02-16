@@ -1,0 +1,10 @@
+uuid: 79880dae-1870-4166-98d8-353fde93a99e
+langcode: en
+status: true
+dependencies: {  }
+id: p_wistia_video_hero
+label: 'Wistia Video Hero'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,10 @@
+uuid: 331622f1-7927-4146-a9f2-8613f4553e41
+langcode: en
+status: true
+dependencies: {  }
+id: p_benefits_page_section
+label: 'Benefits Page Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

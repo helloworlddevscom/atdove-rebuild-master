@@ -1,0 +1,15 @@
+uuid: 4ef7c543-a8e8-4e4d-9319-815dff8d5aaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+id: organization-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: organization
+permissions_ui: true
+permissions:
+  - 'view group'

@@ -1,0 +1,237 @@
+// Atdove Activity Search View
+
+.opigno-search-body {
+
+}
+
+.opigno-search-record-wrapper {
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  border-bottom: 1px solid lightgrey;
+  @media (min-width:768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}
+
+.opigno-search-activity-info {
+  padding: 2em 0;
+  @media (min-width:768px) {
+    padding: 0 0 0 35px;
+  }
+}
+
+.opigno-search-thumbnail img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  max-width: none;
+}
+
+.user-add-to-training {
+  background-image: url(../../images/add-to-training-plan-icon.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.user-assign-to-person {
+  background-image: url(../../images/training-plan-assign.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.user-download-notes {
+  background-image: url(../../images/down-arrow-icon.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.opigno-search-activity-buttons {
+  display: inline-flex;
+  padding: 20px 0 0;
+
+  .flag-activity-bookmark span {
+    display: none;
+  }
+  .action-flag a {
+    background-image: url(../../images/bookmark-light.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    font-size: 0;
+  }
+  .action-unflag a {
+    background-image: url(../../images/bookmarked.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    font-size: 0;
+  }
+
+}
+
+.atdove-tooltip {
+  position:relative;
+}
+
+.atdove-tooltip:before {
+  position: absolute;
+  content: attr(data-text);
+  top: 100%;
+  transform: translateY(-50%);
+  left: 50%;
+  margin-left: 15px;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  display: none;
+  z-index: 100;
+  pointer-events: visible !important;
+  cursor: auto;
+}
+
+.atdove-tooltip:hover:before {
+  display:block;
+  pointer-events: visible !important;
+  cursor: auto;
+}
+
+.disable-bookmark .flag-activity-bookmark a {
+  pointer-events: none;
+}
+.disable-link {
+  pointer-events: none;
+}
+.view-opigno-activity-search #edit-submit-opigno-activity-search{
+  margin-top: 45px;
+  left: 0;
+  right: 0;
+  @media (min-width:768px) {
+    order: 7;
+  }
+}
+
+.view-opigno-activity-search {
+  .form-items-group {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    @media (min-width:768px) {
+      flex-direction: row;
+    }
+    .form-item {
+      text-align: center;
+    }
+  }
+  .form-item-keyword {
+    @media (min-width:768px) {
+      order: 6;
+    }
+  }
+}
+
+.view-opigno-activity-search .form-item-keyword .label {
+  @media (min-width:768px) {
+    margin-top: 20px;
+  }
+}
+
+.view-opigno-activity-search .view-filters {
+  padding: 2em 0 5em;
+}
+
+.view-opigno-activity-search .search-filter-header {
+  border-top: 1px solid lightgray;
+  padding: 35px 0 0;
+  font-size: 20px;
+}
+
+.view-opigno-activity-search .search-filter-header-title {
+  padding: 0 0 30px;
+}
+
+.view-opigno-activity-search .pager {
+  font-size: 20px;
+}
+.view-opigno-activity-search .activity-type-label {
+  background: #AABA0A;
+  color: white;
+  padding: 12px;
+  font-weight: 600;
+  position: absolute;
+}
+
+.view-opigno-activity-search {
+  .atdove-activity-passed,
+  .atdove-activity-pending {
+    display: flex;
+    padding: 1em 0;
+    font-size: 25px;
+    font-weight: 700;
+  }
+
+  .atdove-activity-passed .passed-image {
+    background-image: url(../../images/passed.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  .atdove-activity-pending .pending-image {
+    background-image: url(../../images/assigned.png);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+  }
+}
+
+.add-groups-or-users {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.sumbit-line {
+  border-top: 1px solid lightgrey;
+  padding-bottom: 20px;
+}
+
+#atdove-no-results-message{
+  width:100%;
+  text-align:center;
+  margin-bottom:50px;
+}

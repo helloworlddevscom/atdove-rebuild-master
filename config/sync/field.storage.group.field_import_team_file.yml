@@ -1,0 +1,23 @@
+uuid: dc108633-15a0-4c47-b945-52fe8a52579e
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - group
+id: group.field_import_team_file
+field_name: field_import_team_file
+entity_type: group
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

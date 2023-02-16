@@ -1,0 +1,34 @@
+#########################
+## Config for sass-lint.
+##
+## This should be kept in sync with .sass-lint-auto-fix.yml.
+#########################
+
+# Linter Options
+options:
+  # Don't merge default rules
+  merge-default-rules: false
+  # Set the formatter to 'stylish'
+  formatter: stylish
+  # Raise an error if more than 50 warnings are generated
+  max-warnings: 50
+
+# File Options
+files:
+  include:
+    - src/scss/*.s+(a|c)ss
+    - src/scss/**/*.s+(a|c)ss
+#  ignore:
+#    - src/scss/style-admin.scss
+#    - src/scss/7.admin/_style-admin-frontend.scss
+
+# Rule Configuration
+rules:
+  extends-before-declarations: 1
+  no-warn: 1
+  no-debug: 1
+  no-ids: 0
+  no-important: 1
+  indentation:
+    - 2
+    - size: 2

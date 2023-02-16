@@ -1,0 +1,8 @@
+uuid: 5a24b4ed-c5dd-4555-a661-c55b48fb1d04
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_h5p_content
+label: 'Interactive content comment'
+target_entity_type_id: node
+description: null

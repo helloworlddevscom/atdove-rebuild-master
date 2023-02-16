@@ -1,0 +1,8 @@
+uuid: 1450cde0-bfad-444a-b232-7bec686f49d3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Help Categories'
+vid: help_categories
+description: ''
+weight: 0

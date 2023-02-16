@@ -1,0 +1,31 @@
+uuid: 59a4e2ff-a4df-4cb4-84fb-eb0998d226f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_user_org_employee_ids.field_p_user_employee_id
+    - field.field.paragraph.p_user_org_employee_ids.field_p_user_org_id_for_employee
+    - paragraphs.paragraphs_type.p_user_org_employee_ids
+id: paragraph.p_user_org_employee_ids.default
+targetEntityType: paragraph
+bundle: p_user_org_employee_ids
+mode: default
+content:
+  field_p_user_employee_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_user_org_id_for_employee:
+    type: number
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

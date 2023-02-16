@@ -1,0 +1,8 @@
+uuid: 9f6e685c-b9d5-4c79-868b-d107407142b2
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_quiz
+label: 'Quiz comment'
+target_entity_type_id: node
+description: null

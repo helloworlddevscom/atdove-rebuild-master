@@ -1,0 +1,26 @@
+uuid: 5d55de1b-68a7-4213-aa56-9e7668bcf6bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_private_profile
+  module:
+    - user
+_core:
+  default_config_hash: H8PybEmTcFFFdHhqjm5qtBv0cZHzK_TYoiyGTWGh8zM
+id: user.user.field_private_profile
+field_name: field_private_profile
+entity_type: user
+bundle: user
+label: 'Make profile private'
+description: 'If checked, other users will be able to see only your first and last name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

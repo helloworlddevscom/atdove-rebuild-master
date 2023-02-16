@@ -1,0 +1,31 @@
+uuid: 0b3ac960-9d35-43bc-ba45-fddeda49005b
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_billing
+    - user
+  theme:
+    - atdove
+id: atdovebillingnoactiveorgmessageblock
+theme: atdove
+region: status_messages
+weight: 0
+provider: null
+plugin: atdove_billing_no_active_org_message_block
+settings:
+  id: atdove_billing_no_active_org_message_block
+  label: 'AtDove Billing No Active Org Message Block'
+  label_display: '0'
+  provider: atdove_billing
+visibility:
+  user_role:
+    id: user_role
+    negate: true
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous
+      active_org_member: active_org_member
+      billing_admin: billing_admin
+      administrator: administrator

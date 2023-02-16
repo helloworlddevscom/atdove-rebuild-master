@@ -1,0 +1,10 @@
+uuid: 2d3fa88e-6f90-487e-9fd5-33483a0cf86e
+langcode: en
+status: true
+dependencies: {  }
+id: opigno_activities
+label: opigno_activities
+description: ''
+source_type: null
+module: null
+shared_configuration: null

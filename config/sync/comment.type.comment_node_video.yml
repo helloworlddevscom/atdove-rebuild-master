@@ -1,0 +1,8 @@
+uuid: 987c496a-eaf2-4bfd-8cfd-ca924f0381a9
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_video
+label: 'Video Comments'
+target_entity_type_id: opigno_activity
+description: ''

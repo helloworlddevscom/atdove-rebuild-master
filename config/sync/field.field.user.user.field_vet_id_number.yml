@@ -1,0 +1,20 @@
+uuid: b9516c6a-6688-4799-af26-8d8d6584b63e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_vet_id_number
+  module:
+    - user
+id: user.user.field_vet_id_number
+field_name: field_vet_id_number
+entity_type: user
+bundle: user
+label: 'Vet ID Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,17 @@
+uuid: 19c81ad5-edd3-40cb-b3fc-313cabcbce5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.subscriber
+id: organization-007ad607a
+label: Subscriber
+weight: 5
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions: {  }

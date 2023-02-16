@@ -1,0 +1,30 @@
+uuid: 640f826b-15c0-4c5f-be2d-25269a21b657
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.organizational_groups.field_actual_group_name
+    - field.field.group.organizational_groups.field_og_org_ref
+    - field.field.group.organizational_groups.field_org_group_body
+    - group.type.organizational_groups
+id: group.organizational_groups.default
+targetEntityType: group
+bundle: organizational_groups
+mode: default
+content:
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_actual_group_name: true
+  field_og_org_ref: true
+  field_org_group_body: true
+  langcode: true
+  path: true
+  status: true
+  uid: true

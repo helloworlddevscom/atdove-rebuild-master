@@ -1,0 +1,30 @@
+uuid: 36cd3a66-30b1-47b3-a0e8-687a3f6fe88b
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.latest_active_trainings
+  module:
+    - system
+    - views
+  theme:
+    - atdove
+id: atdove_dashboard_views_block_latest_active_trainings_block
+theme: atdove
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:latest_active_trainings-block'
+settings:
+  id: 'views_block:latest_active_trainings-block'
+  label: 'Dashboard: Latest active trainings'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'

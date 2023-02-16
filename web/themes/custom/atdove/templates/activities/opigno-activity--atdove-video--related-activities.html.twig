@@ -1,0 +1,33 @@
+{#
+/**
+ * @file opigno_activity.html.twig
+ * Default theme implementation to present Activity data.
+ *
+ * This template is used when viewing Activity pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_opigno_activity()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('opigno_activity') }}>
+	<a href="{{ activity_url }}">
+		<div class="atdove-related-activity">
+			<div class="atdove-activity-type">{{ activity_type }}</div>
+	  		<span>{{ content.name }}</span>
+	  		<div class="atdove-related-image">
+	      		{% if content.field_article_image is not empty %}
+	  				{{ content.field_article_image }}
+				{% else %}
+					{{ content.field_thumbnail_image }}
+				{% endif %}
+
+			</div>
+		</div>
+	</a>
+</div>

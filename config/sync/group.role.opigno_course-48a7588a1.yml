@@ -1,0 +1,17 @@
+uuid: 90dd25b1-d1c1-4fc7-aeb1-47095a76fcfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_course
+  enforced:
+    config:
+      - user.role.administrator_assistant
+id: opigno_course-48a7588a1
+label: 'Administrator Assistant'
+weight: 8
+internal: true
+audience: outsider
+group_type: opigno_course
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,9 @@
+uuid: 8d68c86b-9907-4fdc-be45-96bd45994f4b
+langcode: en
+status: true
+dependencies: {  }
+id: opigno_manager
+label: Opigno
+weight: -10
+menu: opigno-admin
+rewrite_label: false

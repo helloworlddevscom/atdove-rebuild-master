@@ -1,0 +1,129 @@
+<?php
+
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Row;
+use Drupal\Component\Utility\Html;
+use Drupal\atdove_migrate\AtDoveMigrateGroup;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function atdove_migrate_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+
+  // switch ($migration->id()) {
+  //   case 'migrate_d7_atdove_groups':
+  //     // Slugify the title then set that as the alias for the group
+  //     // $title = $row->getSourceProperty('title');
+  //     // $alias = Html::cleanCssIdentifier($title);
+  //     $alias = '/downtonabbey';
+  //     $row->setSourceProperty('alias', $alias);
+
+  //     break;
+  // }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a node to the respective group identified.
+ */
+function atdove_migrate_node_insert(EntityInterface $entity) {
+
+  switch ($entity->bundle()) {
+    case 'article':
+      $add = (new AtDoveMigrateGroup($entity))->addNodeToGroup('field_group_audience');
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Adds a user to the respective group identified.
+ */
+function atdove_migrate_user_insert(EntityInterface $entity) {
+  //This is only needed if we need to add users to their groups after they have been migrated.
+  //$add = (new AtDoveMigrateGroup($entity))->addUserToGroup('field_user_group');
+}
+
+// /**
+//  * Implements hook_ENTITY_TYPE_insert().
+//  *
+//  * Adds a node to the respective group identified.
+//  */
+// function atdove_migrate_node_insert(EntityInterface $entity) {
+
+//   switch ($entity->bundle()) {
+//     case 'MY_NODE_TYPE':
+//       $add = (new YourModuleGroup($entity))->addNodeToGroup('field_group_audience');
+//       break;
+//   }
+// }
+
+
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function atdove_migrate_form_node_form_alter(&$form, FormStateInterface $form_state) {
+
+
+if (in_array($form['#form_id'], [
+    'node_article_edit_form',
+  ])) {
+  // dpm($form['#form_id']);
+  // dpm($form['field_accreditation_info']['widget'][0]['subform']);
+  // dpm($form['field_accreditation_info']['widget'][0]['subform']['field_p_accreditation_id']['widget'][0]['value']
+
+  }
+
+if (in_array($form['#form_id'], [
+    'node_quiz_form',
+    'node_quiz_edit_form',
+    'node_video_form',
+    'node_video_edit_form',
+    'node_article_form',
+    'node_article_edit_form',
+  ])) {
+    $form['title']['#suffix'] = '<div>NOTE: After saving this form, you will be directed to the form where you can edit the settings for the corresponding Opigno Activity.</div>';
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if ($node && $node->hasField('field_opigno_activity_id') && $node->get('field_opigno_activity_id') !== NULL) {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      $field_opigno_activity_id = $node->get('field_opigno_activity_id')->getValue();
+      foreach (array_keys($form['actions']) as $action) {
+        if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+          $form['actions'][$action]['#submit'][] = 'opigno_activity_redirect';
+        }
+      }  
+    }
+
+  }
+if (in_array($form['#form_id'], [
+    'node_quiz_edit_form',
+    'node_article_edit_form',
+    'node_video_edit_form',
+  ])) {
+$opigno_act_id = '';
+$node = \Drupal::routeMatch()->getParameter('node');
+$field_opigno_activity_id = $node->get('field_opigno_activity_id')->getValue();
+
+  $form['title']['#suffix'] = '<div>NOTE: After saving this form, you will be directed to the form where you can edit the settings for the corresponding Opigno Activity. Or you may <a href="/admin/structure/opigno_activity/' . $field_opigno_activity_id[0]['value'] . '/edit"> go there directly.</a></div>';
+  }
+
+}
+
+function opigno_activity_redirect() {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $field_opigno_activity_id = $node->get('field_opigno_activity_id')->getValue();
+  $url = '/admin/structure/opigno_activity/' . $field_opigno_activity_id[0]['value'] . '/edit';
+  $response = new RedirectResponse($url);
+  $response->send();
+  return;
+}

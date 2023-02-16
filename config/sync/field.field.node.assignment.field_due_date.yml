@@ -1,0 +1,21 @@
+uuid: 7404993d-b357-43fe-817c-bc901bc47fb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_due_date
+    - node.type.assignment
+  module:
+    - datetime
+id: node.assignment.field_due_date
+field_name: field_due_date
+entity_type: node
+bundle: assignment
+label: 'Due On'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

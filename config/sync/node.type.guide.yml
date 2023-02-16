@@ -1,0 +1,18 @@
+uuid: b3927bce-c4d0-4467-93ba-9ac2fb86f497
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Guide
+type: guide
+description: 'AtDove Help Guides'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,33 @@
+uuid: 17752a86-374d-4866-9d56-c6264d8e6760
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_organizations
+    - group
+    - route_condition
+  theme:
+    - atdove
+id: organization_home_description
+theme: atdove
+region: content
+weight: -4
+provider: null
+plugin: atdove_organizations_home_description
+settings:
+  id: atdove_organizations_home_description
+  label: 'Organization Home Description'
+  label_display: '0'
+  provider: atdove_organizations
+visibility:
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      organization: organization
+  route:
+    id: route
+    negate: false
+    routes: entity.group.canonical

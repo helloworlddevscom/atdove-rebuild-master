@@ -1,0 +1,21 @@
+uuid: 2b6263f5-8272-48d5-a5bd-23d357493398
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_wistia_video_embed
+    - paragraphs.paragraphs_type.p_wistia_video_hero
+id: paragraph.p_wistia_video_hero.field_p_wistia_video_embed
+field_name: field_p_wistia_video_embed
+entity_type: paragraph
+bundle: p_wistia_video_hero
+label: 'Wistia Video Embed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: "<script charset=\"ISO-8859-1\" src=\"//fast.wistia.com/assets/external/E-v1.js\" async></script><div class=\"wistia_embed wistia_async_uefhnmcgm4\" style=\"width:640px;height:360px;\">&nbsp;</div>\r\n<img height=\"1\" width=\"1\" style=\"border-style:none;\" alt=\"\" src=\"https://insight.adsrvr.org/track/evnt/?adv=cykgbbs&ct=0:tjbo2vq&fmt=3\"/>"
+default_value_callback: ''
+settings: {  }
+field_type: string_long

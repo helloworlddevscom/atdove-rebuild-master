@@ -1,0 +1,35 @@
+uuid: 80bce035-a031-48b3-8015-26173bfab62c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_learning_path_category
+    - group.type.learning_path
+    - taxonomy.vocabulary.learning_path_category
+  content:
+    - 'taxonomy_term:learning_path_category:2588f426-a829-49d3-ae14-341f406ed818'
+_core:
+  default_config_hash: RmHNpCYRgQ_Pw2CPyFyj32QN6zKmBivVSSR_nKovPwM
+id: group.learning_path.field_learning_path_category
+field_name: field_learning_path_category
+entity_type: group
+bundle: learning_path
+label: Category
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 2588f426-a829-49d3-ae14-341f406ed818
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      learning_path_category: learning_path_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

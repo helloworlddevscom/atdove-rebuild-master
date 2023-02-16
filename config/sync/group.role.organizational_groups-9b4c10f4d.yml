@@ -1,0 +1,17 @@
+uuid: 9a4cc795-3e59-4647-ba63-76aa77a53e4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.statistics_reader
+id: organizational_groups-9b4c10f4d
+label: 'Statistics manager'
+weight: -7
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

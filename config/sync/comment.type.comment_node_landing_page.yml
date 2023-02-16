@@ -1,0 +1,8 @@
+uuid: d57a3319-644f-4c24-a544-691c35a217ca
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_landing_page
+label: 'Landing Page comment'
+target_entity_type_id: node
+description: null

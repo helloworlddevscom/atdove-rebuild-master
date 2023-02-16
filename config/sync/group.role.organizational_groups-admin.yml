@@ -1,0 +1,24 @@
+uuid: 59a71d01-439c-42dd-81c1-56b6a3ad4a9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+id: organizational_groups-admin
+label: Admin
+weight: 102
+internal: false
+audience: member
+group_type: organizational_groups
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'administer group'
+  - 'administer members'
+  - 'delete group'
+  - 'edit group'
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view own unpublished group'

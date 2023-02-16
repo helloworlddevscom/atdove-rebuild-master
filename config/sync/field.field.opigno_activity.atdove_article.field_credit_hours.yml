@@ -1,0 +1,23 @@
+uuid: 048a21e1-558b-4003-b7a2-6f4113176684
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_credit_hours
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_credit_hours
+field_name: field_credit_hours
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Credit Hours'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

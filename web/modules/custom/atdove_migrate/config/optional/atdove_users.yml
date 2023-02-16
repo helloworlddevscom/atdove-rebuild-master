@@ -1,0 +1,134 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_users
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: atdove_users
+label: 'User accounts'
+source:
+  key: legacy
+  plugin: d7_group_user
+process:
+  uid:
+    -
+      plugin: skip_on_value
+      equals: true
+      source: uid
+      method: row
+      value: 1
+  name: mail
+  pass: pass
+  mail:
+    -
+      plugin: skip_on_billing_user
+      source: mail
+      method: row
+  created:
+    -
+      plugin: skip_if_user_old_access
+      source: created
+      method: row
+  access: access
+  login: login
+  status: status
+  timezone: timezone
+  langcode:
+    plugin: user_langcode
+    source: language
+    fallback_to_site_default: false
+  preferred_langcode:
+    plugin: user_langcode
+    source: language
+    fallback_to_site_default: true
+  preferred_admin_langcode:
+    plugin: user_langcode
+    source: language
+    fallback_to_site_default: true
+  init: init
+  roles:
+    plugin: static_map
+    bypass: true
+    source: roles
+    map:
+      1: 'anonymous'
+      2: 'authenticated'
+      3: 'administrator'
+      4: 'contributor'
+      5: 'group_subscriber'
+      6: 'subscriber'
+      8: 'contributor'
+      9: 'contributor'
+      11: 'content_manager'
+      16: 'billing_admin'
+      21: 'administrator_assistant'
+  field_user_address:
+    plugin: addressfieldsmigration
+    source: uid
+  field_user_age_range: field_age_range
+  field_user_bio: field_bio
+  field_user_blog_description: field_blog_description
+  field_user_blog_image: field_blog_image
+  field_user_blog_title: field_blog_title
+  field_user_consultant: field_consultant
+  field_user_consultant_expert_in: field_consultant_expert_in
+  field_user_consultant_ext_bio: field_consultant_extended_bio
+  field_user_current_school: field_current_school
+  field_user_designations: field_designations
+  field_first_name: field_first_name
+  field_user_gender: field_gender
+  field_last_name: field_last_name
+  field_private_profile: field_public_profile
+  field_user_opt_out_of_emails: field_opt_out_of_emails
+  field_user_organization: gids
+  field_user_org_group_member: gids
+  field_user_org_employee_ids: field_org_employee_ids
+  field_user_phone: field_phone
+  user_picture: picture
+  field_user_practice_type: field_practice_type
+  field_user_prefix: field_prefix
+  field_user_prof_interests: field_professional_interests
+  field_user_prof_memberships: field_professional_memberships
+  field_user_school: field_school
+  field_user_specialty_designation: field_specialty_designation
+  field_user_suffix: field_suffix
+  field_user_title: field_title
+  field_user_linkedin_url:
+    plugin: sub_process
+    source: field_linkedin_url
+    process:
+      uri: url
+      title: title
+      options: attributes
+  field_user_twitter_url:
+    plugin: sub_process
+    source: field_twitter_url
+    process:
+      uri: url
+      title: title
+      options: attributes
+  field_user_website:
+    plugin: sub_process
+    source: field_website
+    process:
+      uri: url
+      title: title
+      options: attributes
+  field_license_type: field_license_type
+  field_license_state: field_license_state
+  field_license_id_number: field_license_id_number
+destination:
+  plugin: custom_user
+  pre_hashed: true
+migration_dependencies:
+  required:
+    - upgrade_d7_user_role
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_file
+    - upgrade_user_picture_field_instance
+    - upgrade_user_picture_entity_display
+    - upgrade_user_picture_entity_form_display

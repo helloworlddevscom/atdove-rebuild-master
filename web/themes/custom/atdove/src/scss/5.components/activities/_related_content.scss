@@ -1,0 +1,103 @@
+// Related Content on Quiz Pages
+.atdove-related-content-quiz {
+  display: inline-flex;
+  .opigno_activity {
+    padding: 0;
+  }
+  .atdove-related-activity {
+    padding-right: 10px;
+
+    .atdove-related-image img {
+      width: 300px;
+    }
+  }
+  .atdove-related-articles div {
+    display: inline-flex;
+  }
+  .atdove-related-videos div  {
+    display: inline-flex;
+  }
+}
+
+
+// Related Content Column on Activities Pages
+
+.atdove-related-content-col {
+  width: 25%;
+  margin-left: 30px;
+
+  .opigno-activity {
+    width: 300px;
+  }
+  img {
+    width: 300px;
+    height: 300px;
+    max-width: none;
+    object-fit: unset;
+  }
+  .atdove-contributor-image {
+    padding-bottom: 2.5em;
+    img {
+      width: unset;
+      height: unset;
+    }
+  }
+}
+
+.atdove-related-activity  {
+
+  height: 300px;
+  span {
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -mox-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: block;
+    color: #fff;
+    font-size: 25px;
+    line-height: 1.2em;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+    pointer-events: none;
+    padding: 0 15px;
+  }
+  .atdove-activity-type {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 18px;
+    background: #0083A9;
+    color: #fff;
+    line-height: 1;
+    z-index: 100;
+    pointer-events: none;
+  }
+}
+
+.atdove-related-image {
+  height: 300px;
+}
+
+.atdove-related-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+}
+
+
+
+

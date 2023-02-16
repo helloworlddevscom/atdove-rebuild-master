@@ -1,0 +1,32 @@
+uuid: c0f30b7e-7161-4a07-ae77-e7d12f3c4a23
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: byQqVmP54SjGsUCfdX5dXidtXpe2ThrmQdBt9vXLm8Y
+id: opigno_activity_slide
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: opigno_migration
+label: 'Opigno Group activity Slide (source: slide)'
+source:
+  plugin: opigno_activity_slide
+  node_type: quiz_directions
+process:
+  type:
+    plugin: default_value
+    default_value: opigno_slide
+  id: nid
+  vid: nid
+  name: title
+  uid: node_uid
+  opigno_slide_pdf: opigno_slide_pdf
+destination:
+  plugin: 'entity:opigno_activity'
+migration_dependencies: null

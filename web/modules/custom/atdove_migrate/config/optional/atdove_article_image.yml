@@ -1,0 +1,40 @@
+id: atdove_article_image
+migration_group: null
+label: Image importer
+source:
+  constants:
+    source_base_path: /Users/philiphenry/sites/atdove_d7/docroot/sites/default/files #absolute path where your images are currently located
+    uri_file: 'public://images' #location where your images will be stored
+  plugin: migrate
+  keys:
+    - field_image
+process:
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - field_image.033
+    -
+      plugin: urlencode
+  uri_file:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/uri_file
+        - field_image
+    -
+      plugin: urlencode
+  filename: field_image
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@uri_file'
+destination:
+  plugin: 'entity:file'
+migration_dependencies:
+  required: {  }
+  optional: {  }

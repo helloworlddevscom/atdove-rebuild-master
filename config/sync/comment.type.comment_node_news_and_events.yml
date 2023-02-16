@@ -1,0 +1,8 @@
+uuid: 8faf26d6-8b38-493d-89da-6d0c01928663
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_news_and_events
+label: 'News and Events comment'
+target_entity_type_id: node
+description: null

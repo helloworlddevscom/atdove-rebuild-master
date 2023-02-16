@@ -1,0 +1,17 @@
+uuid: 3bbd3dd7-d38f-4fa0-b555-460f14d85683
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  module:
+    - opigno_module_group
+id: group_content_type_5a1d5a3d1a2ce
+label: 'Organizational Groups: Learning path'
+description: 'Adds Learning path groups to groups both publicly and privately.'
+group_type: organizational_groups
+content_plugin: 'subgroup:learning_path'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

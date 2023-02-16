@@ -1,0 +1,25 @@
+uuid: 47ef0ae4-3a45-42f2-b7dc-76b1ea24d3a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: CUE7G8l5ad2MJrKjY5EruYwWXwTgQ_wrfToc1AgQwzI
+id: atdove_sitebranding
+theme: atdove
+region: branding
+weight: -18
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

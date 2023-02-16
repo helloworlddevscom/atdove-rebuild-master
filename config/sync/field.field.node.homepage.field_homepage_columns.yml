@@ -1,0 +1,46 @@
+uuid: e04a0882-ad1a-4663-aa16-064af8074876
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_homepage_columns
+    - node.type.homepage
+    - paragraphs.paragraphs_type.p_three_text_columns
+  module:
+    - entity_reference_revisions
+id: node.homepage.field_homepage_columns
+field_name: field_homepage_columns
+entity_type: node
+bundle: homepage
+label: 'Homepage Columns'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      p_three_text_columns: p_three_text_columns
+    negate: 0
+    target_bundles_drag_drop:
+      p_accreditation_info:
+        weight: 8
+        enabled: false
+      p_benefits_page_section:
+        weight: 9
+        enabled: false
+      p_image_with_text:
+        weight: 10
+        enabled: false
+      p_three_text_columns:
+        weight: 10
+        enabled: true
+      p_user_org_employee_ids:
+        weight: 11
+        enabled: false
+      p_wistia_video_hero:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

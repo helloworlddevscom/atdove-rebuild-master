@@ -1,0 +1,40 @@
+uuid: a44f0108-0f61-4d4a-b8f2-543dc20deb47
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - comment
+    - entity_print
+    - flag
+    - flag_lists
+    - node_view_permissions
+    - opigno_module
+id: active_org_member
+label: 'Active Organization Member'
+weight: -8
+is_admin: null
+permissions:
+  - 'access activity overview'
+  - 'access comments'
+  - 'access module overview'
+  - 'access paid content'
+  - 'edit own comments'
+  - 'entity print access type opigno_activity'
+  - 'entity print access type opigno_latest_group_activity'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'take modules'
+  - 'unflag activity_bookmark'
+  - 'unflag bookmark'
+  - 'view activity_bookmark'
+  - 'view any assignment content'
+  - 'view bookmark'
+  - 'view flag lists'
+  - 'view flag_list_template_1'
+  - 'view own flag lists'
+  - 'view own module results'
+  - 'view published activity entities'
+  - 'view published module entities'

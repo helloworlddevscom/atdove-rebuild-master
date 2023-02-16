@@ -1,0 +1,9 @@
+local_images: 'public://wistia-images'
+token: 0bb236f7ee75816a316b230c51cf960e85431aca
+player_color: '#54bbff'
+video_width: '640'
+video_height: '360'
+display_play_button: 1
+_core:
+  default_config_hash: _P0lTzu9PaJz3usR2-lG8DJR10OqzzwdYxNuNQKbJnw
+resumable: 1

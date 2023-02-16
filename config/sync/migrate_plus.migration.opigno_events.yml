@@ -1,0 +1,36 @@
+uuid: 1f670da0-e11a-4796-9eac-9a458150dc2c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: hd2dVtzaNlTPNrmO49CwdS4YNf9fAY2hIfQNOtj9ghE
+id: opigno_events
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: opigno_migration
+label: 'Opigno Calendar events'
+source:
+  plugin: opigno_events
+  node_type: calendar_event
+process:
+  type:
+    plugin: default_value
+    default_value: opigno_calendar_event
+  id: nid
+  vid: nid
+  title: title
+  uid: node_uid
+  created: created
+  changed: changed
+  description: body
+  field_calendar_event_members: field_calendar_event_members
+  date_daterange: date_daterange
+destination:
+  plugin: 'entity:opigno_calendar_event'
+migration_dependencies: null

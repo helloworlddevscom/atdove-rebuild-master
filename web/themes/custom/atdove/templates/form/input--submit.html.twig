@@ -1,0 +1,17 @@
+{#
+/**
+ * @file input--submit.html.twig
+ * Changes submit inputs on forms to buttons and styles as basic buttons with text.
+ *
+ */
+#}
+
+
+{% if attributes.id == 'edit-submit' %}
+<button{{ attributes.addClass('btn btn-bg btn-rounded').removeClass('form-submit') }}>{{ attributes.value }}</button>{{ children }}
+{% elseif attributes.id == 'edit-preview' %}
+<button{{ attributes.addClass('btn btn-bg btn-rounded btn-form-secondary').removeClass('form-submit') }}>{{ attributes.value }}</button>{{ children }}
+{% else %}
+<input{{ attributes }}/>{{ children }}
+
+{% endif %}

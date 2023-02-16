@@ -1,0 +1,19 @@
+#########################
+## Config for sass-lint-auto-fix.
+##
+## This should be kept in sync with .sass-lint.yml.
+#########################
+
+files:
+  include: src/scss/**/*.s+(a|c)ss
+  ignore:
+    - node_modules/**
+#    - scss/style-admin.scss
+#    - scss/7.admin/_style-admin-frontend.scss
+
+resolvers:
+  # Too dangerous to reorder properties.
+  property-sort-order: 0
+  # Too dangerous to remove importants.
+  no-important: 0
+  indentation: 1

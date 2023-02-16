@@ -1,0 +1,36 @@
+uuid: 9e7da4b2-5e19-42e3-bf44-df4a424b6309
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.wistia_video.field_media_video_embed_field
+    - media.type.wistia_video
+_core:
+  default_config_hash: V6DiYGo-DYx271r6347LCyWTKCi9EPWJyrC86KPpBk0
+id: media.wistia_video.media_library
+targetEntityType: media
+bundle: wistia_video
+mode: media_library
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_video_embed_field: true
+  path: true
+  status: true
+  uid: true

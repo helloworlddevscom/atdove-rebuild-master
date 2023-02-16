@@ -1,0 +1,48 @@
+uuid: aef8b82d-3b6c-42d2-8285-7fe63aaf3362
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_quiz_opigno_activity
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: opigno_activities
+label: 'Opigno Quiz activities'
+source:
+  plugin: d7_node_atdove
+  node_type: quiz
+process:
+  type:
+    plugin: default_value
+    default_value: opigno_h5p
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  id: nid
+  name: title
+  uid:
+    plugin: default_value
+    source: uid
+    default_value: 1
+  field_quiz_body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      summary: summary
+      format:
+        plugin: default_value
+        default_value: full_html
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_opigno_videos: field_related_videos
+  field_opigno_articles: field_related_articles
+  created: created
+  changed: changed
+destination:
+  plugin: 'entity:opigno_activity'
+migration_dependencies: {  }

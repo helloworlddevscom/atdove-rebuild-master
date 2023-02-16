@@ -1,0 +1,20 @@
+uuid: d2bcb87e-ad75-43ef-a49e-d09e9163f729
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - taxonomy
+id: opigno_activity.field_additional_content_categor
+field_name: field_additional_content_categor
+entity_type: opigno_activity
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

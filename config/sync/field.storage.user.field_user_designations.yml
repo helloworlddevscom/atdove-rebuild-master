@@ -1,0 +1,141 @@
+uuid: 12a8323c-8dc3-4cce-ab21-81814502b9ca
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_designations
+field_name: field_user_designations
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: AAAS
+      label: AAAS
+    -
+      value: AHT
+      label: AHT
+    -
+      value: AVN
+      label: AVN
+    -
+      value: BASc
+      label: BASc
+    -
+      value: BVM
+      label: BVM
+    -
+      value: BVMS
+      label: BVMS
+    -
+      value: BVSc
+      label: BVSc
+    -
+      value: CAHT
+      label: CAHT
+    -
+      value: CFS
+      label: CFS
+    -
+      value: CPA
+      label: CPA
+    -
+      value: CT
+      label: CT
+    -
+      value: CVPM
+      label: CVPM
+    -
+      value: CVT
+      label: CVT
+    -
+      value: DVM
+      label: DVM
+    -
+      value: EMT
+      label: EMT
+    -
+      value: LVMT
+      label: LVMT
+    -
+      value: LVT
+      label: LVT
+    -
+      value: MA
+      label: MA
+    -
+      value: MAV
+      label: MAV
+    -
+      value: MBA
+      label: MBA
+    -
+      value: MD
+      label: MD
+    -
+      value: MHA
+      label: MHA
+    -
+      value: MHS
+      label: MHS
+    -
+      value: MPAS
+      label: MPAS
+    -
+      value: MPH
+      label: MPH
+    -
+      value: MPharm
+      label: MPharm
+    -
+      value: MS
+      label: MS
+    -
+      value: MSN
+      label: MSN
+    -
+      value: MSW
+      label: MSW
+    -
+      value: MVSC
+      label: MVSC
+    -
+      value: Pharm.D.
+      label: Pharm.D.
+    -
+      value: PhD
+      label: PhD
+    -
+      value: RAHT
+      label: RAHT
+    -
+      value: RN
+      label: RN
+    -
+      value: RVN
+      label: RVN
+    -
+      value: RVT
+      label: RVT
+    -
+      value: PHR
+      label: PHR
+    -
+      value: SPHR
+      label: SPHR
+    -
+      value: VMD
+      label: VMD
+    -
+      value: VNRT
+      label: VNRT
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

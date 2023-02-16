@@ -1,0 +1,31 @@
+uuid: 7dfb99b9-0e55-4476-8254-d9864abefff5
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - group
+_core:
+  default_config_hash: rk2G0ozgUlKP7ic1RRjMcXUmeZxXUKPV-q-brekIKMc
+id: group_content_organization
+label: 'Group content - Organization'
+type: 'canonical_entities:group_content'
+pattern: 'organization/[group_content:group:id]/[group_content:pretty-path-key]/[group_content:id]'
+selection_criteria:
+  14880543-8534-4141-9dff-40f2faf786a6:
+    id: 'entity_bundle:group_content'
+    negate: false
+    uuid: 14880543-8534-4141-9dff-40f2faf786a6
+    context_mapping:
+      group_content: group_content
+    bundles:
+      group_content_type_6b8abcfb98c8f: group_content_type_6b8abcfb98c8f
+      group_content_type_c20cc86eb7dd2: group_content_type_c20cc86eb7dd2
+      organization-group_invitation: organization-group_invitation
+      organization-group_membership: organization-group_membership
+      organization-group_node-article: organization-group_node-article
+selection_logic: and
+weight: -5
+relationships:
+  'group_content:langcode:language':
+    label: Language

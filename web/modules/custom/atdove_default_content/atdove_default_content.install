@@ -1,0 +1,129 @@
+<?php
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\system\Entity\Menu;
+
+/**
+ * Implements hook_install().
+ */
+function atdove_default_content_install() {
+  // Reset the schema version, so our update hooks can be processed post the initial site install.
+  drupal_set_installed_schema_version('atdove_default_content', '9000');
+  _atdove_default_content_modify_main_menu();
+}
+
+/**
+ * Bring in additional main menu and main-menu menu items.
+ */
+function atdove_default_content_update_9005() {
+  // This refuses to complete successfully on hook_install
+  // when the module is enabled via the fresh standup script.
+  // So we'll try double tapping...
+  _atdove_default_content_modify_main_menu();
+}
+
+/**
+ * Modify main-menu menu.
+ */
+function _atdove_default_content_modify_main_menu() {
+  $menu_links_to_add = [];
+
+  $menu_links_to_add[] = [
+    'title' => 'Veterinarian',
+    'link' => 'internal:/opigno-activity-search/veterinarian',
+    'menu_name' => 'main-menu',
+    'weight' => -47,
+  ];
+
+  $menu_links_to_add[] = [
+    'title' => 'Technician',
+    'link' => 'internal:/opigno-activity-search/technician',
+    'menu_name' => 'main-menu',
+    'weight' => -45,
+  ];
+
+  $menu_links_to_add[] = [
+    'title' => 'Assistant',
+    'link' => 'internal:/opigno-activity-search/assistant',
+    'menu_name' => 'main-menu',
+    'weight' => -43,
+  ];
+
+  $menu_links_to_add[] = [
+    'title' => 'Receptionist',
+    'link' => 'internal:/opigno-activity-search/receptionist',
+    'menu_name' => 'main-menu',
+    'weight' => -41,
+  ];
+
+  $menu_links_to_add[] = [
+    'title' => 'Manager',
+    'link' => 'internal:/opigno-activity-search/manager',
+    'menu_name' => 'main-menu',
+    'weight' => -39,
+  ];
+
+  $menu_links_to_add[] = [
+    'title' => 'Catalogue',
+    'link' => 'internal:/opigno-activity-search',
+    'menu_name' => 'main',
+    'weight' => -99,
+  ];
+
+  $menu_links_to_remove = [
+    'Library',
+    'dont exust'
+  ];
+
+  foreach ($menu_links_to_remove as $menu_link_to_remove) {
+    $menu_link = \Drupal::entityTypeManager()->getStorage('menu_link_content')
+      ->loadByProperties(['title' => $menu_link_to_remove]);
+
+    if (!empty($menu_link)) {
+      reset($menu_link)->delete();
+    }
+  }
+
+  foreach ($menu_links_to_add as $menu_link_to_add) {
+    _atdove_default_content_create_menu_item_if_none_exists(
+      $menu_link_to_add['title'],
+      $menu_link_to_add['menu_name'],
+      $menu_link_to_add['link'],
+      $menu_link_to_add['weight'],
+    );
+  }
+}
+
+/**
+ * Creates a menu item if none exists for the given combination.
+ *
+ * @param string $title
+ *  The title of the menu link.
+ * @param string $menu_name
+ *   The menu name in which the menu is placed
+ * @param string $link_uri
+ *   The URI that the link should point to.
+ * @param int $weight
+ *   The weight that the menu item should have. Defaults to zero.
+ */
+function _atdove_default_content_create_menu_item_if_none_exists(string $title, string $menu_name, string $link_uri, int $weight = 0) {
+  $links_existing = \Drupal::entityTypeManager()->getStorage('menu_link_content')
+    ->loadByProperties(
+      [
+        'title' => $title,
+        'menu_name' => $menu_name,
+        'link' => ['uri' => $link_uri],
+      ]
+    );
+
+  if (empty($links_existing)) {
+    MenuLinkContent::create([
+      'title' => $title,
+      'link' => ['uri' => $link_uri],
+      'menu_name' => $menu_name,
+      'weight' => $weight,
+      'enabled' => 1,
+    ])->save();
+  }
+}

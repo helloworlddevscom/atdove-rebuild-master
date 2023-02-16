@@ -1,0 +1,30 @@
+diff --git a/ginvite.module b/ginvite.module
+index c060818..b92c775 100644
+--- a/ginvite.module
++++ b/ginvite.module
+@@ -16,6 +16,7 @@ use Drupal\group\Access\GroupAccessResult;
+ use Drupal\group\Entity\GroupContentInterface;
+ use Drupal\group\Entity\GroupInterface;
+ use Drupal\user\UserInterface;
++use Drupal\Core\Mail\MailFormatHelper;
+ 
+ /**
+  * Implements hook_help().
+@@ -201,7 +202,7 @@ function ginvite_mail($key, &$message, $params) {
+     $subject = $token_service->replace($invitation_subject, $params);
+ 
+     $message['subject'] = $subject;
+-    $message['body'][] = $body;
++    $message['body'][] = MailFormatHelper::wrapMail($body);
+ 
+     $language_manager->setConfigOverrideLanguage($original_language);
+ 
+@@ -230,7 +231,7 @@ function ginvite_mail($key, &$message, $params) {
+     $subject = $token_service->replace($cancel_subject, $params);
+ 
+     $message['subject'] = $subject;
+-    $message['body'][] = $body;
++    $message['body'][] = MailFormatHelper::wrapMail($body);
+ 
+     $language_manager->setConfigOverrideLanguage($original_language);
+   }

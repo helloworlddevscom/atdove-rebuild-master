@@ -1,0 +1,263 @@
+uuid: e251f706-46bb-4510-b366-0ee4cfcd8c8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_article.default
+    - field.field.opigno_activity.atdove_article.field_accreditation_info
+    - field.field.opigno_activity.atdove_article.field_additional_content_categor
+    - field.field.opigno_activity.atdove_article.field_article_body
+    - field.field.opigno_activity.atdove_article.field_article_comments
+    - field.field.opigno_activity.atdove_article.field_article_image
+    - field.field.opigno_activity.atdove_article.field_article_scorm
+    - field.field.opigno_activity.atdove_article.field_ce_matter_category
+    - field.field.opigno_activity.atdove_article.field_content_category
+    - field.field.opigno_activity.atdove_article.field_contributors
+    - field.field.opigno_activity.atdove_article.field_credit_hours
+    - field.field.opigno_activity.atdove_article.field_exclude_from_search_result
+    - field.field.opigno_activity.atdove_article.field_external_contributors
+    - field.field.opigno_activity.atdove_article.field_group_audience
+    - field.field.opigno_activity.atdove_article.field_job_category
+    - field.field.opigno_activity.atdove_article.field_marketing_title
+    - field.field.opigno_activity.atdove_article.field_media_image
+    - field.field.opigno_activity.atdove_article.field_opigno_articles
+    - field.field.opigno_activity.atdove_article.field_opigno_quiz
+    - field.field.opigno_activity.atdove_article.field_opigno_videos
+    - field.field.opigno_activity.atdove_article.field_publish_date
+    - field.field.opigno_activity.atdove_article.field_related_ads
+    - field.field.opigno_activity.atdove_article.field_related_blog
+    - field.field.opigno_activity.atdove_article.field_related_surveys
+    - field.field.opigno_activity.atdove_article.field_search_keywords
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - comment
+    - datetime
+    - entity_print
+    - entity_reference_revisions
+    - media
+    - opigno_scorm
+    - options
+    - text
+    - user
+third_party_settings:
+  entity_print:
+    pdf_label: 'View PDF'
+id: opigno_activity.atdove_article.default
+targetEntityType: opigno_activity
+bundle: atdove_article
+mode: default
+content:
+  entity_print_view_pdf:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_accreditation_info:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_additional_content_categor:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_article_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_article_comments:
+    type: comment_default
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_article_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_article_scorm:
+    type: opigno_scorm_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_ce_matter_category:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_content_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_contributors:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_credit_hours:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_external_contributors:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_group_audience:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_job_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_marketing_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_media_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_opigno_articles:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: related_activities
+      link: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_opigno_quiz:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_opigno_videos:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: related_activities
+      link: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_publish_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_related_ads:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_related_blog:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_related_surveys:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  flag_activity_bookmark:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_word_docx: true
+  field_exclude_from_search_result: true
+  field_search_keywords: true
+  langcode: true
+  search_api_excerpt: true

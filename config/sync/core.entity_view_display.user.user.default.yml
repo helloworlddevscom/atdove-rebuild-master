@@ -1,0 +1,368 @@
+uuid: fe2ec700-f1c8-4015-890a-c4c12be1e5d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_created_by
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_license_id_number
+    - field.field.user.user.field_license_state
+    - field.field.user.user.field_license_type
+    - field.field.user.user.field_personal_training_plan
+    - field.field.user.user.field_private_profile
+    - field.field.user.user.field_user_address
+    - field.field.user.user.field_user_age_range
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_user_blog_description
+    - field.field.user.user.field_user_blog_title
+    - field.field.user.user.field_user_consultant
+    - field.field.user.user.field_user_consultant_expert_in
+    - field.field.user.user.field_user_consultant_ext_bio
+    - field.field.user.user.field_user_current_school
+    - field.field.user.user.field_user_designations
+    - field.field.user.user.field_user_gender
+    - field.field.user.user.field_user_linkedin_url
+    - field.field.user.user.field_user_opt_out_of_emails
+    - field.field.user.user.field_user_org_employee_ids
+    - field.field.user.user.field_user_org_group_member
+    - field.field.user.user.field_user_organization
+    - field.field.user.user.field_user_phone
+    - field.field.user.user.field_user_practice_type
+    - field.field.user.user.field_user_prefix
+    - field.field.user.user.field_user_prof_interests
+    - field.field.user.user.field_user_prof_memberships
+    - field.field.user.user.field_user_school
+    - field.field.user.user.field_user_specialty_designation
+    - field.field.user.user.field_user_suffix
+    - field.field.user.user.field_user_title
+    - field.field.user.user.field_user_twitter_url
+    - field.field.user.user.field_user_website
+    - field.field.user.user.field_vet_id_number
+    - field.field.user.user.user_picture
+    - image.style.user_compact_image
+  module:
+    - address
+    - entity_reference_revisions
+    - image
+    - link
+    - options
+    - telephone
+    - text
+    - user
+_core:
+  default_config_hash: q3PEEoujwsEPNK7e-clmEc7dEA-VqIz5h7EOxZz4jRc
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_license_id_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 36
+    region: content
+  field_license_state:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 35
+    region: content
+  field_license_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  field_personal_training_plan:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 32
+    region: content
+  field_private_profile:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_user_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  field_user_age_range:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_user_bio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_user_blog_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_user_blog_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_user_consultant:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_user_consultant_expert_in:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_user_consultant_ext_bio:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_user_current_school:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_user_designations:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_user_gender:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_user_linkedin_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_user_opt_out_of_emails:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_user_org_employee_ids:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_user_org_group_member:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_user_organization:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_user_phone:
+    type: telephone_link
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_user_practice_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_user_prefix:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_user_prof_interests:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_user_prof_memberships:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_user_school:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_user_specialty_designation:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_user_suffix:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  field_user_title:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  field_user_twitter_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_user_website:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  field_vet_id_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 33
+    region: content
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: user_compact_image
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_created_by: true
+  langcode: true
+  linked_username: true
+  member_for: true
+  private_message_link: true
+  profile_customer: true
+  search_api_excerpt: true
+  user_connection_links: true

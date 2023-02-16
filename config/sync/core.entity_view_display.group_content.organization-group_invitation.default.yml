@@ -1,0 +1,46 @@
+uuid: 7209391b-6813-47cf-805f-e68b7f2040b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.organization-group_invitation.group_roles
+    - field.field.group_content.organization-group_invitation.invitation_status
+    - field.field.group_content.organization-group_invitation.invitee_mail
+    - group.content_type.organization-group_invitation
+id: group_content.organization-group_invitation.default
+targetEntityType: group_content
+bundle: organization-group_invitation
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  invitation_status:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: -2
+    region: content
+  invitee_mail:
+    type: email_mailto
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -3
+    region: content
+hidden:
+  entity_id: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

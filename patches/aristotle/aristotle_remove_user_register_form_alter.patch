@@ -1,0 +1,27 @@
+diff --git a/aristotle.theme b/aristotle.theme
+index c21ed1b..4798dfe 100644
+--- a/aristotle.theme
++++ b/aristotle.theme
+@@ -786,22 +786,6 @@ function aristotle_form_user_pass_alter(&$form, FormStateInterface $form_state,
+   $form['#action'] = Url::fromRoute('user.pass')->toString();
+ }
+ 
+-/**
+- * Implements hook_form_FORM_ID_alter().
+- */
+-function aristotle_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+-  if (!\Drupal::currentUser()->isAnonymous()) {
+-    return;
+-  }
+-
+-  $form['account']['mail']['#attributes']['placeholder'] = $form['account']['mail']['#title'] ?? t('Email address');
+-  $form['account']['name']['#attributes']['placeholder'] = $form['account']['name']['#title'] ?? t('Username');
+-  $form['user_picture']['#access'] = FALSE;
+-  $form['contact']['#access'] = FALSE;
+-  $form['timezone']['#access'] = FALSE;
+-  $form['#action'] = Url::fromRoute('user.register')->toString();
+-}
+-
+ /**
+  * Implements hook_form_FORM_ID_alter().
+  */

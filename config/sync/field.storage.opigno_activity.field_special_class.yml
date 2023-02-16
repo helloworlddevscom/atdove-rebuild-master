@@ -1,0 +1,21 @@
+uuid: 2105c767-048d-41c0-ba0b-63b6889d6d86
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+id: opigno_activity.field_special_class
+field_name: field_special_class
+entity_type: opigno_activity
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

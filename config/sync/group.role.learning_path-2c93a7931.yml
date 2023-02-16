@@ -1,0 +1,17 @@
+uuid: 5466ac53-d822-45de-a090-561395fdf92c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+  enforced:
+    config:
+      - user.role.billing_admin
+id: learning_path-2c93a7931
+label: 'Billing Admin'
+weight: 7
+internal: true
+audience: outsider
+group_type: learning_path
+permissions_ui: false
+permissions: {  }

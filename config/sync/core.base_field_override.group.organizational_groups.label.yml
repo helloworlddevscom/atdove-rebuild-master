@@ -1,0 +1,18 @@
+uuid: 8594bdc9-53db-4f4e-b77e-fb2838258281
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+id: group.organizational_groups.label
+field_name: label
+entity_type: group
+bundle: organizational_groups
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

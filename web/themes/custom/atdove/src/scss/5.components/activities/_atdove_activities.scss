@@ -1,0 +1,148 @@
+// Atdove Activities including Videos and Articles and Quizzes
+
+.atdove-activity-content {
+  display: inline-flex;
+  padding: 30px 0;
+  .opigno-search-activity-buttons {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+  }
+  .opigno_activity {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+
+}
+
+.atdove-activity-body {
+  width: 75%;
+  p {
+    padding: 5px 0;
+    font-size: 20px;
+    color: #000;
+    line-height: 1.4em;
+  }
+}
+
+.opigno_activity {
+  border: none;
+}
+
+.video-embed-field-responsive-video:after {
+  padding-bottom: 0;
+}
+
+.opigno-activity-box {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+}
+
+.atdove-comment {
+  position: relative;
+  padding: 20px 20px 40px 20px;
+  margin: 0 0 38px 0;
+  border: 1px solid #ccc;
+  border-left: 10px solid #0083A9;
+  .profile-pic {
+    border-radius: 0;
+    height: inherit;
+    overflow: hidden;
+    width: inherit;
+  }
+  .profile-pic {
+    div {
+      border-radius: 50%;
+      height: 3.125rem;
+      overflow: hidden;
+      width: 3.125rem;
+      background-color: #eee;
+      margin-right:14px;
+    }
+  }
+  .profile-pic {
+    img {
+      border-radius: 50%;
+      height: 3.125rem;
+      width: 3.125rem;
+      margin-right:14px;
+    }
+  }
+  body {
+    padding-left: 17px;
+  }
+  a {
+    background: none;
+    border: none;
+    color: #0083a9;
+    font-size: 16px;
+  }
+  footer {
+    .contextual-region{
+      min-width: 0;
+      min-height: 0;
+      padding: 0 0 4px;
+      border-radius:0;
+    }
+    .contextual-region:hover{
+      background-color:transparent;
+      color:inherit;
+    }
+  }
+  footer {
+    p {
+      font-size: 10px;
+      color: #666;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 0.5rem;
+    }
+  }
+  footer {
+    p {
+      a {
+        font-size: 10px;
+      }
+    }
+  }
+  .links {
+    float: right;
+    padding: 10px;
+    list-style: none;
+    li {
+      display: inline;
+      padding: 5px;
+    }
+  }
+}
+.indented .atdove-comment{
+  margin-left:40px;
+  border-left: 10px solid var(--desktop-button-color);;
+}
+
+.atdove-article-wrapper {
+  display: inline-flex;
+}
+
+.atdove-article-title {
+  padding: 0 0 0 20px;
+  width: 70%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+// Quizzes
+
+.atdove-submit-quiz-wrapper {
+  display: table;
+  margin: 60px auto;
+  padding: 20px;
+}
+.atdove-submit-quiz-button {
+  padding: 20px;
+  background: #4ad3b2;
+  color: black;
+  font-weight: 600;
+  border-radius: 12px;
+}

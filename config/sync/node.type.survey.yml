@@ -1,0 +1,18 @@
+uuid: 3e5e12aa-4bab-415e-9f4a-cd3f7db7476f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Survey
+type: survey
+description: 'AtDove Surveys'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

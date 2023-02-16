@@ -1,0 +1,17 @@
+uuid: 8facf879-e823-4895-8ccf-4ce6c165f36e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.subscriber
+id: organizational_groups-007ad607a
+label: Subscriber
+weight: 5
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,27 @@
+uuid: 8ff7f0d6-5d15-434d-b7ae-44e15d052093
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: XpaW8xVmJZ3p4lsL6R6fd475QKJYrGhtUMYv4edlmhI
+id: atdove_pagetitle
+theme: atdove
+region: top
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "<front>\r\n/search\r\n/user/login\r\n/article/*\r\n/video/*\r\n/bookmarks\r\n/group/*/training-plans\r\n/group/*/certificates\r\n/group/*/assignments"

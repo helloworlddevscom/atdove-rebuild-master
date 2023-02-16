@@ -1,0 +1,36 @@
+aristotle_home_page_settings:
+  aristotle_use_home_page_markup: 0
+  aristotle_home_page_slides:
+    1:
+      aristotle_home_page_image_path: Trient-0014.jpg
+      aristotle_home_page_image_upload: {  }
+    actions: {  }
+aristotle_menu_source: main
+aristotle_menu_show_for_anonymous: 0
+logo:
+  path: themes/custom/atdove/logo.png
+  use_default: false
+logo_path_anonymous: Logo-Opigno-3-dark.svg
+features:
+  node_user_picture: false
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+favicon:
+  path: themes/custom/atdove/favicon.ico
+  use_default: false
+aristotle_use_header_background: 0
+aristotle_header_image_path: ''
+aristotle_header_image_upload: {  }
+mobile_app_premium_logo: 0
+aristotle_css_override_content: ''
+aristotle_css_override_fid: null
+browser_sync:
+  enabled: false
+  host: localhost
+  port: 3000
+clear_registry: false
+ie_enabled: false
+ie_enabled_versions:
+  ie8: false
+  ie9: false

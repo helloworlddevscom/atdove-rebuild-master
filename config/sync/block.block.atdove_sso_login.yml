@@ -1,0 +1,20 @@
+uuid: 90678720-58df-432a-8312-7b88f25ece1a
+langcode: en
+status: false
+dependencies:
+  module:
+    - atdove_sso
+  theme:
+    - atdove
+id: atdove_sso_login
+theme: atdove
+region: disabled
+weight: 0
+provider: null
+plugin: atdove_sso_login
+settings:
+  id: atdove_sso_login
+  label: 'Scrub In'
+  label_display: visible
+  provider: atdove_sso
+visibility: {  }

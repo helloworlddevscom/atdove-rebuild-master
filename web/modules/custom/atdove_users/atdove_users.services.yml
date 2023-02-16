@@ -1,0 +1,8 @@
+services:
+  atdove_users.atdove_users_forms_event_subscriber:
+    class: Drupal\atdove_users\EventSubscriber\AtDoveUsersFormsEventSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments:
+      - '@entity_type.manager'
+      - '@current_route_match'

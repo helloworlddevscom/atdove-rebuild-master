@@ -1,0 +1,8 @@
+atdove_subscriptions.subscribe:
+  title: 'Subscribe'
+  route_name: atdove_subscriptions.subscribe
+  description: 'Subscribe'
+  menu_name: main
+  class: Drupal\atdove_subscriptions\Plugin\Menu\AtDoveSubscribeMenuLink
+  cache_contexts:
+    - user.roles

@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: FJ7FfwlYzcbFfG0AqVPlqsLJIRhkzS1Rv6eO1vssSkM
+enabled: false
+settings:
+  client_id: dovelewis.org.oidc-app-v1.66ffd0db-532e-483e-bcab-b00313701f0c
+  client_secret: RXj0hWMxuFIV6lecAtNZRxFsJ
+  authorization_endpoint: 'https://connect.openathens.net/oidc/auth'
+  token_endpoint: 'https://connect.openathens.net/oidc/token'
+  userinfo_endpoint: 'https://connect.openathens.net/oidc/userinfo'
+  redirect_url: ''

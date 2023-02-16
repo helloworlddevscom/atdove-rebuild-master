@@ -1,0 +1,147 @@
+#
+# Default/Lando Behat configuration.
+#
+default:
+  calls:
+    error_reporting: 7 # value of E_ERROR | E_WARNING | E_PARSE
+  suites:
+    default:
+      filters:
+        tags: "~@wip&&~@notest&&~@manual"
+      paths:
+        features: '%paths.base%/features'
+        bootstrap: '%paths.base%/features/bootstrap'
+      contexts:
+        - Drupal\Tests\Behat\FeatureContext
+        - Drupal\Tests\Behat\BrowserResponseContext
+        - Drupal\Tests\Behat\OpignoContext
+        - Drupal\Tests\Behat\ElementContext
+        - Drupal\Tests\Behat\EntityContext
+        - Drupal\Tests\Behat\StripeWebhookContext
+        - Drupal\Tests\Behat\GroupContentContext
+        - Drupal\Tests\Behat\GroupContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - DrevOps\BehatScreenshotExtension\Context\ScreenshotContext
+        - FailAid\Context\FailureContext
+    notest:
+      filters:
+        tags: "@notest"
+      paths:
+        notest: '%paths.base%/notest'
+      contexts:
+        - Drupal\Tests\Behat\FeatureContext
+        - Drupal\Tests\Behat\BrowserResponseContext
+        - Drupal\Tests\Behat\OpignoContext
+        - Drupal\Tests\Behat\ElementContext
+        - Drupal\Tests\Behat\EntityContext
+        - Drupal\Tests\Behat\StripeWebhookContext
+        - Drupal\Tests\Behat\GroupContentContext
+        - Drupal\Tests\Behat\GroupContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      base_url: https://atdove-rebuild.lando
+      files_path: "%paths.base%/features/bootstrap/TestFiles"
+      browser_name: chrome
+      javascript_session: selenium2
+      selenium2:
+        wd_host: http://selenium-chrome:4444/wd/hub
+        browser: chrome
+        capabilities:
+          marionette: null
+          extra_capabilities:
+            chromeOptions:
+              args:
+                - "--start-maximized"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: "drupal"
+      drupal:
+        drupal_root: '%paths.base%/../../web'
+      region_map:
+        admin: "#admin-tbd"
+        toolbar: "nav#toolbar-bar"
+        messages: "div[data-drupal-messages]"
+        userDropDownMenu: "header .block-notifications__item--user-menu ul.user-menu-list"
+        group admin drop down menu: "ul.group-admin-links"
+        tabs: "div#blockTabs"
+        org admin menu: "nav#block-menu-org-admin"
+        group operations: "#block-groupoperations"
+      selectors:
+        error_message_selector: '.messages.messages--error'
+        message_selector: '.messages'
+        success_message_selector: '.messages.messages--status'
+      subcontexts:
+        paths:
+          - "%paths.base%/../../web/modules"
+      text:
+        username_field: "Email address"
+        log_in: "Scrub In"
+      drush:
+        alias: '@self'
+        binary: '%paths.base%/../../vendor/bin/drush'
+        root: '%paths.base%/../../web'
+    # Takes html snapshot when scenario is annotated @api
+    # meaning Goutte driver is used.
+    # https://github.com/forceedge01/behat-fail-aid
+    FailAid\Extension:
+      screenshot:
+        directory: '/app/tests/behat/results'
+        mode: default
+        autoClean: false
+        size: 1444x1280
+    #        hostDirectory: /tmp/$USER/failures/
+    #        hostUrl: http://ci/failures/$BRANCH_NAME/$JOB_NUMBER/failures/
+    # Takes html snapshot when scenario is annotated @api
+    # meaning Goutte driver is used. Takes screenshot when
+    # scenario is annotated @javascript, meaning Selenium
+    # driver is used. Including this because FailAid
+    # is unreliable on CircleCI.
+    # https://github.com/drevops/behat-screenshot
+    DrevOps\BehatScreenshotExtension:
+      dir: '%paths.base%/results'
+      fail: true
+      fail_prefix: 'failed_'
+      purge: false
+    # Takes screenshot only when scenario is annotated @javascript
+    # meaning Selenium driver is used.
+    # https://github.com/elvetemedve/behat-screenshot
+    # https://github.com/elvetemedve/behat-screenshot/issues/47
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: '/app/tests/behat/results'
+          clear_screenshot_directory: false  # Enable removing all images before each test run. It is false by default.
+
+# Configuration overrides for CircleCI.
+circleci:
+  suites:
+    default:
+      filters:
+        tags: "~@wip&&~@notest&&~@local&&~@manual"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://drupal-circleci-behat.localhost
+      selenium2:
+        wd_host: http://drupal-circleci-behat.localhost:4444/wd/hub
+        capabilities:
+          browser: chrome
+          extra_capabilities:
+            chromeOptions:
+              w3c: false
+    FailAid\Extension:
+      screenshot:
+        directory: '/home/circleci/project/tests/behat/results'
+    DrevOps\BehatScreenshotExtension:
+      dir: '/home/circleci/project/tests/behat/results'
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: '/home/circleci/project/tests/behat/results'

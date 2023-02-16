@@ -1,0 +1,17 @@
+diff --git a/src/Entity/Access/PrivateMessageThreadAccessControlHandler.php b/src/Entity/Access/PrivateMessageThreadAccessControlHandler.php
+index 3a05324..8e892b2 100644
+--- a/src/Entity/Access/PrivateMessageThreadAccessControlHandler.php
++++ b/src/Entity/Access/PrivateMessageThreadAccessControlHandler.php
+@@ -25,10 +25,8 @@ class PrivateMessageThreadAccessControlHandler extends EntityAccessControlHandle
+       switch ($operation) {
+         case 'view':
+           if ($entity->isMember($account->id())) {
+-            $messages = $entity->filterUserDeletedMessages($account);
+-            if (count($messages)) {
+-              return AccessResult::allowed();
+-            }
++            // PATCH: Allow access. We don't care about message count.
++            return AccessResult::allowed();
+           }
+ 
+           break;

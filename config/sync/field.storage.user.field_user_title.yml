@@ -1,0 +1,93 @@
+uuid: 7c361bb9-8970-4c62-9485-fbbd649159a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_title
+field_name: field_user_title
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: (none)
+      label: (none)
+    -
+      value: CEO
+      label: CEO
+    -
+      value: CFO
+      label: CFO
+    -
+      value: 'CSR (Client Service Representative)'
+      label: 'CSR (Client Service Representative)'
+    -
+      value: 'Executive Director'
+      label: 'Executive Director'
+    -
+      value: 'Head Technician'
+      label: 'Head Technician'
+    -
+      value: 'HR Manager'
+      label: 'HR Manager'
+    -
+      value: Instructor
+      label: Instructor
+    -
+      value: 'Kennel Assistant'
+      label: 'Kennel Assistant'
+    -
+      value: 'Medical Director'
+      label: 'Medical Director'
+    -
+      value: 'Practice Manager'
+      label: 'Practice Manager'
+    -
+      value: 'Practice Owner'
+      label: 'Practice Owner'
+    -
+      value: Professor
+      label: Professor
+    -
+      value: 'Program Director'
+      label: 'Program Director'
+    -
+      value: Receptionist
+      label: Receptionist
+    -
+      value: Student
+      label: Student
+    -
+      value: Technician
+      label: Technician
+    -
+      value: 'Technician Assistant'
+      label: 'Technician Assistant'
+    -
+      value: Veterinarian
+      label: Veterinarian
+    -
+      value: Vendor
+      label: Vendor
+    -
+      value: 'Veterinary Assistant'
+      label: 'Veterinary Assistant'
+    -
+      value: 'Operations Manager'
+      label: 'Operations Manager'
+    -
+      value: Other
+      label: Other
+    -
+      value: 'Other Manager'
+      label: 'Other Manager'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

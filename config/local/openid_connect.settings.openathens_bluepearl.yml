@@ -1,0 +1,8 @@
+enabled: true
+settings:
+  redirect_url: 'https://atdove-rebuild.lando/atdove-sso/openathens_bluepearl'
+  client_id: 'dovelewis.org.oidc-app-v1.29da8a68-5e98-4fdb-911b-e818f19bd975'
+  client_secret: 'V47Jb92ubpdGNMYyzs9PrGVqY'
+  authorization_endpoint: 'https://connect.openathens.net/oidc/auth'
+  token_endpoint: 'https://connect.openathens.net/oidc/token'
+  userinfo_endpoint: 'https://connect.openathens.net/oidc/userinfo'

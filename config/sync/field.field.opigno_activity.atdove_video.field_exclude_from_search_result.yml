@@ -1,0 +1,21 @@
+uuid: b8bd45de-3147-4e26-99d1-b2cf32fe27da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_exclude_from_search_result
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - search_api_exclude_entity
+id: opigno_activity.atdove_video.field_exclude_from_search_result
+field_name: field_exclude_from_search_result
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Exclude From Search Results'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

@@ -1,0 +1,5 @@
+services:
+  atdove_migrate.subscriber:
+    class: Drupal\atdove_migrate\EventSubscriber\AtDoveMigrateSubscriber
+    tags:
+    - { name: event_subscriber }

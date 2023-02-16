@@ -1,0 +1,28 @@
+uuid: 5201ceb9-7f4a-43f8-a59a-d5b732a72293
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_blog
+    - node.type.atdove_ad
+    - node.type.blog
+id: node.atdove_ad.field_related_blog
+field_name: field_related_blog
+entity_type: node
+bundle: atdove_ad
+label: 'Related Blog Entries'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

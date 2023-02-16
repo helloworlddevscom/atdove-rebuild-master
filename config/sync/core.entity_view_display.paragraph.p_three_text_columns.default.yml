@@ -1,0 +1,67 @@
+uuid: 526fa88f-e4b6-4714-ac50-d427b294eaa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_three_text_columns.field_p_col_1_heading
+    - field.field.paragraph.p_three_text_columns.field_p_col_1_text
+    - field.field.paragraph.p_three_text_columns.field_p_col_2_heading
+    - field.field.paragraph.p_three_text_columns.field_p_col_2_text
+    - field.field.paragraph.p_three_text_columns.field_p_col_3_heading
+    - field.field.paragraph.p_three_text_columns.field_p_col_3_text
+    - paragraphs.paragraphs_type.p_three_text_columns
+id: paragraph.p_three_text_columns.default
+targetEntityType: paragraph
+bundle: p_three_text_columns
+mode: default
+content:
+  field_p_col_1_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_p_col_1_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_col_2_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_p_col_2_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_p_col_3_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_p_col_3_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

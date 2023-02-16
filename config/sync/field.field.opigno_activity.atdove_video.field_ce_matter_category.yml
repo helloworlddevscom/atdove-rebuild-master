@@ -1,0 +1,21 @@
+uuid: 4caf67ae-a85c-40e2-9887-78fb9d990319
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_ce_matter_category
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - options
+id: opigno_activity.atdove_video.field_ce_matter_category
+field_name: field_ce_matter_category
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'CE Matter Category'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

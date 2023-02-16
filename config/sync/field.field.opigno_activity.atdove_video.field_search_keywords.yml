@@ -1,0 +1,19 @@
+uuid: 87a2f02f-f6de-4a1b-a29c-71ef3c4c0394
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_search_keywords
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_search_keywords
+field_name: field_search_keywords
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Search Keywords'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

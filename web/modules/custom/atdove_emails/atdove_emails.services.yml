@@ -1,0 +1,13 @@
+services:
+  atdove_emails.atdove_emails_entity_event_subscriber:
+    class: Drupal\atdove_emails\EventSubscriber\AtdoveEmailsEntityEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_emails.atdove_emails_cron_event_subscriber:
+    class: Drupal\atdove_emails\EventSubscriber\AtDoveEmailsCronEventSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments:
+      - '@entity_type.manager'
+      - '@state'

@@ -1,0 +1,27 @@
+uuid: ec26eccd-ca8e-4127-a45c-84ae0e69a22f
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_license_type
+field_name: field_license_type
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: vet
+      label: Veterinarian
+    -
+      value: tech
+      label: 'Veterinary tech'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

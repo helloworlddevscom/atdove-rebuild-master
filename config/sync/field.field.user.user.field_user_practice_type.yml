@@ -1,0 +1,21 @@
+uuid: 2020bb73-b4b4-4bfc-9ad8-74b817bd1872
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_practice_type
+  module:
+    - options
+    - user
+id: user.user.field_user_practice_type
+field_name: field_user_practice_type
+entity_type: user
+bundle: user
+label: 'Practice Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

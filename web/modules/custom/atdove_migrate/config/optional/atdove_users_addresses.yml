@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_users_addresses
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: atdove_users
+label: 'User accounts'
+source:
+  plugin: d7_user
+process:
+  uid: uid
+  field_user_address:
+    plugin: addressfieldsmigration
+    source: uid
+destination:
+  plugin: entity:user
+

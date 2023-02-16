@@ -1,0 +1,29 @@
+uuid: baaf0192-a07d-4009-8547-2d1f1376f22c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_related_ads
+    - node.type.atdove_ad
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_related_ads
+field_name: field_related_ads
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Related Ads'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      atdove_ad: atdove_ad
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

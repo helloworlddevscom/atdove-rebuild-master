@@ -1,0 +1,28 @@
+uuid: 807e25fc-aee2-4cf4-9fba-84627bdcf667
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.site_search
+  module:
+    - system
+    - views
+  theme:
+    - atdove
+id: exposedformsite_searchsearch_results_page
+theme: atdove
+region: content
+weight: -14
+provider: null
+plugin: 'views_exposed_filter_block:site_search-search_results_page'
+settings:
+  id: 'views_exposed_filter_block:site_search-search_results_page'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search

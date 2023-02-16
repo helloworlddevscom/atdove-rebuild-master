@@ -1,0 +1,56 @@
+uuid: c58dec3f-3010-435c-b246-3dc810055aaa
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_node_faq
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (faqs)'
+source:
+  plugin: d7_node_atdove
+  node_type: faq
+process:
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  nid: nid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  body: body
+  field_help_category: field_help_category
+  field_related_faqs: field_related_faqs_new
+  field_insert_image: field_insert_image
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_publish_date:
+    plugin: sub_process
+    source: field_publish_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  uid: uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+destination:
+  plugin: 'entity:node'
+  default_bundle: faq
+migration_dependencies: null

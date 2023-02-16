@@ -1,0 +1,184 @@
+#block-tabs ul {
+	display: flex;
+	list-style: none;
+  padding: 10px 0;
+}
+
+#block-tabs li {
+	border-right: 1px solid gray;
+    padding: 0 20px;
+}
+
+#block-menu-org-admin ul {
+	display: flex;
+	list-style: none;
+}
+
+
+#block-menu-org-admin li {
+	border-right: 1px solid gray;
+    padding: 0 20px;
+}
+
+#block-primaryadminactions .block__content {
+	padding: 20px 0;
+	display: flex;
+	list-style: none;
+}
+
+#block-primaryadminactions li {
+    padding: 0 20px;
+}
+
+.atdove-article-image {
+	width: 15%;
+}
+
+.stripe-subscribe-status-unsubscribed {
+
+}
+
+.ui-autocomplete {
+  z-index: 10000;
+}
+
+#sidebar-first {
+  display: block !important;
+}
+
+#block-backlinkblock {
+  position: relative;
+  padding: 0 0 4em 0;
+}
+
+.page-my-assignments .block-page-title-block {
+  display: none;
+}
+
+.page-entity-user-canonical .content-box__title {
+  text-align: left;
+}
+.status-Failed {
+  color: red;
+}
+
+.atdove-main-menu {
+  display: flex;
+  height: 65px;
+  padding: 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid lightgrey;
+}
+.atdove-main-menu li {
+  display: inline-flex;
+  list-style: none;
+  padding: 20px;
+}
+
+.atdove-main-menu li a {
+  border-right: 1px solid lightgray;
+  padding-right: 35px;
+}
+
+.dialog-off-canvas-main-canvas .page-main>.container {
+  padding-top: 0;
+}
+
+#block-mainnavigation {
+	display: none;
+}
+
+.user-menu-item.achievements{
+  display: none;
+}
+
+.user-info__section-top .user-info-connections {
+  display: none !important;
+}
+
+.user-menu-item.my-orgs{
+  display: none;
+}
+
+.view-flag-bookmark #edit-submit--2 {
+	display: none;
+}
+
+.view-activity-bookmarks #edit-submit--4 {
+	display: none;
+}
+
+.view-activity-bookmarks .flag-activity-bookmark span {
+	display: none;
+}
+
+#edit-field-completed-value-1-wrapper .fieldset-wrapper {
+  display: inline-flex;
+}
+
+#edit-field-completed-value-1-wrapper .fieldset-legend {
+  font-size: .875rem;
+}
+
+#edit-field-completed-value-1-wrapper legend {
+  margin-bottom: 0;
+}
+
+.login-links {
+  display: flex;
+  padding: 10px 0;
+}
+
+.login-links a {
+  border-right: 1px solid gray;
+  padding: 0 20px;
+}
+
+.page-user-password .login-links {
+  display: none;
+}
+
+#block-atdoveusermessage .link-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 2% 40%;
+  max-width: 30%;
+}
+
+#edit-field-completed-value-wrapper .fieldset-legend {
+  font-size: .875rem;
+}
+#edit-field-completed-value-wrapper legend {
+  font-size: .875rem;
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+#edit-field-completed-value-wrapper .fieldset-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+header.page-header .block-notifications__item {
+  margin-left: 10px;
+}
+
+.page-view-subgroups-training-plans .content-box__title {
+  display: none;
+}
+
+.page-view-subgroups-training-plans .vbo-view-form {
+  text-align: center;
+}
+
+.statistics-table a {
+  color: var(--desktop-link);
+}
+
+.statistics-table .details {
+  text-align: right;
+}
+
+.statistics-table .block__title {
+  text-align: center;
+}

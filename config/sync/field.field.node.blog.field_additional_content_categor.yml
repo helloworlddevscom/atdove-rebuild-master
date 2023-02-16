@@ -1,0 +1,29 @@
+uuid: ff48d637-cbad-445c-9c1d-51af4d804799
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_content_categor
+    - node.type.blog
+    - taxonomy.vocabulary.additional_content_categories
+id: node.blog.field_additional_content_categor
+field_name: field_additional_content_categor
+entity_type: node
+bundle: blog
+label: 'Additional Content Categories'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      additional_content_categories: additional_content_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

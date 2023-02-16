@@ -1,0 +1,25 @@
+uuid: 1d851c6c-fa2a-49bd-ac24-35052e805018
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_member_limit
+    - group.type.organization
+id: group.organization.field_member_limit
+field_name: field_member_limit
+entity_type: group
+bundle: organization
+label: 'Member Limit'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,29 @@
+uuid: 99cc6467-9744-474c-9991-6732d90bf62e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_quiz
+    - node.type.assignment
+    - opigno_module.opigno_activity_type.opigno_h5p
+id: node.assignment.field_related_quiz
+field_name: field_related_quiz
+entity_type: node
+bundle: assignment
+label: 'Related Quiz'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_activity'
+  handler_settings:
+    target_bundles:
+      opigno_h5p: opigno_h5p
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

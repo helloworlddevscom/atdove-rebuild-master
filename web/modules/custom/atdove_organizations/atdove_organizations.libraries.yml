@@ -1,0 +1,7 @@
+alert_stripe_field:
+  version: 1.0
+  js:
+    src/Scripts/alert_stripe_field.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

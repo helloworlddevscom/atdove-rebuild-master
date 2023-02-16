@@ -1,0 +1,21 @@
+uuid: c3153ecf-0e50-4587-ab5f-3da58db93f1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - text
+_core:
+  default_config_hash: AolNFH8NyLMXPdAxxgMD6E-SWaSXsy4GoQLBLp8rQNE
+id: group.field_course_description
+field_name: field_course_description
+entity_type: group
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

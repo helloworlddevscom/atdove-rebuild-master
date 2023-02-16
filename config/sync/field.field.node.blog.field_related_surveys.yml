@@ -1,0 +1,28 @@
+uuid: 03b8e352-2368-448b-8d00-9c76a0552805
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_surveys
+    - node.type.blog
+    - node.type.survey
+id: node.blog.field_related_surveys
+field_name: field_related_surveys
+entity_type: node
+bundle: blog
+label: 'Related Surveys'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      survey: survey
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

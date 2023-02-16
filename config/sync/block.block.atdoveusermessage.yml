@@ -1,0 +1,33 @@
+uuid: ac75a171-a5b3-430c-9fe7-e50d893aa3a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - system
+    - user
+  theme:
+    - atdove
+id: atdoveusermessage
+theme: atdove
+region: content
+weight: -8
+provider: null
+plugin: atdove_user_message_block
+settings:
+  id: atdove_user_message_block
+  label: 'AtDove User Message'
+  label_display: '0'
+  provider: atdove_opigno
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/user/*\r\n!/user/login"
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

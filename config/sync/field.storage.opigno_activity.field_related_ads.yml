@@ -1,0 +1,20 @@
+uuid: 240ad354-18f2-43e3-b6c4-c1a11b7a0d64
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - opigno_module
+id: opigno_activity.field_related_ads
+field_name: field_related_ads
+entity_type: opigno_activity
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

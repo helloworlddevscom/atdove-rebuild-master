@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Contains atdove_organizations.module.
+ */
+
+use Drupal\atdove_organizations\OrganizationsManager;
+  use Drupal\atdove_users\UsersManager;
+  use Drupal\block\Entity\Block;
+use Drupal\group\Entity\Group;
+use Drupal\user\Entity\User;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Block\BlockPluginInterface;
+
+// @TODO: Disallow access to catalog to users without active org.
+// @TODO: Add view of members on organization landing page which is visible
+// to all members. Similar to current site.
+
+/**
+ * Implements hook_theme().
+ */
+function atdove_organizations_theme($existing, $type, $theme, $path) {
+  return [
+    'block__atdove_organizations_home_description' => [
+      'variables' => [],
+      'template' => 'organization-home-description',
+      'path' => $path . '/templates/block',
+      'base hook' => 'block'
+    ],
+  ];
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function atdove_organizations_user_login(User $user) {
+  // Exclude some global roles from check for active license.
+  $privileged_roles = [
+    'administrator',
+    'billing_admin'
+  ];
+  $roles = $user->getRoles();
+  $privileged = false;
+  foreach($privileged_roles as $privileged_role) {
+    if (in_array($privileged_role, $roles)) {
+      $privileged = true;
+      break;
+    }
+  }
+  if (!$privileged) {
+    // Check if user belongs to organization with active license and grant/revoke global role.
+    OrganizationsManager::verifyActiveOrgMember($user);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @TODO: Replace with the approach taken in atdove_organizations_entity_form_display_alter().
+ * We should instead create two different form modes and switch between them per role.
+ */
+function atdove_organizations_form_alter(&$form, $form_state, $form_id) {
+  switch($form_id) {
+    // Organization Group edit form.
+    case 'group_organization_edit_form':
+      // Hide certain fields from most roles.
+      if (!UsersManager::userHasPrivilegedRole(\Drupal::currentUser())) {
+        $form['field_openid_client_id']['#access'] = false;
+        $form['field_allow_import_team_manageme']['#access'] = false;
+        $form['field_allow_employeeid']['#access'] = false;
+        $form['field_import_team_file']['#access'] = false;
+        $form['field_notes']['#access'] = false;
+      }
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_block_access().
+ *
+ * @todo Is there no way to do this in an OOP way?
+ */
+function atdove_organizations_block_access(Block $block, $operation, AccountInterface $account) {
+  // Control access to org_admin menu block depending on whether user is admin
+  // of current org or if user has an approved global role.
+  if ($operation == 'view' && $block->getPluginId() == 'system_menu_block:org_admin') {
+    $user = User::load($account->id());
+    $group_id = \Drupal::routeMatch()->getRawParameter('group');
+    if (empty($group_id)) {
+      return AccessResult::forbidden('No group id available on route.')->addCacheableDependency($block);
+    }
+
+    $group = Group::load($group_id);
+    if (empty($group)) {
+      return AccessResult::forbidden('Group does not exist.')->addCacheableDependency($block);
+    }
+
+    $group_type = $group->getGroupType()->id();
+    if ($group_type !== 'organization') {
+      return AccessResult::forbidden('Group is not an organization.')->addCacheableDependency($block);
+    }
+
+    if (OrganizationsManager::isUserOrgAdmin($user, $group)) {
+      return AccessResult::allowed()->addCacheableDependency($block);
+    }
+    else {
+      // Check if user has an approved global role.
+      if (UsersManager::userHasPrivilegedRole(\Drupal::currentUser())) {
+        return AccessResult::allowed()->addCacheableDependency($block);
+      }
+
+      return AccessResult::forbidden('User does not have organization-admin role within group or an approved global role.')->addCacheableDependency($block);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+atdove_organizations_create.select_license:
+  path: '/join'
+  defaults:
+    _controller: '\Drupal\atdove_organizations_create\Controller\SelectLicenseController::content'
+    _title: 'Pick Your Plan'
+  requirements:
+    _access: 'TRUE'
+atdove_organizations_create.create_acct_org_form_one:
+  path: '/join/create-account'
+  defaults:
+    _form: '\Drupal\atdove_organizations_create\Form\CreateAcctOrg\CreateAcctOrgFormStepOne'
+    _title: 'Create Account'
+  requirements:
+    _role: 'anonymous'
+atdove_organizations_create.create_acct_org_form_two:
+  path: '/join/create-organization'
+  defaults:
+    _form: '\Drupal\atdove_organizations_create\Form\CreateAcctOrg\CreateAcctOrgFormStepTwo'
+    _title: 'Create Organization'
+  requirements:
+    _role: 'anonymous'
+atdove_organizations_create.create_acct_org_form_three:
+  path: '/join/create-billing'
+  defaults:
+    _form: '\Drupal\atdove_organizations_create\Form\CreateAcctOrg\CreateAcctOrgFormStepThree'
+    _title: 'Add Billing Information'
+  requirements:
+    _role: 'anonymous'

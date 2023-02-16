@@ -1,0 +1,17 @@
+uuid: 9350106d-96c4-45d2-b909-c8dea080070e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.active_org_member
+id: organizational_groups-ae6d61818
+label: 'Active Organization Member'
+weight: 3
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

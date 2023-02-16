@@ -1,0 +1,17 @@
+uuid: 674496a0-bc2e-4704-b8e2-18b367879e23
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+  enforced:
+    config:
+      - user.role.active_org_member
+id: learning_path-ae6d61818
+label: 'Active Organization Member'
+weight: 3
+internal: true
+audience: outsider
+group_type: learning_path
+permissions_ui: false
+permissions: {  }

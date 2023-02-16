@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for AtDove SSO module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function atdove_sso_theme($existing, $type, $theme, $path) {
+  return [
+    'block__atdove_sso_login' => [
+      'template' => 'block--atdove-sso-login',
+      'path' => $path . '/templates/block',
+      'base hook' => 'block'
+    ]
+  ];
+}

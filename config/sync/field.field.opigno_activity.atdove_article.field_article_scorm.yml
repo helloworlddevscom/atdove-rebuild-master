@@ -1,0 +1,27 @@
+uuid: d4143fce-2a4f-4203-96b6-7ac0454ad2df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_article_scorm
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - opigno_scorm
+id: opigno_activity.atdove_article.field_article_scorm
+field_name: field_article_scorm
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Article Scorm'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: zip
+  file_directory: opigno_scorm
+  max_filesize: ''
+  description_field: 0
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: opigno_scorm_package

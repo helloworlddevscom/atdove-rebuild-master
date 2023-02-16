@@ -1,0 +1,27 @@
+uuid: 5df21493-e9db-4edf-8c83-d3bfe5309411
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_import_team_file
+    - group.type.organization
+  module:
+    - file
+id: group.organization.field_import_team_file
+field_name: field_import_team_file
+entity_type: group
+bundle: organization
+label: 'Import Team File'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: ''
+  description_field: false
+field_type: file

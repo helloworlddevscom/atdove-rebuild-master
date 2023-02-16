@@ -1,0 +1,14 @@
+uuid: fb204e47-36a2-41f1-915a-d910d897f018
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.group_subscriber
+  module:
+    - user
+id: user_add_role_action.group_subscriber
+label: 'Add the Group Subscriber role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: group_subscriber

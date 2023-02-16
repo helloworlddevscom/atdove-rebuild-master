@@ -1,0 +1,21 @@
+uuid: 535d6da6-d663-4b53-a2f6-6d778b8cfe39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_ce_matter_category
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - options
+id: opigno_activity.atdove_article.field_ce_matter_category
+field_name: field_ce_matter_category
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'CE Matter Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

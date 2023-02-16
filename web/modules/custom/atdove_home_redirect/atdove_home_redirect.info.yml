@@ -1,0 +1,5 @@
+name: AtDove Home Redirect
+description: Home page redirect logic
+core_version_requirement: ^8.8 || ^9
+type: module
+package: AtDove

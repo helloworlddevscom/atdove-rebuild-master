@@ -1,0 +1,37 @@
+uuid: 1df96787-435a-47ad-8fd2-00717afe86bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_clinic_address
+    - group.type.organization
+  module:
+    - address
+id: group.organization.field_clinic_address
+field_name: field_clinic_address
+entity_type: group
+bundle: organization
+label: 'Clinic Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+  fields: {  }
+field_type: address

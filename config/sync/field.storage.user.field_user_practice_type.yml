@@ -1,0 +1,165 @@
+uuid: 753ae9ab-8040-469b-97c0-1f8c0435e599
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_practice_type
+field_name: field_user_practice_type
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Student
+      label: Student
+    -
+      value: Retired
+      label: Retired
+    -
+      value: 'University Teaching Hospital'
+      label: 'University Teaching Hospital'
+    -
+      value: 'General - Companion'
+      label: 'General - Companion'
+    -
+      value: 'General - Large'
+      label: 'General - Large'
+    -
+      value: 'General - Mixed'
+      label: 'General - Mixed'
+    -
+      value: 'General - Exotic'
+      label: 'General - Exotic'
+    -
+      value: 'General - Production'
+      label: 'General - Production'
+    -
+      value: 'General - Other'
+      label: 'General - Other'
+    -
+      value: 'Specialty/Referral - Alternative medicine'
+      label: 'Specialty/Referral - Alternative medicine'
+    -
+      value: 'Specialty/Referral - Anesthesiology'
+      label: 'Specialty/Referral - Anesthesiology'
+    -
+      value: 'Specialty/Referral - Animal behavior'
+      label: 'Specialty/Referral - Animal behavior'
+    -
+      value: 'Specialty/Referral - Avian (pet and ornamental)'
+      label: 'Specialty/Referral - Avian (pet and ornamental)'
+    -
+      value: 'Specialty/Referral - Bovine'
+      label: 'Specialty/Referral - Bovine'
+    -
+      value: 'Specialty/Referral - Canine'
+      label: 'Specialty/Referral - Canine'
+    -
+      value: 'Specialty/Referral - Cardiology'
+      label: 'Specialty/Referral - Cardiology'
+    -
+      value: 'Specialty/Referral - Chiropractic'
+      label: 'Specialty/Referral - Chiropractic'
+    -
+      value: 'Specialty/Referral - Clinical pathology'
+      label: 'Specialty/Referral - Clinical pathology'
+    -
+      value: 'Specialty/Referral - Clinical pharmacology'
+      label: 'Specialty/Referral - Clinical pharmacology'
+    -
+      value: 'Specialty/Referral - Dentistry'
+      label: 'Specialty/Referral - Dentistry'
+    -
+      value: 'Specialty/Referral - Dermatology'
+      label: 'Specialty/Referral - Dermatology'
+    -
+      value: 'Specialty/Referral - Diagnostic imaging'
+      label: 'Specialty/Referral - Diagnostic imaging'
+    -
+      value: 'Specialty/Referral - Equine'
+      label: 'Specialty/Referral - Equine'
+    -
+      value: 'Specialty/Referral - Emergency and critical care'
+      label: 'Specialty/Referral - Emergency and critical care'
+    -
+      value: 'Specialty/Referral - Exotics'
+      label: 'Specialty/Referral - Exotics'
+    -
+      value: 'Specialty/Referral - Feline'
+      label: 'Specialty/Referral - Feline'
+    -
+      value: 'Specialty/Referral - Internal medicine'
+      label: 'Specialty/Referral - Internal medicine'
+    -
+      value: 'Specialty/Referral - Laboratory animal medicine'
+      label: 'Specialty/Referral - Laboratory animal medicine'
+    -
+      value: 'Specialty/Referral - Microbiology'
+      label: 'Specialty/Referral - Microbiology'
+    -
+      value: 'Specialty/Referral - Neurology'
+      label: 'Specialty/Referral - Neurology'
+    -
+      value: 'Specialty/Referral - Nutrition'
+      label: 'Specialty/Referral - Nutrition'
+    -
+      value: 'Specialty/Referral - Oncology'
+      label: 'Specialty/Referral - Oncology'
+    -
+      value: 'Specialty/Referral - Ophthalmology'
+      label: 'Specialty/Referral - Ophthalmology'
+    -
+      value: 'Specialty/Referral - Parasitology'
+      label: 'Specialty/Referral - Parasitology'
+    -
+      value: 'Specialty/Referral - Pathology'
+      label: 'Specialty/Referral - Pathology'
+    -
+      value: 'Specialty/Referral - Poultry'
+      label: 'Specialty/Referral - Poultry'
+    -
+      value: 'Specialty/Referral - Preventive medicine'
+      label: 'Specialty/Referral - Preventive medicine'
+    -
+      value: 'Specialty/Referral - Theriogenology'
+      label: 'Specialty/Referral - Theriogenology'
+    -
+      value: 'Specialty/Referral - Radiology'
+      label: 'Specialty/Referral - Radiology'
+    -
+      value: 'Specialty/Referral - Shelter medicine'
+      label: 'Specialty/Referral - Shelter medicine'
+    -
+      value: 'Specialty/Referral - State veterinary medicine'
+      label: 'Specialty/Referral - State veterinary medicine'
+    -
+      value: 'Specialty/Referral - Sports medicine'
+      label: 'Specialty/Referral - Sports medicine'
+    -
+      value: 'Specialty/Referral - Surgery'
+      label: 'Specialty/Referral - Surgery'
+    -
+      value: 'Specialty/Referral - Toxicology'
+      label: 'Specialty/Referral - Toxicology'
+    -
+      value: 'Specialty/Referral - Zoo animals and wildlife'
+      label: 'Specialty/Referral - Zoo animals and wildlife'
+    -
+      value: 'Specialty/Referral - Livestock'
+      label: 'Specialty/Referral - Livestock'
+    -
+      value: 'Specialty/Referral - Camelid'
+      label: 'Specialty/Referral - Camelid'
+    -
+      value: 'Specialty/Referral - Industrial'
+      label: 'Specialty/Referral - Industrial'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

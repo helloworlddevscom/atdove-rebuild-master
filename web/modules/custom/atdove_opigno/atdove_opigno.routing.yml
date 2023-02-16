@@ -1,0 +1,99 @@
+# Custom Add to Training Form.
+atdove_opigno.assign_to_person_form:
+  path: '/ajax/atdove-opigno/assign-to-person-form/{opigno_activity}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::assignToPersonForm'
+  methods: ['POST']
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      opigno_activity:
+        type: entity:opigno_activity
+# Custom Add to Training Form.
+atdove_opigno.add_to_training_form:
+  path: '/ajax/atdove-opigno/add-to-training-form/{opigno_activity}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::addToTrainingForm'
+  methods: ['POST']
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      opigno_activity:
+        type: entity:opigno_activity
+atdove_opigno.assign_training_plan_form:
+  path: '/ajax/atdove-opigno/assign-training-plan-form/{group}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::assignTrainingForm'
+  methods: ['POST']
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      group:
+        type: entity:group
+atdove_opigno.submit_quiz_form:
+  path: '/ajax/atdove-opigno/submit-quiz/{opigno_activity}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::submitQuizForm'
+  methods: ['POST']
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      opigno_activity:
+        type: entity:opigno_activity
+atdove_opigno.modal_person:
+  path: 'free-trial/person'
+  defaults:
+    _title: 'Free Trial'
+    _controller: '\Drupal\atdove_opigno\Controller\FreeTrialModalController::modal_person'
+  requirements:
+    _permission: 'access content'
+atdove_opigno.modal_tp:
+  path: 'free-trial/tp'
+  defaults:
+    _title: 'Free Trial'
+    _controller: '\Drupal\atdove_opigno\Controller\FreeTrialModalController::modal_tp'
+  requirements:
+    _permission: 'access content'
+atdove_opigno.view:
+  path: 'atdove/certificate/{h5p_id}/{user_id}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveCertificateController::view'
+    _title: 'AtDove Certificate'
+  requirements:
+    _permission: 'access content'
+atdove_opigno.pdf:
+  path: 'atdove/certificate/pdf/{h5p_id}/{user_id}'
+  defaults:
+    _controller: '\Drupal\atdove_opigno\Controller\AtDoveCertificateController::viewPdf'
+    _title: 'AtDove Certificate'
+  requirements:
+    _permission: 'access content'
+
+# Custom Add to Training Form.
+# atdove_opigno.download_notes_form:
+#   path: '/ajax/atdove-opigno/download-notes-form/{opigno_activity}'
+#   defaults:
+#     _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::downloadNotesForm'
+#   methods: ['POST']
+#   requirements:
+#     _permission: 'view published content'
+#   options:
+#     parameters:
+#       opigno_activity:
+#         type: entity:opigno_activity
+# # Custom Add to Training Form.
+# atdove_opigno.bookmark_form:
+#   path: '/ajax/atdove-opigno/bookmark-form/{opigno_activity}'
+#   defaults:
+#     _controller: '\Drupal\atdove_opigno\Controller\AtDoveAddToTrainingController::bookmarkForm'
+#   methods: ['POST']
+#   requirements:
+#     _permission: 'view published content'
+#   options:
+#     parameters:
+#       opigno_activity:
+#         type: entity:opigno_activity

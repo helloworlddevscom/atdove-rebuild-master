@@ -1,0 +1,19 @@
+uuid: 5905cfac-db18-4787-bc44-de29d14298d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_external_contributors
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_external_contributors
+field_name: field_external_contributors
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'External Contributors'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

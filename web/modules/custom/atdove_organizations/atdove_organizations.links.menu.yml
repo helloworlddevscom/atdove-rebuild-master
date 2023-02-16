@@ -1,0 +1,48 @@
+# Module defined links for org_admin menu.
+atdove_organizations.admin.home:
+  title: 'Home'
+  description: 'Organization home'
+  route_name: entity.group.canonical
+  weight: 0
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+atdove_organizations.admin.edit:
+  title: 'Edit'
+  description: 'Edit organization'
+  route_name: entity.group.edit_form
+  weight: 1
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+atdove_organizations.admin.members:
+  title: 'Members'
+  description: 'View/edit members'
+  route_name: view.group_members.page_1
+  weight: 2
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+atdove_organizations.admin.invitations:
+  title: 'Invitations'
+  description: 'View/edit invitations'
+  route_name: view.group_invitations.page_1
+  weight: 3
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+atdove_organizations.admin.billing:
+  title: 'Billing'
+  description: 'View/edit billing information'
+  route_name: atdove_billing.stripe_customer_portal.forward
+  weight: 4
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+atdove_organizations.admin.sub_groups:
+  title: 'Sub-Groups'
+  description: 'See/Manage all subgroups of any given organization'
+  route_name: view.subgroups.subgroups_page
+  weight: 4
+  menu_name: org_admin
+  class: Drupal\atdove_organizations\Plugin\Menu\OrgAdmin\OrgAdminDefaultMenuLink
+
+
+
+
+

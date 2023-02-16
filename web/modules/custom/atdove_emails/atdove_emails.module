@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for AtDove Emails module.
+ */
+use Drupal\Core\Mail\MailFormatHelper;
+
+/**
+ * Implements hook_mail().
+ *
+ * Purpose: Send email. This is really redundant but it's how Drupal built it.
+ */
+function atdove_emails_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+  $body_trimmed =  trim(
+    preg_replace('/\s+/',' ', $params['body'])
+  );
+
+  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+  $message['from'] = \Drupal::config('system.site')->get('mail');
+  $message['subject'] = $params['subject'];
+  $message['body'][] = MailFormatHelper::wrapMail($body_trimmed);
+}

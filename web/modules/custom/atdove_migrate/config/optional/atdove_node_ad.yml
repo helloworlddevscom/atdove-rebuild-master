@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_node_ad
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (ads)'
+source:
+  plugin: d7_node_atdove
+  node_type: ad
+constants:
+  file_destination: 'sites/default/files/'
+process:
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  nid: nid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      summary: summary
+      format:
+        plugin: default_value
+        default_value: full_html
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_publish_date:
+    plugin: sub_process
+    source: field_publish_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  field_opigno_videos: field_related_videos
+  field_opigno_articles: field_related_articles
+  field_related_blog: field_related_blog
+  uid: uid
+  status:
+    -
+      plugin: skip_on_value
+      equals: true
+      source: status
+      method: row
+      value: 0
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  field_group_audience: gids
+destination:
+  plugin: 'entity:node'
+  default_bundle: atdove_ad
+  overwrite_properties:
+    - body
+migration_dependencies:
+  optional:
+    - upgrade_d7_node_type
+    - upgrade_d7_user
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
+  required:
+    - atdove_taxonomy_migration

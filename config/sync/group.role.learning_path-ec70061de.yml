@@ -1,0 +1,17 @@
+uuid: f67cbb68-0681-4aa4-a13e-0d154d994762
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+  enforced:
+    config:
+      - user.role.contributor
+id: learning_path-ec70061de
+label: Contributor
+weight: 6
+internal: true
+audience: outsider
+group_type: learning_path
+permissions_ui: false
+permissions: {  }

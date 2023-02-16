@@ -1,0 +1,43 @@
+uuid: fedd6253-b3be-4547-bf11-db101d8ddd19
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - system
+    - user
+  theme:
+    - atdove
+id: tabs
+theme: atdove
+region: content
+weight: -10
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Group Tabs'
+  label_display: visible
+  provider: core
+  primary: true
+  secondary: true
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      organization: organization
+      organizational_groups: organizational_groups
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/group/*/training-plans'

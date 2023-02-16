@@ -1,0 +1,17 @@
+uuid: efa119f1-6360-47c0-85d6-c5e90f832aba
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.active_org_member
+id: organization-ae6d61818
+label: 'Active Organization Member'
+weight: 3
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions: {  }

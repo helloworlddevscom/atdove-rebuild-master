@@ -1,0 +1,8 @@
+This file contains misc notes about the contents of composer.json.
+Because composer.json is JSON, we cannot add comments within the file itself.
+
+"Require": {
+ - Added drupal/group and drupal/entity using aliases in order to allow updating group
+ to version compatible with drupal/ginvite. drupal/group is a dependency of opigno/opigno_lms but is locked to 1.2
+ in their composer.json. Aliasing allows us to "meet" that requirement but actually use 1.4 instead, which
+ meets drupal/ginvite requirement. Once Opigno requires drupal/group 1.4, we can remove these two requires from our composer.json.

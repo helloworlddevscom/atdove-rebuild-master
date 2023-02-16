@@ -1,0 +1,13 @@
+diff --git a/src/Access/GroupContentCreateAccessCheck.php b/src/Access/GroupContentCreateAccessCheck.php
+index 46c0c30..ca19133 100644
+--- a/src/Access/GroupContentCreateAccessCheck.php
++++ b/src/Access/GroupContentCreateAccessCheck.php
+@@ -65,7 +65,7 @@ class GroupContentCreateAccessCheck implements AccessInterface {
+ 
+     // Only allow access if the user can create group content using the
+     // provided plugin or if he doesn't need access to do so.
+-    return AccessResult::allowedIf($access xor !$needs_access);
++    return AccessResult::allowedIf($access || !$needs_access);
+   }
+ 
+ }

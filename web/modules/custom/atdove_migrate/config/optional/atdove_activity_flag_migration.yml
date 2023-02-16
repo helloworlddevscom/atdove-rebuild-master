@@ -1,0 +1,29 @@
+id: atdove_activity_flag_migration
+label: AtDove Opigno Activity Flag Migration
+migration_group: atdove_flags
+source:
+  plugin: atdove_activity_flag_migration
+  constants:
+    entity_type: opigno_activity
+process:
+  field_type_exists:
+    plugin: skip_opigno_activity
+    method: row
+    source: entity_id
+  id: flagging_id
+  flag_id:
+    plugin: default_value
+    default_value: activity_bookmark
+  entity_id: entity_id
+  entity_type: 'constants/entity_type'
+  global:
+    plugin: default_value
+    default_value: 0
+  uid: uid
+  session_id: sid
+  created: timestamp
+destination:
+  plugin: entity:flagging
+  default_bundle: activity_bookmark
+migration_dependencies: {}
+

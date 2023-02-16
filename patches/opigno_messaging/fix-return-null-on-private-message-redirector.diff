@@ -1,0 +1,18 @@
+diff --git a/src/Controller/OpignoMessageThreadController.php b/src/Controller/OpignoMessageThreadController.php
+index c466ed3..01c0b7b 100644
+--- a/src/Controller/OpignoMessageThreadController.php
++++ b/src/Controller/OpignoMessageThreadController.php
+@@ -214,7 +214,12 @@ class OpignoMessageThreadController extends ControllerBase {
+     $members = [(int) $this->currentUser->id(), $uid];
+     $thread = $this->messageService->getThreadForMembers($members);
+     if (!$thread instanceof PrivateMessageThreadInterface) {
+-      return NULL;
++      $url = Url::fromRoute(
++        'entity.private_message_thread.canonical',
++        ['private_message_thread' => $thread->id()]
++      )->toString();
++
++      return new RedirectResponse($url);
+     }
+ 
+     // Prepare the url to the created thread.

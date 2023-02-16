@@ -1,0 +1,20 @@
+/**
+ * User account edit form.
+ */
+
+.user-form {
+  // The form is organized using field_group module,
+  // but some fields end up duplicated outside the group.
+  > .user-form-wrapper {
+    > .form-item-mail,
+    > .form-item-pass {
+      display: none;
+    }
+
+    .field-group-tabs-wrapper {
+      ~ .form-item {
+        display: none;
+      }
+    }
+  }
+}

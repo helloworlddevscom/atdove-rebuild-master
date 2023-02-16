@@ -1,0 +1,43 @@
+uuid: 89b46686-3609-4ea4-8476-5c3314bd579e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.opigno_activity.activity
+    - field.field.opigno_activity.opigno_h5p.field_opigno_articles
+    - field.field.opigno_activity.opigno_h5p.field_opigno_videos
+    - field.field.opigno_activity.opigno_h5p.field_quiz_body
+    - field.field.opigno_activity.opigno_h5p.opigno_h5p
+    - opigno_module.opigno_activity_type.opigno_h5p
+  module:
+    - opigno_h5p
+_core:
+  default_config_hash: 2SrJiDEVsJa-uxNwFN_cLWtBktoxDKuggSeVt0WX7XU
+id: opigno_activity.opigno_h5p.activity
+targetEntityType: opigno_activity
+bundle: opigno_h5p
+mode: activity
+content:
+  flag_activity_bookmark:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  opigno_h5p:
+    type: h5p_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_opigno_articles: true
+  field_opigno_videos: true
+  field_quiz_body: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true

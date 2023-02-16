@@ -1,0 +1,30 @@
+uuid: 2d44241f-199f-4d67-9f26-d9ce87f98c02
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+  theme:
+    - atdove
+id: groupoperations
+theme: atdove
+region: content
+weight: -12
+provider: null
+plugin: group_operations
+settings:
+  id: group_operations
+  label: 'Group Operations'
+  label_display: visible
+  provider: group
+  context_mapping:
+    group: '@group.group_route_context:group'
+visibility:
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      organization: organization
+      organizational_groups: organizational_groups

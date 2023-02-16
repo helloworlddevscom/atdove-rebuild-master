@@ -1,0 +1,19 @@
+uuid: 1e13ba74-7e8b-47fc-8229-60b6a82fd6fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_user_prof_memberships
+field_name: field_user_prof_memberships
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

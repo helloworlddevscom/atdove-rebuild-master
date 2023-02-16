@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+langcode: en
+uuid: 7c82c2c4-3283-4d31-8bfb-836fee15f414
+name: AtDove
+mail: messages@atdove.org
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/10424482
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

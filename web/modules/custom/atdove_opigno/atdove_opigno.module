@@ -1,0 +1,466 @@
+<?php
+
+use Drupal\group\Entity\Group;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Utility\Html;
+use Drupal\workspaces\ViewsQueryAlter;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+use Drupal\atdove_organizations\OrganizationsManager;
+use Drupal\atdove_users\UsersManager;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function atdove_opigno_invite_preprocess_html(&$variables) {
+  // Remove unwanted admin-learning-path class from Group
+  // edit form if Group type is Organization. Unwanted class
+  // comes from opigno_learning_path_preprocess_html().
+  // @TODO: Is this needed in Opigno 3.0?
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route == 'entity.group_content.add_form') {
+    $path = \Drupal::request()->getpathInfo();
+    $path_sections = explode('/', $path);
+    $group = Group::load($path_sections[2]);
+    $group_type = $group->bundle();
+
+    if ($group_type == 'organization') {
+      if (isset($variables['attributes']['class'])) {
+        foreach ($variables['attributes']['class'] as $key => $class) {
+          if ($class == 'admin-learning-path') {
+            unset($variables['attributes']['class'][$key]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function atdove_opigno_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    // Move our hook_theme_suggestions_alter() implementation to the end of the list.
+    // We need ours to run after opigno_learning_path module.
+    // @TODO: Is this needed in Opigno 3.0?
+    case 'theme_suggestions_alter':
+      $group = $implementations['atdove_opigno'];
+      unset($implementations['atdove_opigno']);
+      $implementations['atdove_opigno'] = $group;
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function atdove_opigno_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  switch ($hook) {
+    case 'region':
+      // Remove unwanted theming from Group content edit form
+      // if Group type is Organization. Unwanted theming comes from
+      // opigno_learning_path_theme_suggestions_alter().
+      // @TODO: Is this needed in Opigno 3.0?
+      $route = \Drupal::routeMatch()->getRouteName();
+      if ($route == 'entity.group_content.add_form'
+        && in_array('region__content', $suggestions)
+      ) {
+        $path = \Drupal::request()->getpathInfo();
+        $path_sections  = explode('/', $path);
+        $group = Group::load($path_sections[2]);
+        $group_type = $group->bundle();
+
+        if ($group_type == 'organization') {
+          foreach ($suggestions as $key => $suggestion) {
+            if ($suggestion == 'region__content__admin__learning_path') {
+              unset($suggestions[$key]);
+            }
+          }
+        }
+      }
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ * This provides synchronization between the contextual filter
+ * from the menu and the exposed filter, both containing
+ * job category taxonomy terms. It also handles the header text
+ * that differs according to each term.
+ */
+function atdove_opigno_views_pre_view(\Drupal\views\ViewExecutable $view, $display_id, array &$args) {
+
+  if ($view->id() == 'opigno_activity_search' && $display_id == 'page_1') {
+
+    $values = $view->getExposedInput();
+
+    // If the user selects a value, override the url value.
+    if (isset($values['field_job_category_target_id'])) {
+      if ($values['field_job_category_target_id'] === "All") {
+        $args[0] = "all";
+        $name = "Find Your Training Content";
+        $subheader = '';
+      }
+      else {
+        $args[0] = $values['field_job_category_target_id'];
+      }
+    }
+    else {
+        if (isset($args[0])) {
+          if (is_numeric($args[0])) {
+            $args[0] = intval($args[0]);
+          }
+          else {
+            $name = $args[0];
+            $term_id = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['name' => $name, 'vid' => 'job_categories']);
+            if (!empty($term_id)) {
+                $term_id = array_key_first($term_id);
+              $args[0] = $term_id;
+            }
+            else {
+              $args[0] = 'all';
+            }
+          }
+        }
+      else {
+        $args[0] = "all";
+      }
+    }
+
+    if (empty($name)) {
+      if ($args[0] != "all") {
+        $name = \Drupal\taxonomy\Entity\Term::load($args[0])->get('name')->value;
+        $name = strtolower($name);
+      }
+      else {
+        $name = "Find Your Training Content";
+        $subheader = '';
+      }
+    }
+    switch ($name) {
+      case 'veterinarian':
+        $subheader = 'Whether you’re showing your staff how to perform a treatment or you’re looking to cross off a few CE hours with our RACE-approved lectures, we’ve got what you’re looking for.';
+        break;
+      case 'technician':
+        $subheader = 'You’re on your way! Up-level your skills alongside our certified and specialized technicians, then bring your new skills straight to your next shift.';
+        break;
+      case 'assistant':
+        $subheader = 'You’re essential to the hospital floor, and so is training! Keep building your skills with quick procedural videos and blogs straight from our veterinary team.';
+        break;
+      case 'receptionist':
+        $subheader = 'You’re on the front lines, so you always need to be prepared. Check out some of the lessons our client service managers, liaisons, and representatives have learned in their careers.';
+        break;
+      case 'manager':
+        $subheader = 'Ever feel like some days you’ve totally got this and other days you need a bit of help? We’ve been there. Read management blogs or watch a quick training video to get you back to 100%.';
+        break;
+      default:
+        $subheader = '';
+        break;
+    }
+    $markup = '<div class="search-filter-header-wrapper"><div class="search-filter-header-title"><h1>' . $name . '</h1><h2>' . $subheader . '</h2></div><div class="search-filter-header">Search, filter and sort the hundreds of videos, lectures and articles so you can find exactly what you’re looking for.</div></div>';
+
+    $options = array(
+      'id' => 'area_text_custom',
+      'table' => 'views',
+      'field' => 'area_text_custom',
+      'relationship' => 'none',
+      'group_type' => 'none',
+      'admin_label' => '',
+      'empty' => TRUE,
+      'tokenize' => FALSE,
+      'content' => $markup,
+      'plugin_id' => 'text_custom',
+    );
+
+    $view->setHandler($display_id, 'header', 'area_text_custom', $options);
+  }
+   if ($view->id() == 'group_certificates' && $display_id =="page_1") {
+
+    //Set default value initally to the user's first group
+     $user = \Drupal::currentUser();
+
+    $grp_membership_service = \Drupal::service('group.membership_loader');
+    $grps = $grp_membership_service->loadByUser($user);
+    if ($grps != NULL) {
+      $first_grp_id = $grps[0]->getGroup()->id();
+      $filters = $view->getDisplay()->getOption('filters');
+      $filters['gid']['value']['value'] = $first_grp_id;
+      $view->display_handler->overrideOption('filters', $filters);
+    }
+  }
+  if ($view->id() == 'my_assignments') {
+    // For non-admins and non-org admins, do not display certs on /my-assignments
+    $is_org_admin = OrganizationsManager::currentUserIsOrgAdminInAnyGroup($returnAsAccessResult = FALSE);
+    $has_priviledged_roles = UsersManager::userHasPrivilegedRole(\Drupal::currentUser());
+    if (!$has_priviledged_roles) {
+      if (!$is_org_admin) {
+        if ($display_id =="page_1") {
+          $view->removeHandler('page_1', 'field', 'nothing');
+          $view->removeHandler('page_1', 'field', 'nothing_1');
+        }
+        if ($display_id =="block_1") {
+          $view->removeHandler('block_1', 'field', 'nothing');
+          $view->removeHandler('block_1', 'field', 'nothing_1');
+        }
+      }  
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alters certificates views.
+ */
+function atdove_opigno_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // This view is unused at the moment at '/group-certificates'
+  if ($form['#id'] == 'views-exposed-form-group-certificates-page-1') {
+    $user = \Drupal::currentUser();
+    $groups = [];
+    $grp_membership_service = \Drupal::service('group.membership_loader');
+    $grps = $grp_membership_service->loadByUser($user);
+
+    foreach ($grps as $grp) {
+      $groups[] = $grp->getGroup();
+    }
+    foreach ($groups as $group) {
+     $options[$group->id()] = $group->label();
+    }
+    if (empty($options)) {
+      $options[0] = "You do not belong to any groups.";
+    }
+    $default = reset($options);
+    $org_field = 'gid';
+    $form[$org_field]['#type'] = 'select';
+    $form[$org_field]['#multiple'] = FALSE;
+    $form[$org_field]['#default_value'] = $default;
+    $form[$org_field]['#options'] = $options;
+    unset($form[$org_field]['#size']);
+
+  }
+
+  // This is the group/%/certificates page
+  if ($form['#id'] == 'views-exposed-form-h5p-content-page-2') {
+    $group_id = \Drupal::routeMatch()->getParameter('group');
+    $membership_loader = \Drupal::service('group.membership_loader');
+    $group = Group::load($group_id);
+    $groups = $group->getContentEntities();
+
+    $subgroups = ['' => 'All'];
+    foreach ($groups as $subgroup) {
+      if (($subgroup instanceof Group) && ($subgroup->getGroupType()->id() == 'organizational_groups')) {
+       $subgroups[$subgroup->id()] = $subgroup->label();
+      }
+    }
+
+    $org_field = 'cert_org_groups_views_filter';
+    $form[$org_field]['#type'] = 'select';
+    $form[$org_field]['#multiple'] = TRUE;
+    $form[$org_field]['#default_value'] = '';
+    $form[$org_field]['#options'] = $subgroups;
+    $form[$org_field]['#size'] = 1;
+  }
+
+  // This is the group/%/assignments page
+  if ($form['#id'] == 'views-exposed-form-group-assignments-group-assignments-page') {
+    $group = \Drupal::routeMatch()->getParameter('group');
+
+    if (is_string($group) || is_int($group)) {
+      $group = Group::load($group_id);
+    }
+
+    $subgroups = ['' => 'All'];
+
+    // @todo: Swap this for providing getContentEntities receiving plugin to filter to org groups.
+    $groups = $group->getContentEntities();
+    foreach ($groups as $subgroup) {
+      if (($subgroup instanceof Group) && ($subgroup->getGroupType()->id() == 'organizational_groups')) {
+       $subgroups[$subgroup->id()] = $subgroup->label();
+      }
+    }
+
+    $org_field = 'org_groups_views_filter';
+
+    $form[$org_field]['#type'] = 'select';
+    $form[$org_field]['#multiple'] = TRUE;
+    $form[$org_field]['#default_value'] = '';
+    $form[$org_field]['#options'] = $subgroups;
+    $form[$org_field]['#size'] = 1;
+
+    if (count($subgroups) <= 1) {
+      $form[$org_field]['#access'] = FALSE;
+    }
+  }
+
+  // Add groups search filter to /admin/people page.
+  if ($form['#id'] == 'views-exposed-form-user-admin-people-page-1') {
+
+    $org_field = 'user_groups_views_filter';
+    $form[$org_field]['#type'] = 'entity_autocomplete';
+    $form[$org_field]['#target_type'] = 'group';
+    $form[$org_field]['#selection_settings'] = array(
+      'target_bundles' => array('organizational_groups', 'organization'),
+    );
+    $form[$org_field]['#multiple'] = FALSE;
+    $form[$org_field]['#default_value'] = '';
+  }
+}
+
+/**
+ * Implements hook_views_data().
+ *
+ * Provides views a field to display all a user's organizations.
+ */
+function atdove_opigno_views_data() {
+
+  $data['views']['org_groups_views_field'] = [
+    'title' => t('User Organizations'),
+    'help' => t('All the Organizational Groups that a user belongs to.'),
+    'field' => [
+      'id' => 'org_groups_views_field',
+    ],
+  ];
+
+  $data['views']['user_groups_views_field'] = [
+    'title' => t('People View User Organizations'),
+    'help' => t('All the Organizations that a user belongs to.'),
+    'field' => [
+      'id' => 'user_groups_views_field',
+    ],
+  ];
+
+  $data['views']['h5p_related_content_views_field'] = [
+    'title' => t('Related Opigno activity'),
+    'help' => t('Relates Opigno activity to h5p content.'),
+    'field' => [
+      'id' => 'h5p_related_content_views_field',
+    ],
+  ];
+
+  $data['views']['certificate_views_field'] = [
+    'title' => t('Certificate Status'),
+    'help' => t('Sets status for quiz results.'),
+    'field' => [
+      'id' => 'certificate_views_field',
+    ],
+  ];
+
+  $data['views']['cert_org_groups_views_field'] = [
+    'title' => t('Certificates View User Organizations'),
+    'help' => t('All the Organizational Groups that a user belongs to.'),
+    'field' => [
+      'id' => 'cert_org_groups_views_field',
+    ],
+  ];
+
+  $data['views']['h5p_quiz_title_views_field'] = [
+    'title' => t('Opigno Quiz Title'),
+    'help' => t('Relates Opigno quiz ID to title.'),
+    'field' => [
+      'id' => 'h5p_quiz_title_views_field',
+    ],
+  ];
+
+  return $data;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function atdove_opigno_views_data_alter(array &$data) {
+
+  $data['views']['org_groups_views_filter'] = [
+    'title' => t('User Organizations filter'),
+    'filter' => [
+      'title' => t('User Organizations filter'),
+      'help' => t('Provides a custom filter for all the Organizations that a user belongs to..'),
+      'field' => 'org_groups_views_field',
+      'id' => 'org_groups_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  $data['views']['cert_org_groups_views_filter'] = [
+    'title' => t('Certificates View User Organizations filter'),
+    'filter' => [
+      'title' => t('Certificates View User Organizations filter'),
+      'help' => t('Provides a custom filter for all the Organizations that a user belongs to..'),
+      'field' => 'cert_org_groups_views_field',
+      'id' => 'cert_org_groups_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  $data['views']['user_groups_views_filter'] = [
+    'title' => t('People View Organizations filter'),
+    'filter' => [
+      'title' => t('People View Organizations filter'),
+      'help' => t('Provides a custom filter for all the Organizations that a user belongs to..'),
+      'field' => 'user_groups_views_field',
+      'id' => 'user_groups_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  $data['views']['atdove_certificate_views_filter'] = [
+    'title' => t('Certificates filter'),
+    'filter' => [
+      'title' => t('Certificates filter'),
+      'help' => t('Filters out all quizzes that are not passed.'),
+      'field' => 'certificate_views_field',
+      'id' => 'atdove_certificate_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  $data['views']['con_cat_groups_views_filter'] = [
+    'title' => t('Content Category filter'),
+    'filter' => [
+      'title' => t('Content Category filter'),
+      'help' => t('Filters certificates by related content category.'),
+      'id' => 'con_cat_groups_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  $data['views']['job_cat_groups_views_filter'] = [
+    'title' => t('Job Category filter'),
+    'filter' => [
+      'title' => t('Job Category filter'),
+      'help' => t('Filters certificates by related job category.'),
+      'id' => 'job_cat_groups_views_filter',
+      'allow empty' => TRUE,
+    ],
+  ];
+
+  return $data;
+}
+
+
+/**
+ * Implements hook_entity_create_access().
+ * Here instead of in an event subscriber because there is no event for ENTITY_CREATE_ACCESS.
+ */
+function atdove_opigno_entity_create_access(AccountInterface $account, array $context, $entity_bundle) {
+
+  if ($entity_bundle != 'learning_path') {
+    return AccessResult::neutral();
+  }
+
+  if (OrganizationsManager::currentUserIsOrgAdminInAnyGroup()) {
+    return AccessResult::allowed();
+  }
+  else {
+    return AccessResult::neutral();
+  }
+
+}

@@ -1,0 +1,17 @@
+uuid: a54e59e3-07eb-40be-899a-9cdab85d4207
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_class
+  enforced:
+    config:
+      - user.role.group_subscriber
+id: opigno_class-7c7c0f745
+label: 'Group Subscriber'
+weight: 4
+internal: true
+audience: outsider
+group_type: opigno_class
+permissions_ui: false
+permissions: {  }

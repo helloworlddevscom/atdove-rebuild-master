@@ -1,0 +1,8 @@
+atdove_sso.redirect_controller_redirect:
+  path: '/atdove-sso/{client_name}'
+  defaults:
+    _controller: '\Drupal\atdove_sso\Controller\AtDoveSSORedirectController::authenticate'
+    _title: 'AtDove SSO OpenID Connect redirect page'
+  requirements:
+    _custom_access: '\Drupal\atdove_sso\Controller\AtDoveSSORedirectController::access'
+    _user_is_logged_in: 'FALSE'

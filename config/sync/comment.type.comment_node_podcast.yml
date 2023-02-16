@@ -1,0 +1,8 @@
+uuid: 3b87c442-b59d-4d29-b810-de7f34bbbb01
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_podcast
+label: 'Podcast comment'
+target_entity_type_id: node
+description: null

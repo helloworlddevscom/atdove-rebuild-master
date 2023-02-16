@@ -1,0 +1,21 @@
+uuid: e1701d68-b8ca-4b93-bd44-e15e78cb7656
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_wistia_hero_subheading
+    - paragraphs.paragraphs_type.p_wistia_video_hero
+id: paragraph.p_wistia_video_hero.field_p_wistia_hero_subheading
+field_name: field_p_wistia_hero_subheading
+entity_type: paragraph
+bundle: p_wistia_video_hero
+label: 'Wistia Hero Subheading'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Real procedures, patients, and teams from DoveLewis, a 24/7 veterinary emergency and specialty hospital.'
+default_value_callback: ''
+settings: {  }
+field_type: string

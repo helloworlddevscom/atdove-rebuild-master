@@ -1,0 +1,20 @@
+uuid: 25ba6540-5576-4c92-b0b6-6a86a33b7185
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - opigno_module
+id: node.field_opigno_articles
+field_name: field_opigno_articles
+entity_type: node
+type: entity_reference
+settings:
+  target_type: opigno_activity
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

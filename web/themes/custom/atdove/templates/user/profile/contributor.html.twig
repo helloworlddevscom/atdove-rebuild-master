@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Template for contributor bio page
+ */
+#}
+<div class="layout-contributor-bio">
+  <div class="contributor-profile">
+    <section style="width: 500px" class="contributor-bio">
+      <h1>{{ contributorData.name }}</h1>
+      <p><strong>{{ contributorData.title }}</strong></p>
+      <img src="{{ contributorData.picture }}" alt="{{ contributorData.name }} profile image"/>
+    </section>
+    <section>
+      <ul class="contributor-details">
+        <li>
+          <p>Education:</p>
+          <p>{{ contributorData.school }}</p>
+        </li>
+        <li>
+          <p>Current School or Practice:</p>
+          <p>{{ contributorData.current_school }}</p>
+        </li>
+        <li>
+          <p>Professional Memberships:</p>
+          <p>{{ contributorData.memberships }}</p>
+        </li>
+        <li>
+          <p>Professional Interests:</p>
+          <p>{{ contributorData.interests }}</p>
+        </li>
+        <li>
+          <p>Bio:</p>
+          <p>{{ contributorData.bio }}</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div  class="contributor-content">
+    {{ contributorData.content }}
+  </div>
+</div>

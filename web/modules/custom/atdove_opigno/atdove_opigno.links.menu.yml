@@ -1,0 +1,15 @@
+# Module defined links for main menu.
+# Some of these were disabled in atdove_default_content_modify_main_menu()
+# and are readded here so they are under our control.
+atdove_opigno.main.my_assignments:
+  title: 'My Assignments'
+  description: 'My Assignments'
+  route_name: view.my_assignments.page_1
+  weight: -7
+  menu_name: main
+atdove_opigno.main.my_bookmarks:
+  title: 'My Bookmarks'
+  description: 'My Bookmarks'
+  route_name: view.flag_bookmark.page_1
+  weight: 20
+  menu_name: main

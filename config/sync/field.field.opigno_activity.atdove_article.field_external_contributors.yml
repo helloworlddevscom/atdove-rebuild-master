@@ -1,0 +1,19 @@
+uuid: 95a8d8d2-9a26-4790-bf2b-cbe7555e631b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_external_contributors
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_external_contributors
+field_name: field_external_contributors
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'External Contributors'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

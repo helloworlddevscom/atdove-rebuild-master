@@ -1,0 +1,5 @@
+services:
+  atdove_subscription_migrator.commands:
+    class: \Drupal\atdove_subscription_migrator\Commands\AtDoveSubscriptionMigratorCommand
+    tags:
+      - { name: drush.command }

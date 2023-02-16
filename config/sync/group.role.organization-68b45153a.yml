@@ -1,0 +1,17 @@
+uuid: b3a3ccd5-2e5b-4fbc-8aed-83bc4704adf5
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.collaborative_features
+id: organization-68b45153a
+label: 'Live meeting manager'
+weight: -8
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions: {  }

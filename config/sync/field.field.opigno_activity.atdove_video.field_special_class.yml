@@ -1,0 +1,19 @@
+uuid: b750dee5-cb17-46d6-8854-665d91f30c37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_special_class
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_special_class
+field_name: field_special_class
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Special Class'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

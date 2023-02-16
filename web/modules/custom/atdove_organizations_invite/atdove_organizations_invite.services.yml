@@ -1,0 +1,32 @@
+services:
+  # RouteSubscriber used to alter classes used on routes.
+  atdove_organizations_invite.route_subscriber:
+    class: Drupal\atdove_organizations_invite\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  # EventSubscriber service decorator used to alter behavior of ginvite module.
+  atdove_organizations_invite.decorator.ginvite.ginvite_subscriber:
+    public: false
+    class: Drupal\atdove_organizations_invite\EventSubscriber\GinviteSubscriber
+    decorates: ginvite_event_subscriber
+    decoration_priority: 5
+    arguments: ['@ginvite.invitation_loader', '@current_user', '@messenger', '@logger.factory']
+    tags:
+      - { name: event_subscriber }
+
+  # Access check for group content create route so we can limit access per group
+  # content type (plugin). Seems the key to this working is the applies_to tag value.
+  # This value is defined by the group module. Using it here apparently allows us to
+  # add another access check without doing it in a RouteSubscriber::alterRoutes.
+  atdove_organizations_invite.group.access_check.group_content.create:
+    class: Drupal\atdove_organizations_invite\Access\GroupContentCreateAccessCheck
+    tags:
+      - { name: access_check, applies_to: _group_content_create_access }
+
+  # Access check for user registration form to limit user registration
+  # to only users invited via ginvite module.
+  atdove_organizations_invite.access_check.user.register:
+    class: Drupal\atdove_organizations_invite\Access\UserRegisterAccessCheck
+    tags:
+      - { name: access_check, applies_to: _access_user_register }

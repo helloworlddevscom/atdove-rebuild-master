@@ -1,0 +1,31 @@
+uuid: 7941d9f0-eae7-4d35-8c40-cdedb7518cc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_thumbnail_image
+    - media.type.image
+    - media.type.image_png
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_thumbnail_image
+field_name: field_thumbnail_image
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Thumbnail Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      image_png: image_png
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: a47421ad-dcbd-48af-8936-4d247219a57a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_col_2_heading
+    - paragraphs.paragraphs_type.p_three_text_columns
+id: paragraph.p_three_text_columns.field_p_col_2_heading
+field_name: field_p_col_2_heading
+entity_type: paragraph
+bundle: p_three_text_columns
+label: 'Col 2 Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

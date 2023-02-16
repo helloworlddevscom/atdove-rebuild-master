@@ -1,0 +1,29 @@
+uuid: 048c8e0f-2e30-420d-b8b0-7706aec42fcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_opigno_videos
+    - opigno_module.opigno_activity_type.atdove_article
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_article.field_opigno_videos
+field_name: field_opigno_videos
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Related Opigno Videos'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_activity'
+  handler_settings:
+    target_bundles:
+      atdove_video: atdove_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

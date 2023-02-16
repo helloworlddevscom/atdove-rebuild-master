@@ -1,0 +1,19 @@
+uuid: 66104b39-7531-4441-814f-7875bb6fd02a
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - text
+id: group.field_org_group_body
+field_name: field_org_group_body
+entity_type: group
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

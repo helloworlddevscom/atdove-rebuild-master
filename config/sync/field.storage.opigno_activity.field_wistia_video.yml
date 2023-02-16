@@ -1,0 +1,19 @@
+uuid: afe30c26-2a5f-4153-a34c-954e4196b181
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - video_embed_field
+id: opigno_activity.field_wistia_video
+field_name: field_wistia_video
+entity_type: opigno_activity
+type: video_embed_field
+settings: {  }
+module: video_embed_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

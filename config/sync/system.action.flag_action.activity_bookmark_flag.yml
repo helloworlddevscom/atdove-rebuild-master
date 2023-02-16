@@ -1,0 +1,15 @@
+uuid: c388bd22-721b-4933-9f33-9aa52a91b0c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.activity_bookmark
+  module:
+    - flag
+id: flag_action.activity_bookmark_flag
+label: 'Bookmark this item'
+type: opigno_activity
+plugin: 'flag_action:activity_bookmark_flag'
+configuration:
+  flag_id: activity_bookmark
+  flag_action: flag

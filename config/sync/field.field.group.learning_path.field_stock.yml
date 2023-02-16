@@ -1,0 +1,23 @@
+uuid: ad79cacc-54ef-4a46-b271-7fb8764e07de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_stock
+    - group.type.learning_path
+id: group.learning_path.field_stock
+field_name: field_stock
+entity_type: group
+bundle: learning_path
+label: Stock
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

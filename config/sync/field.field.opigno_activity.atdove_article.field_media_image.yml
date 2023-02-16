@@ -1,0 +1,31 @@
+uuid: b801a0fe-f1f6-4474-9499-739ca8c89b90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_media_image
+    - media.type.image
+    - media.type.image_png
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_media_image
+field_name: field_media_image
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Media Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      image_png: image_png
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

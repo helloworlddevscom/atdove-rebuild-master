@@ -1,0 +1,165 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+
+
+<div {{ attributes.addClass(classes) }}>
+
+  <div class="opigno-search-record-wrapper">
+
+    <div class="opigno-search-thumbnail">
+      <div class="activity-type-label">
+
+        {% if activity_type == 'atdove_article' %}
+          Article
+        {% endif %}
+        {% if activity_type == 'atdove_video' %}
+          Video
+        {% endif %}
+      </div>
+      {#
+          //Article has field_article_image and field_media_image
+          //Videos have field_media_image, field_thumbnail_image, and field_featured_image
+          @todo set this back to the logic statement if it causes a problem.
+            {% if 'Article' in fields.type.content|striptags|trim %}
+              {% if fields.field_article_image.content is not empty %}
+                {{ fields.field_article_image.content }}
+              {% else %}
+                {{ fields.field_media_image.content }}
+              {% endif %}
+            {% endif %}
+            {% if 'Video' in fields.type.content|striptags|trim %}
+              {% if fields.field_thumbnail_image.content is not empty %}
+                {{ fields.field_thumbnail_image.content }}
+              {% else %}
+                {{ fields.field_featured_image.content}}
+              {% endif %}
+            {% endif %}
+      #}
+
+      {{ fields.field_article_image.content }}
+      {{ fields.field_thumbnail_image.content }}
+      {{ fields.field_featured_image.content}}
+      {{ fields.field_media_image.content }}
+
+    </div>
+
+    <div class="opigno-search-activity-info">
+      <div class="opigno-search-body">
+        <h2>{{ fields.name.content }}</h2>
+        {{ fields.field_article_body.content }}
+        {{ fields.field_video_body.content }}
+      </div>
+
+      {% if user.hasPermission('access paid content') %}
+        <div class="opigno-search-activity-buttons">
+        {% if 'administrator' in user.getroles(TRUE) or is_org_admin %}
+          <span class="atdove-tooltip" data-text="Assign to Person">
+          <a class="user-assign-to-person use-ajax" href="{{ path('atdove_opigno.assign_to_person_form', {'opigno_activity': fields.id.content|render|striptags|trim }) }}"></a>
+          </span>
+          <span class="atdove-tooltip" data-text="Add to Training Plan">
+            <a class="user-add-to-training use-ajax" href="{{ path('atdove_opigno.add_to_training_form', {'opigno_activity': fields.id.content|render|striptags|trim }) }}"></a>
+          </span>
+        {% endif %}
+          {% if activity_type == 'atdove_article' %}
+            <span class="atdove-tooltip" data-text="Download Notes">
+              <a class="user-download-notes" href="/print/pdf/opigno_activity/{{fields.id.content|render|striptags|trim}}"></a>
+            </span>
+          {% endif %}
+          <span class="atdove-tooltip" data-text="Bookmark this">
+            {{ fields.link_flag.content }}
+          </span>
+        </div>
+        <div class="search-assignment-status">
+          {% if assignment_status == 'passed' %}
+            <div class="atdove-activity-passed">
+              <div class="passed-image"></div>You have completed this activity.
+            </div>
+          {% endif %}
+          {% if assignment_status == 'pending' or assignment_status == 'failed' %}
+            <div class="atdove-activity-pending">
+              <div class="pending-image"></div>You have been assigned this activity.
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="opigno-search-activity-buttons">
+          <span class="atdove-tooltip" data-text="Assign to Person">
+            <a class="user-assign-to-person use-ajax" href="/free-trial/person"></a>
+          </span>
+          <span class="atdove-tooltip" data-text="Add to Training Plan">
+            <a class="user-add-to-training use-ajax" href="/free-trial/tp"></a>
+          </span>
+
+          {% if activity_type == 'atdove_article' %}
+          <span class="atdove-tooltip" data-text="Downloading is a Premium Feature">
+            <a class="user-download-notes disable-link" href="/">
+            </a>
+           </span>
+      {% endif %}
+          <span class="atdove-tooltip disable-bookmark" data-text="Bookmarking is a Premium Feature">
+            {{ fields.link_flag.content }}
+          </span>
+        </div>
+        <div class="search-assignment-status">
+          {% if assignment_status == 'passed' %}
+            <div class="atdove-activity-passed">
+              <div class="passed-image"></div>You have completed this activity.
+            </div>
+          {% endif %}
+          {% if assignment_status == 'pending' or assignment_status == 'failed' %}
+            <div class="atdove-activity-pending">
+              <div class="pending-image"></div>You have been assigned this activity.
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div id="ex1" class="modal">
+  <p>Thanks for clicking. That felt good.</p>
+  <a href="#" rel="modal:close">Close</a>
+</div>

@@ -1,0 +1,5 @@
+name: 'AtDove Subscriptions'
+type: module
+description: 'Customizations for Stripe Subscriptions.'
+core_version_requirement: '^8.8 || ^9'
+package: 'AtDove'

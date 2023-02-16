@@ -1,0 +1,17 @@
+<?php
+
+/** Containts user related install hooks and updates
+ *
+ */
+
+/**
+ * Dump user stripe field so we can safely remove field from config.
+ */
+function atdove_users_update_9001() {
+  $database =\Drupal::database();
+  $table = 'user__stripe_customer_id';
+
+  if ($database->schema()->tableExists($table)) {
+    $database->truncate($table)->execute();
+  }
+}

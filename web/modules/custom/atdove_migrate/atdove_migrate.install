@@ -1,0 +1,258 @@
+<?php
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\group\Entity\Group;
+use Drupal\Core\Database\Database;
+use Drupal\opigno_module\Entity\OpignoActivity;
+use Drupal\node\Entity\Node;
+
+/**
+ * Increase the length of "name" to 255 characters.
+ */
+function atdove_migrate_install() {
+
+	db_change_varchar_field('opigno_activity', 'name', '255');
+
+}
+
+/**
+ * Change length of a varchar entity field with data, safe with entity-updates.
+ *
+ * This updates the storage schema, the database schema, and the last
+ * installed schema.
+ *
+ * The entity schema must also be changed in code in the entities
+ * baseFieldDefinitions() or in an alter.
+ *
+ * @param string $entity_type_id
+ *   The entity type.
+ * @param string $field_name
+ *   The field name to change.
+ * @param int $field_length
+ *   The new length of the field, must be larger than the previous value.
+ */
+function db_change_varchar_field($entity_type_id, $field_name, $field_length) {
+	/** @var \Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface $schema_repository */
+	$schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+	/** @var \Drupal\Core\Entity\EntityFieldManager $entity_field_manager */
+	$entity_field_manager = \Drupal::service('entity_field.manager');
+	$base_field_definitions = $entity_field_manager->getBaseFieldDefinitions($entity_type_id);
+	$schema_repository->setLastInstalledFieldStorageDefinition($base_field_definitions[$field_name]);
+	$field_storage_definitions = $schema_repository->getLastInstalledFieldStorageDefinitions($entity_type_id);
+
+	// Update the serialized schema property.
+	$rc = new \ReflectionClass($field_storage_definitions[$field_name]);
+	$schema_property = $rc->getProperty('schema');
+	$schema_property->setAccessible(TRUE);
+	$schema = $schema_property->getValue($field_storage_definitions[$field_name]);
+	$schema['columns']['value']['length'] = $field_length;
+	$schema_property->setValue($field_storage_definitions[$field_name], $schema);
+
+	// Update the field definition in the last installed schema repository.
+	$schema_repository->setLastInstalledFieldStorageDefinitions($entity_type_id, $field_storage_definitions);
+
+	// Update the storage schema.
+	$key_value = \Drupal::keyValue('entity.storage_schema.sql');
+	$key_name = $entity_type_id . '.field_schema_data.' . $field_name;
+	$storage_schema = $key_value->get($key_name);
+	// Update all tables where the field is present.
+	foreach ($storage_schema as &$table_schema) {
+	$table_schema['fields'][$field_name]['length'] = $field_length;
+	}
+	$key_value->set($key_name, $storage_schema);
+
+	// Update the database tables where the field is part of.
+	$db = Drupal::database();
+	foreach ($storage_schema as $table_name => $table_schema) {
+	$db->schema()->changeField($table_name, $field_name, $field_name, $table_schema['fields'][$field_name]);
+	}
+}
+
+/**
+ * Set group certificate fields to default.
+ */
+function atdove_migrate_update_8001(&$sandbox) {
+
+  // Set up the batch by retrieving all of the group content IDs.
+  if (!isset($sandbox['progress'])) {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager */
+    $entity_type_manager = \Drupal::service('entity_type.manager');
+    $storage = $entity_type_manager->getStorage('group');
+
+	$sandbox['ids'] = $storage->getQuery()
+      ->condition('type', 'learning_path')
+      ->condition('field_certificate', NULL, 'IS NULL')
+      ->execute();
+
+    $sandbox['max'] = count($sandbox['ids']);
+    $sandbox['progress'] = 0;
+  }
+
+  // Try to update 100 Group entities at a time.
+  $ids = array_slice($sandbox['ids'], $sandbox['progress'], 100);
+
+  /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+  foreach (Group::loadMultiple($ids) as $group) {
+    $group->set('field_certificate', '1');
+    $group->save();
+    $sandbox['progress']++;
+  }
+
+  // Try to update the percentage but avoid division by zero.
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  // Show a status update for the current progress.
+  return t("Updated the certificate field for @progress out of @max learning path group entities.", ['@progress' => $sandbox['progress'], '@max' => $sandbox['max']]);
+
+}
+
+/**
+ * Migrates missing certificates from D7. Commented out because we are only running this locally but we need a record of the code.
+ */
+
+// function atdove_migrate_update_8005(&$context){
+// 	//all this $context stuff is mandatory, it is a bit heavy, but the batchAPI need it to keep track of progresses
+// 	if (!isset($context['sandbox']['current'])) {
+// 	$context['sandbox']['count'] = 0;
+// 	$context['sandbox']['current'] = 0;
+// 	}
+
+// 	//don't use entity field query for such simple use cases as gettings all ids (much better performances, less code to write...)
+// 	$query = \Drupal::database()->select('users', 'u');
+// 	//$query = db_select('users', 'u');
+// 	$query->addField('u', 'uid');
+// 	$query->condition('u.uid', $context['sandbox']['current'], '>');
+// 	$query->orderBy('u.uid');
+// 	// Get the total amount of items to process.
+// 	if (!isset($context['sandbox']['total'])) {
+// 	$context['sandbox']['total'] = $query->countQuery()->execute()->fetchField();
+
+// 	// If there are no users to "update", stop immediately.
+// 	if (!$context['sandbox']['total']) {
+// 	  $context['#finished'] = 1;
+// 	  return;
+// 	}
+// 	}
+
+// 	$query->range(0, 1000);
+// 	$uids = $query->execute()->fetchCol();
+
+// 	$connection = Database::getConnection('default', 'migrate');
+// 	$d8connection = \Drupal::database();
+
+// 	foreach ($uids as $user_id) {
+
+// 		$query_quiz_result = $connection->select('quiz_node_results', 'qnres')
+// 			->fields('qnres', ['score', 'nid', 'time_start', 'time_end',])
+// 			->condition('uid', $user_id)
+// 			->execute()
+// 			->fetchAll();
+
+// 		foreach ($query_quiz_result as $quiz_result) {
+
+// 		  $quiz_nid = $quiz_result->nid;
+// 		  $quiz_score = $quiz_result->score;
+
+// 		      $pass_rate = $connection->select('quiz_node_properties', 'qnpr')
+// 		        ->fields('qnpr', ['pass_rate'])
+// 		        ->condition('nid', $quiz_nid)
+// 		        ->execute()
+// 		        ->fetchField();
+
+// 		     if ($quiz_score >= $pass_rate) {
+// 		       	$certificates[] = [
+// 		          'quiz_id' => $quiz_nid,
+// 		          'completed_date' => $quiz_result->time_end,
+// 		          'started_date' => $quiz_result->time_start,
+// 				];
+// 		    }
+// 		}
+
+// 		if (!empty($certificates)) {
+// 			foreach ($certificates as $certificate) {
+
+// 				$quiz_id = $certificate['quiz_id'];
+// 				$completed_date = $certificate['completed_date'];
+// 				$started_date = $certificate['started_date'];
+
+// 				// Check to see if it already exists
+
+// 				$quiz_exists = $d8connection->select('h5p_points', 'hp')
+// 			        ->fields('hp', ['content_id'])
+// 			        ->condition('uid', $user_id)
+// 			        ->condition('content_id', $quiz_id)
+// 			        ->execute()
+// 			        ->fetchField();
+
+// 		        if (!$quiz_exists) {
+
+// 					$result = $d8connection->insert('h5p_points')
+// 					  ->fields([
+// 					    'content_id' => $quiz_id,
+// 					    'uid' => $user_id,
+// 					    'started' => $started_date,
+// 					    'finished' => $completed_date,
+// 					    'points' => '10',
+// 					    'max_points' => '10',
+// 					  ])
+// 					  ->execute();
+// 		        }
+// 			}
+// 		}
+// 		//For the next user
+// 		unset($certificates);
+// 	}
+// 	$context['sandbox']['count'] += count($uids);
+// 	$context['sandbox']['current'] = max($uids);
+
+// 	if ($context['sandbox']['count'] != $context['sandbox']['total']) {
+// 		$context['#finished'] = $context['sandbox']['count'] / $context['sandbox']['total'];
+// 	}
+
+// 	 return t("Updated the certificates for @progress out of @max users.", ['@progress' => $context['sandbox']['count'], '@max' => $context['sandbox']['total']]);
+
+// }
+
+
+/**
+ * Remove any stock training plans from belonging to any group.
+ */
+
+function atdove_migrate_update_8007(&$context) {
+
+	/** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager */
+	$entity_type_manager = \Drupal::service('entity_type.manager');
+	$storage = $entity_type_manager->getStorage('group');
+
+	// Only 26 stock training plans
+	$ids = $storage->getQuery()
+	  ->condition('type', 'learning_path')
+	  ->condition('field_stock', 1, '=')
+	  ->execute();
+
+  /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+  	foreach ($ids as $id) {
+	  	// Remove group from being a subgroup of any group
+		$entity_type_manager = \Drupal::service('entity_type.manager');
+		$storage = $entity_type_manager->getStorage('group');
+
+		$gc_ids = \Drupal::entityQuery('group_content')
+		    ->condition('entity_id', $id)
+		    ->execute();
+
+		$relations = \Drupal\group\Entity\GroupContent::loadMultiple($gc_ids);
+
+		foreach ($relations as $rel) {
+			// It has itself as one entry in the db
+			$gid = $rel->getGroup()->id();
+			if ($gid != $id) {
+				$rel->delete();
+			}
+		}
+  	}
+
+  // Show a status update for the current progress.
+  return t("Deleted group association of stock learning path group entities.");
+
+}
+

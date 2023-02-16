@@ -1,0 +1,23 @@
+diff --git a/core/modules/forum/forum.install b/core/modules/forum/forum.install
+index 1cc8ca3e58..819f70898a 100644
+--- a/core/modules/forum/forum.install
++++ b/core/modules/forum/forum.install
+@@ -18,18 +18,6 @@ function forum_install($is_syncing) {
+   $locked = \Drupal::state()->get('node.type.locked');
+   $locked['forum'] = 'forum';
+   \Drupal::state()->set('node.type.locked', $locked);
+-
+-  if (!$is_syncing) {
+-    // Create a default forum so forum posts can be created.
+-    $term = Term::create([
+-      'name' => t('General discussion'),
+-      'description' => '',
+-      'parent' => [0],
+-      'vid' => 'forums',
+-      'forum_container' => 0,
+-    ]);
+-    $term->save();
+-  }
+ }
+ 
+ /**

@@ -1,0 +1,17 @@
+uuid: b2fc9af1-25cf-4154-937c-c32728ea7bdf
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_course
+  enforced:
+    config:
+      - user.role.group_subscriber
+id: opigno_course-7c7c0f745
+label: 'Group Subscriber'
+weight: 4
+internal: true
+audience: outsider
+group_type: opigno_course
+permissions_ui: false
+permissions: {  }

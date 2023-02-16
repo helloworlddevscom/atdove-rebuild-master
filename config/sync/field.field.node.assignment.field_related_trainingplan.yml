@@ -1,0 +1,29 @@
+uuid: 7bfa071e-fb4f-43b3-be8a-95751a99a093
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_trainingplan
+    - group.type.learning_path
+    - node.type.assignment
+id: node.assignment.field_related_trainingplan
+field_name: field_related_trainingplan
+entity_type: node
+bundle: assignment
+label: 'Related Training Plan'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      learning_path: learning_path
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

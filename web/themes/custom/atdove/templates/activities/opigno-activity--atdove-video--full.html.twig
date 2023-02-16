@@ -1,0 +1,94 @@
+{#
+/**
+ * @file opigno_activity.html.twig
+ * Default theme implementation to present Activity data.
+ *
+ * This template is used when viewing Activity pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_opigno_activity()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div{{ attributes.addClass('opigno_activity') }}>
+
+	<div class="atdove-video-wrapper">
+
+	  {{ content.field_wistia_video }}
+
+
+	</div>
+
+	<div class="atdove-activity-content">
+
+		<div class="atdove-activity-body">
+		<h1>{{ content.name }}</h2>
+			{{ content.field_video_body }}
+			{% if user.hasPermission('access paid content') %}
+		        <div class="opigno-search-activity-buttons">
+		        {% if 'administrator' in user.getroles(TRUE) or is_org_admin %}
+		          <span class="atdove-tooltip" data-text="Assign to Person">
+		            <a class="user-assign-to-person use-ajax" href="{{ path('atdove_opigno.assign_to_person_form', {'opigno_activity': opigno_id }) }}"></a>
+		          </span>
+		          <span class="atdove-tooltip" data-text="Add to Training Plan">
+		          <a class="user-add-to-training use-ajax" href="{{ path('atdove_opigno.add_to_training_form', {'opigno_activity': opigno_id }) }}"></a>
+		           </span>
+		        {% endif %}
+              <span class="atdove-tooltip" data-text="Bookmark this">
+                  {{ flag_link }}
+              </span>
+		        </div>
+		    {% else %}
+		        <div class="opigno-search-activity-buttons">
+		          <span class="atdove-tooltip" data-text="Assign to Person">
+		            <a class="user-assign-to-person use-ajax" href="/free-trial/person"></a>
+		          </span>
+		          <span class="atdove-tooltip" data-text="Add to Training Plan">
+		            <a class="user-add-to-training use-ajax" href="/free-trial/tp"></a>
+		          </span>
+		          <span class="atdove-tooltip disable-bookmark" data-text="Bookmarking is a Premium Feature">
+		            {{ flag_link }}
+		          </span>
+		        </div>
+		    {% endif %}
+    			<div class="opigno-activity-box">
+    				<h2>Quizzes</h2>
+    				{{ content.field_opigno_quiz }}
+    			</div>
+				<div class="opigno-activity-box">
+					{% if content.field_contributors is not empty %}
+						<h2>Contributors</h2>
+						{{ content.field_contributors }}
+						{{ content.field_external_contributors }}
+					{% endif %}
+				</div>
+				<div class="opigno-activity-box">
+				    <div class="addthis-wrapper">
+	               		<div class="addthis_inline_share_toolbox"></div>
+					</div>
+				</div>
+				<div class="opigno-activity-box">
+				<h2>Comments</h2>
+				{% if user.hasPermission('access paid content') %}
+					{{ content.field_video_comments }}
+				{% else %}
+					<a href="/user">Scrub In</a> or <a href="/join">Sign Up</a> to post comments
+				{% endif %}
+				</div>
+
+		</div>
+
+			<div class="atdove-related-content-col">
+				<h2>Related Content</h2>
+				{{ content.field_opigno_videos }}
+				{{ content.field_opigno_articles }}
+			</div>
+	</div>
+
+</div>

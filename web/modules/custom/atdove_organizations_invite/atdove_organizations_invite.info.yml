@@ -1,0 +1,11 @@
+name: 'AtDove Organizations Invite'
+type: module
+description: 'Organization invitations related functionality.'
+core_version_requirement: '^8.8 || ^9'
+package: AtDove
+dependencies:
+  0: atdove_organizations
+  1: ginvite
+  2: group
+  3: opigno_notification
+  5: user

@@ -1,0 +1,17 @@
+uuid: 952ff692-2417-4f95-9f93-25109a186929
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_course
+  enforced:
+    config:
+      - user.role.active_org_member
+id: opigno_course-ae6d61818
+label: 'Active Organization Member'
+weight: 3
+internal: true
+audience: outsider
+group_type: opigno_course
+permissions_ui: false
+permissions: {  }

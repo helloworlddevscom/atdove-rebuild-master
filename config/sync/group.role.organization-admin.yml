@@ -1,0 +1,62 @@
+uuid: ad11fe65-6a85-41ca-bff8-e49782018334
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+id: organization-admin
+label: 'Org Admin'
+weight: 101
+internal: false
+audience: member
+group_type: organization
+permissions_ui: true
+permissions:
+  - 'access subgroup overview'
+  - 'administer members'
+  - 'administer tft'
+  - 'create subgroup:learning_path content'
+  - 'create subgroup:organization content'
+  - 'create subgroup:organizational_groups content'
+  - 'create subgroup:organizational_groups entity'
+  - 'delete any invitation'
+  - 'delete any subgroup:learning_path content'
+  - 'delete any subgroup:organization content'
+  - 'delete any subgroup:organizational_groups content'
+  - 'delete any subgroup:organizational_groups entity'
+  - 'delete own invitations'
+  - 'delete own subgroup:learning_path content'
+  - 'delete own subgroup:organization content'
+  - 'delete own subgroup:organizational_groups content'
+  - 'delete own subgroup:organizational_groups entity'
+  - 'edit group'
+  - 'invite users to group'
+  - 'score ilt entities'
+  - 'tft access file tree'
+  - 'tft add a file to any term'
+  - 'tft add child terms'
+  - 'tft archive child terms'
+  - 'tft delete child terms'
+  - 'tft reorder terms'
+  - 'update any subgroup:learning_path content'
+  - 'update any subgroup:organization content'
+  - 'update any subgroup:organizational_groups content'
+  - 'update any subgroup:organizational_groups entity'
+  - 'update own subgroup:learning_path content'
+  - 'update own subgroup:organization content'
+  - 'update own subgroup:organizational_groups content'
+  - 'update own subgroup:organizational_groups entity'
+  - 'view all results'
+  - 'view any private profile in class'
+  - 'view any private profile in training'
+  - 'view any unpublished subgroup:organizational_groups entity'
+  - 'view group'
+  - 'view group invitations'
+  - 'view group statistics'
+  - 'view group_membership content'
+  - 'view latest group version'
+  - 'view own results'
+  - 'view subgroup:learning_path content'
+  - 'view subgroup:organization content'
+  - 'view subgroup:organizational_groups content'
+  - 'view subgroup:organizational_groups entity'

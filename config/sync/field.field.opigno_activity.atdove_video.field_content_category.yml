@@ -1,0 +1,29 @@
+uuid: f5dc3eb7-dedd-4474-b673-6edf64b582cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_content_category
+    - opigno_module.opigno_activity_type.atdove_video
+    - taxonomy.vocabulary.content_categories
+id: opigno_activity.atdove_video.field_content_category
+field_name: field_content_category
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Content Category'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_categories: content_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

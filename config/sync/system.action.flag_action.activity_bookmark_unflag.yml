@@ -1,0 +1,15 @@
+uuid: fa02d5f8-eb64-47df-aa61-d4d01fee3348
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.activity_bookmark
+  module:
+    - flag
+id: flag_action.activity_bookmark_unflag
+label: 'Remove from bookmarks'
+type: opigno_activity
+plugin: 'flag_action:activity_bookmark_unflag'
+configuration:
+  flag_id: activity_bookmark
+  flag_action: unflag

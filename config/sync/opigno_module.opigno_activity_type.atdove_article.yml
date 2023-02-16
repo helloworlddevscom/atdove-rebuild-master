@@ -1,0 +1,9 @@
+uuid: b18493cb-e315-4dad-ac8f-150798ed4b07
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_article
+label: 'AtDove Article'
+description: ''
+summary: ''
+image: {  }

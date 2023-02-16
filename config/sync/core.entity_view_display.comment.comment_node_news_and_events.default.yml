@@ -1,0 +1,33 @@
+uuid: 3b3838e7-403b-4a63-b8a7-8cef67fad580
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_news_and_events
+    - field.field.comment.comment_node_news_and_events.comment_body
+  module:
+    - text
+id: comment.comment_node_news_and_events.default
+targetEntityType: comment
+bundle: comment_node_news_and_events
+mode: default
+content:
+  comment_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

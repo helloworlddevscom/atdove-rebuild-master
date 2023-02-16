@@ -1,0 +1,120 @@
+.page-atdove-organizations-create-select-license {
+
+  @media(max-width: 991px) {
+    #block-exposedformsite-searchsearch-results-page {
+      margin-top: 120px;
+      padding-top: 50px;
+    }
+  }
+
+  .organizations-create-join {
+    margin-bottom: 50px;
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .intervals {
+      width: 300px;
+      height: 60px;
+      margin: 50px auto 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      div {
+        width: 100%;
+        display: block;
+        padding: 30px 0;
+        cursor: pointer;
+
+        &.interval-focused {
+          background-color: var(--desktop-button-color);
+
+          .text-focused {
+            color: var(--desktop-button-text-color);
+          }
+        }
+
+        &.interval-blurred {
+          background-color: lightgrey;
+
+          .text-blurred {
+            color: gray;
+          }
+        }
+      }
+
+      h4 {
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+    }
+
+    .licenses {
+      margin-top: 90px;
+
+      ul {
+        padding: 0;
+        margin: 50px 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        text-align: center;
+      }
+
+      li {
+        flex: 1 1 auto;
+        width: 297px;
+        margin: 15px;
+        box-sizing: border-box;
+        list-style: none;
+        padding-bottom: 30px;
+
+        &.fieldgroup {
+          padding: 0;
+        }
+
+        .license-seats {
+          padding: 20px 0;
+          background-color: var(--desktop-button-color);
+          color: white;
+          font-size: 1.2rem;
+        }
+
+        .license-amount {
+          padding: 40px 0 3px 0;
+          font-size: 2.2rem;
+          font-weight: bold;
+        }
+
+        .license-interval {
+
+        }
+
+        .license-start {
+          margin: 60px 0;
+
+          a {
+            background-color: var(--desktop-button-color);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 15px;
+          }
+        }
+      }
+
+      .month {
+        display: none;
+      }
+    }
+
+    .special-accounts {
+      text-align: center;
+      font-size: 16px;
+      display: block;
+    }
+  }
+}

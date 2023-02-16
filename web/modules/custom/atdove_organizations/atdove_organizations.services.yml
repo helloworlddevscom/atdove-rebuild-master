@@ -1,0 +1,24 @@
+services:
+  atdove_organizations.atdove_organizations_forms_event_subscriber:
+    class: Drupal\atdove_organizations\EventSubscriber\AtdoveOrganizationsFormsEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_organizations.atdove_organizations_entity_event_subscriber:
+    class: Drupal\atdove_organizations\EventSubscriber\AtdoveOrganizationsEntityEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_organizations.atdove_organizations_cron_event_subscriber:
+    class: Drupal\atdove_organizations\EventSubscriber\AtDoveOrganizationsCronEventSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments:
+      - '@entity_type.manager'
+      - '@state'
+
+    # Access check for opigno_statistics.user_achievements_page route.
+    atdove_organizations.group_invitations_view:
+      class: Drupal\atdove_opigno\Access\UserIsGroupOrgAdmin
+      tags:
+        - { name: access_check, applies_to: view.group_assignments.group_assignments_page }

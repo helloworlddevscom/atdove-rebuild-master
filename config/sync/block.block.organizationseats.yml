@@ -1,0 +1,33 @@
+uuid: 00baa8a7-6d30-42e9-96f8-c2286aaf3ea5
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_organizations
+    - system
+    - user
+  theme:
+    - atdove
+id: organizationseats
+theme: atdove
+region: content
+weight: -15
+provider: null
+plugin: atdove_organizations_seats
+settings:
+  id: atdove_organizations_seats
+  label: 'Organization Seats'
+  label_display: visible
+  provider: atdove_organizations
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/organization/*/members\r\n/group/*/members"
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

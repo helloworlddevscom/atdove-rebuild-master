@@ -1,0 +1,8 @@
+uuid: a0e77a47-89aa-4c21-bcf6-a258ec564048
+langcode: en
+status: true
+dependencies: {  }
+name: Accreditations
+vid: accreditations
+description: ''
+weight: 0

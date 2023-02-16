@@ -1,0 +1,21 @@
+uuid: d8ae6aa9-8b02-4bbe-a973-0984befc06ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_clinic_url
+field_name: field_clinic_url
+entity_type: group
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

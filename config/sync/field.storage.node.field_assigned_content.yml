@@ -1,0 +1,20 @@
+uuid: f38cdd24-81be-4fda-b100-88395b646f12
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - opigno_module
+id: node.field_assigned_content
+field_name: field_assigned_content
+entity_type: node
+type: entity_reference
+settings:
+  target_type: opigno_activity
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

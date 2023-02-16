@@ -1,0 +1,31 @@
+uuid: b2871a10-a1bc-480c-9b21-07676f98d94f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assigned_content
+    - node.type.assignment
+    - opigno_module.opigno_activity_type.atdove_article
+    - opigno_module.opigno_activity_type.atdove_video
+id: node.assignment.field_assigned_content
+field_name: field_assigned_content
+entity_type: node
+bundle: assignment
+label: 'Assigned Content'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_activity'
+  handler_settings:
+    target_bundles:
+      atdove_article: atdove_article
+      atdove_video: atdove_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: atdove_article
+field_type: entity_reference

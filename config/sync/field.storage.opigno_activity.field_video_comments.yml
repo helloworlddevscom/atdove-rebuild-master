@@ -1,0 +1,20 @@
+uuid: d8b2d233-8fee-4086-98ca-8ec7e0065e6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - opigno_module
+id: opigno_activity.field_video_comments
+field_name: field_video_comments
+entity_type: opigno_activity
+type: comment
+settings:
+  comment_type: comment_node_video
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

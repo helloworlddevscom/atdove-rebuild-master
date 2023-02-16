@@ -1,0 +1,209 @@
+// Wistia Video Hero p_wistia_video_hero
+
+.wistia-hero-wrapper {
+  display: none;
+  @media only screen and (min-width:800px) {
+    display: flex;
+    height: 800px;
+    color: white;
+    background-image: url(../images/homepagehero.png);
+  }
+}
+
+.wistia-hero-wrapper::after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 800px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.wistia-hero-heading {
+  max-width: 900px;
+  top: 100px;
+  padding: 30px 0;
+  text-align: center;
+  position: initial;
+  h1 {
+    text-transform: none;
+    color: #555555;
+    border: none;
+    font-size: 50px;
+    line-height: 1.2;
+    padding: 0 24px;
+    font-weight: bold;
+  }
+  .atdove-btn {
+    background: -webkit-gradient(linear,0% 0%,0% 100%,from(#D65624),to(#EA632E));
+    display: inline-block;
+    padding: 15px 30px;
+    color: #ffffff !important;
+    width: 250px;
+    margin: 20px 20px;
+    font-size: 25px;
+  }
+  @media only screen and (min-width:800px) {
+    padding-top: 200px;
+    position: relative;
+    padding-top: 20px;
+    h1 {
+      color: white;
+      font-size: 60px;
+      line-height: inherit;
+      padding: 0;
+    }
+  }
+}
+
+.wistia-hero-subheading {
+
+  background: #AABA0A;
+  color: #000000;
+  font-weight: 400;
+  padding: 15px 38px;
+  text-align: center;
+  font-size: 150%;
+  font-family: Arial,sans-serif;
+
+}
+
+.wistia-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.wistia-hero-heading-wrapper {
+  top: 10px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  @media only screen and (min-width:800px) {
+    position: absolute;
+  }
+}
+
+// Three Text Columns p_three_text_columns
+.three-columns-wrapper {
+  padding: 100px 0;
+  text-align: center;
+  hr {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 8px auto;
+    height: 0;
+    width: 60%;
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+  }
+  @media only screen and (min-width:800px) {
+    display: flex;
+    hr {
+      display: none;
+    }
+  }
+}
+
+// Basic Hero - used on landing pages and basic pages - p_basic_hero
+
+.basic-hero-wrapper {
+  display: none;
+  @media only screen and (min-width:800px) {
+    display: flex;
+    height: 800px;
+  }
+}
+
+.basic-hero-wrapper::after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 450px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.basic-hero-heading {
+  max-width: 900px;
+  top: 30px;
+  padding: 0;
+  text-align: center;
+  position: initial;
+  h1 {
+    text-transform: none;
+    color: #555555;
+    border: none;
+    font-size: 50px;
+    line-height: 1.2;
+    padding: 0 24px;
+    font-weight: bold;
+  }
+  .atdove-btn {
+    background: -webkit-gradient(linear,0% 0%,0% 100%,from(#D65624),to(#EA632E));
+    display: inline-block;
+    padding: 15px 30px;
+    color: #ffffff !important;
+    width: 250px;
+    margin: 20px 20px;
+    font-size: 25px;
+  }
+  @media only screen and (min-width:800px) {
+    position: relative;
+    h1 {
+      color: white;
+      font-size: 60px;
+      line-height: inherit;
+      padding: 0;
+    }
+  }
+}
+
+.basic-hero-subheading {
+  color: white;
+  font-weight: 400;
+  padding: 15px 38px;
+  text-align: center;
+  font-size: 150%;
+  font-family: Arial,sans-serif;
+  h2 {
+    color: white;
+    text-transform: none;
+    font-size: 30px;
+  }
+
+}
+
+.basic-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.basic-hero-heading-wrapper {
+  top: 10px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  @media only screen and (min-width:800px) {
+    position: absolute;
+  }
+}

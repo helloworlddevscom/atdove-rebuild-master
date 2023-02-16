@@ -1,0 +1,21 @@
+uuid: 1a6440c3-e9d2-4414-974f-b5785eb11626
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - opigno_module
+    - paragraphs
+id: opigno_activity.field_accreditation_info
+field_name: field_accreditation_info
+entity_type: opigno_activity
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

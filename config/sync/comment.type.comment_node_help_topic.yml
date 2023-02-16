@@ -1,0 +1,8 @@
+uuid: 4318e360-db76-487e-bc20-2ed2f630b8db
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_help_topic
+label: 'Help Topic comment'
+target_entity_type_id: node
+description: null

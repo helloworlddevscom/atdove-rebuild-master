@@ -1,0 +1,25 @@
+<?php
+
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function atdove_home_redirect_preprocess_page()
+{
+  // if NOT authenticated, return
+  if (!\Drupal::currentUser()->isAuthenticated()) {
+    return;
+  }
+
+  // if the requested page is the home page, then redirect the user to their profile page.
+  $requestUrl = Url::fromRoute('<current>');
+  $requestPath = $requestUrl->toString();
+
+  if ($requestPath === "/home") {
+    $response = new RedirectResponse('/user');
+    $response->send();
+  }
+
+}

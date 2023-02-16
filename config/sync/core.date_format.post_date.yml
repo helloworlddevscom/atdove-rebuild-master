@@ -1,0 +1,10 @@
+uuid: cd70a0be-dcfe-451b-b467-7e6c5027b2e2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: CZf02CdQMSDM6S_d_IpSRfHwA4V9TCgjOOY2Dzd222Y
+id: post_date
+label: 'Post date'
+locked: false
+pattern: 'd F Y - H\h i'

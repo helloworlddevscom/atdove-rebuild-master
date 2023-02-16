@@ -1,0 +1,28 @@
+uuid: 49a928ba-940e-4b00-bf55-db06295b836e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.organization-group_membership.group_roles
+    - group.content_type.organization-group_membership
+id: group_content.organization-group_membership.default
+targetEntityType: group_content
+bundle: organization-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

@@ -1,0 +1,10 @@
+uuid: 5aa6c3b0-af0e-4573-a4d1-ad9677798c0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.contributor
+label: Contributor
+targetEntityType: user
+cache: true

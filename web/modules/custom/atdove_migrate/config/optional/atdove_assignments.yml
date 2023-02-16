@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_assignments
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (assignments)'
+source:
+  plugin: d7_node_atdove
+  node_type: assignment
+process:
+  nid: nid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      summary: summary
+      format:
+        plugin: default_value
+        default_value: full_html
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_assignee: 
+    plugin: skip_assignment
+    method: row
+    source: new_field_assignee
+  field_related_trainingplan: field_related_trainingplan
+  field_organization: field_organization
+  field_due_date:
+    plugin: sub_process
+    source: field_due_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  field_completed:
+    plugin: sub_process
+    source: field_completed
+    process:
+      value:
+        plugin: format_date
+        from_format: 'Y-m-d H:i:s'
+        to_format: 'Y-m-d\TH:i:s'
+        source: value
+  field_assigned_content: field_assigned_content
+  field_completed_quizzes: field_completed_quizzes
+  field_related_quiz: field_related_quiz
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  field_group_audience: gids
+destination:
+  plugin: 'entity:node'
+  default_bundle: assignment
+migration_dependencies: {}

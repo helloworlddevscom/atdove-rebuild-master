@@ -1,0 +1,11 @@
+name: AtDove SSO
+type: module
+description: Customizes Single Sign On features for AtDove.
+package: atdove
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - openid_connect
+  - atdove_organizations_create
+  - atdove_organizations_invite
+  - atdove_users

@@ -1,0 +1,20 @@
+uuid: c34cd82f-423d-45bd-aa9e-a62ace15aa9a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - opigno_module
+id: node.field_completed_quizzes
+field_name: field_completed_quizzes
+entity_type: node
+type: entity_reference
+settings:
+  target_type: opigno_activity
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

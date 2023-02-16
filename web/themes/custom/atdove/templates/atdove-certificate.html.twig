@@ -1,0 +1,178 @@
+<style>
+
+  .block-page-title-block {
+    display: none;
+  } 
+  .certificate-atdove-logo {
+    display: table;
+    margin: 0 auto;
+    height: 20px;
+    width: 200px;
+  }
+  .main-content {
+    text-align: center;
+  }
+  .page-bg {
+    display: none;
+  }
+  #block-atdove-content {
+    border: 20px solid black;
+    padding: 32px;
+  }
+  .text-center {
+    padding: 15px 0;
+    font-weight: 600;
+  }
+  .text-center h1 {
+    font-family: 'uicons-regular-rounded';
+    font-size: 20px;
+  }
+  .text-center .info-container {
+    font-size: 20px;
+    font-family: inherit; 
+  }
+  .text-center .title {
+    font-style: italic;
+    font-size: 15px;
+  }
+  .text-center .awarded, 
+  .text-center .for, 
+  .text-center .completed-on,
+  .text-center .atdove-cert-contributors {
+    padding: 0 0 10px 0;
+  }
+
+  .accreditation-subbox {
+    display: inline-block;
+    padding-top: 20px;
+  }
+
+</style>
+
+
+<article {{ attributes }}>
+  {% if route_name == "atdove_opigno.pdf" %}
+    <div style="background:#2f3759; color:white; padding:10px">
+       <img src="/themes/custom/atdove/logo.png" style="height:50px;"/>
+        <p style="font-size:0.75rem;">© 2022 DoveLewis Emergency Animal Hospital - All Rights Reserved</p>
+    </div>
+  {% endif %}
+
+  <div class="certificate-atdove-logo" style="padding-top:20px">
+    <img src="/themes/custom/atdove/images/atdovelogo.png" alt="{{ 'Atdove logo'|t }}">
+  </div>
+
+  <div {{ content_attributes.addClass('main-content') }}>
+    <h1 class="color-blue">
+      {{ 'Certificate of Completion'|t }}
+      <br>
+    </h1>
+
+    <div class="text-center">
+      {% if bg_image %}
+        <div class="page-bg">
+          <img src="{{ bg_image }}" alt="opigno-logo-bg">
+        </div>
+      {% endif %}
+
+      <div class="info-container">
+
+        <div class="awarded">
+          <div class="title bold color-blue">{{ 'This certifies that'|t }}</div>
+          <div class="color-green bold">{{ user_full_name }}</div>
+        </div>
+
+        <div class="for">
+          <div class="title bold color-blue">{{ 'has completed'|t }}</div>
+          <div class="color-green">{{ activity.label }}</div>
+          <div class="color-green bold">{{ act_name }}</div>
+        </div>
+
+        <div class="completed-on">
+         <div class="title bold"> Completed On</div>
+          {{ completed_date }}
+        </div>
+        {% if expire_on %}
+          <div class="validity">
+            <div class="color-blue">{{ 'Certificate validity'|t }}</div>
+            <div class="validity-date color-green bold">{{ completed_date ~ ' - ' ~ expire_on }}</div>
+          </div>
+        {% endif %}
+        {% if contributors %}
+          <div class="atdove-cert-contributors">
+            <div class="title bold">Contributors</div>
+            {% for contributor in contributors %}
+              <div class="atdove-cert-contributors-list">{{ contributor }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if is_acc == TRUE %}
+          {% if credit_hours %}
+            <div class="title bold color-blue">Credit Hours:</div>
+            <div class="color-green bold">{{ credit_hours }}</div>
+          {% endif %}
+          <div class="accreditation-box">
+            {% if ce_matter_category %}
+            <div class="accreditation-subbox">
+              <div class="title bold color-blue">
+                Subject Matter<br>Category
+              </div>
+                {{ ce_matter_category }}
+            </div>
+            {% endif %}
+            <div class="accreditation-subbox">
+              <div class="title bold color-blue">Delivery Method:</div>
+              <div class="color-green bold">Non-interactive<br>Distance</div>
+            </div>
+            <div class="accreditation-subbox">
+              {% if race_program_no %}
+              <div>
+                <div class="title bold color-blue">
+                  RACE Program #:
+                </div>
+                  {{ race_program_no }}
+              </div>
+              {% endif %}
+              {% if vhma_program_no %}
+              <div>
+                <div class="title bold color-blue">
+                  VHMA Program #:
+                </div>
+                  {{ vhma_program_no }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="accreditation-box">
+            {% if vhma_program_no %}
+              <p></p>
+              <div class="title bold color-blue">
+                This course is applicable toward the continuing education requirement for the Certified Veterinary Practice Manager program offered by the Veterinary Hospital Managers Association. Participants should be aware that some boards have limitations on the number of hours accepted in certain categories and/or restrictions on certain methods of delivery.
+              </div>
+              <p></p>
+            {% endif %}
+            {% if race_program_no %}
+              <p></p>
+              <div class="title bold color-blue">
+                This approval is valid in jurisdictions which recognize AAVSB RACE; however, participants are responsible for ascertaining each board's CE requirements.
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="color-blue sentence-case">{{ 'AtDove @year'|t({'@year': 'now'|date('Y')}) }}</div>
+    <a href="https://www.opigno.org" target="_blank">{{ 'atdove.org' }}</a>
+
+  {% if route_name == "atdove_opigno.pdf" %}
+    <div style="background:#2f3759; color:white; padding:10px">
+       <img src="/themes/custom/atdove/logo.png" style="height:50px;"/>
+        <p style="font-size:0.75rem;">© 2022 DoveLewis Emergency Animal Hospital - All Rights Reserved</p>
+    </div>
+  {% endif %}
+  </div>
+</article>

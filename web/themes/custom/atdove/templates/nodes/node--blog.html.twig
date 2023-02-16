@@ -1,0 +1,63 @@
+{#
+/**
+ * @file node--blog.html.twig
+ * Default theme implementation to present Activity data.
+ *
+ * This template is used when viewing Blog pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_node()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div{{ attributes.addClass('opigno_activity') }}>
+
+	<div class="atdove-article-wrapper">
+		<div class="atdove-article-title">
+		<h1>{{ content.title }} </h1>
+		{{ content.body['#items'][0].summary }}
+	  	</div>
+	</div>
+
+	<div class="atdove-activity-content">
+
+		<div class="atdove-activity-body">
+			<div class="atdove-article-body">
+				{{ content.body }}
+			</div>
+			    <div class="opigno-search-activity-buttons">
+			      {{ flag_link }}
+    			</div>
+
+				<div class="opigno-activity-box">
+				    <div class="addthis-wrapper">
+	               		<div class="addthis_inline_share_toolbox"></div>
+					</div>
+				</div>
+
+				<div class="opigno-activity-box">
+					{{ content.field_blog_comments }}
+				</div>
+		</div>
+
+		<div class="atdove-related-content-col">
+		<div class="atdove-contributor-image">
+			<h2>Contributors</h2>
+			{{ content.field_contributors }}
+		</div>
+
+			<h2>Related Content</h2>
+		    {{ content.field_related_blog }}
+			{{ content.field_opigno_articles }}
+			{{ content.field_opigno_videos }}
+		</div>
+
+	</div>
+
+</div>

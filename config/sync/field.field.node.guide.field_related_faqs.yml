@@ -1,0 +1,21 @@
+uuid: e5c40172-3e35-4828-87d9-9a5b7070d794
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_faqs
+    - node.type.guide
+id: node.guide.field_related_faqs
+field_name: field_related_faqs
+entity_type: node
+bundle: guide
+label: 'Related FAQs'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

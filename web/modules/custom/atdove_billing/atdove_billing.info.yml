@@ -1,0 +1,8 @@
+name: AtDove Billing
+description: A custom module to integrate with payment platforms
+core_version_requirement: ^8.8 || ^9
+type: module
+package: AtDove
+
+dependencies:
+  - atdove:atdove_utilities

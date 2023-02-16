@@ -1,0 +1,41 @@
+uuid: 7a71fe7f-7a42-4aef-9fb2-01c50ba32a9d
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_learning_paths
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: groups
+label: 'AtDove Training Plans'
+source:
+  plugin: atdove_migrate_group
+  node_type: training_plan
+process:
+  type:
+    plugin: default_value
+    default_value: learning_path
+  id: nid
+  label: title
+  uid: uid
+  status: status
+  created: created
+  changed: changed
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_learning_path_description:
+    -
+      plugin: sub_process
+      source: body
+      process:
+        value: value
+        format:
+          plugin: default_value
+          default_value: basic_html
+  field_stock: field_stock
+destination:
+  plugin: 'entity:group'
+migration_dependencies: null

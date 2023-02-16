@@ -1,0 +1,166 @@
+// Certificate enitites
+.page-certificate-entity-view, .page-atdove-certificate {
+  .block-page-title-block {
+    display: none;
+  }
+  .main-content {
+    text-align: center;
+  }
+  .page-bg {
+    display: none;
+  }
+  #block-atdove-content {
+    border: 60px solid transparent;
+    padding: 32px;
+    border-image-source: url(../../images/certificate-border.png);
+    border-image-slice: 50;
+
+  }
+  .text-center {
+    padding: 50px 0;
+    font-weight: 700;
+    h1 {
+      font-family: 'uicons-regular-rounded';
+      font-size: 60px;
+    }
+    .info-container {
+      font-size: 30px;
+      font-family: inherit;
+      .title {
+        font-style: italic;
+        font-size: 25px;
+      }
+      .awarded, .for, .completed-on {
+        padding: 0 0 20px;
+      }
+    }
+  }
+  .accreditation-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding-top: 20px;
+    .accreditation-subbox {
+      width: 30%;
+    }
+  }
+}
+
+// Group Certificates View
+.view-group-certificates #edit-submit-group-certificates {
+  position: relative;
+  margin-top: 30px;
+  left: 0;
+  right: 0;
+  @media (min-width:768px) {
+
+  }
+}
+
+.view-group-certificates, .view-my-certificates {
+  .view-footer {
+    text-align: center;
+  }
+
+  .views-exposed-form .form-items-group .form-item {
+    flex: 1 1 auto;
+    margin-right: 0.625rem;
+    text-align: center;
+  }
+
+  .form-items-group {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;      
+    @media (min-width:768px) {
+      display: flex;
+      margin-bottom: 1.25rem;
+      flex-direction: row;
+    }
+  }
+
+  .view-filters {
+    padding: 2em 0 5em;
+  }
+
+  .csv-feed a {
+    background-image: url(../../images/down-arrow-icon.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+  }
+  .feed-icons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding-bottom: 60px;
+  }
+  .atdove-download {
+    margin-top: 10px;
+    padding-right: 20px;
+  }
+  
+  .form-submit {
+    margin-top: 20px;
+  }
+
+  .fieldset-legend {
+    font-size: .875rem;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+  }
+
+  fieldset legend {
+    margin-bottom: 0;
+  }
+
+  .form-item {
+    margin-bottom: 20px !important;
+  }
+
+}
+
+.view-group-assignments {
+  
+  .view-footer {
+    text-align: center;
+  }
+
+  .views-exposed-form .form-items-group .form-item {
+    flex: 1 1 auto;
+    margin-right: 0.625rem;
+    margin-bottom: 0 !important;
+    text-align: center;
+  }
+
+  .form-items-group {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;      
+    @media (min-width:768px) {
+      display: flex;
+      margin-bottom: 1.25rem;
+      flex-direction: row;
+    }
+  }
+
+  .view-filters {
+    padding: 2em 0 5em;
+  }
+  
+}

@@ -1,0 +1,20 @@
+uuid: 240bfee9-9c44-406c-acfa-056929552c38
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+id: contributor
+label: Contributor
+weight: -5
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view own flag lists'

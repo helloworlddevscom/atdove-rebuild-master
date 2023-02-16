@@ -1,0 +1,17 @@
+uuid: 5b4dd276-c9a0-4465-9064-ca923402c9ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+  enforced:
+    config:
+      - user.role.group_subscriber
+id: learning_path-7c7c0f745
+label: 'Group Subscriber'
+weight: 4
+internal: true
+audience: outsider
+group_type: learning_path
+permissions_ui: false
+permissions: {  }

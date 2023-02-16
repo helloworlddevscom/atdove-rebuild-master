@@ -1,0 +1,26 @@
+uuid: a08a399b-fefd-4ba2-a375-f25f65dd7ee4
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - contact
+    - contextual
+    - filter
+    - media
+    - node_view_permissions
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access contextual links'
+  - 'access site-wide contact form'
+  - 'use text format restricted_html'
+  - 'view any page content'
+  - 'view media'

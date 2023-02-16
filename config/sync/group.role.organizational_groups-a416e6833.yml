@@ -1,0 +1,19 @@
+uuid: 8c8be830-7a33-48d2-9ac8-bd52b9be6526
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.administrator
+id: organizational_groups-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions:
+  - 'administer group'
+  - 'administer members'

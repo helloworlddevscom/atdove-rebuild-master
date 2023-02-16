@@ -1,0 +1,44 @@
+uuid: ce5ddf01-407e-40bc-9567-45f3ed74e140
+langcode: en
+status: true
+dependencies:
+  module:
+    - flag_lists
+    - node
+  enforced:
+    module:
+      - flag_bookmark
+_core:
+  default_config_hash: vuzrLaRZ3xV-FmT127t2gLy_p8JDLMWtsKsnCwdWR2Y
+id: bookmark
+label: Bookmark
+bundles:
+  - blog
+  - faq
+  - guide
+entity_type: node
+global: false
+flag_short: 'Bookmark this'
+flag_long: 'Add this post to your bookmarks'
+flag_message: 'This post has been added to your bookmarks'
+unflag_short: 'Remove bookmark'
+unflag_long: 'Remove this post from your bookmarks'
+unflag_message: 'This post has been removed from your bookmarks'
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: confirm
+flagTypeConfig:
+  show_in_links:
+    full: full
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig:
+  flag_confirmation: 'Bookmark this content?'
+  unflag_confirmation: 'Remove Bookmark?'
+  flag_create_button: 'Add to Bookmarks'
+  flag_delete_button: 'Delete from Bookmarks'
+  form_behavior: modal

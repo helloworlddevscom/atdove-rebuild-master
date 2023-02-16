@@ -1,0 +1,17 @@
+uuid: 0054fac9-18bf-4d61-9dcf-cacd6639a893
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: cBumLv_OJbdRe2TuMJMgfO0MYyuIsAxt31TbDweoOFo
+id: opigno_migration
+label: 'Opigno migration: Groups'
+description: 'Groups migration from Drupal 7 to 8'
+source_type: 'Drupal 7'
+module: null
+shared_configuration:
+  source:
+    key: legacy

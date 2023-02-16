@@ -1,0 +1,6 @@
+uuid: 57a1db75-903c-4218-a0d0-093188129937
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_article
+label: 'AtDove Article'

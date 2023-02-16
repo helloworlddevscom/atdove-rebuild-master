@@ -1,0 +1,33 @@
+uuid: 38907570-820a-4ab9-a639-873752005a27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_article_comments
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - comment
+id: opigno_activity.atdove_article.field_article_comments
+field_name: field_article_comments
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Article Comments'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    status: 2
+    cid: 0
+    last_comment_timestamp: 0
+    last_comment_name: null
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 1
+  per_page: 50
+  anonymous: 0
+  form_location: true
+  preview: 1
+field_type: comment

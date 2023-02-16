@@ -1,0 +1,18 @@
+uuid: 8c7f7af8-3049-4b6a-aca0-3d40b571c43f
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_stock
+field_name: field_stock
+entity_type: group
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

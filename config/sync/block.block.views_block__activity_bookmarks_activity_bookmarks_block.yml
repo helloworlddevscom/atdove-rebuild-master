@@ -1,0 +1,29 @@
+uuid: e5ee1656-15a9-4f6b-90a1-d2e48e46a1b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.activity_bookmarks
+  module:
+    - system
+    - views
+  theme:
+    - atdove
+id: views_block__activity_bookmarks_activity_bookmarks_block
+theme: atdove
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:activity_bookmarks-activity_bookmarks_block'
+settings:
+  id: 'views_block:activity_bookmarks-activity_bookmarks_block'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /bookmarks

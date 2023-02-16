@@ -1,0 +1,17 @@
+uuid: f99c55a8-dfe7-4c91-bc38-0ed4a774bc74
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_class
+  enforced:
+    config:
+      - user.role.active_org_member
+id: opigno_class-ae6d61818
+label: 'Active Organization Member'
+weight: 3
+internal: true
+audience: outsider
+group_type: opigno_class
+permissions_ui: false
+permissions: {  }

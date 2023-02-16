@@ -1,0 +1,33 @@
+uuid: 54ec724b-9a83-4ba4-b7b2-f302af89f609
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_certificate
+    - node.type.assignment
+  content:
+    - 'opigno_certificate:template:5e4ac3f2-ba93-4f9b-988d-c00dd156fbce'
+id: node.assignment.field_certificate
+field_name: field_certificate
+entity_type: node
+bundle: assignment
+label: Certificate
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 5e4ac3f2-ba93-4f9b-988d-c00dd156fbce
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_certificate'
+  handler_settings:
+    target_bundles:
+      template: template
+      wysiwyg: wysiwyg
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: template
+field_type: entity_reference

@@ -1,0 +1,12 @@
+uuid: d93af6ab-b71f-44c1-8e3b-79a64ac1a70a
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: '-JCvIGCKZTnrkaXuYy6ysnetKUME5vFZhyWqXlaifJQ'
+id: user.connection
+label: Connection
+targetEntityType: user
+cache: true

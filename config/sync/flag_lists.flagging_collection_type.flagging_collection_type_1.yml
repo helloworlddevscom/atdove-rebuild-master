@@ -1,0 +1,8 @@
+uuid: 496e71e8-e567-40a1-af37-87ebbead32ef
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: FgMUj7Lcs3yxNwSGpVwKZ6N00JNmxn3FndQcd-230hM
+id: flagging_collection_type_1
+label: 'Flagging collection type 1'

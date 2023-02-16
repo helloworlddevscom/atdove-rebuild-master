@@ -1,0 +1,20 @@
+uuid: c6ccdf4f-1834-4595-b82c-012b68770533
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+id: group_subscriber
+label: 'Group Subscriber'
+weight: -7
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view own flag lists'

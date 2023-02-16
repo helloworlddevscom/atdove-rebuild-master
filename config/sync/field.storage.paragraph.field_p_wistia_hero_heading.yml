@@ -1,0 +1,19 @@
+uuid: 9b3a96e5-4b94-45b9-aafe-8223ca38ba6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - heading
+    - paragraphs
+id: paragraph.field_p_wistia_hero_heading
+field_name: field_p_wistia_hero_heading
+entity_type: paragraph
+type: heading
+settings: {  }
+module: heading
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

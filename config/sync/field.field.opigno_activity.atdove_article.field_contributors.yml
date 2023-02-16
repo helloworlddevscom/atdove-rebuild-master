@@ -1,0 +1,29 @@
+uuid: e035ee7f-4d20-4092-830c-8effd8f8d436
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_contributors
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_contributors
+field_name: field_contributors
+entity_type: opigno_activity
+bundle: atdove_article
+label: Contributors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

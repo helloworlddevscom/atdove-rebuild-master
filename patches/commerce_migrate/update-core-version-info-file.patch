@@ -1,0 +1,26 @@
+diff --git a/modules/commerce/commerce_migrate_commerce.info.yml b/modules/commerce/commerce_migrate_commerce.info.yml
+index efcc6ee..c006d54 100644
+--- a/modules/commerce/commerce_migrate_commerce.info.yml
++++ b/modules/commerce/commerce_migrate_commerce.info.yml
+@@ -1,7 +1,7 @@
+ name: Commerce Migrate Commerce
+ type: module
+ description: Provides migrations for Commerce
+-core_version_requirement: ~9.0.0
++core_version_requirement: ^9.1
+ package: Commerce (contrib)
+ dependencies:
+   - commerce:commerce
+diff --git a/modules/csv_example/commerce_migrate_csv_example.info.yml b/modules/csv_example/commerce_migrate_csv_example.info.yml
+index 134f23d..a58c378 100644
+--- a/modules/csv_example/commerce_migrate_csv_example.info.yml
++++ b/modules/csv_example/commerce_migrate_csv_example.info.yml
+@@ -1,7 +1,7 @@
+ name: Commerce Migrate CSV example
+ type: module
+ description: 'Import products from an example CSV file'
+-core_version_requirement: ~9.0.0
++core_version_requirement: ^9.1
+ package: Commerce (contrib)
+ dependencies:
+   - commerce:commerce

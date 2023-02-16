@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_org_groups
+class: Drupal\migrate\Plugin\Migration
+migration_group: groups
+label: 'AtDove Organizational Groups'
+source:
+  plugin: atdove_migrate_group
+  node_type: organizational_groups
+process: 
+  type:
+    plugin: default_value
+    default_value: organizational_groups
+  id: nid
+  label: title
+  uid: user_id
+  status: status
+  created: created
+  changed: changed
+  field_org_group_body: 
+    -
+      plugin: sub_process
+      source: body
+      process:
+        value: value
+        format:
+          plugin: default_value
+          default_value: basic_html
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_actual_group_name: field_actual_group_name
+  field_og_org_ref: gids
+destination:
+  plugin: entity:group
+migration_dependencies: null

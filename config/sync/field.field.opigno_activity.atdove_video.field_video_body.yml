@@ -1,0 +1,23 @@
+uuid: 2b8a8038-8c1f-4310-aa19-56b6cb683f76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_video_body
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - text
+id: opigno_activity.atdove_video.field_video_body
+field_name: field_video_body
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Video Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

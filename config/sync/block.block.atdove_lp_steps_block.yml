@@ -1,0 +1,28 @@
+uuid: 53941e70-9646-4d53-a19d-c98b00225a0e
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_learning_path
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: JuOJKKg4jTPWNHbS1Yr3dT9g7kHDiJeAlYzy2P09f1A
+id: atdove_lp_steps_block
+theme: atdove
+region: sidebar_first
+weight: -13
+provider: null
+plugin: lp_steps_block
+settings:
+  id: lp_steps_block
+  label: 'LP Steps'
+  label_display: '0'
+  provider: opigno_learning_path
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: "/module/*/result*\r\n/group/*/module/*"

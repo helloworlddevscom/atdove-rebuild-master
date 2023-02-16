@@ -1,0 +1,21 @@
+uuid: ce05d664-c5b1-4e05-886b-b62f318a513a
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_stripe_customer_id
+field_name: field_stripe_customer_id
+entity_type: group
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

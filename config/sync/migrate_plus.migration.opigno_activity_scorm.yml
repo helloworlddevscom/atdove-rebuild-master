@@ -1,0 +1,32 @@
+uuid: eefc50a3-832c-4155-a491-8e82a1896c91
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: w2wq_ZWs4dR-dCiEl8NW0iD9BhP8oxXWd1lbRFYFInw
+id: opigno_activity_scorm
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: opigno_migration
+label: 'Opigno Group activity SCORM (source: scorm)'
+source:
+  plugin: opigno_activity_scorm
+  node_type: opigno_scorm_quiz_question
+process:
+  type:
+    plugin: default_value
+    default_value: opigno_scorm
+  id: nid
+  vid: nid
+  name: title
+  uid: node_uid
+  opigno_scorm_package: opigno_scorm_package
+destination:
+  plugin: 'entity:opigno_activity'
+migration_dependencies: null

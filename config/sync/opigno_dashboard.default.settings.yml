@@ -1,0 +1,2 @@
+positions: '{"1":[{"admin_label":"User statistics","context_definitions":[],"id":"opigno_user_stats_block"}],"2":[{"admin_label":"My Assignments","context_definitions":{"field_assignee_target_id":[]},"id":"views_block:my_assignments_block-block_1","mandatory":false}],"3":[{"admin_label":"Latest active trainings","context_definitions":{"uid":[]},"id":"views_block:latest_active_trainings-block","mandatory":false}]}'
+columns: 5

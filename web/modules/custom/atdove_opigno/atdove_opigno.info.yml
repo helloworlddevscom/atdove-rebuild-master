@@ -1,0 +1,5 @@
+name: AtDove Opigno
+type: module
+description: AtDove modifications and additions to Opigno. Generally things that can't be done in the AtDove theme.
+core_version_requirement: ^8.8 || ^9
+package: AtDove

@@ -1,0 +1,34 @@
+uuid: 5f2e77cc-4872-4580-900d-1fd54d90c4b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.pdf_file.field_media_file
+    - media.type.pdf_file
+id: media.pdf_file.media_library
+targetEntityType: media
+bundle: pdf_file
+mode: media_library
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_file: true
+  path: true
+  status: true
+  uid: true

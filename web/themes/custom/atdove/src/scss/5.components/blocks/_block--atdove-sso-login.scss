@@ -1,0 +1,72 @@
+/**
+ * AtDove SSO Login form block.
+ * See: block--atdove-sso-login.html.twig
+ */
+
+.block-id--block-atdove-sso-login {
+  max-width: 560px;
+  padding: 20px;
+  margin: 50px auto;
+  background-color: #EDEDEE;
+
+  @media screen and (min-width: 800px) {
+    padding: 50px;
+  }
+
+  .block__title {
+    text-align: center;
+  }
+
+  .register-link {
+    display: block;
+    margin-bottom: 23px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .openid-connect-login-form {
+    .button {
+      @extend .btn-bluepearl;
+      width: 100%;
+      margin: 0 0 23px;
+      border-radius: 0;
+    }
+  }
+
+  .default-login-toggle {
+    width: 100%;
+    margin: 0;
+    text-decoration: none;
+    border-radius: 0;
+  }
+
+  .default-login-form {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    //overflow: hidden;
+    transition: opacity .3s ease-out, max-height .3s ease-out;
+    background-color: #f4f4f4;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      overflow: hidden;
+      transition: opacity .3s ease-out, max-height .3s ease-out;
+      pointer-events: all;
+    }
+
+    .user-login-form {
+      display: block;
+      padding: 30px 20px;
+    }
+
+    .form-actions {
+      margin-top: 20px;
+
+      .form-submit {
+        width: 100%;
+      }
+    }
+  }
+}

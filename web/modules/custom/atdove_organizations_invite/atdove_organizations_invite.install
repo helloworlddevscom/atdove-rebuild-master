@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Set weight of atdove_organizations_invite module.
+ */
+function atdove_organizations_invite_install() {
+  // We need weight to be more than opigno_learning_path.
+  module_set_weight('atdove_organizations_invite', 1);
+}

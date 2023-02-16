@@ -1,0 +1,23 @@
+uuid: 78d2d75a-f0a8-46ea-a807-db0b04e47b28
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+_core:
+  default_config_hash: _2_u1NP7SZsvFAmAOTmFTorTbLq5jOjIZ0_PDGH96Es
+id: learning_path-user_manager
+label: 'User manager'
+weight: -9
+internal: false
+audience: member
+group_type: learning_path
+permissions_ui: true
+permissions:
+  - 'administer members'
+  - 'leave group'
+  - 'score ilt entities'
+  - 'update own group_membership content'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view own results'

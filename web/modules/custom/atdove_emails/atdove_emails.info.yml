@@ -1,0 +1,6 @@
+name: AtDove Emails
+type: module
+description: Handles all emails relating to AtDove
+package: atdove
+core: 8.x
+core_version_requirement: ^8 || ^9

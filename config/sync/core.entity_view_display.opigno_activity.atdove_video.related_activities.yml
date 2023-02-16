@@ -1,0 +1,124 @@
+uuid: 1d448374-0f07-4f30-9b79-1dc16f5e729c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.opigno_activity.related_activities
+    - field.field.opigno_activity.atdove_video.field_accreditation_info
+    - field.field.opigno_activity.atdove_video.field_accredited_for
+    - field.field.opigno_activity.atdove_video.field_additional_content_categor
+    - field.field.opigno_activity.atdove_video.field_additional_downloads
+    - field.field.opigno_activity.atdove_video.field_ce_matter_category
+    - field.field.opigno_activity.atdove_video.field_content_category
+    - field.field.opigno_activity.atdove_video.field_contributors
+    - field.field.opigno_activity.atdove_video.field_credit_hours
+    - field.field.opigno_activity.atdove_video.field_exclude_from_search_result
+    - field.field.opigno_activity.atdove_video.field_external_contributors
+    - field.field.opigno_activity.atdove_video.field_featured_image
+    - field.field.opigno_activity.atdove_video.field_group_audience
+    - field.field.opigno_activity.atdove_video.field_job_category
+    - field.field.opigno_activity.atdove_video.field_marketing_title
+    - field.field.opigno_activity.atdove_video.field_media_image
+    - field.field.opigno_activity.atdove_video.field_opigno_articles
+    - field.field.opigno_activity.atdove_video.field_opigno_quiz
+    - field.field.opigno_activity.atdove_video.field_opigno_videos
+    - field.field.opigno_activity.atdove_video.field_premium
+    - field.field.opigno_activity.atdove_video.field_related_ads
+    - field.field.opigno_activity.atdove_video.field_related_blog
+    - field.field.opigno_activity.atdove_video.field_related_surveys
+    - field.field.opigno_activity.atdove_video.field_search_keywords
+    - field.field.opigno_activity.atdove_video.field_special_class
+    - field.field.opigno_activity.atdove_video.field_thumbnail_image
+    - field.field.opigno_activity.atdove_video.field_video_addon_button
+    - field.field.opigno_activity.atdove_video.field_video_body
+    - field.field.opigno_activity.atdove_video.field_video_checklist
+    - field.field.opigno_activity.atdove_video.field_video_comments
+    - field.field.opigno_activity.atdove_video.field_video_duration
+    - field.field.opigno_activity.atdove_video.field_wistia_video
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - entity_print
+    - layout_builder
+    - media
+third_party_settings:
+  entity_print:
+    pdf_label: 'View PDF'
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: opigno_activity.atdove_video.related_activities
+targetEntityType: opigno_activity
+bundle: atdove_video
+mode: related_activities
+content:
+  field_featured_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_thumbnail_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_accreditation_info: true
+  field_accredited_for: true
+  field_additional_content_categor: true
+  field_additional_downloads: true
+  field_ce_matter_category: true
+  field_content_category: true
+  field_contributors: true
+  field_credit_hours: true
+  field_exclude_from_search_result: true
+  field_external_contributors: true
+  field_group_audience: true
+  field_job_category: true
+  field_marketing_title: true
+  field_opigno_articles: true
+  field_opigno_quiz: true
+  field_opigno_videos: true
+  field_premium: true
+  field_related_ads: true
+  field_related_blog: true
+  field_related_surveys: true
+  field_search_keywords: true
+  field_special_class: true
+  field_video_addon_button: true
+  field_video_body: true
+  field_video_checklist: true
+  field_video_comments: true
+  field_video_duration: true
+  field_wistia_video: true
+  flag_activity_bookmark: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

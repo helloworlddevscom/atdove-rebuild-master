@@ -1,0 +1,20 @@
+uuid: 57e77cb9-a7ed-4b76-aa08-5cdda18adb98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_prof_interests
+  module:
+    - user
+id: user.user.field_user_prof_interests
+field_name: field_user_prof_interests
+entity_type: user
+bundle: user
+label: 'Professional Interests'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

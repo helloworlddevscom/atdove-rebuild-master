@@ -1,0 +1,29 @@
+uuid: 14587b84-05bf-4746-9c88-21307260bc8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_additional_downloads
+    - media.type.pdf_file
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_additional_downloads
+field_name: field_additional_downloads
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Additional Downloads'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      pdf_file: pdf_file
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

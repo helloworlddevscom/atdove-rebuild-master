@@ -1,0 +1,32 @@
+uuid: b9ec0d37-5a52-4f6d-a78f-fabd0aa2f578
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_flag_migration
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: atdove_flags
+label: 'AtDove Flag Migration'
+source:
+  plugin: atdove_flag_migration
+process:
+  id: flagging_id
+  flag_id:
+    plugin: default_value
+    default_value: bookmark
+  entity_type:
+    plugin: default_value
+    default_value: node
+  entity_id: entity_id
+  global:
+    plugin: default_value
+    default_value: 0
+  uid: uid
+  session_id: sid
+  created: timestamp
+destination:
+  plugin: 'entity:flagging'
+  default_bundle: bookmark
+migration_dependencies: {  }

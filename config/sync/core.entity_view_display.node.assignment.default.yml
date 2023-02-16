@@ -1,0 +1,118 @@
+uuid: 74c8c62c-c176-4905-bf0b-effa000bfd08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.assignment.body
+    - field.field.node.assignment.field_assigned_content
+    - field.field.node.assignment.field_assignee
+    - field.field.node.assignment.field_assignment_status
+    - field.field.node.assignment.field_certificate
+    - field.field.node.assignment.field_completed
+    - field.field.node.assignment.field_completed_quizzes
+    - field.field.node.assignment.field_due_date
+    - field.field.node.assignment.field_organization
+    - field.field.node.assignment.field_related_quiz
+    - field.field.node.assignment.field_related_trainingplan
+    - node.type.assignment
+  module:
+    - datetime
+    - options
+    - user
+id: node.assignment.default
+targetEntityType: node
+bundle: assignment
+mode: default
+content:
+  field_assigned_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_assignee:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_assignment_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_completed:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_completed_quizzes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_due_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_organization:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_related_quiz:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_related_trainingplan:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  flag_flag_list_template_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_certificate: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

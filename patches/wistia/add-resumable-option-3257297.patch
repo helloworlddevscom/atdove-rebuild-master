@@ -1,0 +1,88 @@
+diff --git a/config/install/wistia.settings.yml b/config/install/wistia.settings.yml
+index 939fe4d..72ac923 100644
+--- a/config/install/wistia.settings.yml
++++ b/config/install/wistia.settings.yml
+@@ -4,3 +4,4 @@ player_color: "#54bbff"
+ video_width: 640
+ video_height: 360
+ display_play_button: 1
++resumable: 1
+diff --git a/js/wistia_playlist.js b/js/wistia_playlist.js
+index 64c376c..b3a414b 100644
+--- a/js/wistia_playlist.js
++++ b/js/wistia_playlist.js
+@@ -22,6 +22,7 @@
+             autoPlay: false,
+             videoWidth: settings.player_settings.video_width,
+             videoHeight: settings.player_settings.video_height,
++            resumable: settings.player_settings.resumable,
+             inlineOptionsOnly: true,
+             version: 'v1'
+           },
+diff --git a/js/wistia_video.js b/js/wistia_video.js
+index 269f583..cb3d6e0 100644
+--- a/js/wistia_video.js
++++ b/js/wistia_video.js
+@@ -16,6 +16,7 @@
+             playButton: settings.player_settings.display_play_button,
+             videoWidth: settings.player_settings.video_width,
+             videoHeight: settings.player_settings.video_height,
++            resumable: settings.player_settings.resumable,
+           }
+         });
+       });
+diff --git a/src/Form/SettingsForm.php b/src/Form/SettingsForm.php
+index ebbe5eb..5ae47fc 100644
+--- a/src/Form/SettingsForm.php
++++ b/src/Form/SettingsForm.php
+@@ -70,6 +70,17 @@ class SettingsForm extends ConfigFormBase {
+       '#description' => $this->t('Uncheck to use a custom play button.'),
+       '#default_value' => $config->get('display_play_button'),
+     ];
++    $form['video_settings'] = [
++      '#type' => 'details',
++      '#title' => $this->t('Video Setttings'),
++      '#open' => TRUE,
++    ];
++    $form['video_settings']['resumable'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Make Video Resumable'),
++      '#description' => $this->t('If checked, a user can resume a video where they left off.'),
++      '#default_value' => $config->get('resumable'),
++    ];
+ 
+     // @todo add (optional) default player button image.
+     return parent::buildForm($form, $form_state);
+@@ -87,6 +98,7 @@ class SettingsForm extends ConfigFormBase {
+       ->set('video_width', $form_state->getValue('video_width'))
+       ->set('video_height', $form_state->getValue('video_height'))
+       ->set('display_play_button', $form_state->getValue('display_play_button'))
++      ->set('resumable', $form_state->getValue('resumable'))
+       ->save();
+   }
+ 
+diff --git a/src/Plugin/video_embed_field/Provider/WistiaBase.php b/src/Plugin/video_embed_field/Provider/WistiaBase.php
+index 86dade5..b1499ed 100644
+--- a/src/Plugin/video_embed_field/Provider/WistiaBase.php
++++ b/src/Plugin/video_embed_field/Provider/WistiaBase.php
+@@ -24,6 +24,7 @@ abstract class WistiaBase extends ProviderPluginBase {
+         'display_play_button' => $globalConfig->get('display_play_button') === 1 ? 'true' : 'false',
+         'video_width' => $globalConfig->get('video_width'),
+         'video_height' => $globalConfig->get('video_height'),
++        'resumable' => $globalConfig->get('resumable') === 1 ? 'true' : 'false',
+       ],
+     ];
+   }
+diff --git a/wistia.info.yml b/wistia.info.yml
+index b495418..3c88b07 100644
+--- a/wistia.info.yml
++++ b/wistia.info.yml
+@@ -9,3 +9,8 @@ dependencies:
+   - drupal:media
+   - drupal:media_library
+   - video_embed_field:video_embed_media
++
++# Information added by Drupal.org packaging script on 2020-04-18
++version: '8.x-1.0-alpha1'
++project: 'wistia'
++datestamp: 1587210487

@@ -1,0 +1,30 @@
+uuid: 993f4557-2c3f-4792-8270-403fc83e3003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_personal_training_plan
+    - group.type.learning_path
+  module:
+    - user
+id: user.user.field_personal_training_plan
+field_name: field_personal_training_plan
+entity_type: user
+bundle: user
+label: 'Personal Training Plan'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      learning_path: learning_path
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

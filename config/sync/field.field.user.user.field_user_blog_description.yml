@@ -1,0 +1,20 @@
+uuid: 0a85e039-326f-40a2-9a3d-035a805ec016
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_blog_description
+  module:
+    - user
+id: user.user.field_user_blog_description
+field_name: field_user_blog_description
+entity_type: user
+bundle: user
+label: 'Blog Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,17 @@
+uuid: adaaf682-3538-4c95-ba31-b88f644d09bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.administrator_assistant
+id: organizational_groups-48a7588a1
+label: 'Administrator Assistant'
+weight: 8
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

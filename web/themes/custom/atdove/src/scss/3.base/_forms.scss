@@ -1,0 +1,46 @@
+/**
+ * Default styling for forms and form elements.
+ */
+
+
+// Field groups
+// ---------
+
+.horizontal-tabs-panes .horizontal-tabs-pane {
+  padding-top: 20px;
+}
+
+.comment-form{
+  display: block;
+
+  #edit-notify-type{
+    display: flex;
+  }
+  #edit-notify-type{
+    .js-form-type-radio{
+      margin: 0;
+    }
+  }
+
+  #edit-subject-wrapper{
+    margin:20px 0;
+  }
+
+  #edit-comment-body-0-format{
+    margin:20px 0;
+  }
+
+}
+
+.btn-form-secondary{
+  background: #fff;
+  border-color: var(--desktop-button-color);
+  color: var(--desktop-button-text-secondary);
+}
+
+
+#edit-actions{
+  #edit-cancel{
+    color: var(--desktop-button-text-primary);
+  }
+}

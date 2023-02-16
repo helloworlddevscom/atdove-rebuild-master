@@ -1,0 +1,25 @@
+uuid: 23b2ffc7-f9e3-4ce1-8a73-7e9d0e1edc8c
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - system
+  theme:
+    - atdove
+id: atdoveopignousertrainingplanblock
+theme: atdove
+region: content
+weight: 0
+provider: null
+plugin: atdove_opigno_training_plan_block
+settings:
+  id: atdove_opigno_training_plan_block
+  label: 'My Training Plans'
+  label_display: visible
+  provider: atdove_opigno
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /my-assignments

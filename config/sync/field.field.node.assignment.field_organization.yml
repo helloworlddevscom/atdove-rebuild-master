@@ -1,0 +1,29 @@
+uuid: 71556cc6-6284-4939-aa2d-111b54e5ee7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_organization
+    - group.type.organization
+    - node.type.assignment
+id: node.assignment.field_organization
+field_name: field_organization
+entity_type: node
+bundle: assignment
+label: Organization
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      organization: organization
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: organization
+field_type: entity_reference

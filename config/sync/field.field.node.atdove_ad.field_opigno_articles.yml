@@ -1,0 +1,29 @@
+uuid: 40c6c983-7131-4ac7-97e8-ee0195cfb8d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opigno_articles
+    - node.type.atdove_ad
+    - opigno_module.opigno_activity_type.atdove_article
+id: node.atdove_ad.field_opigno_articles
+field_name: field_opigno_articles
+entity_type: node
+bundle: atdove_ad
+label: 'Related Opigno Articles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_activity'
+  handler_settings:
+    target_bundles:
+      atdove_article: atdove_article
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

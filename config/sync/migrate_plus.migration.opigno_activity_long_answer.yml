@@ -1,0 +1,41 @@
+uuid: fd70de94-5f4a-49db-9f4d-3030367cc6f9
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: mFlntZ74WMxcwvWugH4Z_v4kxMv7XzmY38m9G_OL1gM
+id: opigno_activity_long_answer
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: opigno_migration
+label: 'Opigno Group activity Long Answer (source: long_answer)'
+source:
+  plugin: opigno_activity_long_answer
+  node_type: long_answer
+process:
+  id: nid
+  vid: nid
+  name: title
+  uid: node_uid
+  type:
+    plugin: default_value
+    default_value: opigno_long_answer
+  opigno_body/value: body_value
+  opigno_body/summary: body_summary
+  opigno_body/format:
+    plugin: default_value
+    default_value: basic_html
+  created: created
+  changed: changed
+  status: status
+destination:
+  plugin: 'entity:opigno_activity'
+migration_dependencies:
+  required:
+    - opigno_users
+    - opigno_module_lesson

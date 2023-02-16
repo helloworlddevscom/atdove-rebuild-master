@@ -1,0 +1,10 @@
+stripe_api.webhook_redirect:
+  path: '/user-profile/{user}'
+  defaults:
+    _controller: '\Drupal\atdove_contributor_bio\Controller\ContributorBio::index'
+  requirements:
+    _role: 'authenticated'
+  options:
+    parameters:
+      user:
+        type: entity:user

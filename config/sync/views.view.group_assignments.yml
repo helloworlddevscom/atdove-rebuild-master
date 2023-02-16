@@ -1,0 +1,1981 @@
+uuid: f21ca1d7-e3fb-45de-9183-3bd194349cd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assigned_content
+    - field.storage.node.field_assignee
+    - field.storage.node.field_assignment_status
+    - field.storage.node.field_completed
+    - field.storage.node.field_due_date
+    - field.storage.opigno_activity.field_opigno_quiz
+    - group.type.organization
+    - group.type.organizational_groups
+    - node.type.assignment
+    - taxonomy.vocabulary.content_categories
+    - taxonomy.vocabulary.job_categories
+    - views.view.user_entity_reference
+  module:
+    - atdove_opigno
+    - better_exposed_filters
+    - datetime
+    - entityreference_filter
+    - group
+    - node
+    - opigno_module
+    - options
+    - taxonomy
+    - user
+    - views_bulk_operations
+id: group_assignments
+label: 'Group Assignments'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Group Assignments'
+      fields:
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_bulk_operations_bulk_form
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          batch: true
+          batch_size: 10
+          form_step: true
+          buttons: false
+          action_title: Delete
+          clear_on_exposed: true
+          force_selection_info: false
+          selected_actions:
+            11:
+              action_id: views_bulk_operations_delete_entity
+        field_assignee:
+          id: field_assignee
+          table: node__field_assignee
+          field: field_assignee
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Assignee
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_assigned_content:
+          id: field_assigned_content
+          table: node__field_assigned_content
+          field: field_assigned_content
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Content
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_opigno_quiz:
+          id: field_opigno_quiz
+          table: opigno_activity__field_opigno_quiz
+          field: field_opigno_quiz
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_due_date:
+          id: field_due_date
+          table: node__field_due_date
+          field: field_due_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Due Date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: datepicker
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_completed:
+          id: field_completed
+          table: node__field_completed
+          field: field_completed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Date Completed'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: datepicker
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_assignment_status:
+          id: field_assignment_status
+          table: node__field_assignment_status
+          field: field_assignment_status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: span
+          element_class: 'status-{{ field_assignment_status }}'
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: Certificate
+            make_link: false
+            path: '/certificate/node/{{ nid }}/pdf'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: Download
+            rel: ''
+            link_class: atdove-certificate-pdf
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: 'Download Certificate'
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% if field_assignment_status == 'Passed' %}\r\n<a href=\"/certificate/node/{{ nid }}/pdf\">Download Certificate</a>\r\n{% endif %}"
+            make_link: true
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: 'View Certificate'
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% if field_assignment_status == 'Passed' %}\r\n<a href=\"/certificate/node/{{ nid }}\">View Certificate</a>\r\n{% endif %}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        org_groups_views_field:
+          id: org_groups_views_field
+          table: views
+          field: org_groups_views_field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: org_groups_views_field
+          label: 'User Organizations'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_job_category_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_content_category_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_accreditation_info_target_id:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              name:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_assignee_target_id_entityreference_filter:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              gid:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_completed_value:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+      access:
+        type: group_permission
+        options:
+          group_permission: 'edit group'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'You do not currently have any assignments.'
+            format: basic_html
+          tokenize: false
+      sorts:
+        field_due_date_value:
+          id: field_due_date_value
+          table: node__field_due_date
+          field: field_due_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_due_date_value
+          exposed: false
+          granularity: day
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            assignment: assignment
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        gid:
+          id: gid
+          table: group_content_field_data
+          field: gid
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          entity_type: group_content
+          entity_field: gid
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gid_op
+            label: Group
+            description: ''
+            use_operator: false
+            operator: gid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: gid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              administrator_assistant: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+              billing_admin: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: 'Parent group'
+            description: null
+            identifier: gid
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+        field_job_category_target_id:
+          id: field_job_category_target_id
+          table: opigno_activity__field_job_category
+          field: field_job_category_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_job_category_target_id_op
+            label: 'Pick Your Track'
+            description: ''
+            use_operator: false
+            operator: field_job_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_job_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: job_categories
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_content_category_target_id:
+          id: field_content_category_target_id
+          table: opigno_activity__field_content_category
+          field: field_content_category_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_content_category_target_id_op
+            label: 'Content Category'
+            description: ''
+            use_operator: false
+            operator: field_content_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_content_category_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: content_categories
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_accreditation_info_target_id:
+          id: field_accreditation_info_target_id
+          table: opigno_activity__field_accreditation_info
+          field: field_accreditation_info_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_accreditation_info_target_id_op
+            label: 'Accreditation Info'
+            description: ''
+            use_operator: false
+            operator: field_accreditation_info_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_accreditation_info_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        name:
+          id: name
+          table: opigno_activity_field_data
+          field: name
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          entity_type: opigno_activity
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: Keyword
+            description: ''
+            use_operator: false
+            operator: name_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keyword
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_completed_value:
+          id: field_completed_value
+          table: node__field_completed
+          field: field_completed_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_assignment_status_value:
+          id: field_assignment_status_value
+          table: node__field_assignment_status
+          field: field_assignment_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            passed: passed
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            field_assigned_content: field_assigned_content
+            field_opigno_quiz: field_opigno_quiz
+            field_due_date: field_due_date
+            field_completed: field_completed
+            field_assignment_status: field_assignment_status
+            nid: nid
+            nothing: nothing
+            nothing_1: nothing_1
+          default: '-1'
+          info:
+            field_assigned_content:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_opigno_quiz:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_due_date:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_completed:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_assignment_status:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing_1:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        field_assigned_content:
+          id: field_assigned_content
+          table: node__field_assigned_content
+          field: field_assigned_content
+          relationship: none
+          group_type: group
+          admin_label: 'field_assigned_content: Activity'
+          plugin_id: standard
+          required: true
+        field_assignee:
+          id: field_assignee
+          table: node__field_assignee
+          field: field_assignee
+          relationship: none
+          group_type: group
+          admin_label: 'field_assignee: User'
+          plugin_id: standard
+          required: true
+        group_content:
+          id: group_content
+          table: users_field_data
+          field: group_content
+          relationship: field_assignee
+          group_type: group
+          admin_label: 'User group content'
+          entity_type: user
+          plugin_id: group_content_to_entity_reverse
+          required: false
+          group_content_plugins:
+            group_membership: group_membership
+            group_invitation: '0'
+        group_content_1:
+          id: group_content_1
+          table: users_field_data
+          field: group_content
+          relationship: field_assignee
+          group_type: group
+          admin_label: 'User group content'
+          entity_type: user
+          plugin_id: group_content_to_entity_reverse
+          required: false
+          group_content_plugins:
+            group_membership: group_membership
+            group_invitation: '0'
+      group_by: false
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - route.group
+        - url
+        - url.query_args
+        - user
+        - user.group_permissions
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_assigned_content'
+        - 'config:field.storage.node.field_assignee'
+        - 'config:field.storage.node.field_assignment_status'
+        - 'config:field.storage.node.field_completed'
+        - 'config:field.storage.node.field_due_date'
+        - 'config:field.storage.opigno_activity.field_opigno_quiz'
+  group_assignments_page:
+    id: group_assignments_page
+    display_title: 'My Group Assignments'
+    display_plugin: page
+    position: 3
+    display_options:
+      arguments:
+        gid:
+          id: gid
+          table: group_content_field_data
+          field: gid
+          relationship: group_content
+          group_type: group
+          admin_label: ''
+          entity_type: group_content
+          entity_field: gid
+          plugin_id: group_id
+          default_action: 'access denied'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: true
+          title: '{{ arguments.gid|placeholder }} subgroups'
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            assignment: assignment
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_job_category_target_id:
+          id: field_job_category_target_id
+          table: opigno_activity__field_job_category
+          field: field_job_category_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_job_category_target_id_op
+            label: 'Pick Your Track'
+            description: ''
+            use_operator: false
+            operator: field_job_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_job_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: job_categories
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_content_category_target_id:
+          id: field_content_category_target_id
+          table: opigno_activity__field_content_category
+          field: field_content_category_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_content_category_target_id_op
+            label: 'Content Category'
+            description: ''
+            use_operator: false
+            operator: field_content_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_content_category_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: content_categories
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_accreditation_info_target_id:
+          id: field_accreditation_info_target_id
+          table: opigno_activity__field_accreditation_info
+          field: field_accreditation_info_target_id
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_accreditation_info_target_id_op
+            label: 'Accreditation Info'
+            description: ''
+            use_operator: false
+            operator: field_accreditation_info_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_accreditation_info_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        name:
+          id: name
+          table: opigno_activity_field_data
+          field: name
+          relationship: field_assigned_content
+          group_type: group
+          admin_label: ''
+          entity_type: opigno_activity
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: Keyword
+            description: ''
+            use_operator: false
+            operator: name_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keyword
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              billing_admin: '0'
+              administrator_assistant: '0'
+              anonymous: '0'
+              administrator: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_assignee_target_id_entityreference_filter:
+          id: field_assignee_target_id_entityreference_filter
+          table: node__field_assignee
+          field: field_assignee_target_id_entityreference_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entityreference_filter_view_result
+          operator: or
+          value: null
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_assignee_target_id_entityreference_filter_op
+            label: Assignee
+            description: ''
+            use_operator: false
+            operator: field_assignee_target_id_entityreference_filter_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_assignee_target_id_entityreference_filter
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              administrator_assistant: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+              billing_admin: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          reference_display: 'user_entity_reference:entity_reference_1'
+          reference_arguments: '#1'
+          hide_empty_filter: false
+        field_completed_value:
+          id: field_completed_value
+          table: node__field_completed
+          field: field_completed_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: between
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_completed_value_op
+            label: 'Date Completed'
+            description: ''
+            use_operator: false
+            operator: field_completed_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_completed_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              administrator_assistant: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+              billing_admin: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type_1:
+          id: type_1
+          table: groups_field_data
+          field: type
+          relationship: gid
+          group_type: group
+          admin_label: ''
+          entity_type: group
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            organization: organization
+            organizational_groups: organizational_groups
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        org_groups_views_filter:
+          id: org_groups_views_filter
+          table: views
+          field: org_groups_views_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: org_groups_views_filter
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: org_groups_views_filter_op
+            label: 'User Organizations filter'
+            description: ''
+            use_operator: false
+            operator: org_groups_views_filter_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: org_groups_views_filter
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              active_org_member: '0'
+              group_subscriber: '0'
+              subscriber: '0'
+              contributor: '0'
+              content_manager: '0'
+              administrator_assistant: '0'
+              collaborative_features: '0'
+              statistics_reader: '0'
+              user_manager: '0'
+              billing_admin: '0'
+              administrator: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        relationships: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      relationships:
+        field_assigned_content:
+          id: field_assigned_content
+          table: node__field_assigned_content
+          field: field_assigned_content
+          relationship: none
+          group_type: group
+          admin_label: 'field_assigned_content: Activity'
+          plugin_id: standard
+          required: true
+        field_assignee:
+          id: field_assignee
+          table: node__field_assignee
+          field: field_assignee
+          relationship: none
+          group_type: group
+          admin_label: 'field_assignee: User'
+          plugin_id: standard
+          required: true
+        group_content:
+          id: group_content
+          table: users_field_data
+          field: group_content
+          relationship: field_assignee
+          group_type: group
+          admin_label: 'User group content'
+          entity_type: user
+          plugin_id: group_content_to_entity_reverse
+          required: false
+          group_content_plugins:
+            group_membership: group_membership
+            group_invitation: '0'
+        gc__group:
+          id: gc__group
+          table: group_content_field_data
+          field: gc__group
+          relationship: group_content
+          group_type: group
+          admin_label: 'Group content Group'
+          entity_type: group_content
+          plugin_id: group_content_to_entity
+          required: false
+          group_content_plugins:
+            'subgroup:organization': 'subgroup:organization'
+            'subgroup:organizational_groups': 'subgroup:organizational_groups'
+            'subgroup:learning_path': '0'
+            'subgroup:opigno_class': '0'
+            'subgroup:opigno_course': '0'
+        group_content_1:
+          id: group_content_1
+          table: users_field_data
+          field: group_content
+          relationship: field_assignee
+          group_type: group
+          admin_label: 'User group content'
+          entity_type: user
+          plugin_id: group_content_to_entity_reverse
+          required: false
+          group_content_plugins:
+            group_membership: group_membership
+            group_invitation: '0'
+        gid:
+          id: gid
+          table: group_content_field_data
+          field: gid
+          relationship: group_content_1
+          group_type: group
+          admin_label: Group
+          entity_type: group_content
+          entity_field: gid
+          plugin_id: standard
+          required: false
+      display_description: ''
+      display_extenders: {  }
+      path: group/%group/assignments
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - route.group
+        - url
+        - url.query_args
+        - user
+        - user.group_permissions
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_assigned_content'
+        - 'config:field.storage.node.field_assignee'
+        - 'config:field.storage.node.field_assignment_status'
+        - 'config:field.storage.node.field_completed'
+        - 'config:field.storage.node.field_due_date'
+        - 'config:field.storage.opigno_activity.field_opigno_quiz'
+        - user_list

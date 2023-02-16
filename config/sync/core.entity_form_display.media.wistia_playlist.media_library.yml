@@ -1,0 +1,36 @@
+uuid: bda9e090-af57-416e-b3b2-9fee9bd6b6b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.wistia_playlist.field_media_video_embed_field
+    - media.type.wistia_playlist
+_core:
+  default_config_hash: Sy6JRfuNWStUJ875yn5NSz9fqvdeYvt0Ner_zRl9PG8
+id: media.wistia_playlist.media_library
+targetEntityType: media
+bundle: wistia_playlist
+mode: media_library
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_video_embed_field: true
+  path: true
+  status: true
+  uid: true

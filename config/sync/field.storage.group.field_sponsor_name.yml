@@ -1,0 +1,21 @@
+uuid: 61544868-8e11-4df7-9f87-98e25ee54b8c
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_sponsor_name
+field_name: field_sponsor_name
+entity_type: group
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

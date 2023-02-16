@@ -1,0 +1,54 @@
+uuid: 2b629c06-7e8b-42b4-adf2-239ac1e7d99a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+    - group.type.organizational_groups
+id: group_content_type_c20cc86eb7dd2
+label: 'Organization: Subgroup (Organizational Groups)'
+description: 'Adds <em class="placeholder">Organizational Groups</em> groups to groups both publicly and privately.'
+group_type: organization
+content_plugin: 'subgroup:organizational_groups'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
+  parent_role_mapping:
+    organization-007ad607a: null
+    organization-1eb7047a7: null
+    organization-2c93a7931: null
+    organization-48a7588a1: null
+    organization-68b45153a: null
+    organization-7c7c0f745: null
+    organization-9b4c10f4d: null
+    organization-a416e6833: null
+    organization-admin: null
+    organization-ae6d61818: null
+    organization-anonymous: null
+    organization-b2b679d24: null
+    organization-contributor: null
+    organization-cont_admin: null
+    organization-ec70061de: null
+    organization-member: null
+    organization-outsider: null
+    organization-subscriber: null
+  child_role_mapping:
+    organizational_groups-007ad607a: null
+    organizational_groups-1eb7047a7: null
+    organizational_groups-2c93a7931: null
+    organizational_groups-48a7588a1: null
+    organizational_groups-68b45153a: null
+    organizational_groups-7c7c0f745: null
+    organizational_groups-9b4c10f4d: null
+    organizational_groups-a416e6833: null
+    organizational_groups-admin: null
+    organizational_groups-ae6d61818: null
+    organizational_groups-anonymous: null
+    organizational_groups-b2b679d24: null
+    organizational_groups-contrib: null
+    organizational_groups-cont_admin: null
+    organizational_groups-ec70061de: null
+    organizational_groups-member: null
+    organizational_groups-outsider: null
+    organizational_groups-subscriber: null

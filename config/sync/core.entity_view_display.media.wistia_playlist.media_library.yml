@@ -1,0 +1,37 @@
+uuid: 913b5d5a-85e3-4313-9d2a-5668322abb01
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.wistia_playlist.field_media_video_embed_field
+    - image.style.medium
+    - media.type.wistia_playlist
+  module:
+    - image
+_core:
+  default_config_hash: ifbzXwHWGxI0eHyN_C3V1e3vr5CJR2ey9XrcPOXbC3M
+id: media.wistia_playlist.media_library
+targetEntityType: media
+bundle: wistia_playlist
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_media_video_embed_field: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true

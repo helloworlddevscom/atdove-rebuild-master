@@ -1,0 +1,49 @@
+uuid: beb4c75a-b32a-4a92-b48b-00a99716c768
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_opigno_activity_comments
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: nodes
+label: Comments
+source:
+  plugin: atdove_d7_comment
+  constants:
+    entity_type: opigno_activity
+process:
+  field_type_exists:
+    -
+      plugin: skip_on_value
+      equals: true
+      source: node_type
+      method: row
+      value: blog
+  cid: cid
+  entity_id: entity_id
+  entity_type: constants/entity_type
+  bundle: bundle
+  comment_type: comment_type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: en
+  field_name: comment_field_name
+  subject: subject
+  uid: uid
+  name: name
+  mail: mail
+  homepage: homepage
+  hostname: hostname
+  created: created
+  changed: changed
+  status: status
+  thread: thread
+  comment_body: comment_body
+destination:
+  plugin: 'entity:comment'
+migration_dependencies: {  }

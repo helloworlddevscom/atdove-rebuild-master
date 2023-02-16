@@ -1,0 +1,19 @@
+uuid: 87c69a2b-7beb-4edd-99f9-8c763c7fe390
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_p_wistia_hero_button
+field_name: field_p_wistia_hero_button
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

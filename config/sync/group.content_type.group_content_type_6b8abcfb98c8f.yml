@@ -1,0 +1,17 @@
+uuid: 51a7a2e5-912b-47f2-ad3f-482c63a91587
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  module:
+    - user
+id: group_content_type_6b8abcfb98c8f
+label: 'Organizational Groups: Group membership'
+description: 'Adds users to groups as members.'
+group_type: organizational_groups
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

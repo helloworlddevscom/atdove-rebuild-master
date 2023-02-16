@@ -1,0 +1,5 @@
+name: AtDove Subscription Migrator
+description: Temporary module for creating Stripe subscriptions for migrated customers
+core_version_requirement: ^8.8 || ^9
+type: module
+package: AtDove

@@ -1,0 +1,9 @@
+uuid: 80fe19d1-4be0-439e-bec8-26e5e212866a
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_video
+label: 'AtDove Video'
+description: ''
+summary: ''
+image: {  }

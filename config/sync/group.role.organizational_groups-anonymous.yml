@@ -1,0 +1,14 @@
+uuid: 0771ae3d-9fb9-41f1-92ba-cebb214d9f50
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+id: organizational_groups-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: organizational_groups
+permissions_ui: true
+permissions: {  }

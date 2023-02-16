@@ -1,0 +1,10 @@
+uuid: 64684c26-7a52-4629-83c0-dbf34ce45b5d
+langcode: en
+status: true
+dependencies: {  }
+id: p_three_text_columns
+label: 'Three Text Columns'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

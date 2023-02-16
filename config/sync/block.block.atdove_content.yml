@@ -1,0 +1,22 @@
+uuid: 9538f914-7770-4a8d-97ea-068b91498875
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: Pm1P9L_FNv6_U6EAD5RECo2KcwAHgbU2DOVb1r6PWX8
+id: atdove_content
+theme: atdove
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

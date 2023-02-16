@@ -1,0 +1,112 @@
+<style>
+
+  .block-page-title-block {
+    display: none;
+  } 
+  .certificate-atdove-logo {
+    display: table;
+    margin: 0 auto;
+    height: 100px;
+    width: 300px;
+    padding: 0 0 20px 0;
+  }
+  .main-content {
+    text-align: center;
+  }
+  .page-bg {
+    display: none;
+  }
+  #block-atdove-content {
+    border: 20px solid black;
+    padding: 32px;
+  }
+  .text-center {
+    padding: 50px 0;
+    font-weight: 700;
+  }
+  .text-center h1 {
+    font-family: 'uicons-regular-rounded';
+    font-size: 60px;
+  }
+  .text-center .info-container {
+    font-size: 30px;
+    font-family: inherit; 
+  }
+  .text-center .title {
+    font-style: italic;
+    font-size: 25px;
+  }
+  .text-center .awarded, 
+  .text-center .for, 
+  .text-center .completed-on,
+  .text-center .atdove-cert-contributors {
+    padding: 0 0 20px 0;
+  }
+
+
+</style>
+
+
+<article {{ attributes }} >
+  {% if logo_src %}
+    <div class="certificate-atdove-logo">
+      <img src="{{ logo_src }}" alt="{{ 'Atdove logo'|t }}">
+    </div>
+  {% endif %}
+
+  <div {{ content_attributes.addClass('main-content') }}>
+    <h1 class="color-blue">
+      {{ 'Certificate of Completion'|t }}
+      <br>
+    </h1>
+
+    <div class="text-center">
+      {% if bg_image %}
+        <div class="page-bg">
+          <img src="{{ bg_image }}" alt="opigno-logo-bg">
+        </div>
+      {% endif %}
+
+      <div class="info-container">
+        <div class="awarded">
+          <div class="title bold color-blue">{{ 'Awarded to'|t }}</div>
+          <div class="color-green">{{ assignee.label }}</div>
+          {% if assignee.label is empty %}
+            <div class="title color-green">{{ awarded_to }}</div>
+          {% endif %}
+          
+        </div>
+
+        <div class="for">
+          <div class="title bold color-blue">{{ 'To certify completion of the training'|t }}</div>
+          <div class="color-green">{{ activity.label }}</div>
+          <div class="title color-green">{{ referencing_entity.label.0.value }}</div>
+        </div>
+
+        <div class="completed-on">
+         <div class="title bold"> Completed On</div>
+          {{ completed_on }}
+        </div>
+        {% if expire_on %}
+          <div class="validity">
+            <div class="color-blue">{{ 'Certificate validity'|t }}</div>
+            <div class="validity-date color-green bold">{{ completed_on ~ ' - ' ~ expire_on }}</div>
+          </div>
+        {% endif %}
+        {% if contributors %}
+          <div class="atdove-cert-contributors">
+            <div class="title bold">Contributors</div>
+            {% for contributor in contributors %}
+              <div class="atdove-cert-contributors-list">{{ contributor }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="color-blue sentence-case">{{ 'AtDove @year'|t({'@year': 'now'|date('Y')}) }}</div>
+    <a href="https://www.opigno.org" target="_blank">{{ 'atdove.org' }}</a>
+  </div>
+</article>

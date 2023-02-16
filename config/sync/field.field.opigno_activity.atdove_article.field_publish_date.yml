@@ -1,0 +1,24 @@
+uuid: 72b85fc1-fe5c-4e8a-8ea9-478adc5232d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_publish_date
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - datetime
+id: opigno_activity.atdove_article.field_publish_date
+field_name: field_publish_date
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Publish Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

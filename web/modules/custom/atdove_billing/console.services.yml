@@ -1,0 +1,6 @@
+services:
+  atdove_billing.generate_stripe_portal_config:
+    class: Drupal\atdove_billing\Command\StripeCustomerPortalConfigurationSetupCommand
+    arguments: []
+    tags:
+      - { name: drupal.command }

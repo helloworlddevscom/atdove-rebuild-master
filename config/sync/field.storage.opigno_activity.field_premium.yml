@@ -1,0 +1,18 @@
+uuid: 597a003c-9ed9-4b11-a94f-da487559d6d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+id: opigno_activity.field_premium
+field_name: field_premium
+entity_type: opigno_activity
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

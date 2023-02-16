@@ -1,0 +1,19 @@
+diff --git a/src/Image/Cache.php b/src/Image/Cache.php
+index a6ef0fe..9c7a36e 100644
+--- a/src/Image/Cache.php
++++ b/src/Image/Cache.php
+@@ -130,7 +130,13 @@ class Cache
+                 $resolved_url = Helpers::build_url($protocol, $host, $base_path, $url);
+ 
+                 if ($protocol === "" || $protocol === "file://") {
+-                    $realfile = realpath($resolved_url);
++
++                    // The realpath() method returns the Pantheon file location 
++                    // instead of the standard Drupal location.  Removing realpath() 
++                    // restores the standard Drupal 'files' location to the filepath.
++                    // See: https://pantheon.io/docs/files
++                    // 070122, Kaiser Keenmon, ticket AR-442
++                    $realfile = $resolved_url;
+         
+                     $rootDir = realpath($dompdf->getOptions()->getRootDir());
+                     if (strpos($realfile, $rootDir) !== 0) {

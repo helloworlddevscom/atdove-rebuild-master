@@ -1,0 +1,9 @@
+name: AtDove Organizations Create
+type: module
+description: Organization creation and free trial related functionality.
+core_version_requirement: ^8.8 || ^9
+package: AtDove
+dependencies:
+  - atdove:atdove_organizations
+  - atdove:atdove_billing
+  - group

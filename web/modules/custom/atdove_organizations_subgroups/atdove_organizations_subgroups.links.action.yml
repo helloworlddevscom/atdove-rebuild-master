@@ -1,0 +1,30 @@
+# Create subgroup.
+atdove_organizations_subgroups.subgroup_create:
+  route_name: entity.group_content.subgroup_add_form
+  title: 'Create organizational group'
+  appears_on:
+    - view.organization_members.page_1
+  class: 'Drupal\atdove_organizations_subgroups\Plugin\Menu\LocalAction\CreateSubgroupLocalAction'
+  weight: 1
+
+# Delete subgroup.
+atdove_organizations_subgroups.subgroup_delete:
+  route_name: atdove_organizations_subgroups.subgroup.delete
+  title: 'Delete organizational group'
+  appears_on:
+    - view.organization_members.page_1
+  class: 'Drupal\atdove_organizations_subgroups\Plugin\Menu\LocalAction\DeleteSubgroupLocalAction'
+  weight: 2
+
+# Add member. Because we are not using the default
+# group module group_members view and route for organization group type,
+# we need to add this ourselves.
+atdove_organizations_subgroups.member_add:
+  route_name: 'entity.group_content.add_form'
+  route_parameters:
+    plugin_id: 'group_membership'
+  class: '\Drupal\group\Plugin\Menu\LocalAction\WithDestination'
+  title: 'Add member'
+  appears_on:
+    - view.organization_members.page_1
+  weight: 0

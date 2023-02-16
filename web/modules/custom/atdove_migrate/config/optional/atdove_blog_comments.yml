@@ -1,0 +1,58 @@
+id: atdove_blog_comments
+label: Comments
+audit: true
+migration_tags:
+  - Drupal 7
+  - Content
+migration_group: nodes
+class: Drupal\migrate\Plugin\Migration
+source:
+  plugin: atdove_d7_comment
+  constants:
+    entity_type: node
+process:
+  type:
+    plugin: default_value
+    default_value: comment_forum
+  cid: cid
+  pid:
+    -
+      plugin: default_value
+      default_value: 0
+  entity_id:
+    -
+      plugin: migration_lookup
+      migration:
+        - atdove_node_blog
+      source: nid
+    -
+      plugin: skip_row_if_not_exist
+      entity: node
+      property: nid
+      message: 'Commented entity not found.'
+  entity_type: 'constants/entity_type'
+  comment_type: comment_type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: en
+  field_name: comment_field_name
+  subject: subject
+  uid: uid
+  name: name
+  mail: mail
+  homepage: homepage
+  hostname: hostname
+  created: created
+  changed: changed
+  status: status
+  thread: thread
+  comment_body: comment_body
+destination:
+  plugin: entity:comment
+migration_dependencies:
+  required:
+    - atdove_node_blog
+  optional:
+    - d7_node_translation
+

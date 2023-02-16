@@ -1,0 +1,49 @@
+uuid: a202d794-0ca3-41f8-9939-e78e3d75c7a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_pdf_version
+    - field.field.node.announcement.field_announcement_url
+    - field.field.node.announcement.field_homepage_announcement
+    - field.field.node.announcement.field_insert_image
+    - node.type.announcement
+  module:
+    - text
+    - user
+id: node.announcement.teaser
+targetEntityType: node
+bundle: announcement
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  flag_flag_list_template_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_announcement_pdf_version: true
+  field_announcement_url: true
+  field_homepage_announcement: true
+  field_insert_image: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

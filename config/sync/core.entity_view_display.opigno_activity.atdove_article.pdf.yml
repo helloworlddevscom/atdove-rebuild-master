@@ -1,0 +1,117 @@
+uuid: c6b065ef-06e5-4c50-ac1a-5dd6c3142aaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.opigno_activity.pdf
+    - field.field.opigno_activity.atdove_article.field_accreditation_info
+    - field.field.opigno_activity.atdove_article.field_additional_content_categor
+    - field.field.opigno_activity.atdove_article.field_article_body
+    - field.field.opigno_activity.atdove_article.field_article_comments
+    - field.field.opigno_activity.atdove_article.field_article_image
+    - field.field.opigno_activity.atdove_article.field_article_scorm
+    - field.field.opigno_activity.atdove_article.field_ce_matter_category
+    - field.field.opigno_activity.atdove_article.field_content_category
+    - field.field.opigno_activity.atdove_article.field_contributors
+    - field.field.opigno_activity.atdove_article.field_credit_hours
+    - field.field.opigno_activity.atdove_article.field_exclude_from_search_result
+    - field.field.opigno_activity.atdove_article.field_external_contributors
+    - field.field.opigno_activity.atdove_article.field_group_audience
+    - field.field.opigno_activity.atdove_article.field_job_category
+    - field.field.opigno_activity.atdove_article.field_marketing_title
+    - field.field.opigno_activity.atdove_article.field_media_image
+    - field.field.opigno_activity.atdove_article.field_opigno_articles
+    - field.field.opigno_activity.atdove_article.field_opigno_quiz
+    - field.field.opigno_activity.atdove_article.field_opigno_videos
+    - field.field.opigno_activity.atdove_article.field_publish_date
+    - field.field.opigno_activity.atdove_article.field_related_ads
+    - field.field.opigno_activity.atdove_article.field_related_blog
+    - field.field.opigno_activity.atdove_article.field_related_surveys
+    - field.field.opigno_activity.atdove_article.field_search_keywords
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - datetime
+    - entity_print
+    - layout_builder
+    - media
+    - text
+third_party_settings:
+  entity_print:
+    pdf_label: 'View PDF'
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: opigno_activity.atdove_article.pdf
+targetEntityType: opigno_activity
+bundle: atdove_article
+mode: pdf
+content:
+  field_article_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_article_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_publish_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  uid:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_accreditation_info: true
+  field_additional_content_categor: true
+  field_article_comments: true
+  field_article_scorm: true
+  field_ce_matter_category: true
+  field_content_category: true
+  field_contributors: true
+  field_credit_hours: true
+  field_exclude_from_search_result: true
+  field_external_contributors: true
+  field_group_audience: true
+  field_job_category: true
+  field_marketing_title: true
+  field_media_image: true
+  field_opigno_articles: true
+  field_opigno_quiz: true
+  field_opigno_videos: true
+  field_related_ads: true
+  field_related_blog: true
+  field_related_surveys: true
+  field_search_keywords: true
+  flag_activity_bookmark: true
+  langcode: true
+  search_api_excerpt: true

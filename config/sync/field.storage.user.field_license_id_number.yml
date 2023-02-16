@@ -1,0 +1,21 @@
+uuid: e0deca54-e88c-49ad-9615-0f934f5bcac2
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_license_id_number
+field_name: field_license_id_number
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

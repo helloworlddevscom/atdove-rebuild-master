@@ -1,0 +1,27 @@
+uuid: 872be4d0-2ba2-4913-9011-78daedee3a0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_wistia_video
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - video_embed_field
+id: opigno_activity.atdove_video.field_wistia_video
+field_name: field_wistia_video
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Wistia Video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    wistia_video: wistia_video
+    vimeo: '0'
+    youtube: '0'
+    youtube_playlist: '0'
+    wistia_playlist: '0'
+field_type: video_embed_field

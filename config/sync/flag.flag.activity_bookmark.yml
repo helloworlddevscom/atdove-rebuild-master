@@ -1,0 +1,44 @@
+uuid: 2dd6368a-a8af-47d0-bbb8-05c307f06201
+langcode: en
+status: true
+dependencies:
+  module:
+    - flag_count
+    - opigno_module
+id: activity_bookmark
+label: 'Activity Bookmark'
+bundles:
+  - atdove_article
+  - atdove_video
+  - opigno_file_upload
+  - opigno_h5p
+  - opigno_long_answer
+  - opigno_scorm
+  - opigno_slide
+  - opigno_tincan
+  - opigno_video
+entity_type: opigno_activity
+global: false
+flag_short: 'Add this activity to your bookmarks.'
+flag_long: 'Bookmark this'
+flag_message: 'This activity has been bookmarked!'
+unflag_short: 'Remove bookmark'
+unflag_long: 'Remove from bookmarks'
+unflag_message: 'This activity has been removed from your bookmarks.'
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:opigno_activity'
+link_type: count_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig:
+  flag_confirmation: 'Bookmark this activity?'
+  unflag_confirmation: 'Remove from bookmarks?'
+  flag_create_button: 'Add to Bookmarks'
+  flag_delete_button: 'Delete from Bookmarks'
+  form_behavior: modal

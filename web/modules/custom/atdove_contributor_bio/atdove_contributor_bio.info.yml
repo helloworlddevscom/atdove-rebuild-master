@@ -1,0 +1,5 @@
+name: AtDove Contributor Bio
+description: Displays a contributor's bio and related articles
+core_version_requirement: ^8.8 || ^9
+type: module
+package: AtDove

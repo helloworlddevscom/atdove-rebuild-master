@@ -1,0 +1,33 @@
+uuid: fd5bb87a-9b07-4d9e-8d82-a7e1851ae499
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_testimonials
+    - field.field.comment.comment_node_testimonials.comment_body
+  module:
+    - text
+id: comment.comment_node_testimonials.default
+targetEntityType: comment
+bundle: comment_node_testimonials
+mode: default
+content:
+  comment_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

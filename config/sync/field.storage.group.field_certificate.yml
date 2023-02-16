@@ -1,0 +1,22 @@
+uuid: 029db286-8d48-4385-9e9a-837417e70534
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - opigno_certificate
+_core:
+  default_config_hash: 24y-u2TVkw05ozQdrA8kaYTyYv-d0Vzgz9QspKTeg7o
+id: group.field_certificate
+field_name: field_certificate
+entity_type: group
+type: entity_reference
+settings:
+  target_type: opigno_certificate
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,34 @@
+uuid: be865f13-1b83-4852-93bd-9cf7eeb97f07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_accreditation_info.field_p_accreditation_id
+    - field.field.paragraph.p_accreditation_info.field_p_accreditations
+    - paragraphs.paragraphs_type.p_accreditation_info
+id: paragraph.p_accreditation_info.default
+targetEntityType: paragraph
+bundle: p_accreditation_info
+mode: default
+content:
+  field_p_accreditation_id:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_accreditations:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

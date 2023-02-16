@@ -1,0 +1,20 @@
+uuid: ca8b9bcd-6c21-49ea-b568-2df34852c439
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+id: billing_admin
+label: 'Billing Admin'
+weight: 1
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view own flag lists'

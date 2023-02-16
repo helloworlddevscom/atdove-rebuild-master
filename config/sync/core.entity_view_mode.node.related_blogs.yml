@@ -1,0 +1,10 @@
+uuid: 6a04c707-7ba0-4cbe-aed1-a6f4ba9a5d65
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.related_blogs
+label: 'Related Blogs'
+targetEntityType: node
+cache: true

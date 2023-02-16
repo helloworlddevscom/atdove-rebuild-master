@@ -1,0 +1,21 @@
+diff --git a/src/Css/Stylesheet.php b/src/Css/Stylesheet.php
+index 9364184..a93b0e1 100644
+--- a/src/Css/Stylesheet.php
++++ b/src/Css/Stylesheet.php
+@@ -359,6 +359,16 @@ class Stylesheet
+                     $chrootValid = false;
+                     foreach ($chroot as $chrootPath) {
+                         $chrootPath = realpath($chrootPath);
++
++                        // For media files, $realfile points to Pantheon's filesystem's /files path. Here we modify it to point
++                        // to the standard Drupal files location.
++                        // The strpos() check ensures that we do this for media files only and not the dompdf modules css files.
++                        // See: https://pantheon.io/docs/files
++                        // 070122, Kaiser Keenmon, ticket AR-442
++                        if(strpos($realfile, '/files/') === 0) {
++                            $realfile = $chrootPath . '/sites/default' . $realfile;
++                        }
++
+                         if ($chrootPath !== false && strpos($realfile, $chrootPath) === 0) {
+                             $chrootValid = true;
+                             break;

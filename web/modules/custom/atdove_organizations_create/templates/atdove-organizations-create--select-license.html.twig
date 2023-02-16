@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Template for sign-up/free trial select license page.
+ */
+#}
+<h2>Every plan starts with a free trial. That's seven days of training on us.</h2>
+<p>When you sign up for your free trial, a test transaction will be made to your account to ensure sufficient funds.
+  <a href="/help-topic/refund-policy">View our refund policy</a> and <a href="/help-center?title=credit+card">credit
+    card security information</a>.</p>
+<div class="organizations-create-join">
+  <div class="intervals">
+    <div class="interval yearly interval-focused">
+      <h4 class="text text-focused">Yearly</h4>
+    </div>
+    <div class="interval monthly interval-blurred">
+      <h4 class="text text-blurred">Monthly</h4>
+    </div>
+  </div>
+  <div class="licenses">
+    <ul>
+      {% for key, value in pricing %}
+        <li class="{{ value.interval }} fieldgroup">
+          <div class="license-seats">
+            {{ value.seats }}
+          </div>
+          <div class="license-amount">
+            ${{ value.amount }}
+          </div>
+          <div class="license-interval">
+            {% if value.interval == "year" %}
+              billed annually (USD)
+            {% else %}
+              charged monthly (USD)
+            {% endif %}
+          </div>
+          <div class="license-start">
+            <a href="/join/create-account?license={{ value.id }}">Start a Free Trial</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="special-accounts">
+    Does Your Organization Have More Than 100 Members?<br>
+    <a href="/webform/special-accounts">Contact Us</a>
+  </div>
+</div>
+{{ attach_library('atdove_organizations_create/join') }}

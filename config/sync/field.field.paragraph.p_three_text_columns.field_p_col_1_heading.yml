@@ -1,0 +1,19 @@
+uuid: c8bf2671-4137-4243-ac23-1904a9c71699
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_col_1_heading
+    - paragraphs.paragraphs_type.p_three_text_columns
+id: paragraph.p_three_text_columns.field_p_col_1_heading
+field_name: field_p_col_1_heading
+entity_type: paragraph
+bundle: p_three_text_columns
+label: 'Col 1 Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

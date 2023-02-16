@@ -1,0 +1,27 @@
+uuid: beea407c-a003-4ad0-989a-f65415e841fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: 5dMydvqYU9zH6jKww4861YTISyhovkEpa_pijz7WD40
+id: atdove_primaryadminactions
+theme: atdove
+region: content
+weight: -13
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: /catalogue

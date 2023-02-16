@@ -1,0 +1,8 @@
+uuid: 0a15aad2-6aac-40e5-af7c-78b205e2c8be
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_organizational_gr
+label: 'Organizational Groups comment'
+target_entity_type_id: node
+description: null

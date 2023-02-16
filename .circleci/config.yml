@@ -1,0 +1,512 @@
+# This is a heavily modified version of Pantheon Build Tools for Hello World.
+# Most of the modifications are documented here:
+# https://helloworlddevs.atlassian.net/wiki/spaces/HWD/pages/2731245569/Pantheon+Build+Tools+Workflow#Modifications-%F0%9F%9B%A0
+#=========================================================================
+
+# https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+defaults: &defaults
+  docker:
+    - image: quay.io/pantheon-public/build-tools-ci:6.x
+  working_directory: ~/example_drops_8_composer
+  environment:
+    #=========================================================================
+    # In addition to the environment variables defined in this file, also
+    # add the following variables in the Circle CI UI.
+    #
+    # See: https://circleci.com/docs/2.0/env-vars/
+    #
+    # TERMINUS_SITE:  Name of the Pantheon site to run tests on, e.g. my_site
+    # TERMINUS_TOKEN: The Pantheon machine token
+    # GITHUB_TOKEN:   The GitHub personal access token
+    # GIT_EMAIL:      The email address to use when making commits
+    #
+    # TEST_SITE_NAME: The name of the test site to provide when installing.
+    # ADMIN_PASSWORD: The admin password to use when installing.
+    # ADMIN_EMAIL:    The email address to give the admin when installing.
+    #
+    # If your Pantheon environments use the security feature to lockdown
+    # access with a HTTP Basic Authentication username and password, you may
+    # also add any of the following environment variables to target specific
+    # Pantheon environments. The value should be URL-encoded and follow the
+    # format 'username:password' (without quotes).
+    #
+    # MULTIDEV_SITE_BASIC_AUTH
+    # DEV_SITE_BASIC_AUTH
+    # TEST_SITE_BASIC_AUTH
+    # LIVE_SITE_BASIC_AUTH
+    #
+    # If all environments are locked using the same username and password you
+    # may instead use the following environment variable in Circle CI UI.
+    #
+    # SITE_BASIC_AUTH
+    #
+    #=========================================================================
+    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+    # The variables below usually do not need to be modified.
+
+    #======================================================================================================================================
+    # Circle CI 2.0 does not yet expand environment variables so they have to be manually EXPORTed
+    # Once environment variables can be expanded the variables below can be uncommented and the EXPORTs in set-up-globals.sh can be removed
+    # See: https://discuss.circleci.com/t/unclear-how-to-work-with-user-variables-circleci-provided-env-variables/12810/11
+    # See: https://discuss.circleci.com/t/environment-variable-expansion-in-working-directory/11322
+    # See: https://discuss.circleci.com/t/circle-2-0-global-environment-variables/8681
+    #======================================================================================================================================
+
+    NOTIFY: 'scripts/github/add-commit-comment {project} {sha} "Created multidev environment [{site}#{env}]({site-url}). Login with creds: username: admin, password: wh0C4r3s?" {site-url}'
+    ADMIN_USERNAME: admin
+    # BUILD_TOOLS_VERSION: ^2.0.0-alpha4
+    TERM: dumb
+
+version: 2.1
+orbs:
+  # Helps install Chrome and ChromeDriver for behat_tests job.
+  # https://circleci.com/developer/orbs/orb/circleci/browser-tools
+  browser-tools: circleci/browser-tools@1.3.0
+jobs:
+  configure_env_vars:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          # Set TERMINUS_ENV and related environment variables.
+          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+          name: Setting up environment variables
+          command: /build-tools-ci/scripts/set-environment
+
+      - run:
+          name: Cloning bash_env
+          command: cp $BASH_ENV bash_env.txt
+
+      # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bash_env.txt
+
+  composer_install:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - composer-cache-{{ checksum "composer.lock" }}
+            - composer-cache-
+
+      - run:
+          name: Installing composer dependencies
+          no_output_timeout: 10m
+          command: composer install --no-ansi --no-interaction --optimize-autoloader --no-progress
+
+      - save_cache:
+          key: composer-cache-{{ checksum "composer.lock" }}
+          paths:
+            - $HOME/.composer/cache
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - drush/Commands/contrib
+            - vendor
+            - web/core
+            - web/modules/contrib
+            - web/themes/contrib
+            - web/profiles/contrib
+            - web/libraries
+            - web/private/scripts/quicksilver
+
+  static_tests:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      # Attach workspace so tests have access to composer dependencies.
+      - attach_workspace:
+          at: .
+
+      - run:
+          # Set TERMINUS_ENV and related environment variables.
+          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+          name: Setting up environment variables
+          command: /build-tools-ci/scripts/set-environment
+
+      - run:
+          name: Running static tests
+          command: ./.ci/test/static/run
+
+  # This job compiles SCSS to CSS, minifies JS, and then saves (persists) the
+  # directory for reuse in the deploy_to_pantheon job.
+  build_assets:
+    docker:
+      - image: node:17.5.0
+
+    steps:
+      - checkout
+
+      # Attach the workspace. This only needs to be done because
+      # the atdove theme compiles SCSS from the base aristotle theme,
+      # which is a composer dependency.
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Installing NPM dependencies in atdove theme
+          command: cd ./web/themes/custom/atdove && npm ci
+
+      - run:
+          name: Compiling SCSS to CSS, minifying JS
+          command: cd ./web/themes/custom/atdove && npm install -g gulp-cli && gulp build
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - web/themes/custom/atdove/dist
+            - web/themes/custom/atdove/node_modules
+
+  # Pulls database for use in Behat tests.
+  # If you want to run tests against empty database instead:
+  # 1. Disable this job
+  # 2. Enable step "Installing Drupal and importing config" in behat_tests job.
+  # 3. Disable step "Importing database" in behat_tests job.
+  # 4. Disable references to this job in workflows.
+#  behat_pull_database:
+#    <<: *defaults
+#
+#    steps:
+#      - checkout
+#
+#      # Attach the workspace
+#      - attach_workspace:
+#          at: .
+#
+#      - run:
+#          # Set TERMINUS_ENV and related environment variables.
+#          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+#          name: Setting up environment variables
+#          command: /build-tools-ci/scripts/set-environment
+#
+#      - run:
+#          name: Pulling database
+#          command: ./.ci/test/behat/pull-database
+#
+#      - persist_to_workspace:
+#          root: .
+#          paths:
+#              - tmp/workspace/env_vars
+#              - tmp/workspace/db
+
+  # This job runs Behat tests inside a Docker container after spinning
+  # up site from a site install and config import.
+  # Inspired by: https://github.com/leymannx/drupal-circleci-behat
+  # This is an alternative to using the default Pantheon Build Tools Behat job,
+  # which runs against a Multidev. Necessary because of the limitations
+  # of the Drush driver. See:
+  # - https://github.com/jhedstrom/drupalextension/issues/576
+  # - https://behat-drupal-extension.readthedocs.io/en/master/drush.html
+  # - https://behat-drupal-extension.readthedocs.io/en/master/drupalapi.html
+  behat_tests:
+    docker:
+      # You can easily switch containers and versions here.
+      # @see https://circleci.com/docs/2.0/circleci-images/#php
+      # The following container already comes with Apache, Node.js and
+      # chromedriver and geckodriver preinstalled.
+      - image: circleci/php:7.4-apache-node-browsers
+      - image: circleci/mariadb:latest
+        environment:
+          - MYSQL_ROOT_HOST=%
+    steps:
+      - checkout
+
+      # Attach workspace so tests have access to composer dependencies.
+      - attach_workspace:
+          at: .
+
+      # Setup Apache.
+      # For convenience the site will be accessible internally under a
+      # *.localhost TLD. Which also is used in the behat.yml.
+      - run:
+          name: Setting up Apache
+          command: |
+            sudo cp ./.ci/test/behat/env/drupal-circleci-behat.conf /etc/apache2/sites-available/drupal-circleci-behat.conf
+            sudo a2ensite drupal-circleci-behat
+            sudo service apache2 start
+            echo 127.0.0.1 drupal-circleci-behat.localhost | sudo tee -a /etc/hosts
+
+      - run:
+          name: Installing tools
+          command: |
+            sudo apt-get -qq update && sudo apt-get -qqy upgrade
+            sudo apt-get -yqq install libpng-dev libonig-dev mariadb-client nano
+            sudo docker-php-ext-install gd mbstring mysqli pdo pdo_mysql
+            sudo service apache2 restart
+
+      # Install Chrome and ChromeDriver using browser-tools orb.
+      - browser-tools/install-browser-tools:
+          chrome-version: 102.0.5005.115
+          replace-existing-chrome: true
+      # @todo Once this bug is resolved, we can delete
+      # the previous lines and uncomment this to install the most
+      # recent version.
+      # https://bugs.chromium.org/p/chromedriver/issues/detail?id=4121
+#      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Checking that Chrome, ChromeDriver are installed
+          command: |
+            google-chrome --version
+            chromedriver --version
+
+      - run:
+          name: Downloading Selenium
+          command: |
+            curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.5.jar
+
+      - run:
+          name: Starting Selenium
+          command: |
+            mkdir -p /tmp/selenium
+            java -jar selenium-server-standalone-3.141.5.jar -log /tmp/selenium/selenium.log
+          background: true
+
+      - run:
+          name: Configuring Drupal
+          command: ./.ci/test/behat/configure-site
+
+      # This is done in the default Pantheon Build Tools image,
+      # but since we're not using it for this job, we need to set
+      # this ourselves. It's the only way Drupal config import is able
+      # to complete.
+      # @see https://support.circleci.com/hc/en-us/articles/360040700954-Increasing-PHP-s-memory-limit
+      - run:
+          name: Setting PHP memory_limit
+          command: |
+            echo 'memory_limit = -1' | sudo tee -a /usr/local/etc/php/conf.d/docker-php-memlimit.ini
+            echo 'memory_limit = -1' | sudo tee -a /usr/local/etc/php/conf.d/memory.ini
+
+      # @see https://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
+      - run:
+          name: Installing dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+
+      - run:
+          name: Waiting for database connection
+          command: dockerize -wait tcp://localhost:3306 -timeout 4m
+
+#      - run:
+#          name: Importing database
+#          command: ./.ci/test/behat/import-database
+#          no_output_timeout: 20m
+
+      - run:
+          name: Installing Drupal and importing config
+          command: ./.ci/test/behat/install-drupal
+          no_output_timeout: 30m
+
+      # Run tests and store the results to get a nice looking test summary.
+      # @see https://circleci.com/docs/2.0/configuration-reference/#store_test_results
+      - run:
+          name: Running Behat tests
+          command: ./.ci/test/behat/run-tests
+      - store_test_results:
+          path: ./tests/behat/results
+
+      # Store screenshots for viewing in CircleCI GUI.
+      - store_artifacts:
+          path: ./tests/behat/results
+
+  deploy_to_pantheon:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      # Attach the workspace
+      - attach_workspace:
+          at: .
+
+      - run:
+          # Set TERMINUS_ENV and related environment variables.
+          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+          name: Setting up environment variables
+          command: /build-tools-ci/scripts/set-environment
+
+      # The directories that hold the dependencies are git ignored.
+      # They need to be committed on Pantheon.
+      # Based on Pantheon's Composer examples we use sed to cut the root .gitignore
+      # file so that lines specifying build artifact directories are removed.
+      # https://github.com/pantheon-systems/example-drops-8-composer/blob/83c0cb69fe098bf1d1eef7dd9d51833b70c9e97e/scripts/composer/ScriptHandler.php
+      - run:
+          name: Cutting root .gitignore so composer dependencies can be committed
+          command: |
+            sed -i '1,/^# :::::::::::::::::::::: cut ::::::::::::::::::::::$/d' .gitignore
+
+      # Remove .gitignore files from web/modules/contrib.
+      # This may be necessary because a module may ignore its own vendor directory.
+      - run:
+          name: Removing .gitignore from web/modules/contrib
+          command: find ./web/modules/contrib -mindepth 2 -type f -name .gitignore | xargs rm -rf
+
+      # The directory that holds the compiled CSS/JS is git ignored.
+      # It needs to be committed on Pantheon.
+      # Removing .gitignore makes it available for committing.
+      # This also causes node_modules to be committed. If in the future
+      # we only want to include some node_modules, look into "cutting"
+      # only parts of .gitignore using sed.
+      - run:
+          name: Removing theme .gitignore so compiled CSS/JS can be committed
+          command: rm ./web/themes/custom/atdove/.gitignore
+
+      # Deploy to Pantheon.
+      - run:
+          name: Deploying to Pantheon
+          command: ./.ci/deploy/pantheon/dev-multidev
+          no_output_timeout: 40m
+
+# @todo This was the original job created by Pantheon Build Tools
+# To run tests against a multidev. Keeping it around for a bit for reference.
+#  behat_test:
+#    <<: *defaults
+#    steps:
+#      - checkout
+#
+#      - restore_cache:
+#          keys:
+#            - composer-cache-{{ checksum "composer.lock" }}
+#            - composer-cache-
+#
+#      - run:
+#          # Set TERMINUS_ENV and related environment variables.
+#          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+#          name: Setting up environment variables
+#          command: /build-tools-ci/scripts/set-environment
+#
+#      - run:
+#          # Uncomment line 26 in .ci/test/behat/initialize to create a backup
+#          # prior to running Behat tests. This is useful to reset the multidev
+#          # environment to the previous state after Behat tests have run.
+#          name: Preparing for Behat testing
+#          command: ./.ci/test/behat/initialize
+#
+#      - run:
+#          name: Running acceptance tests with Behat
+#          command: ./.ci/test/behat/run
+#
+#      - run:
+#          # Uncomment line 13 in .ci/test/behat/cleanup to restore a backup
+#          # after running Behat tests. This is useful to reset the multidev
+#          # environment to the previous state after Behat tests have run.
+#          name: Cleaning up after Behat
+#          command: ./.ci/test/behat/cleanup
+#          when: always
+#
+#      - save_cache:
+#          key: composer-cache-{{ checksum "composer.lock" }}
+#          paths:
+#            - $HOME/.composer/cache
+#
+#      - store_artifacts:
+#          path: /tmp/artifacts
+#          destination: artifacts
+
+  visual_regression_test:
+    <<: *defaults
+    docker:
+      - image: backstopjs/backstopjs:4.1.9
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: /tmp/workspace
+
+      - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+      - run: echo "export CI_BUILD_URL='${CIRCLE_BUILD_URL}'" >> $BASH_ENV
+      - run: echo "export CI_NODE_INDEX='${CIRCLE_NODE_INDEX}'" >> $BASH_ENV
+      - run: echo "export CI_REPOSITORY_URL='${CIRCLE_REPOSITORY_URL}'" >> $BASH_ENV
+      - run: echo "export ARTIFACTS_DIR_URL='${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/artifacts'" >> $BASH_ENV
+      - run: source $BASH_ENV
+
+      - run:
+          name: Running visual regression test
+          command: ./.ci/test/visual-regression/run
+
+      - store_artifacts:
+          path: /tmp/artifacts
+          destination: artifacts
+# @todo Do we want this?
+#  composer_lock_updater:
+#    <<: *defaults
+#    steps:
+#      - checkout
+#
+#      - run:
+#          # Set TERMINUS_ENV and related environment variables.
+#          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
+#          name: Setting up environment variables
+#          command: /build-tools-ci/scripts/set-environment
+#
+#      - run:
+#          name: Authenticating with Terminus
+#          command: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+#
+#      - run:
+#          name: Running composer lock updater
+#          command: set -e && terminus project:clu $TERMINUS_SITE
+
+workflows:
+  version: 2
+  build_deploy_and_test:
+    jobs:
+      - configure_env_vars
+      - composer_install
+      # @todo Enable this job once we have
+      # run lando code-sniff and lando code-sniff-fix
+      # locally and resolved all errors.
+      #      - static_tests:
+      #          requires:
+      #            - composer_install
+      - build_assets:
+          requires:
+            - composer_install
+#      - behat_pull_database:
+#          requires:
+#            - configure_env_vars
+      # @todo Unccomment this job once the Chrome and ChromeDriver
+      # error when running tests is resolved. Until then many tests
+      # are failing and it's not an accurate test of functionality.
+      - behat_tests:
+          requires:
+            - composer_install
+            - build_assets
+#            - behat_pull_database
+      - deploy_to_pantheon:
+          requires:
+            #            - static_tests
+            - composer_install
+            - build_assets
+      - visual_regression_test:
+          requires:
+            - configure_env_vars
+            - deploy_to_pantheon
+          filters:
+            branches:
+              ignore:
+                - master
+
+# @todo Do we want this?
+#  scheduled_update_check:
+#    triggers:
+#       - schedule:
+#           cron: "0 0 * * *"
+#           filters:
+#             branches:
+#              only:
+#                - master
+#    jobs:
+#      - composer_lock_updater

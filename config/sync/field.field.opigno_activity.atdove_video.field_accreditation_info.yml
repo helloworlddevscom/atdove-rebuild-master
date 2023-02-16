@@ -1,0 +1,46 @@
+uuid: 8f07d452-cc11-4818-a2a7-d79aad769cd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_accreditation_info
+    - opigno_module.opigno_activity_type.atdove_video
+    - paragraphs.paragraphs_type.p_accreditation_info
+  module:
+    - entity_reference_revisions
+id: opigno_activity.atdove_video.field_accreditation_info
+field_name: field_accreditation_info
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Accreditation Info'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      p_accreditation_info: p_accreditation_info
+    negate: 0
+    target_bundles_drag_drop:
+      p_accreditation_info:
+        weight: 7
+        enabled: true
+      p_benefits_page_section:
+        weight: 8
+        enabled: false
+      p_image_with_text:
+        weight: 9
+        enabled: false
+      p_three_text_columns:
+        weight: 10
+        enabled: false
+      p_user_org_employee_ids:
+        weight: 11
+        enabled: false
+      p_wistia_video_hero:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

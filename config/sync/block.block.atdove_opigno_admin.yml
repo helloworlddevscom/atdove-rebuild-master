@@ -1,0 +1,37 @@
+uuid: 05ddbb2d-3ea6-42c8-abc7-3c8168b6ccab
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.opigno-admin
+  module:
+    - system
+    - user
+  theme:
+    - atdove
+_core:
+  default_config_hash: jaaTqh2JRMbfnzCe_4Cd-uLwAHiHSljuCSdXmnEoeMc
+id: atdove_opigno_admin
+theme: atdove
+region: admin_opigno
+weight: -18
+provider: null
+plugin: 'system_menu_block:opigno-admin'
+settings:
+  id: 'system_menu_block:opigno-admin'
+  label: 'Opigno admin'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      content_manager: content_manager
+      user_manager: user_manager
+      administrator: administrator

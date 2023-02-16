@@ -1,0 +1,14 @@
+uuid: bbfd19c8-d3f3-46b0-b84b-175f40d8e9af
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.active_org_member
+  module:
+    - user
+id: user_add_role_action.active_org_member
+label: 'Add the Active Organization Member role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: active_org_member

@@ -1,0 +1,17 @@
+uuid: d01b7320-c13f-45f4-b364-2cf87a6fd7fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.billing_admin
+id: organizational_groups-2c93a7931
+label: 'Billing Admin'
+weight: 7
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

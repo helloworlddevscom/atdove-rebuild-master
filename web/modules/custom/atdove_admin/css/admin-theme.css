@@ -1,0 +1,22 @@
+/**
+ * Styling overrides for backend admin theme.
+ */
+
+/**
+ * User edit form
+ * ------------
+ */
+
+/*
+ * The form is organized using field_group module,
+ * but some fields end up duplicated outside the group.
+ */
+.user-form > .user-form-wrapper> .form-item-mail,
+.user-form > .user-form-wrapper> .form-item-pass,
+.user-form > .user-form-wrapper> .form-item-name {
+  display: none;
+}
+
+.field-group-tabs-wrapper ~ .form-item {
+  display: none;
+}

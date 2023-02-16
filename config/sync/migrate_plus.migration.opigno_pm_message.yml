@@ -1,0 +1,34 @@
+uuid: ee944f37-c992-4c16-b4c2-b81f8a43b1ac
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: e2-Eg0FXCUkousg0sy7cCFh1Wjw3IUtxIvmmWKt2wHo
+id: opigno_pm_message
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: opigno_migration
+label: 'Opigno Private Messages'
+source:
+  plugin: opigno_pm_message
+process:
+  id: mid
+  owner: author
+  message/value: body
+  message/format:
+    plugin: static_map
+    source: format
+    map:
+      html: basic_html
+    default_value: basic_html
+  created: timestamp
+destination:
+  plugin: 'entity:private_message'
+migration_dependencies:
+  required:
+    - opigno_users

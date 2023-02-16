@@ -1,0 +1,92 @@
+uuid: bfd2b0dd-dab0-4f39-9722-546152178410
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.opigno_activity.opigno_h5p.field_opigno_articles
+    - field.field.opigno_activity.opigno_h5p.field_opigno_videos
+    - field.field.opigno_activity.opigno_h5p.field_quiz_body
+    - field.field.opigno_activity.opigno_h5p.opigno_h5p
+    - opigno_module.opigno_activity_type.opigno_h5p
+  module:
+    - h5peditor
+    - path
+    - text
+_core:
+  default_config_hash: Nobq1N2NlZG-enr252KIJ_DUKTEtQFiANuXXIPi3TBo
+id: opigno_activity.opigno_h5p.default
+targetEntityType: opigno_activity
+bundle: opigno_h5p
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_opigno_articles:
+    type: entity_reference_autocomplete
+    weight: 32
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_opigno_videos:
+    type: entity_reference_autocomplete
+    weight: 33
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_quiz_body:
+    type: text_textarea
+    weight: 31
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  opigno_h5p:
+    type: h5p_editor
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

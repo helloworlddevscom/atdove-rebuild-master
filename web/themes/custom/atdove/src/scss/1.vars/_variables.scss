@@ -1,0 +1,22 @@
+/**
+ * Custom variables.
+ */
+
+// Colors
+// --------
+$color--atdove-green: #AABA0A;
+$color--atdove-blue: #0083A9;
+$color--bluepearl-blue: #337DC1; // Use for any BluePearl related integrations
+
+// Links
+
+// Default link color
+// Passed down through _aristotle-vars.scss
+$color--link: $color--atdove-blue;
+
+// Buttons
+
+// .btn class background color
+// Passed down through _aristotle-vars.scss
+$color--btn: $color--atdove-green;
+$color--btn-text: white;

@@ -1,0 +1,8 @@
+adding:
+  defaults:
+    sender: devel_mail_log
+    formatter: devel_mail_log
+removing:
+  defaults:
+    sender: SMTPMailSystem
+    formatter: SMTPMailSystem

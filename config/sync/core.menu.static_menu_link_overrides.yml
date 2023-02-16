@@ -1,0 +1,63 @@
+_core:
+  default_config_hash: IB1aZQWGsknFTypr-FjwUwPqUp0BUhHtG1bWbGU3N3c
+definitions:
+  standard__front_page:
+    menu_name: main
+    parent: ''
+    weight: -50
+    expanded: false
+    enabled: true
+  opigno_admin__dashboard_management:
+    menu_name: opigno-admin
+    parent: opigno_admin.global_settings
+    weight: -49
+    expanded: false
+    enabled: true
+  opigno_admin__collaborative_features:
+    menu_name: opigno-admin
+    parent: ''
+    weight: -45
+    expanded: true
+    enabled: true
+  opigno_lms__home:
+    menu_name: main
+    parent: ''
+    weight: -47
+    expanded: false
+    enabled: false
+  opigno_lms__calendar:
+    menu_name: main
+    parent: ''
+    weight: -45
+    expanded: false
+    enabled: false
+  flag_lists__flagging_collection:
+    menu_name: main
+    parent: ''
+    weight: -43
+    expanded: false
+    enabled: false
+  opigno_lms__statistics:
+    menu_name: main
+    parent: ''
+    weight: -44
+    expanded: false
+    enabled: false
+  opigno_lms__catalogue:
+    menu_name: main
+    parent: ''
+    weight: -46
+    expanded: false
+    enabled: false
+  atdove_opigno__main__my_assignments:
+    menu_name: main
+    parent: ''
+    weight: -49
+    expanded: false
+    enabled: true
+  atdove_opigno__main__my_bookmarks:
+    menu_name: main
+    parent: ''
+    weight: -48
+    expanded: false
+    enabled: true

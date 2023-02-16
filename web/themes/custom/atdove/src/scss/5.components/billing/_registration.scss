@@ -1,0 +1,113 @@
+.page-atdove-organizations-create-create-acct-org-form-three,
+.page-atdove-billing-existing-org-subscribe-form {
+  text-align: center;
+
+  @media(max-width: 991px) {
+    #block-exposedformsite-searchsearch-results-page {
+      margin-top: 120px;
+      padding-top: 50px;
+    }
+  }
+
+  #block-atdove-content {
+    width: 80%;
+    margin: 0 auto 10% auto;
+  }
+
+  .description {
+    font-size:18px;
+  }
+
+  .payment-ui {
+    margin: 50px auto;
+    font-size: 1.2rem;
+
+    .payment-ui-container {
+      overflow: visible;
+
+      &.fieldgroup {
+        padding: 0 0 10px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .payment-ui-container-header {
+        background-color: var(--desktop-button-color);
+        color: white;
+        padding: 25px 0;
+        border-radius: 3px;
+      }
+
+      .form__billing-notice {
+        padding: 50px 0 15px 0;
+        font-size: .8rem;
+
+        #payment-form {
+          border: 1px solid var(--desktop-button-color);
+          border-radius: 3px;
+          margin: 10px 6% 50px 6%;
+        }
+
+        #card-element {
+          height: 2.9em;
+          padding-top: .8em;
+        }
+      }
+
+      .form-item-options {
+        padding-top: 40px;
+
+        .dropdown {
+          width: 40% !important;
+          margin: 0 auto;
+          .dropdown-item {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .form__license-info {
+        margin: 0 6% 5.5%;
+        padding: 30px 0 50px 0;
+        border-radius: 3px;
+        border-color: var(--desktop-button-color);
+        background-color: var(--desktop-button-color) !important;
+        color: var(--desktop-text);
+        font-size: 1.2rem !important;
+
+        h4 {
+          padding-bottom: 10px;
+        }
+      }
+
+    }
+
+  }
+
+  #atdove-organizations-create-acct-org-form-three {
+    float: left;
+  }
+
+  #registration-submit {
+    background-color: var(--desktop-button-color);
+    border: 2px solid var(--desktop-button-color);
+    border-radius: 1.5625rem;
+    font-weight: 600;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    min-width: 9.75rem;
+    padding: 0.625rem 0.9375rem;
+    margin: -12px 0 0 20px;
+    float: right;
+  }
+
+  /* Blue outline on focus */
+  .StripeElement--focus {
+    outline: 0;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+}

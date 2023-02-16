@@ -1,0 +1,31 @@
+uuid: af30b420-8feb-4e5e-bc5d-06dc7d60454e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_group_audience
+    - group.type.organization
+    - group.type.organizational_groups
+    - opigno_module.opigno_activity_type.atdove_article
+id: opigno_activity.atdove_article.field_group_audience
+field_name: field_group_audience
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Group Audience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      organization: organization
+      organizational_groups: organizational_groups
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: organization
+field_type: entity_reference

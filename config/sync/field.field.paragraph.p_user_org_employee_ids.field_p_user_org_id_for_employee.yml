@@ -1,0 +1,23 @@
+uuid: 2004dc37-750f-473b-98a2-a96aa41f786c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_user_org_id_for_employee
+    - paragraphs.paragraphs_type.p_user_org_employee_ids
+id: paragraph.p_user_org_employee_ids.field_p_user_org_id_for_employee
+field_name: field_p_user_org_id_for_employee
+entity_type: paragraph
+bundle: p_user_org_employee_ids
+label: 'Org ID for Employee ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

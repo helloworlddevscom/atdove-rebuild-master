@@ -1,0 +1,7 @@
+name: 'AtDove Users'
+type: module
+description: 'User/account related customizations unrelated to Organizations.'
+core_version_requirement: '^8.8 || ^9'
+package: 'AtDove'
+dependencies:
+  - hook_event_dispatcher

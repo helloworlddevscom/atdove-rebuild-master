@@ -1,0 +1,38 @@
+id: atdove_taxonomy_migration
+label: 'AtDove Taxonomy migration'
+migration_group: taxonomy
+dependencies:
+  enforced:
+    module:
+      - atdove_migrate
+source:
+  plugin: atdove_taxonomy_term
+process:
+  field_type_exists:
+    plugin: skip_on_too_long
+    method: row
+    source: name
+  tid: tid
+  vid:
+    plugin: static_map
+    bypass: true
+    source: vid
+    map:
+      1: 'job_categories'
+      2: 'blog_categories'
+      3: 'additional_content_categories'
+      4: 'content_categories'
+      5: 'accreditations'
+      6: 'available_additional_seats'
+      11: 'heard_about_us_from'
+      16: 'billing_admin'
+      21: 'help_categories'
+  name: name
+  description: description
+  weight: weight
+  parent:
+    -
+      plugin: migration_lookup
+      migration: atdove_taxonomy_term
+destination:
+  plugin: entity:taxonomy_term

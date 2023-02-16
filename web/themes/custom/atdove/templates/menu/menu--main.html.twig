@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Template for Opigno main menu copied from Aristotle.
+ *
+ * Overridden to remove "Manager" link containing opigno-admin menu.
+ * This menu was not rendering anyways and it seemed more appropriate
+ * for it to be in the admin toolbar. It is inserted there using the toolbar_menu module.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ *
+ * @ingroup themeable
+ */
+#}
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0, management_menu) }}
+
+{% macro menu_links(items, attributes, menu_level, management_menu) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul {{ attributes.addClass('main-menu') }}>
+    {% else %}
+      <ul>
+    {% endif %}
+    {% for item in items %}
+      <li {{ item.attributes.addClass('main-menu__item') }}>
+        {% set link_html  %}
+          <span>{{ item.title }}</span>
+        {% endset %}
+
+        {{ link(link_html, item.url, {'class':['main-menu__link', item.title|replace({' ': '_'})|lower], 'title': item.title }) }}
+
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

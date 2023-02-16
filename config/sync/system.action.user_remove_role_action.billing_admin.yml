@@ -1,0 +1,14 @@
+uuid: 2c6d62fa-ea67-4de7-98df-45d33c8ab4b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.billing_admin
+  module:
+    - user
+id: user_remove_role_action.billing_admin
+label: 'Remove the Billing Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: billing_admin

@@ -1,0 +1,21 @@
+uuid: b528ac04-a457-4393-9c01-6a0afe607778
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_notes
+    - group.type.organization
+  module:
+    - text
+id: group.organization.field_notes
+field_name: field_notes
+entity_type: group
+bundle: organization
+label: Notes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

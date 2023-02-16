@@ -1,0 +1,6 @@
+name: AtDove Alter Entity Autocomplete
+description: Alters entity autocomplete suggestions.
+type: module
+core_version_requirement: ^8.8 || ^9
+package: AtDove
+

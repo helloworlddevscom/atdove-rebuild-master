@@ -1,0 +1,10 @@
+uuid: 7412c32e-43ff-41cd-9074-b4abde4a7639
+langcode: en
+status: true
+dependencies: {  }
+id: p_accreditation_info
+label: 'Accreditation Info'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

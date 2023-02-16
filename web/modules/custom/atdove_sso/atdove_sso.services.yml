@@ -1,0 +1,13 @@
+services:
+  atdove_sso.atdove_sso_forms_event_subscriber:
+    class: Drupal\atdove_sso\EventSubscriber\AtDoveSSOFormsEventSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments:
+      - '@entity_type.manager'
+      - '@current_route_match'
+
+  atdove_sso.route_subscriber:
+    class: Drupal\atdove_sso\Routing\AtDoveSSORouteSubscriber
+    tags:
+      - { name: event_subscriber }

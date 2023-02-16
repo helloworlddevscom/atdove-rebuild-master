@@ -1,0 +1,29 @@
+uuid: e334801e-a3a1-470a-8e23-f8ddd887c80d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_accreditations
+    - paragraphs.paragraphs_type.p_accreditation_info
+    - taxonomy.vocabulary.accreditations
+id: paragraph.p_accreditation_info.field_p_accreditations
+field_name: field_p_accreditations
+entity_type: paragraph
+bundle: p_accreditation_info
+label: Accreditation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      accreditations: accreditations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

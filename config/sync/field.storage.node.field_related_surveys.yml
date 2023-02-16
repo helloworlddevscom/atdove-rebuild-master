@@ -1,0 +1,19 @@
+uuid: 7169494c-9f09-4fbe-bb08-7b309b1ba74c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_related_surveys
+field_name: field_related_surveys
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

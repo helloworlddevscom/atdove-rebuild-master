@@ -1,0 +1,14 @@
+uuid: aa3f0cf7-9fef-4f2e-880c-5b0e5a7b846e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RIZY0fBIb44mxifgb1aLnnwSQw_ET5-99ZmrWzQ5j1A
+id: organization
+label: Organization
+description: ''
+new_revision: false
+creator_membership: false
+creator_wizard: true
+creator_roles:
+  - organization-admin

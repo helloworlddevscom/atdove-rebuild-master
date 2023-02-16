@@ -1,0 +1,29 @@
+uuid: 3d58d3a3-18b2-4834-aa55-d1e6ec25d976
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_content_category
+    - opigno_module.opigno_activity_type.atdove_article
+    - taxonomy.vocabulary.content_categories
+id: opigno_activity.atdove_article.field_content_category
+field_name: field_content_category
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Content Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_categories: content_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 5fbfd0e4-7daf-4513-b375-0e9f9e23f221
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+id: opigno_activity.field_opigno_quiz
+field_name: field_opigno_quiz
+entity_type: opigno_activity
+type: entity_reference
+settings:
+  target_type: opigno_activity
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

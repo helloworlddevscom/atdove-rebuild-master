@@ -1,0 +1,13 @@
+_core:
+  default_config_hash: orYfEqGwg750z2o1JMsVnIgjGCcIF-BFo_Apcu9EN5E
+name: AtDove
+mail: messages@atdove.org
+simple_address: false
+sitestyle: false
+textonly: false
+linkonly: false
+user_plaintext_field: ''
+format: full_html
+advanced:
+  incoming: false
+  key: p5BfqzHS-ECkaknkMSrjy1UQA3R4YwGfGbBCX9VSRFA

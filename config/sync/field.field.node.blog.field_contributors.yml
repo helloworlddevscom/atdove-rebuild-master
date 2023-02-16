@@ -1,0 +1,28 @@
+uuid: 4018cc7d-5453-44eb-9d0c-cc79d235c120
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contributors
+    - node.type.blog
+id: node.blog.field_contributors
+field_name: field_contributors
+entity_type: node
+bundle: blog
+label: Contributors
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

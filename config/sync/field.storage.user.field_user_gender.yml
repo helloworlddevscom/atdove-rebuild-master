@@ -1,0 +1,33 @@
+uuid: 7a8b162f-dd38-439a-9767-312625015928
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_gender
+field_name: field_user_gender
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Male
+      label: Male
+    -
+      value: Female
+      label: Female
+    -
+      value: Other
+      label: Other
+    -
+      value: 'Rather Not Say'
+      label: 'Rather Not Say'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

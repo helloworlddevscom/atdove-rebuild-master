@@ -1,0 +1,10 @@
+uuid: ca4fda38-542c-4fa1-ae6f-e0f85787ed31
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Jv4aCvqzNb8FdXTNBwEjldcibWNS1II-6wIYkJyJg_0
+id: org_admin
+label: 'Organization Admin'
+description: 'For administrative tasks within an organization group. Visible to users with admin role within group.'
+locked: false

@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_article_opigno_activity
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: opigno_activities
+label: 'Opigno Article Activities'
+source:
+  plugin: d7_node_atdove
+  node_type: article
+constants:
+  file_destination: 'sites/default/files/'
+process:
+  type:
+    plugin: default_value
+    default_value: atdove_article
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  id: nid
+  name: title
+  uid:
+    plugin: default_value
+    source: uid
+    default_value: 1
+  field_article_body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      summary: summary
+      format:
+        plugin: default_value
+        default_value: full_html
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_marketing_title‎: field_marketing_title‎
+  field_contributors: field_contributors
+  field_related_ads: field_related_ads
+  field_job_category:
+    plugin: migration_lookup
+    migration: atdove_taxonomy_migration
+    source: field_tags
+  field_content_category:
+    plugin: migration_lookup
+    migration: atdove_taxonomy_migration
+    source: field_content_category
+  field_publish_date:
+    plugin: sub_process
+    source: field_publish_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  field_opigno_videos: field_related_videos
+  field_related_surveys: field_related_surveys
+  field_additional_content_categor: field_additional_content_categor
+  field_opigno_quiz: field_related_quiz
+  field_opigno_articles: field_related_articles
+  field_credit_hours: field_credit_hours
+  field_ce_matter_category: field_ce_matter_category
+  field_accreditation_info: field_accreditation_info
+  field_related_blog: field_related_blog
+  created: created
+  changed: changed
+destination:
+  plugin: 'entity:opigno_activity'
+migration_dependencies:
+    required:
+    - atdove_taxonomy_migration

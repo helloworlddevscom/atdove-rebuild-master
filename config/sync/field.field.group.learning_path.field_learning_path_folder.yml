@@ -1,0 +1,35 @@
+uuid: 41aa98af-03ac-4d2d-bc25-cb66fe8f5852
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_learning_path_folder
+    - group.type.learning_path
+    - taxonomy.vocabulary.tft_tree
+  content:
+    - 'taxonomy_term:tft_tree:4ed0db61-c898-427c-8791-6715767afc01'
+_core:
+  default_config_hash: j-eStORVeKqUXkBtL7mZy_OH8UtxpqGCwTMsJuADkB8
+id: group.learning_path.field_learning_path_folder
+field_name: field_learning_path_folder
+entity_type: group
+bundle: learning_path
+label: Folder
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 4ed0db61-c898-427c-8791-6715767afc01
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tft_tree: tft_tree
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,17 @@
+uuid: 020775f1-bc92-4fc3-a956-c10bc24069a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.opigno_course
+  enforced:
+    config:
+      - user.role.billing_admin
+id: opigno_course-2c93a7931
+label: 'Billing Admin'
+weight: 7
+internal: true
+audience: outsider
+group_type: opigno_course
+permissions_ui: false
+permissions: {  }

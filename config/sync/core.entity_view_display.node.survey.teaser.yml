@@ -1,0 +1,51 @@
+uuid: 248697a9-b040-40f2-9478-40d7ed919b3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.survey.body
+    - field.field.node.survey.field_instructions
+    - field.field.node.survey.field_opigno_articles
+    - field.field.node.survey.field_opigno_videos
+    - field.field.node.survey.field_related_blog
+    - field.field.node.survey.field_thank_you_message
+    - node.type.survey
+  module:
+    - text
+    - user
+id: node.survey.teaser
+targetEntityType: node
+bundle: survey
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  flag_flag_list_template_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_instructions: true
+  field_opigno_articles: true
+  field_opigno_videos: true
+  field_related_blog: true
+  field_thank_you_message: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

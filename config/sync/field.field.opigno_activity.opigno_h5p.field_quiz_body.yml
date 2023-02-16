@@ -1,0 +1,21 @@
+uuid: ba5a71d1-9501-410a-8772-de5d56438baa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_quiz_body
+    - opigno_module.opigno_activity_type.opigno_h5p
+  module:
+    - text
+id: opigno_activity.opigno_h5p.field_quiz_body
+field_name: field_quiz_body
+entity_type: opigno_activity
+bundle: opigno_h5p
+label: 'Quiz Body'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

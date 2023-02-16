@@ -1,0 +1,17 @@
+uuid: fecf6625-0408-437d-9cf1-7d0795367195
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.content_manager
+id: organization-1eb7047a7
+label: 'Content manager'
+weight: -5
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions: {  }

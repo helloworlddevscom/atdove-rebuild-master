@@ -1,0 +1,20 @@
+uuid: bf223704-0d12-407e-b6a4-1a62352a4585
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.learning_path
+_core:
+  default_config_hash: 9ufIGgeDbOFDbNHe2Ao7qbE3sj_FRGFr6FrPw26EfDw
+id: learning_path-student
+label: Student
+weight: -10
+internal: false
+audience: member
+group_type: learning_path
+permissions_ui: true
+permissions:
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'view group'
+  - 'view own results'

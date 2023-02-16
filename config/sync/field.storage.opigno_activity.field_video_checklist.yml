@@ -1,0 +1,19 @@
+uuid: 2661e8ff-69cd-4ca5-ae4f-0d86cf20177b
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - text
+id: opigno_activity.field_video_checklist
+field_name: field_video_checklist
+entity_type: opigno_activity
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

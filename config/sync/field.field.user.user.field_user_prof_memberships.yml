@@ -1,0 +1,20 @@
+uuid: 7a35e877-6f84-4fd0-90aa-6a3632158788
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_prof_memberships
+  module:
+    - user
+id: user.user.field_user_prof_memberships
+field_name: field_user_prof_memberships
+entity_type: user
+bundle: user
+label: 'Professional Memberships'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

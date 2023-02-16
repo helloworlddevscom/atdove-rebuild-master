@@ -1,0 +1,21 @@
+uuid: eafccdc9-c4d0-4651-8af2-19a7181c2fb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_specialty_designation
+  module:
+    - options
+    - user
+id: user.user.field_user_specialty_designation
+field_name: field_user_specialty_designation
+entity_type: user
+bundle: user
+label: 'Specialty Designation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

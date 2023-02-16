@@ -1,0 +1,30 @@
+uuid: 335d2cfa-4f1e-45f3-be8f-97f1de9fcf4c
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - options
+id: opigno_activity.field_accredited_for
+field_name: field_accredited_for
+entity_type: opigno_activity
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: DVM
+      label: 'RACE - Veterinarians'
+    -
+      value: Technician
+      label: 'RACE - Veterinary Technician'
+    -
+      value: PM
+      label: VHMA
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

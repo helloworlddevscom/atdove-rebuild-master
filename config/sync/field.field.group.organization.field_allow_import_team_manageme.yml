@@ -1,0 +1,23 @@
+uuid: 5025af23-3e79-4966-93ca-054a910dac12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_allow_import_team_manageme
+    - group.type.organization
+id: group.organization.field_allow_import_team_manageme
+field_name: field_allow_import_team_manageme
+entity_type: group
+bundle: organization
+label: 'Allow Import Team Management'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

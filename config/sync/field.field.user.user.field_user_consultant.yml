@@ -1,0 +1,24 @@
+uuid: 9af62353-77fa-44cb-b921-33281c52f753
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_consultant
+  module:
+    - user
+id: user.user.field_user_consultant
+field_name: field_user_consultant
+entity_type: user
+bundle: user
+label: Consultant
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

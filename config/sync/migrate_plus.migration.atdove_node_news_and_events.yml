@@ -1,0 +1,57 @@
+uuid: 2c2f7af5-41f6-4542-9361-53fdda5eb67b
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_node_news_and_events
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (announcements)'
+source:
+  plugin: d7_node_atdove_news
+  node_type: news_and_events
+process:
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  nid: nid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  body: body
+  field_homepage_announcement:
+    plugin: default_value
+    default_value: 1
+  field_insert_image: field_insert_image
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_publish_date:
+    plugin: sub_process
+    source: field_publish_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  uid: uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+destination:
+  plugin: 'entity:node'
+  default_bundle: announcement
+migration_dependencies: null

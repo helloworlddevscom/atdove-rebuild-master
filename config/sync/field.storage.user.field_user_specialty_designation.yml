@@ -1,0 +1,162 @@
+uuid: b73a0a3e-cd43-4378-94cb-760b7682843e
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_specialty_designation
+field_name: field_user_specialty_designation
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: ABVP
+      label: ABVP
+    -
+      value: ALAT
+      label: ALAT
+    -
+      value: ACVPM
+      label: ACVPM
+    -
+      value: CMAR
+      label: CMAR
+    -
+      value: CVPP
+      label: CVPP
+    -
+      value: DABT
+      label: DABT
+    -
+      value: DABVT
+      label: DABVT
+    -
+      value: DACLAM
+      label: DACLAM
+    -
+      value: DACPV
+      label: DACPV
+    -
+      value: DACT
+      label: DACT
+    -
+      value: DACVA
+      label: DACVA
+    -
+      value: DACVB
+      label: DACVB
+    -
+      value: DACVCP
+      label: DACVCP
+    -
+      value: DACVD
+      label: DACVD
+    -
+      value: DACVECC
+      label: DACVECC
+    -
+      value: DACVIM(Cardiology)
+      label: DACVIM(Cardiology)
+    -
+      value: DACVIM(LAIM)
+      label: DACVIM(LAIM)
+    -
+      value: DACVIM(Neurology)
+      label: DACVIM(Neurology)
+    -
+      value: DACVIM(Oncology)
+      label: DACVIM(Oncology)
+    -
+      value: DACVIM(SAIM)
+      label: DACVIM(SAIM)
+    -
+      value: DACVN
+      label: DACVN
+    -
+      value: DACVM
+      label: DACVM
+    -
+      value: DACVO
+      label: DACVO
+    -
+      value: DACVP
+      label: DACVP
+    -
+      value: DACVR
+      label: DACVR
+    -
+      value: DACVS
+      label: DACVS
+    -
+      value: DACZM
+      label: DACZM
+    -
+      value: DAVDC
+      label: DAVDC
+    -
+      value: DVSMR
+      label: DVSMR
+    -
+      value: LAT
+      label: LAT
+    -
+      value: LATG
+      label: LATG
+    -
+      value: SRA
+      label: SRA
+    -
+      value: SRT
+      label: SRT
+    -
+      value: SRS
+      label: SRS
+    -
+      value: VTS(Anest)
+      label: VTS(Anes.)
+    -
+      value: VTS(AVNT)
+      label: VTS(AVNT)
+    -
+      value: VTS(AVST)
+      label: VTS(AVST)
+    -
+      value: VTS(Behavior)
+      label: VTS(Behavior)
+    -
+      value: VTS(Cardiology)
+      label: VTS(Cardiology)
+    -
+      value: VTS(CP)
+      label: VTS(CP)
+    -
+      value: VTS(Dentistry)
+      label: VTS(Dentistry)
+    -
+      value: VTS(ECC)
+      label: VTS(ECC)
+    -
+      value: VTS(EVN)
+      label: VTS(EVN)
+    -
+      value: VTS(LAIM)
+      label: VTS(LAIM)
+    -
+      value: VTS(Neurology)
+      label: VTS(Neurology)
+    -
+      value: VTS(Oncology)
+      label: VTS(Oncology)
+    -
+      value: VTS(SAIM)
+      label: VTS(SAIM)
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

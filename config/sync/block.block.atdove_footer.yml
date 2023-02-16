@@ -1,0 +1,35 @@
+uuid: caa2df0f-a591-4cc0-97d1-459557db100d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+    - user
+  theme:
+    - atdove
+_core:
+  default_config_hash: McZ7WMY0v61a0m6fhImd4kxLBEYi0MOC6X9spsQA0Y0
+id: atdove_footer
+theme: atdove
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

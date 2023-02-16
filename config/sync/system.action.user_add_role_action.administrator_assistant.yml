@@ -1,0 +1,14 @@
+uuid: 997fcfed-e028-4e5d-8796-a6904e62d627
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.administrator_assistant
+  module:
+    - user
+id: user_add_role_action.administrator_assistant
+label: 'Add the Administrator Assistant role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: administrator_assistant

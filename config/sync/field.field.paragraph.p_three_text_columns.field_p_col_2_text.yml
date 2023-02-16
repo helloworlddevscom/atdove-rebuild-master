@@ -1,0 +1,19 @@
+uuid: ec7b3ae3-767e-4093-8327-823f9ec59d52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_col_2_text
+    - paragraphs.paragraphs_type.p_three_text_columns
+id: paragraph.p_three_text_columns.field_p_col_2_text
+field_name: field_p_col_2_text
+entity_type: paragraph
+bundle: p_three_text_columns
+label: 'Col 2 Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

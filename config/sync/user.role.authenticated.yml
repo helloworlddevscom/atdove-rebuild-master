@@ -1,0 +1,97 @@
+uuid: 81ddbf23-e0d1-4ca3-b14b-ee67196e0cb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - node.type.forum
+  module:
+    - comment
+    - comment_notify
+    - contact
+    - contextual
+    - dropzonejs
+    - entity_print
+    - filter
+    - flag
+    - h5peditor
+    - media
+    - node
+    - node_view_permissions
+    - opigno_calendar_event
+    - opigno_certificate
+    - opigno_dashboard
+    - opigno_ilt
+    - opigno_module
+    - opigno_moxtra
+    - opigno_statistics
+    - private_message
+    - shortcut
+    - system
+    - userprotect
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access contextual links'
+  - 'access editor'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access user profiles'
+  - 'add members to calendar event'
+  - 'create forum content'
+  - 'create opigno_calendar_event'
+  - 'delete own forum content'
+  - 'delete own opigno calendar event'
+  - 'dropzone upload files'
+  - 'edit own forum content'
+  - 'entity print access bundle atdove_article'
+  - 'entity print access bundle atdove_video'
+  - 'entity print access type opigno_certificate'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'opigno dashboard layout access'
+  - 'subscribe to comments'
+  - 'unflag activity_bookmark'
+  - 'unflag bookmark'
+  - 'update own opigno calendar event'
+  - 'use private messaging system'
+  - 'use text format basic_html'
+  - userprotect.account.edit
+  - userprotect.mail.edit
+  - userprotect.pass.edit
+  - 'view activity_bookmark'
+  - 'view any announcement content'
+  - 'view any atdove_ad content'
+  - 'view any blog content'
+  - 'view any faq content'
+  - 'view any forum content'
+  - 'view any guide content'
+  - 'view any homepage content'
+  - 'view any page content'
+  - 'view any survey content'
+  - 'view any user statistics'
+  - 'view bookmark'
+  - 'view ilt entities'
+  - 'view media'
+  - 'view meeting entities'
+  - 'view own announcement content'
+  - 'view own assignment content'
+  - 'view own atdove_ad content'
+  - 'view own blog content'
+  - 'view own faq content'
+  - 'view own forum content'
+  - 'view own guide content'
+  - 'view own homepage content'
+  - 'view own opigno calendar event'
+  - 'view own page content'
+  - 'view own survey content'
+  - 'view published activity entities'
+  - 'view published certificate entities'
+  - 'view unpublished certificate entities'
+  - 'view user email addresses'

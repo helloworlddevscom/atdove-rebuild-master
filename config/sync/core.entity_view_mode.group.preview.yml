@@ -1,0 +1,12 @@
+uuid: 722b322b-75d7-4836-961b-5b29c660ae9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+_core:
+  default_config_hash: AUE831F1x42r4R4QEiZgtLcUT7mo_QoRg6803e8uhtw
+id: group.preview
+label: Preview
+targetEntityType: group
+cache: true

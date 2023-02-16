@@ -1,0 +1,21 @@
+uuid: f2dc7ba3-6e1b-45d6-a922-95b3f748e0ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_license_type
+  module:
+    - options
+    - user
+id: user.user.field_license_type
+field_name: field_license_type
+entity_type: user
+bundle: user
+label: 'License Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

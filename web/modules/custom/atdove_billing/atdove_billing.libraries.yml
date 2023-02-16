@@ -1,0 +1,20 @@
+stripejs:
+  version: 3.0
+  header: true
+  js:
+    https://js.stripe.com/v3 : {type: external, minified: true}
+billingjs:
+  version: 1.0
+  js:
+    src/Scripts/billing.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings
+    - atdove_billing/stripejs
+join:
+  version: VERSION
+  js:
+    src/Scripts/join.js: {}
+  dependencies:
+    - core/jquery

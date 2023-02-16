@@ -1,0 +1,14 @@
+uuid: 2cc7a552-cb49-47d3-b066-eec2f0f73604
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.administrator_assistant
+  module:
+    - user
+id: user_remove_role_action.administrator_assistant
+label: 'Remove the Administrator Assistant role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: administrator_assistant

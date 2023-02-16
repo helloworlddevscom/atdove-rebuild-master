@@ -1,0 +1,8 @@
+uuid: f1a981d5-69a3-4019-ac64-aa44e42735a5
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_embedded_widget
+label: 'Embedded_Widget comment'
+target_entity_type_id: node
+description: null

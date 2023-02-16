@@ -1,0 +1,42 @@
+uuid: 4cac399d-f307-4d68-8940-f6080b406c08
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.org_admin
+  module:
+    - group
+    - system
+  theme:
+    - atdove
+_core:
+  default_config_hash: wNA1QF-TWsSE4NHf7Es9Er2ugtRn33y9jiPSlzjg3_c
+id: menu__org_admin
+theme: atdove
+region: top
+weight: -9
+provider: null
+plugin: 'system_menu_block:org_admin'
+settings:
+  id: 'system_menu_block:org_admin'
+  label: 'Organization Admin'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  group_type:
+    id: group_type
+    group_types:
+      organization: organization
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      organization: organization

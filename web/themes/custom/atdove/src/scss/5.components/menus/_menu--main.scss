@@ -1,0 +1,13 @@
+
+nav#mobile-menu ul:not(.contextual-links) li a.organization:before,
+nav.block-system_menu_block-main ul:not(.contextual-links) li a.organization:before {
+  content: "\E905";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
+  display: block;
+  font-family: icomoon;
+  font-size: 25px;
+}

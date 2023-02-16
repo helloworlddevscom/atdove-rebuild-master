@@ -1,0 +1,402 @@
+uuid: d5a3ed7f-65e4-41b8-acb8-cf726c39d2aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_created_by
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_license_id_number
+    - field.field.user.user.field_license_state
+    - field.field.user.user.field_license_type
+    - field.field.user.user.field_personal_training_plan
+    - field.field.user.user.field_private_profile
+    - field.field.user.user.field_user_address
+    - field.field.user.user.field_user_age_range
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_user_blog_description
+    - field.field.user.user.field_user_blog_title
+    - field.field.user.user.field_user_consultant
+    - field.field.user.user.field_user_consultant_expert_in
+    - field.field.user.user.field_user_consultant_ext_bio
+    - field.field.user.user.field_user_current_school
+    - field.field.user.user.field_user_designations
+    - field.field.user.user.field_user_gender
+    - field.field.user.user.field_user_linkedin_url
+    - field.field.user.user.field_user_opt_out_of_emails
+    - field.field.user.user.field_user_org_employee_ids
+    - field.field.user.user.field_user_org_group_member
+    - field.field.user.user.field_user_organization
+    - field.field.user.user.field_user_phone
+    - field.field.user.user.field_user_practice_type
+    - field.field.user.user.field_user_prefix
+    - field.field.user.user.field_user_prof_interests
+    - field.field.user.user.field_user_prof_memberships
+    - field.field.user.user.field_user_school
+    - field.field.user.user.field_user_specialty_designation
+    - field.field.user.user.field_user_suffix
+    - field.field.user.user.field_user_title
+    - field.field.user.user.field_user_twitter_url
+    - field.field.user.user.field_user_website
+    - field.field.user.user.field_vet_id_number
+    - field.field.user.user.user_picture
+    - image.style.medium
+  module:
+    - address
+    - field_group
+    - image
+    - link
+    - telephone
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_account_information:
+      children:
+        - group_general
+        - group_personal
+        - group_professional
+        - group_administrator
+        - group_race
+      label: 'Account Information'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 0
+    group_general:
+      children:
+        - user_picture
+        - field_first_name
+        - field_last_name
+        - account
+        - timezone
+      label: Account
+      region: content
+      parent_name: group_account_information
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_professional:
+      children:
+        - field_user_title
+        - field_user_bio
+        - field_user_prof_interests
+        - field_user_prof_memberships
+        - field_user_school
+        - field_user_current_school
+        - field_user_practice_type
+        - field_user_consultant
+        - field_user_consultant_expert_in
+        - field_user_consultant_ext_bio
+        - field_user_designations
+        - field_user_specialty_designation
+        - field_vet_id_number
+        - field_user_website
+        - field_user_linkedin_url
+        - field_user_twitter_url
+        - field_private_profile
+      label: Professional
+      region: content
+      parent_name: group_account_information
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_personal:
+      children:
+        - field_user_gender
+        - field_user_age_range
+        - field_user_phone
+        - field_user_address
+      label: Personal
+      region: content
+      parent_name: group_account_information
+      weight: 21
+      format_type: tab
+      format_settings:
+        label: Personal
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_administrator:
+      children:
+        - stripe_customer_id
+      label: Administrator
+      region: content
+    group_race:
+      children:
+        - field_license_type
+        - field_license_id_number
+        - field_license_state
+      label: 'RACE Cert'
+      parent_name: group_account_information
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: 'Only visible to privileged users'
+        required_fields: true
+_core:
+  default_config_hash: 93_D4E6u5xojnKkI1-P5HBQtlFCPp7M4WKfOHO27TwI
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: 'First name'
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Last name'
+    third_party_settings: {  }
+  field_license_id_number:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_license_state:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_license_type:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_private_profile:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_user_address:
+    type: address_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_age_range:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_bio:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_user_consultant:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_user_consultant_expert_in:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_consultant_ext_bio:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_current_school:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_designations:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_gender:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_linkedin_url:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_user_phone:
+    type: telephone_default
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_practice_type:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_prof_interests:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_prof_memberships:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_school:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_specialty_designation:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_title:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_twitter_url:
+    type: link_default
+    weight: 17
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_user_website:
+    type: link_default
+    weight: 15
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_vet_id_number:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  stripe_registration_payment:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  stripe_registration_plans:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  user_picture:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
+    third_party_settings: {  }
+hidden:
+  comment_notify_settings: true
+  contact: true
+  field_created_by: true
+  field_personal_training_plan: true
+  field_user_blog_description: true
+  field_user_blog_title: true
+  field_user_opt_out_of_emails: true
+  field_user_org_employee_ids: true
+  field_user_org_group_member: true
+  field_user_organization: true
+  field_user_prefix: true
+  field_user_suffix: true
+  langcode: true
+  language: true
+  path: true
+  private_messages: true

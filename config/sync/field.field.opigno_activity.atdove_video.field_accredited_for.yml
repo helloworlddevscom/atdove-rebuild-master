@@ -1,0 +1,21 @@
+uuid: 6b7dc36e-6d20-4310-8010-5131ccdc1f64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_accredited_for
+    - opigno_module.opigno_activity_type.atdove_video
+  module:
+    - options
+id: opigno_activity.atdove_video.field_accredited_for
+field_name: field_accredited_for
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Accredited For'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

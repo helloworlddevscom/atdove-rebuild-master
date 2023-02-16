@@ -1,0 +1,8 @@
+uuid: db0c149f-0736-49c0-9e8b-d5b75574828c
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_partner
+label: 'Partner comment'
+target_entity_type_id: node
+description: null

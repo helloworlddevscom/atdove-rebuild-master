@@ -1,0 +1,51 @@
+uuid: 51890d26-9562-4e67-834a-aa126c8ee94d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_wistia_video_hero.field_p_wistia_hero_button
+    - field.field.paragraph.p_wistia_video_hero.field_p_wistia_hero_heading
+    - field.field.paragraph.p_wistia_video_hero.field_p_wistia_hero_subheading
+    - field.field.paragraph.p_wistia_video_hero.field_p_wistia_video_embed
+    - paragraphs.paragraphs_type.p_wistia_video_hero
+  module:
+    - heading
+    - link
+id: paragraph.p_wistia_video_hero.default
+targetEntityType: paragraph
+bundle: p_wistia_video_hero
+mode: default
+content:
+  field_p_wistia_hero_button:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_p_wistia_hero_heading:
+    type: heading
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_wistia_hero_subheading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_p_wistia_video_embed: true
+  search_api_excerpt: true

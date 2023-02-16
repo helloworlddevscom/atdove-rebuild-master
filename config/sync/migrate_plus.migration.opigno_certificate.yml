@@ -1,0 +1,33 @@
+uuid: b1af579e-af69-4139-a38d-a03866f48927
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: Tng08AQoX2LmBb8lWTi2y7G8rf99qCoJOGii0SssDlk
+id: opigno_certificate
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: opigno_migration
+label: 'Opigno Certificates'
+source:
+  plugin: opigno_certificate
+  node_type: certificate
+process:
+  type:
+    plugin: default_value
+    default_value: wysiwyg
+  id: nid
+  vid: nid
+  label: title
+  uid: node_uid
+  body: body
+destination:
+  plugin: 'entity:opigno_certificate'
+  default_bundle: wysiwyg
+migration_dependencies: null

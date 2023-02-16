@@ -1,0 +1,31 @@
+<?php
+
+use Drupal\user\Entity\User;
+use Drupal\Core\Session\AccountProxy;
+/**
+ * @file
+ * Contains atdove_users.module.
+ */
+
+/**
+ * implements hook_preprocess_views_view_field().
+ *
+ * Purpose: Alteres the member report view to just export "admin" if org admin.
+ */
+function atdove_users_preprocess_views_view_field(&$variables) {
+  $view = $variables['view'];
+  $field = $variables['field'];
+
+  if (
+    $view->storage->id() == 'member_report'
+    && $field->field == 'group_roles'
+  ) {
+    if (str_contains($variables['output'], 'Org Admin')) {
+      $variables['output'] = 'Admin';
+    }
+    else {
+      $variables['output'] = '';
+    }
+  }
+}
+

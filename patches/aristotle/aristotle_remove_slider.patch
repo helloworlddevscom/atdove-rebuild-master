@@ -1,0 +1,26 @@
+diff --git a/aristotle.theme b/aristotle.theme
+index c21ed1b..05dee24 100644
+--- a/aristotle.theme
++++ b/aristotle.theme
+@@ -682,20 +682,7 @@ function aristotle_form_system_theme_settings_slide_callback(array &$form, FormS
+ }
+ 
+ function aristotle_anonymous_has_slider() {
+-  if ((\Drupal::service('path.matcher')->isFrontPage()
+-      || \Drupal::routeMatch()->getRouteName() == 'user.login'
+-      || \Drupal::routeMatch()->getRouteName() == 'user.pass'
+-      || \Drupal::routeMatch()->getRouteName() == 'user.register')
+-    && \Drupal::currentUser()->isAnonymous()
+-  ) {
+-    $aristotle_home_page_settings = theme_get_setting('aristotle_home_page_settings', 'aristotle');
+-    if (isset($aristotle_home_page_settings['aristotle_use_home_page_markup'])
+-      && $aristotle_home_page_settings['aristotle_use_home_page_markup']
+-    ) {
+-      return TRUE;
+-    }
+-  }
+-
++  // Patched by /patches/aristotle/aristotle_remove_slider.patch.
+   return FALSE;
+ }
+ 

@@ -1,0 +1,20 @@
+uuid: be1e5f4f-db11-42d4-8511-472c2d048df8
+langcode: en
+status: true
+dependencies:
+  module:
+    - atdove_opigno
+    - flag
+    - flag_lists
+    - node_view_permissions
+id: subscriber
+label: Subscriber
+weight: -6
+is_admin: null
+permissions:
+  - 'access paid content'
+  - 'flag activity_bookmark'
+  - 'flag bookmark'
+  - 'view any assignment content'
+  - 'view flag lists'
+  - 'view own flag lists'

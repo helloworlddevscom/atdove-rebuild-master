@@ -1,0 +1,14 @@
+uuid: c5b5aedd-449e-4368-a368-19572de68d6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.group_subscriber
+  module:
+    - user
+id: user_remove_role_action.group_subscriber
+label: 'Remove the Group Subscriber role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: group_subscriber

@@ -1,0 +1,14 @@
+uuid: 08c90236-0b6a-40ef-98bd-972454ff9ad7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: p-BL3gAmM49ga_-Wr1RcgLuJq8MG6aqc3tQ2-fKeh4E
+id: learning_path
+label: 'Learning Path'
+description: 'A learning path is a group of learning content for a user to learn.'
+new_revision: false
+creator_membership: false
+creator_wizard: false
+creator_roles:
+  - learning_path-admin

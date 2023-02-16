@@ -1,0 +1,40 @@
+uuid: d2631177-9220-4280-a4a9-4afd9e47b308
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - opigno_migration
+_core:
+  default_config_hash: 6r4RIwG-UTYf1Q4X9olfdcdTIwRLGOatDOnpQ1iROkc
+id: opigno_taxonomy_vocabulary
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Configuration
+migration_group: opigno_migration
+label: 'OPigno taxonomy vocabularies'
+source:
+  plugin: opigno_taxonomy_vocabulary
+process:
+  vid:
+    -
+      plugin: make_unique_entity_field
+      source: machine_name
+      entity_type: taxonomy_vocabulary
+      field: vid
+      length: 32
+      migrated: true
+    -
+      plugin: forum_vocabulary
+      machine_name: forums
+  label: name
+  name: name
+  description: description
+  hierarchy: hierarchy
+  weight: weight
+destination:
+  plugin: 'entity:taxonomy_vocabulary'
+migration_dependencies: null

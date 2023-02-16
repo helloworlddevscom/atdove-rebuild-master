@@ -1,0 +1,23 @@
+uuid: b3a9e026-3e20-413f-a9d2-52b327bcaa21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignment_status
+    - node.type.assignment
+  module:
+    - options
+id: node.assignment.field_assignment_status
+field_name: field_assignment_status
+entity_type: node
+bundle: assignment
+label: 'Assignment Status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: pending
+default_value_callback: ''
+settings: {  }
+field_type: list_string

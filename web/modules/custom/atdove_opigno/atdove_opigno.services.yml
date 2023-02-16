@@ -1,0 +1,21 @@
+services:
+  atdove_opigno.node_event_subscriber:
+    class: Drupal\atdove_opigno\EventSubscriber\AssignmentNodeEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_opigno.form_event_subscriber:
+    class: Drupal\atdove_opigno\EventSubscriber\AtdoveOpignoFormEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  # Access check for opigno_statistics.user_achievements_page route.
+  atdove_opigno.opigno_statistics.user_achievements_page:
+    class: Drupal\atdove_opigno\Access\UserAchievementsPageAccessCheck
+    tags:
+      - { name: access_check, applies_to: _opigno_access_user_achievements }
+
+  atdove_opigno.group_event_subscriber:
+    class: Drupal\atdove_opigno\EventSubscriber\AtdoveGroupEventSubscriber
+    tags:
+      - { name: event_subscriber }

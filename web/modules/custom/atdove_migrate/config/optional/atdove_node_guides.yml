@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies: {  }
+id: atdove_node_guides
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: nodes
+label: 'Nodes (guides)'
+source:
+  plugin: d7_node_atdove
+  node_type: guides
+process:
+  field_type_exists:
+    plugin: skip_on_empty
+    method: row
+    source: title
+  nid: nid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      summary: summary
+      format:
+        plugin: default_value
+        default_value: full_html
+  field_help_category: field_help_category
+  field_related_faqs: field_related_faqs_new
+  path/pathauto: 
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_publish_date:
+    plugin: sub_process
+    source: field_publish_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+  uid: uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+destination:
+  plugin: 'entity:node'
+  default_bundle: guide

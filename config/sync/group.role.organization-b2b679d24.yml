@@ -1,0 +1,17 @@
+uuid: 87051c7c-daff-4b62-920a-ad82323fd1d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organization
+  enforced:
+    config:
+      - user.role.user_manager
+id: organization-b2b679d24
+label: 'User manager'
+weight: -6
+internal: true
+audience: outsider
+group_type: organization
+permissions_ui: false
+permissions: {  }

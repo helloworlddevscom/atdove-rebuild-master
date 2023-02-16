@@ -1,0 +1,11 @@
+uuid: a125df33-444c-4f13-8f98-01bc5d615c2e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: G7CGbVtk05MiNJ5ToqTqBPsOGRLxAP_2xfJdPKHYjSk
+id: opigno_tincan
+label: 'Tincan package'
+description: 'This makes possible to load a TinCan package developed outside Opigno, and containing an activity.'
+summary: null
+image: null

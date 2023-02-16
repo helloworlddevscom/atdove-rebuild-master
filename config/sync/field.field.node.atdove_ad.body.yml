@@ -1,0 +1,23 @@
+uuid: 0d31cf6f-6651-480a-82aa-c7efcfa7cd9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.atdove_ad
+  module:
+    - text
+id: node.atdove_ad.body
+field_name: body
+entity_type: node
+bundle: atdove_ad
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,6 @@
+<?php
+
+/** Containts organization related install functions.
+ *
+ * NOTE: Moved menu updates to atdove_default_content.
+ */

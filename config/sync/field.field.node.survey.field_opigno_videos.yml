@@ -1,0 +1,29 @@
+uuid: 4e206878-ba23-4df4-89a6-05d7ac095c25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opigno_videos
+    - node.type.survey
+    - opigno_module.opigno_activity_type.atdove_video
+id: node.survey.field_opigno_videos
+field_name: field_opigno_videos
+entity_type: node
+bundle: survey
+label: 'Related Opigno Videos'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:opigno_activity'
+  handler_settings:
+    target_bundles:
+      atdove_video: atdove_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

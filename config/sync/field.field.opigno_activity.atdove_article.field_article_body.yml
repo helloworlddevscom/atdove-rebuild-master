@@ -1,0 +1,23 @@
+uuid: 10b4763d-9208-4111-b26a-dbda8df325cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_article_body
+    - opigno_module.opigno_activity_type.atdove_article
+  module:
+    - text
+id: opigno_activity.atdove_article.field_article_body
+field_name: field_article_body
+entity_type: opigno_activity
+bundle: atdove_article
+label: 'Article Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

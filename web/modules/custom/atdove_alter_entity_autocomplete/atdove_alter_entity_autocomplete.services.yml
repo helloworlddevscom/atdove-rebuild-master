@@ -1,0 +1,10 @@
+services:
+
+  atdove_alter_entity_autocomplete.route_subscriber:
+    class: Drupal\atdove_alter_entity_autocomplete\Routing\EntityAutocompleteRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_alter_entity_autocomplete.autocomplete_matcher:
+    class: Drupal\atdove_alter_entity_autocomplete\EntityAutocompleteMatcherOverride
+    arguments: ['@plugin.manager.entity_reference_selection']

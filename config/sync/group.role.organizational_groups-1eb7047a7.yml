@@ -1,0 +1,17 @@
+uuid: db8cb17c-ce54-4c0d-a284-8c1e149ab681
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.organizational_groups
+  enforced:
+    config:
+      - user.role.content_manager
+id: organizational_groups-1eb7047a7
+label: 'Content manager'
+weight: -5
+internal: true
+audience: outsider
+group_type: organizational_groups
+permissions_ui: false
+permissions: {  }

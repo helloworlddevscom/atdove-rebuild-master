@@ -1,0 +1,68 @@
+#!/bin/bash
+
+set -eo pipefail
+
+#
+# This script deploys the build artifact to Pantheon.
+# On the master branch the dev environment is used.
+# Otherwise a multidev environment is used.
+#
+
+# We don't need this because we're doing it ourselves
+# in deploy_to_pantheon job. If we were using Pantheon
+# Integrated Composer, this would be necessary.
+# Cut gitignore at the cut mark.
+#terminus build:gitignore:cut
+
+# Authenticate with Terminus
+terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+
+if [[ $CI_BRANCH != $DEFAULT_BRANCH ]]
+then
+  # Only create a new environment if it doesn't exist yet.
+  # This way opening the PR builds the environment and later pushes only deploy code.
+  if terminus env:list "$TERMINUS_SITE" --field id | grep -q "$TERMINUS_ENV"
+  then
+    echo "Pushing to existing Multidev..."
+    terminus -n build:env:push "$TERMINUS_SITE.$TERMINUS_ENV" --yes
+  else
+    echo "Creating new Multidev..."
+    terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
+  fi
+else
+  # Push to the dev environment
+  echo "Pushing to Dev environment..."
+  terminus -n build:env:push "$TERMINUS_SITE.dev" --yes
+fi
+
+# Get status for debugging purposes.
+echo "Drush status:"
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- status -vvv
+
+# Update the Drupal database
+echo "Running database updates..."
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+
+# If exported configuration is available, then import it.
+if [ -f "config/sync/system.site.yml" ] ; then
+  echo "Running config import...."
+  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
+fi
+
+# Clear Drupal cache
+echo "Clearing Drupal caches..."
+terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cr
+
+# Clear the environment cache
+echo "Clearing Pantheon caches..."
+terminus -n env:clear-cache $TERMINUS_SITE.$TERMINUS_ENV
+
+# Ensure secrets are set
+terminus -n secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
+
+# Reset development mode to git.
+terminus connection:set "$TERMINUS_SITE.$TERMINUS_ENV" git
+
+# Delete old multidev environments associated
+# with a PR that has been merged or closed.
+terminus -n build:env:delete:pr $TERMINUS_SITE --yes

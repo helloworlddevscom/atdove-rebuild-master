@@ -1,0 +1,29 @@
+uuid: 24f653be-fc0a-4ecf-9ce1-fd27dca20179
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.opigno_activity.field_related_surveys
+    - node.type.survey
+    - opigno_module.opigno_activity_type.atdove_video
+id: opigno_activity.atdove_video.field_related_surveys
+field_name: field_related_surveys
+entity_type: opigno_activity
+bundle: atdove_video
+label: 'Related Surveys'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      survey: survey
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

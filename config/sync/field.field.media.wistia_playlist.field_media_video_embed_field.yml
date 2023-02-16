@@ -1,0 +1,29 @@
+uuid: 7e4335b1-36c9-44d6-b7d8-3a25e470cd2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_video_embed_field
+    - media.type.wistia_playlist
+  module:
+    - video_embed_field
+_core:
+  default_config_hash: UXg49xo-obwJF_iygdkVEXSlI997gARjK9warxs4lwo
+id: media.wistia_playlist.field_media_video_embed_field
+field_name: field_media_video_embed_field
+entity_type: media
+bundle: wistia_playlist
+label: 'Playlist url'
+description: 'Example url: https://my_account.wistia.com/projects/id. <a href="https://wistia.com/support/embed-and-share/playlists#creating-a-video-playlist" target="_blank">Create a playlist</a>.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    wistia_playlist: wistia_playlist
+    vimeo: '0'
+    youtube: '0'
+    youtube_playlist: '0'
+    wistia_video: '0'
+field_type: video_embed_field

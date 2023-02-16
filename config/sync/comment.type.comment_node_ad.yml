@@ -1,0 +1,8 @@
+uuid: 386a953b-16bd-4ece-b8cb-23f05f581b11
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_ad
+label: 'Ad comment'
+target_entity_type_id: node
+description: null

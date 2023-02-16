@@ -1,0 +1,27 @@
+uuid: ee136c83-bed0-40f4-9426-83a73e77a9bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_announcement_pdf_version
+    - node.type.announcement
+  module:
+    - file
+id: node.announcement.field_announcement_pdf_version
+field_name: field_announcement_pdf_version
+entity_type: node
+bundle: announcement
+label: 'PDF Version'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

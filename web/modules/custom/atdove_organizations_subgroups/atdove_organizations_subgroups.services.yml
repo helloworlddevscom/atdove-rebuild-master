@@ -1,0 +1,43 @@
+services:
+  # EventSubscriber to alter forms.
+  atdove_organizations_subgroups.event_subscriber.forms:
+    class: Drupal\atdove_organizations_subgroups\EventSubscriber\FormsEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  # RouteSubscriber used to alter classes used on routes.
+  atdove_organizations_subgroups.route_subscriber:
+    class: Drupal\atdove_organizations_subgroups\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  atdove_organizations_subgroups.access_event_subscriber:
+    class: Drupal\atdove_organizations_subgroups\EventSubscriber\SubGroupAccessEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  # Access check for subgroup delete form/route.
+  atdove_organizations_subgroups.access_check.subgroup.delete:
+    class: 'Drupal\atdove_organizations_subgroups\Access\SubgroupDeleteAccessCheck'
+    tags:
+      - { name: access_check, applies_to: _subgroup_delete }
+
+  # Access check for subgroup add member form/route.
+  atdove_organizations_subgroups.access_check.subgroup.add_remove_member:
+    class: 'Drupal\atdove_organizations_subgroups\Access\SubgroupAddRemoveMemberAccessCheck'
+    tags:
+      - { name: access_check, applies_to: _subgroup_add_remove_member }
+
+  # Access check for group content create route so we can limit access per group
+  # content type (plugin). Seems the key to this working is the applies_to tag value.
+  # This value is defined by the group module. Using it here apparently allows us to
+  # add another access check without doing it in a RouteSubscriber::alterRoutes.
+  atdove_organizations_subgroups.access_check.group.group_content.create:
+    class: Drupal\atdove_organizations_subgroups\Access\GroupContentAccessCheck
+    tags:
+      - { name: access_check, applies_to: _group_content_create_access }
+
+  atdove_organizations_subgroups.access_check.group.group_content.modify:
+    class: Drupal\atdove_organizations_subgroups\Access\GroupContentAccessCheck
+    tags:
+      - { name: access_check, applies_to: _group_content_org_admin_access }

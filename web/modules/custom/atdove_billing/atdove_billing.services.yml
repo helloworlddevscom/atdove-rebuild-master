@@ -1,0 +1,38 @@
+services:
+  atdove_billing.pricing_resource:
+    class: Drupal\atdove_billing\Resources\PricingResource
+  atdove_billing.product_resource:
+    class: Drupal\atdove_billing\Resources\ProductResource
+  atdove_billing.card_resource:
+    class: Drupal\atdove_billing\Resources\CardResource
+  atdove_billing.customer_resource:
+    class: Drupal\atdove_billing\Resources\CustomerResource
+  atdove_billing.subscription_resource:
+    class: Drupal\atdove_billing\Resources\SubscriptionResource
+  atdove_billing.card_service:
+    class: Drupal\atdove_billing\Services\CardService
+    arguments: ['@atdove_billing.card_resource']
+  atdove_billing.customer_service:
+    class: Drupal\atdove_billing\Services\CustomerService
+    arguments: ['@atdove_billing.customer_resource']
+  atdove_billing.subscription_service:
+    class: Drupal\atdove_billing\Services\SubscriptionService
+    arguments: ['@atdove_billing.subscription_resource',
+                '@atdove_billing.customer_service',
+                '@atdove_billing.card_service']
+  atdove_billing.pricing_service:
+    class: Drupal\atdove_billing\Services\PricingService
+    arguments: ['@atdove_billing.pricing_resource',
+                '@atdove_billing.product_resource']
+  atdove_billing.registration_service:
+    class: Drupal\atdove_billing\Services\RegistrationService
+    arguments: ['@atdove_billing.subscription_service',
+                '@atdove_billing.customer_service',
+                '@atdove_billing.card_service' ]
+  logger.channel.atdove_billing:
+    parent: logger.channel_base
+    arguments: [ 'atdove_billing' ]
+  atdove_billing.atdove_billing_forms_event_subscriber:
+    class: Drupal\atdove_billing\EventSubscriber\AtDoveBillingFormsEventSubscriber
+    tags:
+      - { name: event_subscriber }

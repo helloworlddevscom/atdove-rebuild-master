@@ -1,0 +1,35 @@
+name: AtDove
+type: theme
+description: 'Custom Theme for AtDove.'
+package: Core
+base theme: aristotle
+core_version_requirement: ^8.8 || ^9
+
+libraries:
+  - atdove/global
+
+# Do not load main stylesheet from Aristotle base theme.
+libraries-override:
+  aristotle/global:
+    css:
+      theme:
+        dist/css/main.css: false
+
+regions:
+  help: 'Help'
+  branding: 'Branding'
+  menu: 'Menu'
+  admin_opigno: 'Admin opigno menu'
+  status_messages: 'Status messages'
+  top: 'Top'
+  sidebar_first: 'Sidebar first'
+  content: 'Content'
+  footer: 'Footer'
+  # Disabled region is meant for blocks that need to be rendered programmatically.
+  # See: https://drupal.stackexchange.com/questions/171686/how-can-i-programmatically-display-a-block
+  disabled: 'Disabled'
+
+# Information added by Drupal.org packaging script on 2021-02-10
+version: '8.x-2.1'
+project: 'atdove'
+datestamp: 1612916296

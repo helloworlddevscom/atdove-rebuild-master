@@ -1,0 +1,19 @@
+uuid: 5daff249-5e60-48cf-b31f-dd8c38bd4b1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - opigno_module
+    - search_api_exclude_entity
+id: opigno_activity.field_exclude_from_search_result
+field_name: field_exclude_from_search_result
+entity_type: opigno_activity
+type: search_api_exclude_entity
+settings: {  }
+module: search_api_exclude_entity
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

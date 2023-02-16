@@ -1,0 +1,21 @@
+uuid: 14cc52fe-b309-4433-938e-8df649b47be1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_current_expiration_date
+    - group.type.organization
+  module:
+    - datetime
+id: group.organization.field_current_expiration_date
+field_name: field_current_expiration_date
+entity_type: group
+bundle: organization
+label: 'Current Expiration Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

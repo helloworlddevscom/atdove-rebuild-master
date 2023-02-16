@@ -1,0 +1,20 @@
+_core:
+  default_config_hash: TlUwZ6b5Ycd717ekKmg-WXuL8Lf4bBI8e9hEWuvZWug
+auth_path: /user/login
+destination_path: /opigno-activity-search
+deny_message: 'You must login to view this page.'
+excluded_403: true
+excluded_404: true
+excluded_paths: "/join\r\n/join/*\r\n/user/register\r\n/user/*\r\n/user/password\r\n/user/reset\r\n/dove-stripe\r\n/dove-stripe/*\r\n/opigno-activity-search\r\n/opigno-activity-search/*\r\n/free-trial/tp\r\n/free-trial/person\r\n/article/*\r\n/catalogue\r\n<front>\r\n/webform/special-accounts"
+excluded_node_types:
+  blog: blog
+  page: page
+  announcement: 0
+  assignment: 0
+  atdove_ad: 0
+  faq: 0
+  forum: 0
+  guide: 0
+  homepage: 0
+  survey: 0
+excluded_routes: "simplesamlphp_auth.saml_login\r\nsamlauth.saml_controller_login\r\nsamlauth.saml_controller_logout\r\nsamlauth.saml_controller_metadata\r\nsamlauth.saml_controller_acs\r\nsamlauth.saml_controller_sls\r\nsamlauth.saml_controller_changepw\r\n"

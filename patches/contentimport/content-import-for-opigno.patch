@@ -1,0 +1,59 @@
+diff --git a/contentimport.module b/contentimport.module
+index 93c566e..1035197 100644
+--- a/contentimport.module
++++ b/contentimport.module
+@@ -123,6 +123,25 @@ function get_node_id($title) {
+   return $nodeReference;
+ }
+ 
++
++/**
++ * To get node available.
++ */
++function get_activity_id($title) {
++  $activityReference = [];
++  $db = \Drupal::database();
++  foreach ($title as $key => $value) {
++    $query = $db->select('opigno_activity_field_data', 'o');
++    $query->fields('o', ['id']);
++    $actId = $query
++      ->condition('o.name', trim($value))
++      ->execute()
++      ->fetchField();
++    $activityReference[$key]['target_id'] = $actId;
++  }
++  return $activityReference;
++}
++
+ /**
+  * To get user id.
+  */
+@@ -195,7 +214,7 @@ function create_node($filedata, $contentType) {
+   // Code for import csv file.
+   $mimetype = 1;
+   if ($mimetype) {
+-    $location = $filedata->destination;
++    $location = $filedata->getFileUri();
+     if (($handle = fopen($location, "r")) !== FALSE) {
+       $keyIndex = [];
+       $index = 0;
+@@ -287,13 +306,18 @@ function create_node($filedata, $contentType) {
+               elseif ($fieldSettings[$f]['target_type'] == 'user') {
+                 $userArray = explode(', ', $data[$keyIndex[$fieldNames[$f]]]);
+                 $users = get_user_info($userArray);
+-                $nodeArray[$fieldNames[$f]] = $users;
++                $nodeArray[$fieldNames[$f]] = $data[$keyIndex[$fieldNames[$f]]];
+               }
+               elseif ($fieldSettings[$f]['target_type'] == 'node') {
+                 $nodeArrays = explode(':', $data[$keyIndex[$fieldNames[$f]]]);
+                 $nodeReference1 = get_node_id($nodeArrays);
+                 $nodeArray[$fieldNames[$f]] = $nodeReference1;
+               }
++              elseif ($fieldSettings[$f]['target_type'] == 'opigno_activity') {
++                $nodeArrays = explode(':', $data[$keyIndex[$fieldNames[$f]]]);
++                $nodeReference1 = get_activity_id($nodeArrays);
++                $nodeArray[$fieldNames[$f]] = $nodeReference1;
++              }
+               $logVariationFields .= " Success \n";
+               break;
+ 
